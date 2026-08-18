@@ -1,0 +1,18 @@
+asset_id,file_name,category,hunts,semantic,status,width,height,cell_size,sha256,drive_location,notes
+VXRD_LM_FOREST_GREEN_A,forest_green_a.png,landmark_atlas,H01|H02|H03|H06|H07|H16,soft_passable,APPROVED,64,64,32,1b2dba4d3f6ff3975073f834e415154ec1a27f5c11561458773192f1e332d1f2,Formal runtime package,Accepted existing vegetation atlas
+VXRD_LM_FOREST_FLOWER_A,forest_flower_a.png,landmark_atlas,H01|H03|H06,soft_passable,APPROVED,64,64,32,3ee2d0508d2cbe7163a6e9db1934025eae250f4dc919f99955da9cbc38467261,Formal runtime package,Accepted existing flower atlas
+VXRD_LM_DRY_ROCK_A,dry_rock_a.png,landmark_atlas,H04,hard_blocking,APPROVED,64,64,32,767561ba3e4dcf7f0160f218be86556b122a3cc9a7730ef8fbde0507210b2d98,Formal runtime package,Accepted dry rock atlas
+VXRD_LM_CAVE_CRYSTAL_A,cave_crystal_a.png,landmark_atlas,H09,hard_blocking,APPROVED,64,64,32,818edefe8cfbe8a86bdaa3561fba49457c3d652031d8860368633bdfcb28e60b,Formal runtime package,Accepted cave crystal atlas
+VXRD_LM_MINE_ORE_A,mine_ore_a.png,landmark_atlas,H14,hard_blocking,APPROVED,64,64,32,2fcc10164c07c483e1dfbd63f9796d7ee1439a1069923520ef6bee71b2b61820,Formal runtime package,Accepted mine ore atlas
+VXRD_LM_VOLCANIC_ORE_A,volcanic_ore_a.png,landmark_atlas,H19,hard_blocking,APPROVED,64,64,32,efce75ed42f7e2da57d314751f9cc4a136f5161f95286488dc1c3d5a95cee572,Formal runtime package,Accepted volcanic ore atlas
+VXRD_LM_RELIC_MOONSTONE_A,relic_moonstone_a.png,landmark_atlas,H05,hard_blocking,PLANNED,64,64,32,,,Batch A dedicated relic identity
+VXRD_LM_STORM_CHARGED_ROCK_A,storm_charged_rock_a.png,landmark_atlas,H08,hard_blocking,PLANNED,64,64,32,,,Batch A dedicated storm stone identity
+VXRD_LM_MYSTIC_RUNE_STONE_A,mystic_rune_stone_a.png,landmark_atlas,H10,hard_blocking,PLANNED,64,64,32,,,Batch A dedicated mystic marker identity
+VXRD_LM_ANCIENT_ROOT_A,ancient_root_a.png,landmark_atlas,H11,hard_blocking,PLANNED,64,64,32,,,Batch A dedicated ancient root identity
+VXRD_LM_ICE_SHARD_A,ice_shard_a.png,landmark_atlas,H12,hard_blocking,PLANNED,64,64,32,,,Batch A dedicated ice lake identity
+VXRD_LM_CANYON_ROCK_A,canyon_rock_a.png,landmark_atlas,H13,hard_blocking,DEFERRED,64,64,32,,,Batch B
+VXRD_LM_RITUAL_STONE_A,ritual_stone_a.png,landmark_atlas,H15,hard_blocking,DEFERRED,64,64,32,,,Batch B
+VXRD_LM_DEEP_ICE_A,deep_ice_a.png,landmark_atlas,H17,hard_blocking,DEFERRED,64,64,32,,,Batch B distinct from H12
+VXRD_LM_DRAGON_CANYON_A,dragon_canyon_rock_a.png,landmark_atlas,H18,hard_blocking,DEFERRED,64,64,32,,,Batch B
+VXRD_LM_ASTRAL_MINERAL_A,astral_mineral_a.png,landmark_atlas,H20,hard_blocking,DEFERRED,64,64,32,,,Batch B
+VXRD_LM_SANCTUARY_STONE_A,sanctuary_stone_a.png,landmark_atlas,H21,hard_blocking,DEFERRED,64,64,32,,,Batch B
