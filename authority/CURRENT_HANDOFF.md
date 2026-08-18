@@ -1,78 +1,71 @@
 # CURRENT_HANDOFF — PMD AutoChess Proto
 
-Last Updated: 2026-08-18 18:30 +08:00
+Last Updated: 2026-08-18 19:02 +08:00
 
 ## Persistent Authority
-Migration is complete. Do not rebuild or roll it back unless a persistent source is genuinely inaccessible.
+Migration is complete. Do not rebuild or roll it back unless a persistent Authority source is genuinely inaccessible.
 - Drive = Binary Authority
 - GitHub = Source Authority
 - Linear = Development Authority
 - ChatGPT = workspace only
 
 ## Current Formal Baseline
-**v1.06.56 — VXRD Random Hunt Real Loading Overlay I — FORMAL PASS.**
-Drive baseline ID `1JuKQu89h6GEOs6YoxiMFafVBYLTHM_fT`.
-SHO-35 Done. SHO-22 Route Safety Done / SEALED.
+**v1.06.58 — VXRD Water-Bottom Autotile Pair Authority I — FORMAL PASS.**
 
-## v1.06.57 Status
-**Windows Visual PASS / Source seal pending.**
-User reported H02/H03/H06/H07/H16 vegetation/wetland expansion `看起來ok`.
-- Current Development Drive ID `1OSHRyT1WCaYzWwT011Lqjm3y76kR5Ik0`.
-- Test Build Drive ID `1LyFebyMWoMiojgHGAnYwVJIB-zTMOlYM`.
-- v1.06.57 = Binary index 642 / ID 1065700.
-- Exact Source SHA256 `be91725e395e87bb79553d11d0bb125f913d7e8f2aabf164609e688e4e820ede`.
-- SHO-36 stays In Progress only for GitHub canonical manifest convergence.
+Formal Baseline ZIP:
+`01_Current_Baseline/PMD_AutoChess_v1_06_58_FORMAL_PASS_BASELINE_WATER_BOTTOM_AUTOTILE_PAIR_AUTHORITY_I_20260818.zip`
+Drive ID `1bpvrm1OQBDPMwU8ac06Q-zmZSvTOTHIQ`.
 
-## Active Candidate
-**v1.06.58 — VXRD Water-Bottom Autotile Pair Authority I — UNPASSED.**
+## Accepted v1.06.57 / v1.06.58 Results
+- v1.06.57 H02/H03/H06/H07/H16 vegetation Landmark expansion: Windows visual PASS.
+- v1.06.58 H07/H12/H17 water: user explicitly reported OK.
+- H02 current water is also accepted; no forced rework.
+- v1.06.56 real Loading overlay remains accepted.
+- SHO-22 Route Safety remains Done / SEALED.
 
-User requested the two visible-bottom native VX A1 water autotiles beside the ice/iceberg decoration group:
-- left/natural-bottom family -> base `2048`;
-- right/stone-bottom family -> base `2240`.
+## GitHub Source Authority
+Former Source-tail blocker is resolved.
+PR #2 exact finalizer succeeded, canonical manifests were regenerated, staging was removed, and the stale duplicate terminator was removed after compare audit.
 
-Current mapping:
-- H02 -> `2048` natural/grass-earth bottom.
-- H07 -> `2240` stone/hard bottom.
-- H12 -> `2240` hard/ice bottom.
-- H17 -> `2240` hard/ice bottom.
-- old deep/opaque base `2096` revoked from current Random Hunt water use.
+Canonical tail:
+- 642 / 1065700 / v1.06.57
+- 643 / 1065800 / v1.06.58
+- 644 / 250 / Main
+- 645 / 251 / terminator
+Total 646 Scripts, indices 0..645.
 
-Validation:
-- 646 Scripts, indices 0..645.
-- v1.06.58 = index 643 / ID 1065800.
-- Main 644; terminator 645.
-- Static 28/28 PASS; Ruby syntax PASS.
-- v1.06.58 exact Source SHA256 `aae49d6c64fbacbba1b077a42992a5f4e954a75876ce6ba155f58b1a1c2ff7b1`.
-- `Data/Scripts.rvdata` SHA256 `001f94df75298b079f2dcccc097dbb174b1f200acd2ed9eb934cb2af39059ac0`.
-- Traditional Chinese tutorial updated.
+`main` was fast-forwarded to the sealed v1.06.58 Source tree. `develop` continues from the same accepted Source baseline for future work.
 
-Binary Authority:
-- Current Development Drive ID `14VmbnX9nCx-CPusUhceWkcvlkwuO0EST`.
-- Test Build Drive ID `1rYcztk1tMcL7Se5XeMz1RtJ6tXeC2FtF`.
+## Accepted Water Mapping
+- H02 -> A1 base 2048.
+- H07 -> A1 base 2240.
+- H12 -> A1 base 2240.
+- H17 -> A1 base 2240.
+- active Random Hunt base 2096 revoked.
+- Water remains native A1 animated/autotile, rectangle-only, non-walkable, with A2 shoreline; no rivers/bridges.
 
-GitHub Source:
-- exact source staged at `.v10658_import/0643__id_1065800.rb` on `develop`;
-- canonical `SCRIPT_INDEX.tsv / SCRIPT_ORDER.md` still have the earlier v1.06.57 tail blocker;
-- do not promote v1.06.57/v1.06.58 until manifests converge.
+## Important Water Clarification
+The user clarified that the desired **gravel/stone-bottom clear water** is a different palette item: **two editor palette cells to the right of the currently accepted H07/H12/H17 clear-bottom water**. It is visible-bottom water with gravel/pebbles.
 
-Linear:
-- SHO-36 = Windows Visual PASS / Source seal pending.
-- SHO-40 = v1.06.58 Water-Bottom Autotile Pair Acceptance, In Progress.
+Do NOT guess its runtime base ID. First establish editor/runtime mapping evidence, then decide which Hunt profiles should use it. This clarification does not invalidate v1.06.58.
 
-## Immediate Windows Test
-Completely close RPG Maker VX, overwrite v1.06.58, reopen RMVX, then:
-1. H02: natural/grass-earth visible-bottom water.
-2. H07: stone/hard visible-bottom water.
-3. H12/H17: hard-bottom version, no obvious grassy bottom.
-4. confirm water animation, autotile edges/shoreline, non-walkability.
-5. confirm Loading Overlay / Landmark / Route Safety still normal.
+## Landmark Coverage
+Accepted: H01/H02/H03/H04/H06/H07/H09/H14/H16/H19.
+Deferred dedicated-art Hunts: H05/H08/H10/H11/H12/H13/H15/H17/H18/H20/H21.
+Do not fill deferred biomes with semantically unrelated props just to claim coverage.
 
-Audit log: `PMD_VXRD_WaterBottom_Audit_LATEST.log`.
-Screenshots only needed if water type, shoreline or tile joining looks wrong.
+## Immediate Next Work
+1. Identify and prove the exact runtime A1 base for the gravel-bottom clear-water palette item.
+2. Continue Gate 2 dedicated-art planning/production for remaining Hunts.
+3. Keep Route Safety, Loading, Map091 semantics, and sealed Gate 1 behavior unchanged.
 
 ## Immutable Rules
 - No automatic B/C/D/E scatter/stamping.
-- v1.06.44 upper-tile Landmark IDs remain revoked.
-- Map090 = Random Hunt runtime map; Map091 = H01–H21 shared Event Template Library.
-- No unrelated Battle AI / Damage / Attack Speed / Focus-C2 / Reward / Progression change.
-- Every functional update includes Traditional Chinese tutorial/usage documentation.
+- v1.06.44 Landmark runtime IDs remain revoked.
+- Map090 = Random Hunt runtime map.
+- Map091 = H01–H21 shared Event Template Library.
+- Gate 1 structure / Battle Presentation SEALED / issue-driven only.
+- No Battle AI, damage, attack speed, Focus/C2, rewards, progression, or spatial-endpoint changes for this work.
+
+## Editor / Documentation Rule
+If a future functional candidate changes `Data/Scripts.rvdata`, `Data/Map091.rvdata`, or another Data file, completely close RPG Maker VX before overwrite and reopen afterward. Every functional delivery must include synchronized Traditional Chinese tutorial/usage documentation.
