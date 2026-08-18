@@ -648,5 +648,6 @@ Source: `Data/Scripts.rvdata`
 - 0641 | ID `1065600` | `PMD AutoChess VXRD Random Hunt Real Loading Overlay I v1.06.56` | `0641__id_1065600.rb`
 - 0642 | ID `1065700` | `PMD AutoChess VXRD Landmark Vegetation Wetland Coverage Expansion I v1.06.57` | `0642__id_1065700.rb`
 - 0643 | ID `1065800` | `PMD AutoChess VXRD Water-Bottom Autotile Pair Authority I v1.06.58` | `0643__id_1065800.rb`
-- 0644 | ID `250` | `Main` | `0644__id_250.rb`
-- 0645 | ID `251` | `` | `0645__id_251.rb`
+- 0644 | ID `1066100` | `PMD AutoChess VXRD A1 Liquid Surface Semantic Authority II v1.06.61` | `0644__id_1066100.rb`
+- 0645 | ID `250` | `Main` | `0645__id_250.rb`
+- 0646 | ID `251` | `` | `0646__id_251.rb`
