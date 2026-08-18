@@ -1,0 +1,30 @@
+name: SHO-22 Landmark Route Broad Stress
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - 'tests/LANDMARK_ROUTE_BROAD_STRESS_v1.06.56_BASELINE.rb'
+      - 'exported_scripts/0567__id_99630079.rb'
+      - 'exported_scripts/0640__id_1065500.rb'
+      - '.github/workflows/sho22_landmark_route_broad_stress.yml'
+  workflow_dispatch:
+
+jobs:
+  route-stress:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ruby version
+        run: ruby -v
+      - name: Syntax check harness
+        run: ruby -c tests/LANDMARK_ROUTE_BROAD_STRESS_v1.06.56_BASELINE.rb
+      - name: Run broad route stress
+        run: ruby tests/LANDMARK_ROUTE_BROAD_STRESS_v1.06.56_BASELINE.rb | tee SHO22_ROUTE_BROAD_STRESS.log
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: SHO22_ROUTE_BROAD_STRESS
+          path: SHO22_ROUTE_BROAD_STRESS.log
