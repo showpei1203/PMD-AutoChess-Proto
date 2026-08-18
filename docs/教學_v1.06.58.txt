@@ -1,0 +1,59 @@
+PMD AutoChess Proto v1.06.58 使用／測試說明
+========================================
+
+一、安裝前
+1. 先「完全關閉 RPG Maker VX 編輯器」。
+2. 本版更新 Data/Scripts.rvdata，開著編輯器覆蓋可能被 RMVX 快取舊資料。
+3. 解壓 ZIP 到目前遊戲專案根目錄並允許覆蓋。
+4. 覆蓋完成後重新開啟 RPG Maker VX，再 Test Play。
+
+二、本版水 AUTOTILE 規則
+舊版水域統一使用 base 2096，畫面偏深水且看不到水底。
+
+v1.06.58 改成兩種 VX 原生可見底水：
+- base 2048：自然／草土底版，冰山 AUTOTILE 左側那組。
+- base 2240：石頭路／硬質底版，冰山 AUTOTILE 右側那組。
+
+正式 Hunt 對應：
+- H02 苔溪濕地 → 2048，自然／草地用。
+- H07 霧澤泥地 → 2240，石／硬質地表用。
+- H12 霜湖雪原 → 2240，冰雪硬質底。
+- H17 深潮冰灣 → 2240，冰雪硬質底。
+
+三、實機驗收方式
+優先測 H02 與 H07：
+1. H02 的水應看得到自然／草土感水底。
+2. H07 的水應看得到較石質的水底。
+3. 水面仍會正常動畫。
+4. 邊角與岸線需正常 autotile 拼接。
+5. 玩家仍不能走進水域。
+
+再快速看 H12 / H17：
+- 不應出現明顯草地水底。
+- 若冰雪地表與 stone-bottom 水看起來不搭，請截圖；這會作為下一輪 visual tuning，不會硬封版。
+
+四、不需要做的事
+- 不需要 Battle LOG，除非發生 RGSS Exception / 閃退 / 戰鬥錯誤。
+- 不需要每張 Hunt 都截圖。只有水底類型錯、破圖、岸線異常時才截。
+
+五、專用稽核 LOG
+正常啟動後會寫：
+PMD_VXRD_WaterBottom_Audit_LATEST.log
+
+預期：
+RESULT=PASS
+H02_BASE=2048
+H07_BASE=2240
+H12_BASE=2240
+H17_BASE=2240
+DEEP_WATER_USED=0
+NATIVE_A1_AUTOTILE=1
+ANIMATED=1
+TOPOLOGY_REWRITE=0
+MAP_TABLE_BCDE_STAMPING=0
+
+六、既有 Authority
+- H01/H04/H09/H14/H19 Landmark Visual/Semantic 已通過。
+- v1.06.55 Route Safety 已封版。
+- v1.06.56 Random Hunt Loading Overlay 已 PASS。
+- v1.06.57 植被／濕地 Landmark 視覺已由使用者回報「看起來 OK」，但 Source manifest 收斂仍列為 Authority 待辦，未因此偷升 Baseline。
