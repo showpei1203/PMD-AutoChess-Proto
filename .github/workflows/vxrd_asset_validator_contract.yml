@@ -1,0 +1,57 @@
+name: VXRD Asset Validator Contract
+
+on:
+  pull_request:
+    branches: [develop]
+    paths:
+      - 'tools/asset_validator/**'
+      - 'assets/**'
+      - '.github/workflows/vxrd_asset_validator_contract.yml'
+
+jobs:
+  validator-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Pillow
+        run: python -m pip install pillow
+      - name: Syntax check
+        run: python -m py_compile tools/asset_validator/validate_vxrd_landmark_atlas.py
+      - name: Build synthetic fixtures
+        run: |
+          mkdir -p /tmp/vxrd_validator
+          python - <<'PY'
+          from PIL import Image, ImageDraw
+          from pathlib import Path
+          root=Path('/tmp/vxrd_validator')
+          # Valid: four independent opaque props with transparent padding.
+          im=Image.new('RGBA',(64,64),(0,0,0,0)); d=ImageDraw.Draw(im)
+          for cx,cy in [(0,0),(32,0),(0,32),(32,32)]:
+              d.rectangle((cx+8,cy+10,cx+23,cy+25),fill=(100,100,100,255))
+          im.save(root/'valid.png')
+          # Invalid size.
+          Image.new('RGBA',(63,64),(0,0,0,0)).save(root/'invalid_size.png')
+          # Invalid mode.
+          Image.new('RGB',(64,64),(255,255,255)).save(root/'invalid_mode.png')
+          # Empty cells.
+          Image.new('RGBA',(64,64),(0,0,0,0)).save(root/'invalid_empty.png')
+          PY
+      - name: Valid fixture must pass
+        run: python tools/asset_validator/validate_vxrd_landmark_atlas.py /tmp/vxrd_validator/valid.png
+      - name: Invalid fixtures must fail
+        shell: bash
+        run: |
+          set -e
+          for f in invalid_size.png invalid_mode.png invalid_empty.png; do
+            if python tools/asset_validator/validate_vxrd_landmark_atlas.py "/tmp/vxrd_validator/$f"; then
+              echo "ERROR: $f unexpectedly passed"
+              exit 1
+            fi
+          done
+          echo 'CONTRACT=PASS'
+
+# Formal PNG assets remain on Google Drive. This workflow tests only the validator
+# contract using synthetic fixtures; it intentionally does not upload production art to GitHub.
