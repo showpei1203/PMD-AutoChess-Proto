@@ -643,5 +643,6 @@ Source: `Data/Scripts.rvdata`
 - 0636 | ID `1065100` | `PMD AutoChess VXRD Map091 Authoring Guard & FS Parity I v1.06.51` | `0636__id_1065100.rb`
 - 0637 | ID `1065200` | `PMD AutoChess VXRD Map091 Event Contentization I v1.06.52` | `0637__id_1065200.rb`
 - 0638 | ID `1065300` | `PMD AutoChess VXRD Landmark PNG Authority Foundation I v1.06.53` | `0638__id_1065300.rb`
-- 0639 | ID `250` | `Main` | `0639__id_250.rb`
-- 0640 | ID `251` | `` | `0640__id_251.rb`
+- 0639 | ID `1065400` | `PMD AutoChess VXRD Landmark Single-Prop Semantic Presence Collision I v1.06.54` | `0639__id_1065400.rb`
+- 0640 | ID `250` | `Main` | `0640__id_250.rb`
+- 0641 | ID `251` | `` | `0641__id_251.rb`

@@ -1,0 +1,18 @@
+PMD AutoChess Proto v1.06.54 測試與使用說明（繁體中文）
+
+【重要】
+本版更新 Data/Scripts.rvdata。覆蓋前請完全關閉 RPG Maker VX，覆蓋後重新開啟 RMVX。
+
+【本輪只測】
+H01 / H04 / H09 / H14 / H19
+
+【確認】
+1. 每張 Hunt 至少看得到 1 個 Landmark。
+2. 一個 Landmark 只是一個 32x32 單一物件，不可再出現四個物件擠成 2x2。
+3. 物件靠房間邊緣，彼此不要緊貼成堆。
+4. H01 花草／低植被可走過。
+5. H04 岩石、H09 晶岩、H14 礦石、H19 火山岩／礦晶不可走過。
+6. 相機捲動時 Landmark 跟著地圖；換 Hunt／換層後舊物件消失。
+
+主要提供截圖即可；除非 Runtime／戰鬥錯誤，不需要 Battle LOG。
+五張全部 PASS 後才進完整 collision + route audit。
