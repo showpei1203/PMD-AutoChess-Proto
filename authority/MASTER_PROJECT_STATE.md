@@ -1,6 +1,6 @@
 # MASTER_PROJECT_STATE — PMD AutoChess Proto
 
-Last Updated: 2026-08-18 14:39 +08:00
+Last Updated: 2026-08-18 15:20 +08:00
 
 ## Persistent Authority
 - Google Drive = Binary Authority.
@@ -9,76 +9,51 @@ Last Updated: 2026-08-18 14:39 +08:00
 - ChatGPT = development workspace only.
 
 ## Version State
-- Current Formal Baseline: **v1.06.54 — VXRD Landmark Single-Prop Semantic / Presence / Collision Fix I**.
-- Windows / RPG Maker VX real-machine acceptance: **PASS on 2026-08-18**.
-- Previous formal Baseline: v1.06.35.
-- v1.06.53 Landmark PNG Authority Foundation I: **REAL-MACHINE VISUAL FAIL — never promote**.
-- Next Development Gate: **SHO-22 — Landmark II: Collision / Route Audit**.
+- Current Formal Baseline: **v1.06.55 — VXRD Landmark Route Safety Audit I — PASS for five-Hunt Phase-I scope**.
+- Windows/RPG Maker VX acceptance: H01/H04/H09/H14/H19 route HISTORY PASS on 2026-08-18.
+- Static validation PASS 31/31; offline deterministic regression PASS 40/40.
+- SHO-22 remains In Progress for broader Hunt / multi-seed route stress before Landmark coverage expands.
+- SHO-35 records the next isolated UX direction: Random Hunt black-screen LOADING overlay using existing battle Loading UI authority and real generation checkpoints.
 
-## v1.06.54 Acceptance Authority
-Real-machine acceptance on H01 / H04 / H09 / H14 / H19 confirmed:
-- every acceptance Hunt shows at least one Landmark;
-- one Landmark = one 32×32 atlas cell, not the full 64×64 2×2 atlas;
-- placement / spacing visually accepted;
-- H01 foliage / flowers are passable;
-- H04 dry rock, H09 cave crystal/rock, H14 mine ore, H19 volcanic rock/ore are impassable;
-- scrolling and Hunt/floor refresh are normal;
-- no giant TileB/TileD fragment returned;
-- no automatic B/C/D/E map stamping returned;
-- no observed Gate 1 structural/battle regression.
-
-Static validation: PASS 23/23.
-Source-level acceptance precheck verified normal player walking collision chaining, Landmark reservation before Map091 semantic relocation, stale sprite disposal/refresh, and continued B/C/D/E stamping prohibition.
+## v1.06.55 Acceptance Authority
+- H01: PASS, WALKABLE 719, REACHABLE 719, BLOCKED 0, EXIT_REACHABLE=1, BAD empty.
+- H04: PASS, 749 / 747, BLOCKED 2, EXIT_REACHABLE=1, BAD empty.
+- H09: PASS, 855 / 854, BLOCKED 1, EXIT_REACHABLE=1, BAD empty.
+- H14: PASS, 631 / 630, BLOCKED 1, EXIT_REACHABLE=1, BAD empty; duplicate run record only.
+- H19: PASS, 820 / 818, BLOCKED 2, EXIT_REACHABLE=1, BAD empty.
+- All real-machine samples REMOVED=0.
 
 ## GitHub Branch Authority
 ### main
-- **v1.06.54 formal PASS source**.
-- 642 scripts, indices `0..641`.
-- v1.06.54 Script index `639`, ID `1065400`.
-- Main index `640`; terminator index `641`.
+- **v1.06.55 formal PASS source**.
+- 643 scripts, indices `0..642`.
+- v1.06.55 Script index `640`, ID `1065500`.
+- Main index `641`; terminator index `642`.
 - Script Index / ID / Name / exact decompressed Content / execution order remain preserved.
 
 ### develop
-- Continuation branch based on current formal PASS.
-- Next unpassed candidate will implement SHO-22 Landmark collision / route audit.
-- Do not promote future develop candidates without Windows/RMVX acceptance appropriate to the defect class.
+- Continues from v1.06.55 PASS for SHO-22 broader stress and SHO-35 Loading UI work.
+- Do not promote future candidates without defect-class-appropriate Windows/RMVX acceptance.
 
-## Drive Binary Authority
-- Current Formal Baseline: accepted v1.06.54 package copied to `01_Current_Baseline` as formal PASS Binary Authority.
-- Accepted source package originated from `02_Current_Development/PMD_AutoChess_v1_06_54_CUMULATIVE_OVERWRITE_LANDMARK_SINGLE_PROP_SEMANTIC_PRESENCE_COLLISION_I_20260818.zip`, Drive ID `1B3flf23qcLhGqLjNSlwKZnCULjGcYLC0`.
-- Windows live snapshot remains NEEDS_REVIEW for internal version alignment and is not authority merely by upload date.
+## Gate 2 / SHO-22
+- v1.06.54 single-prop rendering + semantic collision remains accepted.
+- v1.06.55 two-stage route-safety gate is accepted for H01/H04/H09/H14/H19.
+- Remaining work: broader remaining-Hunt / multi-seed stress and unsafe-placement rejection coverage before Landmark visual expansion.
 
-## Gate 2 Current State
-Completed / accepted:
-- Hunt visual/style contentization foundation.
-- RMVX A1/A2/A4/A5 semantic reset.
-- native water / bank autotile rules.
-- Random Hunt minimap foundation.
-- upper-tile B/C/D runtime-ID root-cause correction.
-- Map091 H01–H21 FS-style Event Template Library and Hunt/Floor contentization.
-- Landmark separate-PNG atlas authority.
-- v1.06.54 single-prop rendering, minimum presence, and local hard/soft collision semantics.
-
-In Progress:
-- SHO-22 Landmark II — collision / route audit.
-
-## SHO-22 Route-Audit Authority
-Required:
-1. Entrance → Exit must remain reachable after hard Landmark placement.
-2. Required semantic event destinations must remain reachable where applicable.
-3. Hard Landmark cells must not occupy entrance/exit/keypoint/fixed positions/water/event-reserved cells.
-4. Hard Landmark placement must not seal a doorway, corridor throat, or unique room connection.
-5. Soft H01 decoration must not participate as a blocker.
-6. Audit multiple deterministic seeds for H01/H04/H09/H14/H19 before expanding Landmark coverage.
-7. If a hard Landmark breaks a required route, reject/relocate that Landmark; do not modify sealed Gate 1 room topology.
+## SHO-35 Loading UI Authority
+- Reuse Script 0415 battle loading window visual language.
+- Reuse Script 0395 running Pokémon mascot.
+- Follow Script 0439 refresh-throttle policy.
+- Progress must map to real work: Hunt init → Map090 layout/terrain → Landmark/collision → Map091 event materialization/relocation → route audit → sprites/map refresh → immediate 100% reveal.
+- Do not add fake timer delay.
 
 ## No-Regression Rules
 - Automatic B/C/D/E tile scatter/stamping remains prohibited.
 - v1.06.44 Landmark runtime IDs remain revoked.
 - Map090 remains Random Hunt Runtime Map.
-- Map091 remains the H01–H21 Event Template Library.
-- Gate 1 Random Hunt structural runtime and accepted Battle Presentation remain SEALED / issue-driven only.
-- Do not alter Battle AI, damage, attack speed, Focus/C2, rewards or spatial endpoints during Landmark route work.
+- Map091 remains H01–H21 Event Template Library.
+- Gate 1 structural runtime and accepted Battle Presentation remain SEALED / issue-driven only.
+- Do not alter Battle AI, damage, attack speed, Focus/C2, rewards or spatial endpoints for Loading UI work.
 - Do not reorder Scripts.rvdata entries for repository aesthetics.
 
 ## Editor / Documentation Rule
