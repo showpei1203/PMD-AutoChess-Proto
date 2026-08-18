@@ -1,0 +1,24 @@
+PMD AutoChess Proto v1.06.55
+VXRD Landmark Route Safety Audit I
+
+狀態：UNPASSED CANDIDATE
+正式 Baseline：v1.06.54（2026-08-18 Windows / RPG Maker VX Visual + Semantic PASS）
+
+本版進入 SHO-22 Landmark II — Collision / Route Audit。
+
+新增：
+- 每次 Random Hunt 樓層生成後，自動以 hard Landmark block mask 做入口→出口可達性檢查。
+- Map091 事件完成 materialize / semantic relocation 後，再檢查 EXIT / RETREAT / INFO / TREASURE / RECOVERY / RARE / ELITE / ENCOUNTER 等目標可達性。
+- 若 hard Landmark 造成必要路徑失效，優先拒絕該 Landmark；不修改已封版 Gate 1 房間／走廊拓撲。
+- H01 花草／低植被維持 soft / passable，不進 blocking mask。
+- Runtime 產生 LATEST 與 HISTORY route audit log，方便一次收集多 Hunt／多樓層證據。
+- Offline deterministic regression：H01/H04/H09/H14/H19 × 8 seeds = 40/40 PASS。
+
+不變：
+- automatic B/C/D/E tile scatter / stamping 持續禁止。
+- v1.06.44 Landmark runtime IDs 持續撤銷。
+- Map090 仍為 Random Hunt Runtime Map。
+- Map091 本版未修改。
+- 不修改 Battle AI、傷害、攻速、Focus/C2、Reward、Progression。
+
+本版更新 Data/Scripts.rvdata。覆蓋前必須完全關閉 RPG Maker VX，覆蓋後重新開啟 RMVX。
