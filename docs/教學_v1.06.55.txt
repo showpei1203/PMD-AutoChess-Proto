@@ -1,38 +1,34 @@
 PMD AutoChess Proto v1.06.55 測試與使用說明（繁體中文）
 
 【版本狀態】
-正式 Baseline：v1.06.54 — 已完成 Windows / RPG Maker VX 實機 PASS。
-目前測試 Candidate：v1.06.55 — Landmark Route Safety Audit I。
+v1.06.55 — Landmark Route Safety Audit I：2026-08-18 Windows / RPG Maker VX 五 Hunt Phase-I 實機 PASS。
 
-【安裝前一定要做】
-本版更新 Data/Scripts.rvdata。請先完全關閉 RPG Maker VX，再覆蓋 ZIP；覆蓋完成後重新開啟 RMVX。
+【本版已驗證內容】
+硬質 Landmark（岩石、晶岩、礦石、火山礦晶）除了本身不可穿越之外，每次生成樓層會做路徑安全檢查。
+如果某顆硬質 Landmark 會堵住必要路徑，系統優先拒絕該顆 Landmark，不修改已封版的房間／走廊拓撲。
+H01 花草／低植被仍為 soft decoration，可通行，也不進 blocking route mask。
+
+實機 HISTORY 已確認：
+- H01 / H04 / H09 / H14 / H19 全部 RESULT=PASS。
+- 全部 EXIT_REACHABLE=1。
+- 全部 BAD=空白。
+- H04/H09/H14/H19 實際存在 hard blocked cells，但沒有切斷必要路線。
+- H14 同一 run 曾重複記錄一次，屬重複紀錄，不是 FAIL。
+
+【後續 SHO-22】
+本次 PASS 封存的是五 Hunt Phase-I Route Safety Audit I。
+後續仍會做更大規模 remaining Hunt / multi-seed route stress，並嘗試涵蓋 REMOVED>0 的 unsafe Landmark rejection 情境，完成後才擴張更多 Hunt 的 Landmark 視覺覆蓋。
+
+【新增 UX 規劃 SHO-35】
+Random Hunt 讀圖黑幕後續會加入真正的 LOADING 百分比條。
+外觀沿用既有戰鬥 LOADING：百分比、藍色進度條、階段文字與跑動寶可夢。
+進度會綁定真實地圖工作：Map090 地形 → Landmark → Map091 Event → Route Audit → 畫面準備，不使用假計時器，也不刻意延長讀取時間。
+
+【安裝規則】
+本版更新 Data/Scripts.rvdata。若重新安裝本版，請先完全關閉 RPG Maker VX，再覆蓋檔案；覆蓋完成後重新開啟 RMVX。
 Map091 本版沒有修改。
 
-【本版在做什麼】
-硬質 Landmark（岩石、晶岩、礦石、火山礦晶）現在除了本身不可穿越之外，每次生成樓層還會自動做路徑安全檢查。
-如果某顆硬質 Landmark 會堵住必要路徑，系統會拒絕該顆 Landmark，而不是修改房間或走廊。
-H01 花草／低植被仍是 soft decoration，可通行，也不算入 blocking route mask。
-
-【你這輪怎麼測最省事】
-依序進 H01 / H04 / H09 / H14 / H19，各生成至少 1 個樓層即可。
-正常走動即可，不需要 Battle LOG，也不用刻意撞每一顆石頭。
-系統會在每次樓層完成後自動檢查：
-1. 入口 → 出口可達。
-2. EXIT / RETREAT / INFO / TREASURE / RECOVERY / RARE / ELITE / ENCOUNTER 等已生成事件位置可達。
-3. hard Landmark 不會以裝飾為理由逼系統重畫已封版拓撲。
-
-測完後主要提供遊戲根目錄的：
-- PMD_VXRD_LandmarkRoute_Audit_HISTORY.log
-- 若任何一張 Hunt 畫面異常，再附截圖。
-
-HISTORY 應該每個 RUN 都看到 RESULT=PASS、EXIT_REACHABLE=1。
-REMOVED=0 代表原本 Landmark 就安全；REMOVED>0 代表安全閘門有成功拒絕會破壞路徑的 hard Landmark，兩者都可以是 PASS。
-
-【不應出現】
-- RESULT=FAIL
-- EXIT_REACHABLE=0
-- 巨大 TileB/TileD 碎片
+【永久禁止事項】
 - automatic B/C/D/E scatter/stamping
-- 舊 Landmark sprite 殘留
-
-若 Runtime／戰鬥本身出錯，再提供對應錯誤畫面或 Battle LOG。
+- 恢復 v1.06.44 Landmark runtime IDs
+- 為裝飾物修改已封版 Gate 1 topology
