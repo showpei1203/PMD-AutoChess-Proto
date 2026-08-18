@@ -1,0 +1,64 @@
+authority: v1.06.58 FORMAL PASS
+purpose: PMD AutoChess VXRD dedicated Landmark Batch A draft generation
+runtime_contract:
+  canvas: 64x64 RGBA transparent
+  layout: 2x2
+  cell_size: 32x32
+  standalone_rule: each cell contains one complete standalone prop
+  semantic: hard_blocking
+  style: RPG Maker VX scale pixel art, compact silhouette, native 1x readability, restrained palette, transparent background
+  forbidden:
+    - any object spanning multiple cells
+    - cropped buildings or architecture fragments
+    - half trees or trunks continuing outside a cell
+    - giant monuments
+    - vector-smooth anti-aliased rendering
+    - drop shadows outside the prop footprint
+    - text labels or UI
+    - tileset sheet framing
+    - automatic B/C/D/E scatter
+
+jobs:
+  H05:
+    hunt_name: 月影古徑
+    target_file: relic_moonstone_a.png
+    prompt: >-
+      Create a transparent 64x64 pixel-art sprite atlas for RPG Maker VX scale, arranged as a strict 2x2 grid of four independent 32x32 standalone props. Each cell contains one complete low ancient path relic stone. Use cold gray to moon-pale weathered stone, subtle moss or age marks, restrained crescent-like or archaic carvings, compact grounded silhouettes, readable at native 1x, no part crossing cell boundaries. The four variants should clearly belong to the same family but differ in shape and carving placement. Hard physical blocking prop.
+    negative: >-
+      altar, building wall, pillar fragment, giant obelisk, full shrine, cropped architecture, oversized monument, glowing magic effect, modern symbol, text, UI, anti-aliased vector art, smooth 3D render, object spanning cells, cut-off object, opaque background
+  H08:
+    hunt_name: 雷羽石道
+    target_file: storm_charged_rock_a.png
+    prompt: >-
+      Create a transparent 64x64 RPG Maker VX scale pixel-art atlas in a strict 2x2 grid. Each 32x32 cell contains one complete compact storm-weathered rock. Rock body must dominate; add only subtle cool mineral veins, scorched edges, or faint electrically charged fissures. Four distinct silhouettes, same material family, grounded and physically solid, readable at native 1x, no cross-cell continuity. Hard blocking prop.
+    negative: >-
+      lightning bolt icon, electricity symbol, machine, pole, tower, glowing orb, giant spike, huge crystal, cropped object, object spanning cells, UI, text, anti-aliased vector art, 3D render, opaque background
+  H10:
+    hunt_name: 夢霧碑地
+    target_file: mystic_rune_stone_a.png
+    prompt: >-
+      Create a transparent 64x64 RPG Maker VX scale pixel-art atlas with four independent 32x32 standalone mystic marker stones in a strict 2x2 layout. Use cool gray, muted blue-gray or restrained gray-violet stone, weathered edges, minimal ancient rune carvings, compact complete silhouettes, subtle mystery through material and carving rather than strong glow. Four variants, same family, native 1x readability, hard blocking physical props.
+    negative: >-
+      full shrine, temple, huge obelisk, cemetery row, architecture fragment, large magic circle, excessive runes, bright spell glow, text, UI, vector smoothness, 3D render, object spanning cells, cropped object, opaque background
+  H11:
+    hunt_name: 古木根域
+    target_file: ancient_root_a.png
+    prompt: >-
+      Create a transparent 64x64 RPG Maker VX scale pixel-art atlas in a strict 2x2 grid. Each 32x32 cell contains one complete compact ancient root or stump-root cluster, dark brown to gray-brown aged wood with restrained moss accents. The objects must look solid enough to block walking, clearly different from passable green shrubs. Four distinct complete variants, no trunk or root continuing beyond a cell, native 1x readability.
+    negative: >-
+      half tree, tree canopy, full tall tree, green bush, flowers, grass patch, giant fallen log, rock recolor, root crossing cell border, cropped trunk, UI, text, anti-aliased vector art, 3D render, opaque background
+  H12:
+    hunt_name: 霜湖雪原
+    target_file: ice_shard_a.png
+    prompt: >-
+      Create a transparent 64x64 RPG Maker VX scale pixel-art atlas in a strict 2x2 grid. Each 32x32 cell contains one complete low ice shard or frozen crystal-rock cluster for a snowy lake biome. Use ice blue, pale blue-white and restrained gray-blue shadowing, clear compact silhouette, solid physical presence, readable beside snow and clear-bottom cold water. Four distinct variants, each fully contained in its cell, hard blocking prop.
+    negative: >-
+      giant iceberg, tall ice tower, huge icicle, magic spell beam, overly transparent invisible object, full-cell white blob, cropped shard, object spanning cells, UI, text, anti-aliased vector art, smooth 3D render, opaque background
+
+generation_protocol:
+  - Generate drafts only; never mark generated art APPROVED automatically.
+  - Preserve transparency and exact 64x64 output after cleanup/resampling.
+  - Run tools/asset_validator/validate_vxrd_landmark_atlas.py before human QA.
+  - Store draft PNGs on Google Drive under 08_Assets/02_AI_Drafts, not GitHub.
+  - After visual PASS, copy approved PNGs to 08_Assets/12_Approved and update assets/ASSET_MANIFEST.csv with SHA256 and status APPROVED.
+  - Runtime integration begins only after approved art exists.
