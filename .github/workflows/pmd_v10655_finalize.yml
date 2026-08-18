@@ -1,0 +1,59 @@
+name: PMD v1.06.55 script order finalize
+on:
+  push:
+    branches: [develop]
+    paths: ['.github/workflows/pmd_v10655_finalize.yml']
+permissions:
+  contents: write
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+      - name: Finalize source order
+        shell: bash
+        run: |
+          python3 - <<'PYCODE'
+          from pathlib import Path
+          import hashlib, shutil
+          d=Path('exported_scripts')
+          staged=Path('staging/v1.06.55/0640__id_1065500.rb')
+          old_main=d/'0640__id_250.rb'; old_term=d/'0641__id_251.rb'
+          assert staged.exists() and old_main.exists() and old_term.exists()
+          body=staged.read_bytes(); main=old_main.read_bytes(); term=old_term.read_bytes()
+          assert hashlib.sha256(body).hexdigest()=='51dc52781b29acefa51d2550f46770bf7136d910ac615d00935fbd1375033cb3'
+          assert hashlib.sha256(main).hexdigest()=='8fdfe50524b8d32a91901e636c6100dba33a42baa6ff09a8153f31786a585558'
+          assert hashlib.sha256(term).hexdigest()=='e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+          old_main.unlink(); old_term.unlink()
+          (d/'0640__id_1065500.rb').write_bytes(body)
+          (d/'0641__id_250.rb').write_bytes(main)
+          (d/'0642__id_251.rb').write_bytes(term)
+          idx=d/'SCRIPT_INDEX.tsv'; lines=idx.read_text(encoding='utf-8').splitlines()
+          assert lines[-2].startswith('640\t250\tMain\t0640__id_250.rb')
+          assert lines[-1].startswith('641\t251\t\t0641__id_251.rb')
+          lines=lines[:-2]+['640\t1065500\tPMD AutoChess VXRD Landmark Route Safety Audit I v1.06.55\t0640__id_1065500.rb\t16338\t51dc52781b29acefa51d2550f46770bf7136d910ac615d00935fbd1375033cb3', '641\t250\tMain\t0641__id_250.rb\t571\t8fdfe50524b8d32a91901e636c6100dba33a42baa6ff09a8153f31786a585558', '642\t251\t\t0642__id_251.rb\t0\te3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855']
+          idx.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+          order=d/'SCRIPT_ORDER.md'; ol=order.read_text(encoding='utf-8').splitlines()
+          assert ol[-2].startswith('- 0640 | ID `250` | `Main` | `0640__id_250.rb`')
+          assert ol[-1].startswith('- 0641 | ID `251` | `` | `0641__id_251.rb`')
+          for i,line in enumerate(ol[:12]):
+              if line.startswith('Authority candidate:'):
+                  ol[i]='Authority candidate: v1.06.55 (UNPASSED)'
+          ol=ol[:-2]+['- 0640 | ID `1065500` | `PMD AutoChess VXRD Landmark Route Safety Audit I v1.06.55` | `0640__id_1065500.rb`', '- 0641 | ID `250` | `Main` | `0641__id_250.rb`', '- 0642 | ID `251` | `` | `0642__id_251.rb`']
+          order.write_text('\n'.join(ol)+'\n',encoding='utf-8')
+          assert len(idx.read_text(encoding='utf-8').splitlines())==644
+          shutil.rmtree('staging/v1.06.55')
+          PYCODE
+      - name: Commit finalized source authority
+        shell: bash
+        run: |
+          rm -f .github/workflows/pmd_v10655_finalize.yml
+          rmdir staging 2>/dev/null || true
+          git config user.name 'showpei1203'
+          git config user.email 'showpei1203@gmail.com'
+          git add -A
+          git commit -m 'Finalize v1.06.55 Scripts authority order'
+          git push origin HEAD:develop
