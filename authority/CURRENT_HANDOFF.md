@@ -1,69 +1,65 @@
 # CURRENT_HANDOFF — PMD AutoChess Proto
 
-Last Updated: 2026-08-18 14:39 +08:00
+Last Updated: 2026-08-18 14:50 +08:00
 
 ## Persistent Authority
 Migration is complete. Do not rebuild or roll it back unless a persistent Authority source is genuinely inaccessible.
-- Google Drive = Binary Authority
+- Drive = Binary Authority
 - GitHub = Source Authority
 - Linear = Development Authority
 - ChatGPT = development workspace only
 
-## Current Formal Baseline
+## Formal Baseline
 **v1.06.54 — VXRD Landmark Single-Prop Semantic / Presence / Collision Fix I — FORMAL PASS**.
+Drive Baseline ID: `1ilVIw9RnY5e9DmhJl8QdTyMDhrR3t0xK`.
+GitHub `main` remains v1.06.54 formal PASS source.
 
-Windows / RPG Maker VX real-machine acceptance PASS on 2026-08-18.
-Accepted H01 / H04 / H09 / H14 / H19:
-- Landmark presence PASS;
-- single 32×32 prop rendering PASS;
-- visual spacing / placement PASS;
-- H01 soft vegetation passability PASS;
-- H04/H09/H14/H19 hard object blocking PASS;
-- scrolling and Hunt/floor refresh PASS;
-- no giant TileB/TileD fragment or automatic B/C/D/E stamping regression.
+## Current Candidate
+**v1.06.55 — VXRD Landmark Route Safety Audit I — UNPASSED**.
+- 643 Scripts, indices 0..642.
+- New Script index 640 / ID 1065500.
+- Main index 641; terminator 642.
+- Static validation PASS 31/31.
+- Offline deterministic regression H01/H04/H09/H14/H19 × 8 seeds = 40/40 PASS.
+- Real-machine route-audit acceptance pending.
 
-Static validation PASS 23/23.
+Drive Candidate:
+`02_Current_Development/PMD_AutoChess_v1_06_55_CUMULATIVE_OVERWRITE_LANDMARK_ROUTE_SAFETY_AUDIT_I_20260818.zip`
+Drive ID `1gP6fdpPOVpGdZdjXuc65rbV8RQLEvexO`.
 
-## GitHub
-- `main` = **v1.06.54 formal PASS source**, 642 scripts, indices 0..641.
-- v1.06.54 Script index 639 / ID 1065400.
-- Main index 640; terminator index 641.
-- `develop` = continuation from the v1.06.54 PASS point for the next SHO-22 candidate.
-- Script Index / ID / Name / exact decompressed Content / execution order must remain preserved.
+Test Build:
+`03_Test_Builds/PMD_AutoChess_v1_06_55_TEST_BUILD_UNPASSED_20260818.zip`
+Drive ID `1IcFb735xTSXpOaw8BleEKAeeop-Lu_hL`.
 
-## Binary Authority
-Accepted v1.06.54 package is promoted to Google Drive `01_Current_Baseline` as the current formal Binary Authority.
-Original accepted candidate package:
-`02_Current_Development/PMD_AutoChess_v1_06_54_CUMULATIVE_OVERWRITE_LANDMARK_SINGLE_PROP_SEMANTIC_PRESENCE_COLLISION_I_20260818.zip`
-Drive ID `1B3flf23qcLhGqLjNSlwKZnCULjGcYLC0`.
+## SHO-22 Implementation
+- Pre-event route gate: entrance → exit with hard Landmark blocker mask.
+- Post-event route gate: required Map091 semantic destinations after materialization/relocation.
+- Required tags when present: EXIT / RETREAT / INFO / TREASURE / RECOVERY / RARE / ELITE / ENCOUNTER.
+- Unsafe hard Landmark placement is rejected and masks rebuilt.
+- Gate 1 room/corridor topology is not rewritten.
+- H01 soft decoration remains passable / non-blocking.
+- Runtime writes LATEST + HISTORY route-audit logs.
+- Map091 and six accepted Landmark PNG atlas files are unchanged from v1.06.54.
 
-## Previous Failure
-v1.06.53 is a permanent real-machine Visual FAIL record:
-- H01/H04/H09/H14 no visible Landmark;
-- H19 full 64×64 atlas rendered as four unrelated props;
-- hard rock/ore visuals pass-through.
-Do not promote or reuse v1.06.53 as Landmark behavior authority.
+## Immediate Real-Machine Test
+1. **Completely close RPG Maker VX before installing v1.06.55**, because `Data/Scripts.rvdata` changes.
+2. Overwrite the project, then reopen RMVX.
+3. In one session, enter H01 / H04 / H09 / H14 / H19 and generate at least one floor each.
+4. Normal walking is enough; Battle LOG is not required unless Runtime/battle fails.
+5. Afterward collect `PMD_VXRD_LandmarkRoute_Audit_HISTORY.log` from the game root.
+6. Every completed RUN should show `RESULT=PASS` and `EXIT_REACHABLE=1`.
+7. `REMOVED=0` means the original Landmark layout was already safe; `REMOVED>0` means the gate correctly rejected an unsafe hard Landmark. Both may PASS.
+8. Screenshot only if a visual abnormality appears.
 
-## Immediate Development Target
-**SHO-22 — Landmark II: Collision / Route Audit — In Progress.**
-
-Implement a deterministic route-safety audit around current hard Landmark blockers.
-Acceptance intent:
-1. Entrance → Exit remains reachable.
-2. Required Map091 semantic events remain reachable where applicable.
-3. Hard Landmark cells never occupy entrance/exit/keypoint/fixed/water/event-reserved cells.
-4. Landmark placement cannot seal a doorway, corridor throat, or unique room connection.
-5. Soft H01 decoration does not block route calculations.
-6. Audit multiple deterministic seeds for H01/H04/H09/H14/H19 before expanding to the remaining Hunts.
-7. If a proposed hard Landmark breaks a required route, reject or relocate the Landmark. Do not alter sealed Gate 1 topology.
+Do not expand Landmark coverage to the remaining Hunts until SHO-22 receives real-machine PASS.
 
 ## Immutable Rules
-- No automatic B/C/D/E tile scatter/stamping.
+- No automatic B/C/D/E scatter/stamping.
 - v1.06.44 Landmark runtime IDs remain revoked.
 - Map090 = Random Hunt runtime map.
-- Map091 = H01–H21 shared Event Template Library.
-- Gate 1 structural runtime / Battle Presentation remain SEALED / issue-driven only.
-- Do not alter Battle AI, damage, attack speed, Focus/C2, rewards or spatial endpoints for this work.
+- Map091 = H01–H21 Event Template Library.
+- Gate 1 structure / Battle Presentation remain SEALED / issue-driven only.
+- Do not alter Battle AI, damage, attack speed, Focus/C2, rewards or spatial endpoints during SHO-22.
 
-## Editor / Documentation Rule
-If the next candidate updates `Data/Scripts.rvdata`, `Data/Map091.rvdata`, or any other Data file, completely close RPG Maker VX before overwrite and reopen RMVX afterward. Every functional update must include synchronized Traditional Chinese tutorial / usage documentation.
+## Documentation Rule
+Every functional update must update the Traditional Chinese tutorial/usage document. v1.06.55 includes `教學_v1.06.55.txt`.
