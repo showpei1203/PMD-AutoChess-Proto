@@ -1,0 +1,74 @@
+name: Import main Source Authority v1.06.35
+
+on:
+  push:
+    paths:
+      - '.github/workflows/import-main-source-authority.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  import-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download temporary public transport copy
+        shell: bash
+        run: |
+          set -euo pipefail
+          FILE_ID='1vAwF-H3AaXrzGej1asL5uA-Bzp2AiYl4'
+          curl -fL --retry 3 --retry-delay 2 \
+            "https://drive.usercontent.google.com/download?id=${FILE_ID}&export=download&confirm=t" \
+            -o /tmp/main-seed.zip
+          echo '0c0db35189a65d7590c197aedb084d4461a08d6ebb2bb4fb099dc9f41ce45f38  /tmp/main-seed.zip' | sha256sum -c -
+
+      - name: Extract and verify text-only source seed
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/main-seed
+          mkdir -p /tmp/main-seed
+          unzip -q /tmp/main-seed.zip -d /tmp/main-seed
+          rm -rf /tmp/main-seed/exported_scripts.tmp
+          if find /tmp/main-seed -type f \( -iname '*.rvdata' -o -iname '*.zip' -o -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.ogg' -o -iname '*.mp3' -o -iname '*.wav' \) | grep -q .; then
+            echo 'Forbidden binary/build content found in GitHub source seed.' >&2
+            exit 1
+          fi
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path('/tmp/main-seed')
+          scripts = sorted((root/'exported_scripts').glob('*.rb'))
+          assert len(scripts) == 623, len(scripts)
+          manifest = (root/'exported_scripts'/'SCRIPT_INDEX.tsv').read_text(encoding='utf-8').splitlines()
+          assert len(manifest) == 624, len(manifest)
+          assert (root/'exported_scripts'/'SCRIPT_ORDER.md').is_file()
+          print('verified scripts=623 manifest_rows=623')
+          PY
+
+      - name: Install exact v1.06.35 source tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf exported_scripts docs authority tests tools
+          cp -a /tmp/main-seed/exported_scripts ./
+          for d in docs authority tests tools; do
+            if [ -d "/tmp/main-seed/$d" ]; then cp -a "/tmp/main-seed/$d" ./; fi
+          done
+          for f in README.md CHANGELOG.md; do
+            if [ -f "/tmp/main-seed/$f" ]; then cp -f "/tmp/main-seed/$f" "./$f"; fi
+          done
+          rm -f .github/workflows/import-main-source-authority.yml
+
+      - name: Commit formal PASS Source Authority
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'showpei1203'
+          git config user.email 'showpei1203@gmail.com'
+          git add -A
+          git commit -m 'Import v1.06.35 formal PASS Source Authority'
+          git push origin HEAD:main
