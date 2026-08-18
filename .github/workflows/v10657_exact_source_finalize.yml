@@ -1,0 +1,71 @@
+name: v1.06.57 Exact Source Finalizer
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.v10657_import/**'
+      - '.github/workflows/v10657_exact_source_finalize.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+      - name: Finalize exact source and manifests
+        shell: bash
+        run: |
+          set -e
+          expected='2434b08840eca58c037dafbbbce8c2076507a4fb2a5b7399c96857563ab64e3d'
+          got=$(sha256sum .v10657_import/0642__id_1065700.rb | awk '{print $1}')
+          test "$got" = "$expected"
+          ruby -c .v10657_import/0642__id_1065700.rb
+          test -f exported_scripts/0642__id_250.rb
+          test -f exported_scripts/0643__id_251.rb
+          git mv exported_scripts/0642__id_250.rb exported_scripts/0643__id_250.rb
+          git mv exported_scripts/0643__id_251.rb exported_scripts/0644__id_251.rb
+          git mv .v10657_import/0642__id_1065700.rb exported_scripts/0642__id_1065700.rb
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          root=Path('.')
+          idx=root/'exported_scripts'/'SCRIPT_INDEX.tsv'
+          rows=[]
+          for line in idx.read_text(encoding='utf-8').splitlines():
+              if not line.strip(): continue
+              p=line.split('\t')
+              n=int(p[0])
+              if n<=641:
+                  rows.append(line)
+          def row(n,sid,name,path):
+              b=(root/'exported_scripts'/path).read_bytes()
+              return f'{n}\t{sid}\t{name}\t{path}\t{len(b)}\t{hashlib.sha256(b).hexdigest()}'
+          rows.append(row(642,1065700,'PMD AutoChess VXRD Landmark Vegetation Wetland Coverage Expansion I v1.06.57','0642__id_1065700.rb'))
+          rows.append(row(643,250,'Main','0643__id_250.rb'))
+          rows.append(row(644,251,'','0644__id_251.rb'))
+          assert len(rows)==645, len(rows)
+          idx.write_text('\n'.join(rows)+'\n',encoding='utf-8')
+          order=root/'exported_scripts'/'SCRIPT_ORDER.md'
+          out=['# RPG Maker VX Script Order','','Source: `Data/Scripts.rvdata`','','**Do not reorder.** Runtime order is the numeric `index` below.','']
+          for r in rows:
+              p=r.split('\t')
+              out.append(f'- {int(p[0]):04d} | ID `{p[1]}` | `{p[2]}` | `{p[3]}`')
+          order.write_text('\n'.join(out)+'\n',encoding='utf-8')
+          print('entries=645')
+          print('script_sha256='+hashlib.sha256((root/'exported_scripts'/'0642__id_1065700.rb').read_bytes()).hexdigest())
+          PY
+          rm -rf .v10657_import
+      - name: Commit finalized Source Authority
+        shell: bash
+        run: |
+          git config user.name 'showpei1203'
+          git config user.email 'showpei1203@gmail.com'
+          git add -A
+          git commit -m 'Finalize v1.06.57 exact Scripts Source Authority'
+          git push origin develop
