@@ -1,0 +1,38 @@
+PMD AutoChess Proto v1.06.55 測試與使用說明（繁體中文）
+
+【版本狀態】
+正式 Baseline：v1.06.54 — 已完成 Windows / RPG Maker VX 實機 PASS。
+目前測試 Candidate：v1.06.55 — Landmark Route Safety Audit I。
+
+【安裝前一定要做】
+本版更新 Data/Scripts.rvdata。請先完全關閉 RPG Maker VX，再覆蓋 ZIP；覆蓋完成後重新開啟 RMVX。
+Map091 本版沒有修改。
+
+【本版在做什麼】
+硬質 Landmark（岩石、晶岩、礦石、火山礦晶）現在除了本身不可穿越之外，每次生成樓層還會自動做路徑安全檢查。
+如果某顆硬質 Landmark 會堵住必要路徑，系統會拒絕該顆 Landmark，而不是修改房間或走廊。
+H01 花草／低植被仍是 soft decoration，可通行，也不算入 blocking route mask。
+
+【你這輪怎麼測最省事】
+依序進 H01 / H04 / H09 / H14 / H19，各生成至少 1 個樓層即可。
+正常走動即可，不需要 Battle LOG，也不用刻意撞每一顆石頭。
+系統會在每次樓層完成後自動檢查：
+1. 入口 → 出口可達。
+2. EXIT / RETREAT / INFO / TREASURE / RECOVERY / RARE / ELITE / ENCOUNTER 等已生成事件位置可達。
+3. hard Landmark 不會以裝飾為理由逼系統重畫已封版拓撲。
+
+測完後主要提供遊戲根目錄的：
+- PMD_VXRD_LandmarkRoute_Audit_HISTORY.log
+- 若任何一張 Hunt 畫面異常，再附截圖。
+
+HISTORY 應該每個 RUN 都看到 RESULT=PASS、EXIT_REACHABLE=1。
+REMOVED=0 代表原本 Landmark 就安全；REMOVED>0 代表安全閘門有成功拒絕會破壞路徑的 hard Landmark，兩者都可以是 PASS。
+
+【不應出現】
+- RESULT=FAIL
+- EXIT_REACHABLE=0
+- 巨大 TileB/TileD 碎片
+- automatic B/C/D/E scatter/stamping
+- 舊 Landmark sprite 殘留
+
+若 Runtime／戰鬥本身出錯，再提供對應錯誤畫面或 Battle LOG。
