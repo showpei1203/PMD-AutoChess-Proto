@@ -1,0 +1,39 @@
+PASS cave_crystal_a.png 818edefe8cfbe8a86bdaa3561fba49457c3d652031d8860368633bdfcb28e60b
+  cell0: visible=699 coverage=0.6826
+  cell1: visible=758 coverage=0.7402
+  cell2: visible=532 coverage=0.5195
+  cell3: visible=598 coverage=0.5840
+  seam_touch_pairs= 4
+PASS dry_rock_a.png 767561ba3e4dcf7f0160f218be86556b122a3cc9a7730ef8fbde0507210b2d98
+  cell0: visible=770 coverage=0.7520
+  cell1: visible=699 coverage=0.6826
+  cell2: visible=662 coverage=0.6465
+  cell3: visible=662 coverage=0.6465
+  seam_touch_pairs= 3
+PASS forest_flower_a.png 3ee2d0508d2cbe7163a6e9db1934025eae250f4dc919f99955da9cbc38467261
+  cell0: visible=243 coverage=0.2373
+  cell1: visible=217 coverage=0.2119
+  cell2: visible=268 coverage=0.2617
+  cell3: visible=544 coverage=0.5312
+  seam_touch_pairs= 0
+PASS forest_green_a.png 1b2dba4d3f6ff3975073f834e415154ec1a27f5c11561458773192f1e332d1f2
+  cell0: visible=144 coverage=0.1406
+  cell1: visible=343 coverage=0.3350
+  cell2: visible=551 coverage=0.5381
+  cell3: visible=377 coverage=0.3682
+  seam_touch_pairs= 0
+PASS mine_ore_a.png 2fcc10164c07c483e1dfbd63f9796d7ee1439a1069923520ef6bee71b2b61820
+  cell0: visible=454 coverage=0.4434
+  cell1: visible=367 coverage=0.3584
+  cell2: visible=369 coverage=0.3604
+  cell3: visible=553 coverage=0.5400
+  seam_touch_pairs= 0
+PASS volcanic_ore_a.png efce75ed42f7e2da57d314751f9cc4a136f5161f95286488dc1c3d5a95cee572
+  cell0: visible=764 coverage=0.7461
+  cell1: visible=892 coverage=0.8711
+  cell2: visible=526 coverage=0.5137
+  cell3: visible=666 coverage=0.6504
+  seam_touch_pairs= 5
+
+SUMMARY=PASS 6/6
+AUTHORITY=v1.06.58 accepted Landmark corpus
