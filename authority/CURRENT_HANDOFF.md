@@ -1,73 +1,69 @@
 # CURRENT_HANDOFF — PMD AutoChess Proto
 
-Last Updated: 2026-08-18 13:55 +08:00
+Last Updated: 2026-08-18 14:39 +08:00
 
 ## Persistent Authority
 Migration is complete. Do not rebuild or roll it back unless a persistent Authority source is genuinely inaccessible.
-- Drive = Binary Authority
+- Google Drive = Binary Authority
 - GitHub = Source Authority
 - Linear = Development Authority
-- ChatGPT = workspace only
+- ChatGPT = development workspace only
 
-## Formal Baseline
-**v1.06.35 — VXRD Acceptance Non-Combat Fixture** remains the formal Windows/RMVX PASS baseline. Gate 1 structural runtime and accepted Battle Presentation remain SEALED / issue-driven only.
+## Current Formal Baseline
+**v1.06.54 — VXRD Landmark Single-Prop Semantic / Presence / Collision Fix I — FORMAL PASS**.
 
-## Current Candidate
-**v1.06.54 — VXRD Landmark Single-Prop Semantic / Presence / Collision Fix I — UNPASSED**.
-- Scripts.rvdata: 642 entries.
-- New Script index 639 / ID 1065400.
+Windows / RPG Maker VX real-machine acceptance PASS on 2026-08-18.
+Accepted H01 / H04 / H09 / H14 / H19:
+- Landmark presence PASS;
+- single 32×32 prop rendering PASS;
+- visual spacing / placement PASS;
+- H01 soft vegetation passability PASS;
+- H04/H09/H14/H19 hard object blocking PASS;
+- scrolling and Hunt/floor refresh PASS;
+- no giant TileB/TileD fragment or automatic B/C/D/E stamping regression.
+
+Static validation PASS 23/23.
+
+## GitHub
+- `main` = **v1.06.54 formal PASS source**, 642 scripts, indices 0..641.
+- v1.06.54 Script index 639 / ID 1065400.
 - Main index 640; terminator index 641.
-- Static validation PASS 23/23.
-- Map091 unchanged from v1.06.53.
-- Six Landmark PNG atlas files unchanged.
+- `develop` = continuation from the v1.06.54 PASS point for the next SHO-22 candidate.
+- Script Index / ID / Name / exact decompressed Content / execution order must remain preserved.
 
-Drive Candidate:
+## Binary Authority
+Accepted v1.06.54 package is promoted to Google Drive `01_Current_Baseline` as the current formal Binary Authority.
+Original accepted candidate package:
 `02_Current_Development/PMD_AutoChess_v1_06_54_CUMULATIVE_OVERWRITE_LANDMARK_SINGLE_PROP_SEMANTIC_PRESENCE_COLLISION_I_20260818.zip`
 Drive ID `1B3flf23qcLhGqLjNSlwKZnCULjGcYLC0`.
 
-Test Build:
-`03_Test_Builds/PMD_AutoChess_v1_06_54_TEST_BUILD_UNPASSED_20260818.zip`
-Drive ID `1PtdkPqo64OzUTxLHi2jdm-gE9MPxG8nw`.
+## Previous Failure
+v1.06.53 is a permanent real-machine Visual FAIL record:
+- H01/H04/H09/H14 no visible Landmark;
+- H19 full 64×64 atlas rendered as four unrelated props;
+- hard rock/ore visuals pass-through.
+Do not promote or reuse v1.06.53 as Landmark behavior authority.
 
-## GitHub
-- `main` = v1.06.35 formal PASS source, 623 scripts.
-- `develop` = v1.06.54 unpassed candidate source, 642 scripts.
-- v1.06.54 finalization commit: `a8f55d96807e7c4e09bddab95900ca60bb887bbc`.
-- `SCRIPT_INDEX.tsv` blob SHA: `09ee459a307d63acf0ddb33ca1f0eda8a92f9adc`.
-- Script order / ID / name / exact decompressed content are preserved.
+## Immediate Development Target
+**SHO-22 — Landmark II: Collision / Route Audit — In Progress.**
 
-## v1.06.53 Real-Machine FAIL
-- H01/H04/H09/H14 showed no Landmark.
-- H19 showed four unrelated 32×32 props together because the full 64×64 2×2 atlas was rendered as one object.
-- H19 hard rock/ore visuals were pass-through.
+Implement a deterministic route-safety audit around current hard Landmark blockers.
+Acceptance intent:
+1. Entrance → Exit remains reachable.
+2. Required Map091 semantic events remain reachable where applicable.
+3. Hard Landmark cells never occupy entrance/exit/keypoint/fixed/water/event-reserved cells.
+4. Landmark placement cannot seal a doorway, corridor throat, or unique room connection.
+5. Soft H01 decoration does not block route calculations.
+6. Audit multiple deterministic seeds for H01/H04/H09/H14/H19 before expanding to the remaining Hunts.
+7. If a proposed hard Landmark breaks a required route, reject or relocate the Landmark. Do not alter sealed Gate 1 topology.
 
-Root cause: probabilistic placement + old 2×2 footprint + full-atlas rendering + `blocking=false` collision defer.
-Do not promote v1.06.53.
-
-## v1.06.54 Repair
-- One Landmark = one 32×32 atlas cell.
-- Logical footprint = 1×1.
-- H01/H04/H09/H14/H19 minimum presence gate.
-- H01 foliage/flowers = passable.
-- H04 rock / H09 crystal-rock / H14 ore / H19 volcanic rock-ore = blocking.
-- Hard props use conservative spacing; no tight 2×2 pile.
-- Local semantic collision only. Full route audit remains SHO-22 after acceptance.
-- Automatic B/C/D/E tile scatter/stamping remains prohibited.
+## Immutable Rules
+- No automatic B/C/D/E tile scatter/stamping.
 - v1.06.44 Landmark runtime IDs remain revoked.
-- Map090 remains Random Hunt runtime map; Map091 remains H01–H21 Event Template Library.
+- Map090 = Random Hunt runtime map.
+- Map091 = H01–H21 shared Event Template Library.
+- Gate 1 structural runtime / Battle Presentation remain SEALED / issue-driven only.
+- Do not alter Battle AI, damage, attack speed, Focus/C2, rewards or spatial endpoints for this work.
 
-## Immediate Test
-Test only **H01 / H04 / H09 / H14 / H19**.
-For each Hunt verify:
-1. at least one Landmark is visible;
-2. each Landmark is one 32×32 object, not four objects in one 2×2 square;
-3. placement looks natural and not tightly piled;
-4. H01 plant decoration is passable;
-5. H04/H09/H14/H19 hard objects are impassable;
-6. scrolling and Hunt/floor refresh are correct;
-7. no TileB/TileD giant fragments or B/C/D/E automatic stamping returns.
-
-Primary evidence: screenshots + movement interaction. No Battle LOG unless Runtime/battle fails. Only after all five pass: SHO-22 full Landmark collision + route audit.
-
-## Install / Editor Rule
-**This build updates `Data/Scripts.rvdata`.** Completely close RPG Maker VX before overwrite, then reopen RMVX afterward. Traditional Chinese tutorial `教學_v1.06.54.txt` is included and synchronized.
+## Editor / Documentation Rule
+If the next candidate updates `Data/Scripts.rvdata`, `Data/Map091.rvdata`, or any other Data file, completely close RPG Maker VX before overwrite and reopen RMVX afterward. Every functional update must include synchronized Traditional Chinese tutorial / usage documentation.
