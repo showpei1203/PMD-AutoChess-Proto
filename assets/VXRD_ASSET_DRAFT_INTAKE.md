@@ -34,6 +34,8 @@ Must satisfy before visual QA:
 
 A seam warning is not automatic failure, but requires visual inspection for one object accidentally crossing cell boundaries.
 
+GitHub workflow `.github/workflows/vxrd_asset_validator_contract.yml` tests the validator contract with synthetic fixtures only. It intentionally does not store or upload production PNG assets to GitHub.
+
 ## Human QA gate
 Check at native 1× first, then enlarged nearest-neighbor view.
 
