@@ -1,101 +1,117 @@
 # CURRENT_HANDOFF — PMD AutoChess Proto
 
-Last Updated: 2026-08-18 21:37 +08:00
+Last Updated: 2026-08-19 06:41 +08:00
 
 ## Persistent Authority
-Migration is complete. Do not rebuild or roll it back unless a persistent Authority source is genuinely inaccessible.
-- Drive = Binary / Asset Authority
-- GitHub = Source / Spec / Validator / diagnostic-text Authority
-- Linear = Development Authority
-- ChatGPT = workspace only
+- Google Drive = Binary / Asset Authority.
+- GitHub = Source / Spec / Validator / diagnostic-text Authority.
+- Linear = Development Authority.
+- ChatGPT = workspace only.
+
+## User Direction
+**Prioritize script/runtime progression.** SHO-42 art pipeline is prepared but should remain secondary unless the user explicitly requests art work.
 
 ## Current Formal Baseline
 **v1.06.58 — VXRD Water-Bottom Autotile Pair Authority I — FORMAL PASS.**
-Formal Baseline ZIP Drive ID `1bpvrm1OQBDPMwU8ac06Q-zmZSvTOTHIQ`.
+Formal Baseline Drive ID `1bpvrm1OQBDPMwU8ac06Q-zmZSvTOTHIQ`.
+`main` remains the Formal source baseline and must not be promoted until Windows/RMVX PASS.
 
-Canonical Formal GitHub tail:
-- 642 / 1065700 / v1.06.57
-- 643 / 1065800 / v1.06.58
-- 644 / 250 / Main
-- 645 / 251 / terminator
-Total 646 Scripts. `main` remains v1.06.58 Formal.
+## Current Production Candidate
+**v1.06.61 — VXRD A1 Liquid Surface Semantic Authority II + ProjectState Convergence — UNPASSED.**
+Drive Current Development ID `17wBUxbCF9A6Fqi0v1YX3CjEenqHhFCkp`.
+ZIP SHA256 `f48603074cb21b6fd31e01b48807f9d6eb69ad2c5e397274e95b612c4b912ad7`.
+Scripts.rvdata SHA256 `eb5be92748d998bdf90540cba80bd6c3a280493fa874d5bba15fca127ab8ad00`.
 
-## User Direction
-**Prioritize script/runtime progression.** SHO-42 art pipeline may remain prepared, but do not drift into image generation unless the user explicitly requests art work.
+GitHub `develop` canonical tail:
+- 642 / ID 1065700 / v1.06.57
+- 643 / ID 1065800 / v1.06.58
+- 644 / ID 1066100 / v1.06.61
+- 645 / ID 250 / Main
+- 646 / ID 251 / terminator
+Total 647 Scripts, indices 0..646.
+v1.06.61 source SHA256 `a07d64dafa83d30958edd6045281f820c9e08831ea56757d0e977e8b58461d7d`.
+PR #5 exact finalizer PASS; manifests and source tail are canonical. `develop` is behind `main` by 0 after syncing new Agent/background rules via PR #4.
 
-## Current Script Test Build — v1.06.60 TEST SUITE
-Use:
-`PMD_AutoChess_v1_06_60_TEST_SUITE_MAP091_A1_MATRIX_20260818.zip`
-Drive Test Build ID `1KAk9KBZmZXWOmiL2tCGQ64aJHhM56Azl`.
-ZIP SHA256 `5f256363aafedd7458fb5b31828ad58a5637c1374c987810d8527b4f65e93d08`.
-Scripts.rvdata SHA256 `6430d0f7b65923396a1676f968b6c381a3721542a881f8daa174efbdeb48bd3c`.
+## User-Confirmed A1 Liquid Semantic Authority
+- kind 4 / base 2240 = natural grass-ground visible-bottom water.
+- kind 6 / base 2336 = castle / stone artificial-floor visible-bottom water.
+- kind 8 / base 2432 = rough dirt / cave-ground visible-bottom water.
+- kind 10 / base 2528 = other non-natural/artificial-floor visible-bottom water.
+- kind 14 / base 2720 = lava.
+Kinds 4/6/8/10 are valid clear-water choices selected by environment.
 
-648 Scripts:
-- 0..643 = Formal v1.06.58 byte-exact preserved
-- 644 / ID 1065910 = A1 Interactive Matrix Probe v1.06.59a
-- 645 / ID 1066000 = Map091 Full Acceptance Harness v1.06.60
+v1.06.61 current Hunt allocation:
+- H02 -> kind4 / 2240 natural wetland.
+- H07 -> kind8 / 2432 rough mud/marsh.
+- H12 -> kind4 / 2240 retained natural presentation.
+- H17 -> kind4 / 2240 retained natural presentation.
+- kind6 and kind10 are registered but not forced into the current four water Hunts.
+- kind14 is registered as lava only; no H19 lava/water-scope expansion.
+Water scope stays H02/H07/H12/H17, native A1, rectangle-only, non-walkable, A2 shoreline, no rivers/bridges.
+
+## ProjectState Convergence Fix
+User Windows log from v1.06.60 reported `CURRENT_VERSION=1.06.56` while `SCRIPT_CONTAINER_ENTRIES=648`.
+Root cause: v1.06.56 hardcodes CURRENT_VERSION inside the aliased `write_project_state_log`; v1.06.57/v1.06.58 did not re-converge the top-level version afterward.
+v1.06.61 now rewrites ProjectState after the legacy writer chain:
+- PROJECT_STATE_SCHEMA=42
+- CURRENT_VERSION=1.06.61
+- LATEST_FEATURE=A1_LIQUID_SURFACE_SEMANTIC_AUTHORITY_II+PROJECT_STATE_CONVERGENCE
+- NEXT_TARGET=MAP091_FULL_ACCEPTANCE_WINDOWS+GATE2_SCRIPT_SEAL
+
+## v1.06.60 Map091 FAIL Classification
+**TEST HARNESS defect; current Runtime evidence healthy. Do not modify Map091 because of this FAIL.**
+Windows evidence:
+- source events/pages/graphics/triggers/lists = 49/49 healthy
+- parser = 12/12 PASS
+- content matrix = 126/126 PASS
+- runtime materialization = 9 events / 9 plan events
+- Game_Map Marshal roundtrip = PASS, 9 template events retained
+- Hunt session Marshal roundtrip = PASS
+
+False-fail causes:
+1. Legacy v1.06.49 audit checks Floor1 with Hunt code=nil. After v1.06.52 Hunt-filtered contentization, Encounter/Rare/Elite/Info are intentionally filtered out, yielding exactly missing_encounter/missing_rare/missing_elite/missing_info.
+2. v1.06.60 Harness incorrectly required Marshal re-dump byte identity for clones. Runtime contract is semantic deep independence.
+
+Corrected semantic clone contract verifies equivalent canonical event state plus separate Event / Pages array / Page / command-list identities. Offline Formal Map091 result = **49/49 PASS**.
+
+## Current Windows Test Build
+**v1.06.61a — A1 Liquid + Map091 Acceptance Fix — TEST ONLY.**
+Drive Test Build ID `13iAdnjkQmaacJ42TSs0OO_FDw5UIzZKv`.
+ZIP SHA256 `782ddec5a6df6367433467f62beb7eeee7eaa0f91aa26284e331e6ba21fb1209`.
+Scripts.rvdata SHA256 `f18e126746a50bd5f1eeb6c00bee46ccb8ac4f6dcc0a99c090df358894e92618`.
+
+Test layout = 648 Scripts:
+- 0..643 Formal v1.06.58 byte-exact preserved
+- 644 / ID 1066100 = v1.06.61 Production
+- 645 / ID 1066110 = corrected Map091 Acceptance Harness TEST-only
 - 646 = Main
 - 647 = terminator
+Static validation = 31/31 PASS.
+Map091 semantic clone offline = 49/49 PASS.
 
-This is TEST-only. Do not promote this script ordering directly to Formal Source.
+## Windows Acceptance Required
+1. Fully close RMVX, overwrite v1.06.61a, reopen RMVX.
+2. Visual water check: H02 kind4, H07 kind8, H12 kind4, H17 kind4. H07 is the material semantic change that most needs visual judgment.
+3. On any active Map090 Hunt floor press **SHIFT+F5**.
+4. Return `PMD_VXRD_Map091Acceptance_LATEST.log`.
+Expected corrected result:
+- RESULT=PASS
+- CURRENT_TEMPLATE_AUTHORITY=PASS
+- SOURCE_EVENTS=49/49
+- DEEP_CLONES=49/49
+- CONTENT_MATRIX=126/126
+- runtime template events = runtime plan events
+- GAME_MAP_MARSHAL_ROUNDTRIP=PASS
+- SESSION_MARSHAL_ROUNDTRIP=PASS
+Legacy v1.06.49 audit may remain FAIL only when `LEGACY_V10649_EXPECTED_NONBLOCKING=1`.
+5. ProjectState top should now say CURRENT_VERSION=1.06.61. If it does not, return that log too.
 
-## Test 1 — SHO-41 A1 Gravel-Water Identification
-Old one-candidate v1.06.59 H07=2336 probe is deprecated.
-
-Context: RMVX Test Play, H07 / Map090.
-Control: **plain F5** only. The combined binary excludes Shift/Ctrl/Alt from the water shortcut.
-
-Pages:
-1. 2240 / 2288 / 2336 / 2384
-2. 2048 / 2096 / 2144 / 2192
-3. 2432 / 2480 / 2528 / 2576
-4. 2624 / 2672 / 2720 / 2768
-
-Panels use real RGSS2 `Tilemap` rendering. Formal H07 remains base 2240; Map090 and Hunt mapping are not changed.
-User only needs to report the `base` whose panel shows the requested clear water with gravel/pebble bed. If none matches, one screenshot is enough.
-Output: `PMD_VXRD_A1MatrixProbe_LATEST.log`.
-
-## Test 2 — SHO-21 Map091 Full Acceptance
-SHO-21 is now In Progress.
-Context: any active Random Hunt floor on Map090.
-Control: **SHIFT+F5**.
-
-Independent offline Formal Map091 audit already PASS:
-- source events 49/49
-- source pages 49
-- graphics/lists/triggers 49/49
-- deep Marshal clones 49/49
-- whole Map091 Marshal roundtrip PASS
-- H01–H21 × Floors 1–6 = 126/126, BAD=0
-- role distribution: Entrance 1, Exit 1, Retreat 1, Treasure 1, Recovery 1, Info 4, Encounter 24, Rare 8, Elite 8.
-
-Runtime harness additionally checks:
-- v1.06.49 Template Authority audit
-- HUNT/FLOOR/WEIGHT/MAX/UNIQUE/NO_REPEAT semantics
-- synthetic FIXED/CONTROL/SHARED + runtime-ID semantics
-- current materialized Map090 template events/source metadata
-- runtime plan count alignment
-- non-destructive `Marshal.dump/load($game_map)` preservation
-- Hunt-session Marshal roundtrip
-
-Output: `PMD_VXRD_Map091Acceptance_LATEST.log` plus PASS/FAIL overlay.
-No Map090/Map091 mutation.
-
-## Accepted / Sealed Gate 2 State
-- v1.06.54 single-prop Landmark semantic/presence/collision PASS
-- v1.06.55 Route Safety SEALED
-- v1.06.56 real Loading overlay SEALED
-- v1.06.57 vegetation expansion visual PASS
-- v1.06.58 visible-bottom water PASS
-
-Accepted water mapping:
-- H02 = 2048
-- H07/H12/H17 = 2240
-- 2096 revoked
-- native A1, rectangle-only, blocked, A2 shoreline, no rivers/bridges
-
-Accepted Landmark Hunts: H01/H02/H03/H04/H06/H07/H09/H14/H16/H19.
-Dedicated-art deferred: H05/H08/H10/H11/H12/H13/H15/H17/H18/H20/H21.
+## Accepted / Sealed Gate 2 Components
+- v1.06.54 single-prop Landmark semantics/presence/collision PASS.
+- v1.06.55 Route Safety SEALED.
+- v1.06.56 real Loading overlay SEALED.
+- v1.06.57 vegetation expansion visual PASS.
+- v1.06.58 visible-bottom water baseline PASS.
 
 ## Immutable Rules
 - No automatic B/C/D/E scatter/stamping.
@@ -103,12 +119,7 @@ Dedicated-art deferred: H05/H08/H10/H11/H12/H13/H15/H17/H18/H20/H21.
 - Map090 = Random Hunt runtime map.
 - Map091 = H01–H21 shared Event Template Library.
 - Gate 1 structure / Battle Presentation SEALED / issue-driven only.
-- No Battle AI, damage, attack speed, Focus/C2, rewards, progression, or spatial-endpoint changes for this work.
-
-## Immediate Next
-1. Windows run v1.06.60 SHIFT+F5 and seal SHO-21 if PASS.
-2. H07 plain-F5 matrix identifies gravel-bottom base; only then create production water semantic candidate.
-3. Continue Gate 2 script/runtime work before returning to art.
+- No Battle AI, damage, attack speed, Focus-C2, rewards, progression, or spatial-endpoint changes for this work.
 
 ## Installation / Documentation Rule
-v1.06.60 changes `Data/Scripts.rvdata`. **Completely close RPG Maker VX before overwrite, then reopen RMVX.** `Data/Map091.rvdata` is unchanged. Every functional delivery requires synchronized Traditional Chinese tutorial/usage documentation.
+Any delivery changing `Data/Scripts.rvdata`, `Data/Map091.rvdata`, or another Data file requires fully closing RPG Maker VX before overwrite, then reopening RMVX. Every functional delivery must include synchronized Traditional Chinese tutorial/usage documentation.
