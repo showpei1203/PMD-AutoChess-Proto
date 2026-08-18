@@ -1,6 +1,6 @@
 # CURRENT_HANDOFF — PMD AutoChess Proto
 
-Last Updated: 2026-08-18 19:51 +08:00
+Last Updated: 2026-08-18 19:55 +08:00
 
 ## Persistent Authority
 Migration is complete. Do not rebuild or roll it back unless a persistent Authority source is genuinely inaccessible.
@@ -92,16 +92,27 @@ Separate Drive Authority:
 - `01_References/PMD_VXRD_Landmark_Style_Reference_v1.06.58.png` — ID `1YG0-igmHuUTqIX8DgjTQZctdKJyqbeNA`.
 - `00_Style_Authority/VXRD_BATCH_A_PRODUCTION_BRIEFS_繁中.md` — ID `1PWQugYgxMIL8i4EZCK246IFrvFonSN07`.
 
-### GitHub asset gate READY
+### GitHub validator gate READY — binary-free
+GitHub remains text/source/spec/test Authority only. **Do not commit production or candidate PNG/ZIP/RVData/Graphics/Audio binaries.**
+
+GitHub files:
 - `assets/VXRD_LANDMARK_ASSET_PRODUCTION_SPEC.md`
 - `assets/ASSET_MANIFEST.csv`
 - `tools/asset_validator/validate_vxrd_landmark_atlas.py`
 - `tests/ASSET_VALIDATOR_ACCEPTED_SIX_v1.06.58.log`
-- `asset_staging/VXRD_Landmarks/README.md`
+- `asset_staging/VXRD_Landmarks/README.md` — staging policy only; no binary files.
+- `tests/test_vxrd_landmark_validator.py`
 - `.github/workflows/vxrd_landmark_asset_validator.yml`
 
-Existing accepted six Landmark atlases = validator regression **6/6 PASS**.
-Any new candidate staged under `asset_staging/VXRD_Landmarks/` is automatically checked for 64×64 RGBA, four 32×32 cells, visibility/transparency sanity, seam risk and SHA256. CI PASS is structural only; Windows/RMVX visual QA is still required before `12_Approved` or Runtime integration.
+Existing accepted six Landmark atlases = local validator regression **6/6 PASS**.
+GitHub Actions now tests the validator with synthetic generated fixtures and checks that forbidden binary assets are not committed under GitHub asset staging.
+
+Correct new-asset flow:
+1. Candidate PNG stays in Drive `02_AI_Drafts` and/or its matching `11_Biomes/VXRD_Random_Hunt/Hxx_*` folder.
+2. Download/run `tools/asset_validator/validate_vxrd_landmark_atlas.py` against the candidate.
+3. Commit only JSON/LOG validation evidence + `ASSET_MANIFEST.csv` update to GitHub.
+4. Perform Windows/RMVX visual QA.
+5. Only after PASS may the PNG move/copy to Drive `12_Approved` and enter a Runtime binary delivery.
 
 New art contract: 64×64 RGBA atlas, 2×2 of four independent complete 32×32 standalone props. No object spans cells. Approved only enters runtime.
 
@@ -111,9 +122,9 @@ Deferred dedicated-art Hunts: H05/H08/H10/H11/H12/H13/H15/H17/H18/H20/H21.
 Do not fill deferred biomes with semantically unrelated props merely to claim coverage.
 
 ## Immediate Next Work
-1. Produce Batch A draft art from the Production Pack.
-2. Run GitHub asset validator / CI on each candidate.
-3. Perform Windows/RMVX visual QA before runtime integration.
+1. Produce Batch A draft PNG art into Drive only.
+2. Run the validator locally/on downloaded candidates; persist only text evidence in GitHub.
+3. Perform Windows/RMVX visual QA before Runtime integration.
 4. Keep SHO-41 water probe independent from Landmark art work.
 
 ## Immutable Rules
