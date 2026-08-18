@@ -10,12 +10,17 @@ on:
       - '.github/workflows/sho22_landmark_route_broad_stress.yml'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   route-stress:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: develop
       - name: Ruby version
         run: ruby -v
       - name: Syntax check harness
@@ -28,3 +33,13 @@ jobs:
         with:
           name: SHO22_ROUTE_BROAD_STRESS
           path: SHO22_ROUTE_BROAD_STRESS.log
+      - name: Commit PASS evidence
+        if: success()
+        shell: bash
+        run: |
+          cp SHO22_ROUTE_BROAD_STRESS.log tests/SHO22_ROUTE_BROAD_STRESS_EVIDENCE.txt
+          git config user.name 'showpei1203'
+          git config user.email 'showpei1203@gmail.com'
+          git add tests/SHO22_ROUTE_BROAD_STRESS_EVIDENCE.txt
+          git commit -m 'Record SHO-22 broad route stress PASS evidence' || exit 0
+          git push origin HEAD:develop
