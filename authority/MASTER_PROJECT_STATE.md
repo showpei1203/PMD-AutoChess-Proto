@@ -1,6 +1,6 @@
 # MASTER_PROJECT_STATE — PMD AutoChess Proto
 
-Last Updated: 2026-08-18 15:20 +08:00
+Last Updated: 2026-08-18 16:03 +08:00
 
 ## Persistent Authority
 - Google Drive = Binary Authority.
@@ -9,57 +9,59 @@ Last Updated: 2026-08-18 15:20 +08:00
 - ChatGPT = development workspace only.
 
 ## Version State
-- Current Formal Baseline: **v1.06.55 — VXRD Landmark Route Safety Audit I — PASS for five-Hunt Phase-I scope**.
-- Windows/RPG Maker VX acceptance: H01/H04/H09/H14/H19 route HISTORY PASS on 2026-08-18.
-- Static validation: PASS 31/31.
-- Offline deterministic regression: PASS 40/40 (five Hunts × 8 seeds).
-- SHO-22 remains In Progress for broader remaining-Hunt / multi-seed route stress before Landmark coverage expands.
-- Next isolated UX candidate: **SHO-35 — Random Hunt Map Loading Overlay — Real Progress Bar**, reusing battle Loading UI authority.
+- Current Formal Baseline: **v1.06.55 — VXRD Landmark Route Safety Audit I — PASS for H01/H04/H09/H14/H19 Phase-I scope**.
+- Current Candidate: **v1.06.56 — VXRD Random Hunt Real Loading Overlay I — UNPASSED**.
+- v1.06.56 Ruby syntax: PASS.
+- v1.06.56 static validation: **26/26 PASS**.
+- SHO-22 remains In Progress for broader remaining-Hunt / multi-seed route stress.
+- SHO-35 is the active isolated UX candidate and must not alter route topology or battle logic.
 
 ## GitHub Branch Authority
 ### main
-- v1.06.55 formal PASS source after promotion.
+- v1.06.55 formal PASS source.
 - 643 scripts, indices `0..642`.
-- v1.06.54 Script index `639`, ID `1065400`.
 - v1.06.55 Script index `640`, ID `1065500`.
-- Main index `641`; terminator index `642`.
+- Main index `641`; terminator `642`.
 
 ### develop
-- Continuation branch from the v1.06.55 PASS point.
-- Preserve Script Index / ID / Name / exact decompressed Content / execution order.
-- Future v1.06.56 work may implement SHO-35 without altering route topology/battle logic.
+- v1.06.56 unpassed Candidate source.
+- 644 scripts, indices `0..643`.
+- v1.06.56 Script index `641`, ID `1065600`.
+- v1.06.56 exact source SHA256 `029c0a557ac44677d24110f8ca7be2933aa0c9296f5dc440e989f551d64f7d28`.
+- Main index `642`; terminator `643`.
+- Script Index / ID / Name / exact Content / execution order are preserved.
 
-## v1.06.55 Windows Route Acceptance
-User-supplied `PMD_VXRD_LandmarkRoute_Audit_HISTORY.log`:
-- H01: PASS, WALKABLE 719, REACHABLE 719, BLOCKED 0, EXIT_REACHABLE=1, BAD empty.
-- H04: PASS, 749 / 747, BLOCKED 2, EXIT_REACHABLE=1, BAD empty.
-- H09: PASS, 855 / 854, BLOCKED 1, EXIT_REACHABLE=1, BAD empty.
-- H14: PASS, 631 / 630, BLOCKED 1, EXIT_REACHABLE=1, BAD empty. Same run recorded twice; duplicate only.
-- H19: PASS, 820 / 818, BLOCKED 2, EXIT_REACHABLE=1, BAD empty.
-- All sampled runs REMOVED=0; no unsafe Landmark needed rejection in these real-machine seeds.
+## Drive Binary Authority
+- Formal Baseline remains v1.06.55 in `01_Current_Baseline`.
+- Current Candidate: `02_Current_Development/PMD_AutoChess_v1_06_56_CUMULATIVE_OVERWRITE_RANDOM_HUNT_REAL_LOADING_OVERLAY_I_20260818.zip`, Drive ID `1dts6xH3ozPwVTfjIUOfIawPulOY8qYQh`.
+- Test Build: `03_Test_Builds/PMD_AutoChess_v1_06_56_TEST_BUILD_UNPASSED_20260818.zip`, Drive ID `1LUuIRCYZBszUEOBkZYd8esJpzyWkOZ1s`.
+- v1.06.56 updates `Data/Scripts.rvdata`; `Data/Map091.rvdata` is unchanged.
 
-## SHO-22 Remaining Work
-- Expand deterministic route stress beyond the five accepted Hunts / seeds.
-- Exercise unsafe hard-Landmark rejection (`REMOVED>0`) where reproducible.
-- Preserve Map091 semantic reachability and sealed Gate 1 topology.
-- Only after broader route confidence may Landmark visual coverage expand through remaining H01–H21 Hunts.
+## v1.06.56 Loading Authority
+Random Hunt black-screen loading reuses accepted Battle Loading presentation:
+- centered title + percent / blue progress bar / stage + detail hierarchy from battle loading;
+- running Pokémon mascot from `Sprite_PMDLoadingPokemonV1007`;
+- refresh-throttle principle: stage changes immediately; same stage around 3% or max 180 ms silence.
 
-## SHO-35 Loading UI Authority
-Random Hunt black-screen loading should reuse the battle Loading visual language:
-- Script 0415 `Window_PMDBattleResourceLoadingV1029`: centered title/percent, blue progress bar, stage + detail.
-- Script 0395 `Sprite_PMDLoadingPokemonV1007`: running Pokémon mascot.
-- Script 0439 refresh-throttle policy: stage changes immediate; same stage around 3% steps or max ~180 ms silence; retain 0% and 100%.
-- Map percentage must be driven by real checkpoints, not elapsed-time animation: Hunt init → Map090 layout/terrain → Landmark/collision → Map091 materialize/relocate → route audit → sprites/map refresh → 100% reveal.
-- Do not lengthen load merely to animate the UI.
+Progress is tied to real work, not elapsed-time animation:
+0% open loading overlay → Map090 layout/terrain → Landmark/collision → pre-event route audit → Map091 materialize/semantic relocation → post-event route audit → floor finalize → map/spriteset ready → 100% immediate reveal.
+
+## Immediate Acceptance
+Install v1.06.56 with RPG Maker VX completely closed, then reopen RMVX and test:
+1. first Random Hunt entry from Hunt Selector;
+2. next-floor generation;
+3. leave and enter another Hunt.
+
+Confirm Battle-style Loading is visible, percentage never goes backward, stage/detail changes, mascot moves, 100% reveals immediately, and there is no white flash / stale old-map residue / premature map reveal / input passthrough.
+Primary evidence: one Loading screenshot plus `PMD_VXRD_MapLoading_LATEST.log`.
 
 ## No-Regression Rules
 - Automatic B/C/D/E tile scatter/stamping remains prohibited.
 - v1.06.44 Landmark runtime IDs remain revoked.
 - Map090 remains Random Hunt Runtime Map.
 - Map091 remains H01–H21 shared Event Template Library.
-- Gate 1 Random Hunt structural runtime / accepted Battle Presentation remain SEALED / issue-driven only.
-- Do not alter Battle AI, damage, attack speed, Focus/C2, rewards or spatial endpoints for Loading UI work.
-- Do not reorder Scripts.rvdata entries for repository aesthetics.
+- Gate 1 Random Hunt structure / accepted Battle Presentation remain SEALED / issue-driven only.
+- Do not alter Battle AI, damage, attack speed, Focus/C2, rewards or spatial endpoints for Loading work.
 
-## Editor / Documentation Rule
-Any functional delivery that updates `Data/Scripts.rvdata`, `Data/Map091.rvdata`, or other Data files requires: completely close RPG Maker VX before overwrite, then reopen RMVX. Every functional update must include synchronized Traditional Chinese tutorial/usage documentation.
+## Documentation Rule
+Every functional update must include synchronized Traditional Chinese tutorial/usage documentation.
