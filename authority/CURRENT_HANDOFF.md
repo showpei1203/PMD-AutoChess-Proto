@@ -1,6 +1,6 @@
 # CURRENT_HANDOFF — PMD AutoChess Proto
 
-Last Updated: 2026-08-18 16:10 +08:00
+Last Updated: 2026-08-18 17:46 +08:00
 
 ## Persistent Authority
 Migration is complete. Do not rebuild or roll it back unless a persistent Authority source is genuinely inaccessible.
@@ -9,46 +9,63 @@ Migration is complete. Do not rebuild or roll it back unless a persistent Author
 - Linear = Development Authority
 - ChatGPT = workspace only
 
-## Current Formal Baseline
+## Formal Baseline
 **v1.06.56 — VXRD Random Hunt Real Loading Overlay I — FORMAL PASS.**
+SHO-35 is Done / SEALED.
 
-Windows/RPG Maker VX acceptance on 2026-08-18:
-- supplied screenshot visually confirms Battle-style Random Hunt Loading UI during H01 Floor 1;
-- `PMD_VXRD_MapLoading_LATEST.log` reports `RESULT=PASS`;
-- `FINAL_PERCENT=100`;
-- `REAL_CHECKPOINTS=1`;
-- `FAKE_TIMER=0`;
-- `INPUT_PASSTHROUGH=0`;
-- observed load 4353 ms, Loading UI total 151 ms, max UI refresh 23 ms.
+## Route Safety
+**SHO-22 is Done / SEALED.**
+Evidence:
+- 840 production-like cases = 21 Hunts × 40 seeds.
+- 11 adversarial cases.
+- 10 unsafe hard Landmarks actually removed.
+- failures 0.
+- topology rewrite 0.
+- automatic B/C/D/E stamping 0.
 
-## GitHub
-- `main` = v1.06.56 formal PASS source after promotion.
-- 644 scripts, indices `0..643`.
-- v1.06.55 = index 640 / ID 1065500.
-- v1.06.56 = index 641 / ID 1065600.
-- Main = 642; terminator = 643.
-- v1.06.56 exact new source SHA256 `029c0a557ac44677d24110f8ca7be2933aa0c9296f5dc440e989f551d64f7d28`.
-- Script Index / ID / Name / exact Content / execution order remain preserved.
+## Active Candidate
+**v1.06.57 — VXRD Landmark Vegetation / Wetland Coverage Expansion I — UNPASSED.**
+Linear: SHO-36 In Progress.
 
-## Binary Authority
-Formal Baseline:
-`01_Current_Baseline/PMD_AutoChess_v1_06_56_FORMAL_PASS_BASELINE_RANDOM_HUNT_REAL_LOADING_OVERLAY_I_20260818.zip`
-Drive ID `1JuKQu89h6GEOs6YoxiMFafVBYLTHM_fT`.
+Expansion only:
+- H02 — soft/passable green vegetation, min 1 max 2.
+- H03 — soft/passable vegetation + flowers, min 2 max 3.
+- H06 — soft/passable dense vegetation + flowers, min 2 max 3.
+- H07 — soft/passable low vegetation, min 1 max 2.
+- H16 — soft/passable primordial forest vegetation, min 2 max 3.
 
-Accepted candidate archive remains Drive ID `1dts6xH3ozPwVTfjIUOfIawPulOY8qYQh`.
+Existing H01/H04/H09/H14/H19 stay accepted.
+Deferred for dedicated art: H05/H08/H10/H11/H12/H13/H15/H17/H18/H20/H21.
 
-## SHO-35 Result
-**DONE / PASS.**
-Random Hunt black-screen loading now uses the Battle Loading visual family with real progress checkpoints, no fake timer and no input passthrough.
+## v1.06.57 Binary Authority
+Current Development Drive ID: `1OSHRyT1WCaYzWwT011Lqjm3y76kR5Ik0`.
+Test Build Drive ID: `1LyFebyMWoMiojgHGAnYwVJIB-zTMOlYM`.
 
-## Immediate Development Target
-Return to **SHO-22 — Landmark II: Collision / Route Audit**.
-Next work is broader automated route stress rather than more manual walking:
-1. expand deterministic seed coverage;
-2. intentionally exercise unsafe hard-Landmark rejection so `REMOVED>0` is proven;
-3. include unique corridor throat and semantic-event branch adversarial cases;
-4. preserve Gate 1 topology and Map091 semantic reachability;
-5. after broad route confidence, enable Landmark visuals for additional Hunts.
+Validated Binary:
+- 645 Scripts, 0..644.
+- v1.06.57 = index 642 / ID 1065700.
+- Main 643; terminator 644.
+- source SHA256 `be91725e395e87bb79553d11d0bb125f913d7e8f2aabf164609e688e4e820ede`.
+- Scripts.rvdata SHA256 `0a76471dc85f8e8a95492468e5615c238b0694a02e4638a2e706e050cd89fe09`.
+- baseline 0..641 preserved PASS.
+- static 23/23 PASS; Ruby syntax PASS.
+- Map091 unchanged.
+- Traditional Chinese tutorial updated.
+
+## GitHub Source-only Blocker
+`develop` contains v1.06.57 runtime source, but `SCRIPT_INDEX.tsv / SCRIPT_ORDER.md` tail remains at the older 644-entry v1.06.56 layout.
+Expected validated tail:
+- 642 / 1065700 / v1.06.57
+- 643 / 250 / Main
+- 644 / 251 / terminator
+
+PR #1 corrected the stale exact-source SHA gate, but the one-shot finalizer did not produce a follow-up commit. Do not promote v1.06.57 to Formal Baseline until this Source Authority tail converges and Windows acceptance passes. Binary visual testing may proceed because the delivered Scripts.rvdata was independently rebuilt and validated.
+
+## Immediate Windows Test
+Completely close RPG Maker VX before overwrite because `Data/Scripts.rvdata` changes; overwrite, then reopen RMVX.
+Test only H02/H03/H06/H07/H16.
+Confirm minimum presence, single 32×32 rendering, ecological plausibility, soft passability, normal scrolling / floor-Hunt refresh, Loading overlay still normal, and no automatic B/C/D/E scatter or giant fragments.
+Expected log: `PMD_VXRD_LandmarkCoverage_Audit_LATEST.log`.
 
 ## Immutable Rules
 - No automatic B/C/D/E scatter/stamping.
@@ -56,7 +73,4 @@ Next work is broader automated route stress rather than more manual walking:
 - Map090 = Random Hunt runtime map.
 - Map091 = H01–H21 shared Event Template Library.
 - Gate 1 structure / accepted Battle Presentation remain SEALED / issue-driven only.
-- Do not alter Battle AI, damage, attack speed, Focus/C2, rewards or spatial endpoints for route stress.
-
-## Editor / Documentation Rule
-If a future functional candidate updates `Data/Scripts.rvdata`, `Data/Map091.rvdata`, or another Data file, completely close RPG Maker VX before overwrite and reopen RMVX afterward. Every functional delivery must update the Traditional Chinese tutorial/usage documentation.
+- Do not alter Battle AI, damage, attack speed, Focus/C2, rewards or progression.
