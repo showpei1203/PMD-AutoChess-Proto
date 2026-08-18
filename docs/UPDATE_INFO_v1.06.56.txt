@@ -1,0 +1,38 @@
+PMD AutoChess Proto v1.06.56
+VXRD Random Hunt Real Loading Overlay I
+
+狀態：UNPASSED CANDIDATE
+正式 Baseline：v1.06.55 — Landmark Route Safety Audit I（H01/H04/H09/H14/H19 Phase-I Windows/RMVX PASS）
+
+本版實作 SHO-35：Random Hunt 地圖讀取黑幕顯示真正的 LOADING 百分比條。
+
+視覺 Authority：
+- 沿用既有戰鬥 Loading 版型：標題＋百分比、藍色進度條、目前階段、細節文字。
+- 沿用既有跑動寶可夢 Loading mascot。
+- 沿用 Loading UI refresh throttle 概念：stage 變更立即刷新，同 stage 約 3% 或最久 180ms 刷新一次。
+
+進度不是假計時器：
+- Map090 房間／地形生成
+- Landmark／collision mask
+- Map091 Event Template materialize
+- semantic relocation
+- v1.06.55 route safety audit
+- map / spriteset 準備
+- 完成後才顯示 100% 並 reveal
+
+適用：
+- 第一次進入 Random Hunt Map090
+- 切換 Hunt 後重新進入 Map090
+- 同一 Hunt 前往下一層
+
+不增加人工等待時間；第一次 Map090 transfer 原本的 15 frame wait 保留，但改拿來顯示 Loading UI。
+Loading 期間不呼叫 Input.update，不允許按鍵穿透。
+
+不變：
+- v1.06.55 route safety 邏輯與結果不變。
+- automatic B/C/D/E scatter/stamping 持續禁止。
+- v1.06.44 Landmark runtime IDs 持續撤銷。
+- Map091 本版未修改。
+- 不修改 Battle AI、Damage、Attack Speed、Focus/C2、Reward、Progression。
+
+本版更新 Data/Scripts.rvdata。覆蓋前請完全關閉 RPG Maker VX；覆蓋完成後重新開啟 RMVX。
