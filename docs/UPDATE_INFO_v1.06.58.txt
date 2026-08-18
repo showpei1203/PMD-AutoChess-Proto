@@ -1,0 +1,20 @@
+PMD AutoChess Proto v1.06.58
+VXRD Water-Bottom Autotile Pair Authority I
+STATUS=UNPASSED_CANDIDATE
+
+主要變更：
+- Random Hunt 水域不再使用 A1 base 2096 深水家族。
+- H02 改用 base 2048：可見自然／草土底水。
+- H07/H12/H17 改用 base 2240：可見石質／硬質底水。
+- 保留 VX 原生 A1 動畫與 autotile 拼接。
+
+未變更：
+- 水域 Hunt 範圍 H02/H07/H12/H17。
+- rectangle-only / no river / no bridge。
+- Map090 / Map091 Authority。
+- Landmark / Route Safety / Loading Overlay。
+- automatic B/C/D/E scatter/stamping 仍禁止。
+- Battle AI / Damage / Attack Speed / Focus-C2 / Reward / Progression。
+
+驗收：
+H02 / H07 為主；H12 / H17 快速確認。
