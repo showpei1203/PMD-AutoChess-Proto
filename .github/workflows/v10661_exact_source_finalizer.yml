@@ -22,7 +22,7 @@ jobs:
         shell: python
         run: |
           from pathlib import Path
-          import hashlib, shutil
+          import hashlib
 
           root=Path('.')
           staging=root/'candidate_staging/VXRD_A1_LIQUID_SURFACE_SEMANTIC_AUTHORITY_II_v1.06.61.rb'
@@ -48,6 +48,7 @@ jobs:
           tsv=exp/'SCRIPT_INDEX.tsv'
           lines=tsv.read_text(encoding='utf-8').splitlines()
           assert len(lines)==646
+          assert lines[643].startswith('643\t1065800\t')
           lines=lines[:644]
           lines += [
             f"644\t1066100\tPMD AutoChess VXRD A1 Liquid Surface Semantic Authority II v1.06.61\t0644__id_1066100.rb\t{len(src)}\t{src_sha}",
@@ -58,8 +59,13 @@ jobs:
 
           order=exp/'SCRIPT_ORDER.md'
           olines=order.read_text(encoding='utf-8').splitlines()
-          assert len(olines)==646
-          olines=olines[:644]
+          cut=None
+          for i,line in enumerate(olines):
+            if line.startswith('- 0644 |'):
+              cut=i; break
+          assert cut is not None
+          assert any(line.startswith('- 0643 | ID `1065800`') for line in olines[:cut])
+          olines=olines[:cut]
           olines += [
             '- 0644 | ID `1066100` | `PMD AutoChess VXRD A1 Liquid Surface Semantic Authority II v1.06.61` | `0644__id_1066100.rb`',
             '- 0645 | ID `250` | `Main` | `0645__id_250.rb`',
