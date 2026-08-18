@@ -1,16 +1,21 @@
 PMD AutoChess Proto v1.06.54
 VXRD Landmark Single-Prop Semantic / Presence / Collision Fix I
 
-Status: UNPASSED CANDIDATE
-Formal Baseline remains v1.06.35.
-v1.06.53 real-machine visual acceptance = FAIL.
+Status: FORMAL PASS BASELINE
+Windows / RPG Maker VX real-machine acceptance: PASS on 2026-08-18.
+Previous formal Baseline: v1.06.35.
+v1.06.53 real-machine visual acceptance = FAIL and must never be promoted.
 
-Fixes:
+Accepted fixes:
 - One 32x32 atlas cell per Landmark; never the full 64x64 2x2 collage.
 - 1x1 logical footprint.
 - H01/H04/H09/H14/H19 minimum presence gate.
 - H01 foliage/flowers passable.
 - H04/H09/H14/H19 hard rock/crystal/ore blocking.
+- Placement, scrolling and Hunt/floor refresh accepted.
 - No automatic B/C/D/E map tile stamping.
 - v1.06.44 runtime IDs remain revoked.
-- Full route audit remains deferred.
+- Static validation PASS 23/23.
+
+Next target: SHO-22 Landmark II — Collision / Route Audit.
+Full route audit must reject/relocate unsafe hard Landmark placement rather than alter Gate 1 topology.
