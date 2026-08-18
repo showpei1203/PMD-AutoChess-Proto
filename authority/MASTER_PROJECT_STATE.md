@@ -1,6 +1,6 @@
 # MASTER_PROJECT_STATE — PMD AutoChess Proto
 
-Last Updated: 2026-08-18 17:46 +08:00
+Last Updated: 2026-08-18 18:30 +08:00
 
 ## Persistent Authority
 - Google Drive = Binary Authority.
@@ -8,73 +8,92 @@ Last Updated: 2026-08-18 17:46 +08:00
 - Linear Team `Showpei` / Project `PMD AutoChess Proto` = Development Authority.
 - ChatGPT = development workspace only.
 
-## Version State
-- Current Formal Baseline: **v1.06.56 — VXRD Random Hunt Real Loading Overlay I — FORMAL PASS**.
-- Active unpassed Candidate: **v1.06.57 — VXRD Landmark Vegetation / Wetland Coverage Expansion I**.
-- v1.06.56 Windows Loading acceptance PASS: `RESULT=PASS`, `FINAL_PERCENT=100`, `REAL_CHECKPOINTS=1`, `FAKE_TIMER=0`, `INPUT_PASSTHROUGH=0`.
-- SHO-35 Loading Overlay = Done / SEALED.
-- SHO-22 Landmark Route Safety = Done / SEALED after 840 production-like + 11 adversarial cases, failures 0, adversarial removed total 10, topology rewrite 0.
-- Active acceptance issue: **SHO-36**.
+## Formal Baseline
+**v1.06.56 — VXRD Random Hunt Real Loading Overlay I — FORMAL PASS.**
+- Windows/RMVX Loading acceptance PASS.
+- SHO-35 Done / sealed.
+- Drive formal baseline ID: `1JuKQu89h6GEOs6YoxiMFafVBYLTHM_fT`.
+- GitHub `main` remains the formal PASS Source authority until later candidates complete both Windows acceptance and canonical Source-manifest convergence.
 
-## v1.06.57 Candidate Scope
-Enable existing-art-compatible soft/passable 32×32 Landmark coverage only for:
-- H02 — 苔溪濕岸, `forest_green_a`, min 1 max 2.
-- H03 — 風鳴草痕, green + flower, min 2 max 3.
-- H06 — 深蔭密叢, green + flower, min 2 max 3.
-- H07 — 霧澤泥痕, `forest_green_a`, min 1 max 2.
-- H16 — 原始樹海, `forest_green_a`, min 2 max 3.
+## Route Safety
+**v1.06.55 Route Safety is SEALED.**
+- SHO-22 Done.
+- 840 production-like cases = 21 Hunts × 40 deterministic seeds, failures 0.
+- 11 adversarial repair cases, 10 unsafe hard Landmarks actually removed.
+- `TOPOLOGY_REWRITE=0`.
+- `MAP_TABLE_BCDE_STAMPING=0`.
 
-Existing accepted H01/H04/H09/H14/H19 remain unchanged.
-Deferred pending dedicated art: H05/H08/H10/H11/H12/H13/H15/H17/H18/H20/H21.
-Do not fake biome identity with unrelated forest/rock/crystal props.
+## v1.06.57 Candidate State
+**Landmark Vegetation / Wetland Coverage Expansion I — WINDOWS VISUAL PASS / SOURCE SEAL PENDING.**
+- User reported H02/H03/H06/H07/H16 `看起來ok`.
+- Soft/passable vegetation coverage accepted visually on Windows/RMVX.
+- Binary: 645 Scripts, v1.06.57 index 642 / ID 1065700.
+- Current Development Drive ID: `1OSHRyT1WCaYzWwT011Lqjm3y76kR5Ik0`.
+- Test Build Drive ID: `1LyFebyMWoMiojgHGAnYwVJIB-zTMOlYM`.
+- Linear SHO-36 remains In Progress only because canonical GitHub manifests have not yet absorbed the v1.06.57 tail.
+- Exact v1.06.57 Source SHA256: `be91725e395e87bb79553d11d0bb125f913d7e8f2aabf164609e688e4e820ede`.
 
-## Binary Authority
-v1.06.57 Current Development ZIP:
-- Drive ID `1OSHRyT1WCaYzWwT011Lqjm3y76kR5Ik0`.
+## Active Candidate
+**v1.06.58 — VXRD Water-Bottom Autotile Pair Authority I — UNPASSED.**
 
-v1.06.57 Test Build:
-- Drive ID `1LyFebyMWoMiojgHGAnYwVJIB-zTMOlYM`.
+Water mapping:
+- H02 -> A1 base `2048`: visible natural/grass-earth bottom water.
+- H07 -> A1 base `2240`: visible stone/hard-bottom water.
+- H12 -> A1 base `2240`: hard/ice-bottom water.
+- H17 -> A1 base `2240`: hard/ice-bottom water.
+- Old deep/opaque Random Hunt water base `2096` is revoked from active water profiles.
 
-Binary validation:
-- 645 Scripts, indices 0..644.
-- v1.06.57 index 642 / ID 1065700.
-- Main 643; terminator 644.
-- v1.06.57 source SHA256 `be91725e395e87bb79553d11d0bb125f913d7e8f2aabf164609e688e4e820ede`.
-- `Data/Scripts.rvdata` SHA256 `0a76471dc85f8e8a95492468e5615c238b0694a02e4638a2e706e050cd89fe09`.
-- Baseline entries 0..641 preservation PASS / failures 0.
-- Static validation 23/23 PASS; Ruby syntax PASS.
-- Map091 unchanged, SHA256 `206349b314be757aca7aabc338434f2ba6da93d59ee49f0394a47f62a3e46ec8`.
+Preserved rules:
+- water Hunts remain H02/H07/H12/H17 only;
+- native VX A1 animation and autotile joining preserved;
+- A2 shoreline authority preserved;
+- rectangle-only water; no river / bridge;
+- water remains non-walkable;
+- no automatic B/C/D/E scatter/stamping;
+- Map090 / Map091, Landmark, Route Safety, Loading Overlay, Battle AI, Damage, Attack Speed, Focus-C2, Reward and Progression unchanged.
+
+v1.06.58 validation:
+- Binary Scripts = 646, indices `0..645`.
+- v1.06.57 = index 642.
+- v1.06.58 = index 643 / ID 1065800.
+- Main = 644; terminator = 645.
+- v1.06.58 Source SHA256 `aae49d6c64fbacbba1b077a42992a5f4e954a75876ce6ba155f58b1a1c2ff7b1`.
+- `Data/Scripts.rvdata` SHA256 `001f94df75298b079f2dcccc097dbb174b1f200acd2ed9eb934cb2af39059ac0`.
+- Static validation 28/28 PASS; Ruby syntax PASS.
 - Traditional Chinese tutorial synchronized.
 
-## GitHub Branch Authority
-### main
-- v1.06.56 formal PASS source.
-- 644 scripts, indices 0..643.
-- v1.06.56 index 641 / ID 1065600.
-- Main 642; terminator 643.
+Binary Authority:
+- Current Development Drive ID `14VmbnX9nCx-CPusUhceWkcvlkwuO0EST`.
+- Test Build Drive ID `1rYcztk1tMcL7Se5XeMz1RtJ6tXeC2FtF`.
+- Both ZIP SHA256 `e99a3dcd96a0f37bc05266c36233a9c2367da695a55a075bea411d8f32eeeb07`.
 
-### develop
-- Contains v1.06.57 runtime source and active SHO-36 work.
-- Known Source-only blocker: `SCRIPT_INDEX.tsv / SCRIPT_ORDER.md` tail has not yet converged from the v1.06.56 644-entry layout to the validated 645-entry v1.06.57 layout.
-- Expected tail independently regenerated from validated Binary:
-  - 642 / ID 1065700 / v1.06.57
-  - 643 / ID 250 / Main
-  - 644 / ID 251 / terminator
-- PR #1 corrected the stale one-shot finalizer SHA gate to the actual v1.06.57 source hash, but no follow-up finalizer run was observed.
-- This blocker does **not** invalidate Binary visual testing, but v1.06.57 MUST NOT be promoted to Formal Baseline until GitHub Source Authority converges and Windows acceptance passes.
+GitHub Source:
+- exact v1.06.58 source staged on `develop` at `.v10658_import/0643__id_1065800.rb`;
+- staged Git blob is byte-exact to validated Binary source;
+- canonical `SCRIPT_INDEX.tsv / SCRIPT_ORDER.md` still inherit the v1.06.57 tail blocker;
+- do not promote v1.06.57 or v1.06.58 Formal until canonical manifests converge.
 
-## Windows/RMVX Acceptance for v1.06.57
-Test only H02/H03/H06/H07/H16.
-Accept when each shows its minimum single 32×32 prop, ecology is plausible, all new props are soft/passable, scrolling/floor/Hunt refresh are normal, v1.06.56 Loading remains normal, and there is no automatic B/C/D/E scatter or giant fragment regression.
-Runtime evidence: `PMD_VXRD_LandmarkCoverage_Audit_LATEST.log`.
+## Current Development Authority
+- SHO-36: v1.06.57 Windows Visual PASS / Source seal pending.
+- SHO-40: v1.06.58 Water-Bottom Autotile Pair Acceptance — In Progress.
+- Gate 2 remains In Progress.
 
-## No-Regression Rules
-- Automatic B/C/D/E tile scatter/stamping remains prohibited.
-- v1.06.44 Landmark runtime IDs remain revoked.
-- Map090 remains Random Hunt Runtime Map.
-- Map091 remains H01–H21 shared Event Template Library.
-- Gate 1 structure / accepted Battle Presentation remain SEALED / issue-driven only.
-- Do not alter Battle AI, damage, attack speed, Focus/C2, rewards or progression for this work.
+## v1.06.58 Windows Acceptance
+Primary: H02 and H07. Quick check: H12 and H17.
+- H02 must visibly show natural/grass-earth bottom water.
+- H07 must visibly show stone/hard-bottom water.
+- H12/H17 must not visibly expose grassy water bottom.
+- native animation, autotile edges and shoreline must remain correct.
+- water must remain non-walkable.
+- Loading Overlay, Landmark and Route Safety must not regress.
+
+## Immutable Rules
+- No automatic B/C/D/E scatter/stamping.
+- v1.06.44 upper-tile Landmark runtime IDs remain revoked.
+- Map090 = Random Hunt runtime map.
+- Map091 = H01–H21 shared Event Template Library.
+- Gate 1 and accepted Battle Presentation remain SEALED / issue-driven only.
+- No unrelated Battle AI / Damage / Attack Speed / Focus-C2 / Reward / Progression changes.
 
 ## Editor / Documentation Rule
-Any functional delivery that updates `Data/Scripts.rvdata`, `Data/Map091.rvdata`, or another Data file requires: completely close RPG Maker VX before overwrite, then reopen RMVX. Every functional update must include synchronized Traditional Chinese tutorial/usage documentation.
+For any delivery that updates `Data/Scripts.rvdata`, `Data/Map091.rvdata`, or other editor-cached Data: completely close RPG Maker VX before overwrite, then reopen RMVX. Every functional delivery must include synchronized Traditional Chinese tutorial/usage documentation.
