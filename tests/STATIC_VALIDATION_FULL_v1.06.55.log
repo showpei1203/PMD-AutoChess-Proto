@@ -1,0 +1,34 @@
+PMD AutoChess v1.06.55 STATIC VALIDATION FULL
+PASS	script_count_643	count=643
+PASS	v10654_preserved_index_639	PMD AutoChess VXRD Landmark Single-Prop Semantic Presence Collision I v1.06.54
+PASS	v10655_index_640	PMD AutoChess VXRD Landmark Route Safety Audit I v1.06.55
+PASS	main_index_641	Main
+PASS	terminator_index_642	
+PASS	source_exact	51dc52781b29acefa51d2550f46770bf7136d910ac615d00935fbd1375033cb3
+PASS	old_scripts_0_639_preserved	byte-exact triplets
+PASS	main_body_preserved	
+PASS	terminator_body_preserved	
+PASS	pure_route_tests_4_4	
+PASS	pre_event_route_gate	
+PASS	post_event_route_gate	
+PASS	unsafe_policy_reject_hard	
+PASS	topology_rewrite_false	
+PASS	required_semantic_targets	
+PASS	soft_h01_not_forced_block	
+PASS	uses_v10654_hard_mask	
+PASS	rebuilds_reservation_mask	
+PASS	reads_semantic_event_placements	
+PASS	exit_route_required	
+PASS	runtime_latest_log	
+PASS	runtime_history_log	
+PASS	offline_multi_seed_40_40	5 hunts x 8 seeds
+PASS	no_bcde_map_stamp	
+PASS	revoked_ids_not_reintroduced	
+PASS	battle_unchanged_explicit	
+PASS	map091_unchanged	206349b314be757aca7aabc338434f2ba6da93d59ee49f0394a47f62a3e46ec8
+PASS	landmark_pngs_unchanged	count=6
+PASS	tutorial_updated	Traditional Chinese
+PASS	rmvx_restart_required	
+PASS	scripts_sha256	ea11ecc4de89be7bab304a165efbc0e685c5b0e5f2c1e9055e0fa3e2b9957ece
+RESULT=PASS
+CHECKS=31 FAILURES=0

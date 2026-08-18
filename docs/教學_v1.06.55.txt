@@ -1,0 +1,34 @@
+PMD AutoChess Proto v1.06.55 測試與使用說明（繁體中文）
+
+【版本狀態】
+v1.06.55 — Landmark Route Safety Audit I：2026-08-18 Windows / RPG Maker VX 五 Hunt Phase-I 實機 PASS。
+
+【本版已驗證內容】
+硬質 Landmark（岩石、晶岩、礦石、火山礦晶）除了本身不可穿越之外，每次生成樓層會做路徑安全檢查。
+如果某顆硬質 Landmark 會堵住必要路徑，系統優先拒絕該顆 Landmark，不修改已封版的房間／走廊拓撲。
+H01 花草／低植被仍為 soft decoration，可通行，也不進 blocking route mask。
+
+實機 HISTORY 已確認：
+- H01 / H04 / H09 / H14 / H19 全部 RESULT=PASS。
+- 全部 EXIT_REACHABLE=1。
+- 全部 BAD=空白。
+- H04/H09/H14/H19 實際存在 hard blocked cells，但沒有切斷必要路線。
+- H14 同一 run 曾重複記錄一次，屬重複紀錄，不是 FAIL。
+
+【後續 SHO-22】
+本次 PASS 封存的是五 Hunt Phase-I Route Safety Audit I。
+後續仍會做更大規模 remaining Hunt / multi-seed route stress，並嘗試涵蓋 REMOVED>0 的 unsafe Landmark rejection 情境，完成後才擴張更多 Hunt 的 Landmark 視覺覆蓋。
+
+【新增 UX 規劃 SHO-35】
+Random Hunt 讀圖黑幕後續會加入真正的 LOADING 百分比條。
+外觀沿用既有戰鬥 LOADING：百分比、藍色進度條、階段文字與跑動寶可夢。
+進度會綁定真實地圖工作：Map090 地形 → Landmark → Map091 Event → Route Audit → 畫面準備，不使用假計時器，也不刻意延長讀取時間。
+
+【安裝規則】
+本版更新 Data/Scripts.rvdata。若重新安裝本版，請先完全關閉 RPG Maker VX，再覆蓋檔案；覆蓋完成後重新開啟 RMVX。
+Map091 本版沒有修改。
+
+【永久禁止事項】
+- automatic B/C/D/E scatter/stamping
+- 恢復 v1.06.44 Landmark runtime IDs
+- 為裝飾物修改已封版 Gate 1 topology

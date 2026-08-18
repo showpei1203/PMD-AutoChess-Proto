@@ -1,69 +1,68 @@
 # CURRENT_HANDOFF — PMD AutoChess Proto
 
-Last Updated: 2026-08-18 14:39 +08:00
+Last Updated: 2026-08-18 15:20 +08:00
 
 ## Persistent Authority
 Migration is complete. Do not rebuild or roll it back unless a persistent Authority source is genuinely inaccessible.
-- Google Drive = Binary Authority
+- Drive = Binary Authority
 - GitHub = Source Authority
 - Linear = Development Authority
-- ChatGPT = development workspace only
+- ChatGPT = workspace only
 
-## Current Formal Baseline
-**v1.06.54 — VXRD Landmark Single-Prop Semantic / Presence / Collision Fix I — FORMAL PASS**.
+## Formal Baseline
+**v1.06.55 — VXRD Landmark Route Safety Audit I — FORMAL PASS for H01/H04/H09/H14/H19 Phase-I scope.**
 
-Windows / RPG Maker VX real-machine acceptance PASS on 2026-08-18.
-Accepted H01 / H04 / H09 / H14 / H19:
-- Landmark presence PASS;
-- single 32×32 prop rendering PASS;
-- visual spacing / placement PASS;
-- H01 soft vegetation passability PASS;
-- H04/H09/H14/H19 hard object blocking PASS;
-- scrolling and Hunt/floor refresh PASS;
-- no giant TileB/TileD fragment or automatic B/C/D/E stamping regression.
+Real-machine HISTORY supplied by user on 2026-08-18:
+- all recorded H01/H04/H09/H14/H19 runs `RESULT=PASS`;
+- every run `EXIT_REACHABLE=1`;
+- every `BAD=` is empty;
+- H04/H09/H14/H19 include active hard blocked cells without breaking routes;
+- H14 duplicate entry is the same run recorded twice, not a failure.
 
-Static validation PASS 23/23.
+Static validation PASS 31/31. Offline deterministic regression PASS 40/40.
 
 ## GitHub
-- `main` = **v1.06.54 formal PASS source**, 642 scripts, indices 0..641.
-- v1.06.54 Script index 639 / ID 1065400.
-- Main index 640; terminator index 641.
-- `develop` = continuation from the v1.06.54 PASS point for the next SHO-22 candidate.
+- `main` = v1.06.55 formal PASS source after promotion, 643 scripts, indices 0..642.
+- v1.06.55 = Script index 640 / ID 1065500.
+- Main index 641; terminator 642.
+- `develop` continues from the v1.06.55 PASS point.
 - Script Index / ID / Name / exact decompressed Content / execution order must remain preserved.
 
-## Binary Authority
-Accepted v1.06.54 package is promoted to Google Drive `01_Current_Baseline` as the current formal Binary Authority.
-Original accepted candidate package:
-`02_Current_Development/PMD_AutoChess_v1_06_54_CUMULATIVE_OVERWRITE_LANDMARK_SINGLE_PROP_SEMANTIC_PRESENCE_COLLISION_I_20260818.zip`
-Drive ID `1B3flf23qcLhGqLjNSlwKZnCULjGcYLC0`.
+## SHO-22 Remaining
+SHO-22 stays In Progress beyond this Phase-I seal:
+1. broader remaining-Hunt / multi-seed route stress;
+2. intentionally exercise unsafe Landmark rejection (`REMOVED>0`) where possible;
+3. preserve Map091 semantic reachability and sealed Gate 1 topology;
+4. only then expand Landmark visual coverage across remaining Hunts.
 
-## Previous Failure
-v1.06.53 is a permanent real-machine Visual FAIL record:
-- H01/H04/H09/H14 no visible Landmark;
-- H19 full 64×64 atlas rendered as four unrelated props;
-- hard rock/ore visuals pass-through.
-Do not promote or reuse v1.06.53 as Landmark behavior authority.
+## New User UX Direction — SHO-35
+Random Hunt map generation currently spends time behind a black screen. Add a **real LOADING progress bar** there.
 
-## Immediate Development Target
-**SHO-22 — Landmark II: Collision / Route Audit — In Progress.**
+User explicitly wants the Random Hunt Loading UI to reference the existing battle Loading bar.
 
-Implement a deterministic route-safety audit around current hard Landmark blockers.
-Acceptance intent:
-1. Entrance → Exit remains reachable.
-2. Required Map091 semantic events remain reachable where applicable.
-3. Hard Landmark cells never occupy entrance/exit/keypoint/fixed/water/event-reserved cells.
-4. Landmark placement cannot seal a doorway, corridor throat, or unique room connection.
-5. Soft H01 decoration does not block route calculations.
-6. Audit multiple deterministic seeds for H01/H04/H09/H14/H19 before expanding to the remaining Hunts.
-7. If a proposed hard Landmark breaks a required route, reject or relocate the Landmark. Do not alter sealed Gate 1 topology.
+Reuse authority:
+- Script 0415 `Window_PMDBattleResourceLoadingV1029` visual style: centered title + percent, blue bar, stage/detail text.
+- Script 0395 `Sprite_PMDLoadingPokemonV1007`: running Pokémon mascot.
+- Script 0439 Loading UI refresh throttle: stage-change immediate refresh; same-stage roughly 3% steps or max 180 ms silence.
+
+Map progress must represent real work, not a timer. Intended checkpoints:
+1. Hunt request / black overlay;
+2. Map090 layout + terrain;
+3. Landmark + collision mask;
+4. Map091 materialize + semantic relocation;
+5. route-safety audit;
+6. sprites/map refresh;
+7. 100% only when the completed map can reveal immediately.
+
+No artificial delay may be added merely to make the bar animation longer. Loading input passthrough remains disabled. Error cleanup must not leave a permanent black screen.
 
 ## Immutable Rules
-- No automatic B/C/D/E tile scatter/stamping.
+- No automatic B/C/D/E scatter/stamping.
 - v1.06.44 Landmark runtime IDs remain revoked.
 - Map090 = Random Hunt runtime map.
 - Map091 = H01–H21 shared Event Template Library.
-- Gate 1 structural runtime / Battle Presentation remain SEALED / issue-driven only.
-- Do not alter Battle AI, damage, attack speed, Focus/C2, rewards or spatial endpoints for this work.
+- Gate 1 structure / accepted Battle Presentation remain SEALED / issue-driven only.
+- Do not alter Battle AI, damage, attack speed, Focus/C2, rewards or spatial endpoints for Loading work.
 
 ## Editor / Documentation Rule
-If the next candidate updates `Data/Scripts.rvdata`, `Data/Map091.rvdata`, or any other Data file, completely close RPG Maker VX before overwrite and reopen RMVX afterward. Every functional update must include synchronized Traditional Chinese tutorial / usage documentation.
+If a candidate updates `Data/Scripts.rvdata`, `Data/Map091.rvdata`, or any other Data file, completely close RPG Maker VX before overwrite and reopen RMVX afterward. Every functional update must include synchronized Traditional Chinese tutorial / usage documentation.
