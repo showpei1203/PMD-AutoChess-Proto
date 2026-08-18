@@ -1,131 +1,101 @@
 # CURRENT_HANDOFF — PMD AutoChess Proto
 
-Last Updated: 2026-08-18 19:55 +08:00
+Last Updated: 2026-08-18 21:37 +08:00
 
 ## Persistent Authority
 Migration is complete. Do not rebuild or roll it back unless a persistent Authority source is genuinely inaccessible.
 - Drive = Binary / Asset Authority
-- GitHub = Source / Spec / Validator Authority
+- GitHub = Source / Spec / Validator / diagnostic-text Authority
 - Linear = Development Authority
 - ChatGPT = workspace only
 
 ## Current Formal Baseline
 **v1.06.58 — VXRD Water-Bottom Autotile Pair Authority I — FORMAL PASS.**
+Formal Baseline ZIP Drive ID `1bpvrm1OQBDPMwU8ac06Q-zmZSvTOTHIQ`.
 
-Formal Baseline ZIP:
-`01_Current_Baseline/PMD_AutoChess_v1_06_58_FORMAL_PASS_BASELINE_WATER_BOTTOM_AUTOTILE_PAIR_AUTHORITY_I_20260818.zip`
-Drive ID `1bpvrm1OQBDPMwU8ac06Q-zmZSvTOTHIQ`.
-
-Canonical Formal GitHub Script tail:
+Canonical Formal GitHub tail:
 - 642 / 1065700 / v1.06.57
 - 643 / 1065800 / v1.06.58
 - 644 / 250 / Main
 - 645 / 251 / terminator
-Total 646 Scripts, indices 0..645.
+Total 646 Scripts. `main` remains v1.06.58 Formal.
 
-`main` remains the accepted v1.06.58 Formal Source. `develop` is ahead only with post-baseline diagnostics and asset-pipeline work.
+## User Direction
+**Prioritize script/runtime progression.** SHO-42 art pipeline may remain prepared, but do not drift into image generation unless the user explicitly requests art work.
 
-## Accepted v1.06.57 / v1.06.58 Results
-- v1.06.57 H02/H03/H06/H07/H16 vegetation Landmark expansion: Windows visual PASS.
-- v1.06.58 H07/H12/H17 water: user explicitly reported OK.
-- H02 current water also accepted.
-- v1.06.56 real Loading overlay remains accepted.
-- SHO-22 Route Safety remains Done / SEALED.
+## Current Script Test Build — v1.06.60 TEST SUITE
+Use:
+`PMD_AutoChess_v1_06_60_TEST_SUITE_MAP091_A1_MATRIX_20260818.zip`
+Drive Test Build ID `1KAk9KBZmZXWOmiL2tCGQ64aJHhM56Azl`.
+ZIP SHA256 `5f256363aafedd7458fb5b31828ad58a5637c1374c987810d8527b4f65e93d08`.
+Scripts.rvdata SHA256 `6430d0f7b65923396a1676f968b6c381a3721542a881f8daa174efbdeb48bd3c`.
 
-## Accepted Water Mapping
-- H02 -> A1 base 2048.
-- H07 -> A1 base 2240.
-- H12 -> A1 base 2240.
-- H17 -> A1 base 2240.
-- old active Random Hunt base 2096 revoked.
-- Water remains native A1 animated/autotile, rectangle-only, non-walkable, with A2 shoreline; no rivers/bridges.
+648 Scripts:
+- 0..643 = Formal v1.06.58 byte-exact preserved
+- 644 / ID 1065910 = A1 Interactive Matrix Probe v1.06.59a
+- 645 / ID 1066000 = Map091 Full Acceptance Harness v1.06.60
+- 646 = Main
+- 647 = terminator
 
-## Active SHO-41 — v1.06.59 TEST-ONLY Gravel-Water Probe
-User-authoritative locator: desired gravel/pebble clear-bottom water is **two editor palette cells to the right of the accepted H07/H12/H17 water**.
+This is TEST-only. Do not promote this script ordering directly to Formal Source.
 
-New evidence:
-- Windows live full-project snapshot contains no project-embedded `Graphics/System/TileA1.*`.
-- Therefore identification is constrained to the standard VX/RTP A1 family unless another runtime override is separately proven.
-- Existing Formal runtime proof: A1 starts at 2048 and each autotile kind advances by 48 IDs.
-- 2240 = kind 4; diagnostic candidate 2336 = kind 6.
-- **Do not equate “two editor palette cells right” with “kind +2” without proving palette-cell ordering.** Candidate 2336 remains diagnostic only.
+## Test 1 — SHO-41 A1 Gravel-Water Identification
+Old one-candidate v1.06.59 H07=2336 probe is deprecated.
 
-Evidence files:
-- `tests/VXRD_LIVE_A1_SOURCE_AUDIT_20260818.log`
-- `docs/VXRD_A1_SOURCE_AND_PALETTE_MAPPING_EVIDENCE_20260818.md`
+Context: RMVX Test Play, H07 / Map090.
+Control: **plain F5** only. The combined binary excludes Shift/Ctrl/Alt from the water shortcut.
 
-Diagnostic ZIP:
-`PMD_AutoChess_v1_06_59_TEST_ONLY_GRAVEL_BOTTOM_WATER_PALETTE_PROBE_20260818.zip`
-Drive ID `1XNSDuk8OEfVJWvwSWv5vaxtJ5hSy--2-`.
-ZIP SHA256 `e5903b3fa73bd7cdb7c999ae0be56bf3393274cdc4708735161270f6595c5b5c`.
+Pages:
+1. 2240 / 2288 / 2336 / 2384
+2. 2048 / 2096 / 2144 / 2192
+3. 2432 / 2480 / 2528 / 2576
+4. 2624 / 2672 / 2720 / 2768
 
-Probe behavior:
-- RMVX `$TEST`: H07 = 2336 candidate.
-- H02 = 2048 unchanged.
-- H12/H17 = 2240 unchanged.
-- non-Test Play = v1.06.58 unchanged.
+Panels use real RGSS2 `Tilemap` rendering. Formal H07 remains base 2240; Map090 and Hunt mapping are not changed.
+User only needs to report the `base` whose panel shows the requested clear water with gravel/pebble bed. If none matches, one screenshot is enough.
+Output: `PMD_VXRD_A1MatrixProbe_LATEST.log`.
 
-User action when convenient: completely close RMVX, overwrite probe package, reopen RMVX, Test Play, enter H07, then confirm whether the pool is the requested gravel/pebble-bottom clear water. One screenshot is enough if rejected.
+## Test 2 — SHO-21 Map091 Full Acceptance
+SHO-21 is now In Progress.
+Context: any active Random Hunt floor on Map090.
+Control: **SHIFT+F5**.
 
-## Active SHO-42 — Dedicated Landmark Asset Batch A
-Batch A targets:
-- H05 -> `relic_moonstone_a.png`
-- H08 -> `storm_charged_rock_a.png`
-- H10 -> `mystic_rune_stone_a.png`
-- H11 -> `ancient_root_a.png`
-- H12 -> `ice_shard_a.png`
+Independent offline Formal Map091 audit already PASS:
+- source events 49/49
+- source pages 49
+- graphics/lists/triggers 49/49
+- deep Marshal clones 49/49
+- whole Map091 Marshal roundtrip PASS
+- H01–H21 × Floors 1–6 = 126/126, BAD=0
+- role distribution: Entrance 1, Exit 1, Retreat 1, Treasure 1, Recovery 1, Info 4, Encounter 24, Rare 8, Elite 8.
 
-### Production Pack READY
-`PMD_VXRD_LANDMARK_BATCH_A_PRODUCTION_PACK_20260818.zip`
-Drive ID `1CwOft6CQ0nHUcnJcZP-JKRBPmo0OMfLX`.
-SHA256 `8da9d582d928fb29b319fd6bd51781603863e9d9a9dda97b0f741192e84244ab`.
+Runtime harness additionally checks:
+- v1.06.49 Template Authority audit
+- HUNT/FLOOR/WEIGHT/MAX/UNIQUE/NO_REPEAT semantics
+- synthetic FIXED/CONTROL/SHARED + runtime-ID semantics
+- current materialized Map090 template events/source metadata
+- runtime plan count alignment
+- non-destructive `Marshal.dump/load($game_map)` preservation
+- Hunt-session Marshal roundtrip
 
-Pack contents:
-- accepted v1.06.58 Landmark style-reference contact sheet;
-- blank 64×64 transparent atlas template;
-- 5× visual cell guide;
-- Traditional Chinese Batch A production briefs;
-- machine-readable asset-jobs JSON;
-- README.
+Output: `PMD_VXRD_Map091Acceptance_LATEST.log` plus PASS/FAIL overlay.
+No Map090/Map091 mutation.
 
-Separate Drive Authority:
-- `01_References/PMD_VXRD_Landmark_Style_Reference_v1.06.58.png` — ID `1YG0-igmHuUTqIX8DgjTQZctdKJyqbeNA`.
-- `00_Style_Authority/VXRD_BATCH_A_PRODUCTION_BRIEFS_繁中.md` — ID `1PWQugYgxMIL8i4EZCK246IFrvFonSN07`.
+## Accepted / Sealed Gate 2 State
+- v1.06.54 single-prop Landmark semantic/presence/collision PASS
+- v1.06.55 Route Safety SEALED
+- v1.06.56 real Loading overlay SEALED
+- v1.06.57 vegetation expansion visual PASS
+- v1.06.58 visible-bottom water PASS
 
-### GitHub validator gate READY — binary-free
-GitHub remains text/source/spec/test Authority only. **Do not commit production or candidate PNG/ZIP/RVData/Graphics/Audio binaries.**
+Accepted water mapping:
+- H02 = 2048
+- H07/H12/H17 = 2240
+- 2096 revoked
+- native A1, rectangle-only, blocked, A2 shoreline, no rivers/bridges
 
-GitHub files:
-- `assets/VXRD_LANDMARK_ASSET_PRODUCTION_SPEC.md`
-- `assets/ASSET_MANIFEST.csv`
-- `tools/asset_validator/validate_vxrd_landmark_atlas.py`
-- `tests/ASSET_VALIDATOR_ACCEPTED_SIX_v1.06.58.log`
-- `asset_staging/VXRD_Landmarks/README.md` — staging policy only; no binary files.
-- `tests/test_vxrd_landmark_validator.py`
-- `.github/workflows/vxrd_landmark_asset_validator.yml`
-
-Existing accepted six Landmark atlases = local validator regression **6/6 PASS**.
-GitHub Actions now tests the validator with synthetic generated fixtures and checks that forbidden binary assets are not committed under GitHub asset staging.
-
-Correct new-asset flow:
-1. Candidate PNG stays in Drive `02_AI_Drafts` and/or its matching `11_Biomes/VXRD_Random_Hunt/Hxx_*` folder.
-2. Download/run `tools/asset_validator/validate_vxrd_landmark_atlas.py` against the candidate.
-3. Commit only JSON/LOG validation evidence + `ASSET_MANIFEST.csv` update to GitHub.
-4. Perform Windows/RMVX visual QA.
-5. Only after PASS may the PNG move/copy to Drive `12_Approved` and enter a Runtime binary delivery.
-
-New art contract: 64×64 RGBA atlas, 2×2 of four independent complete 32×32 standalone props. No object spans cells. Approved only enters runtime.
-
-## Landmark Coverage
-Accepted: H01/H02/H03/H04/H06/H07/H09/H14/H16/H19.
-Deferred dedicated-art Hunts: H05/H08/H10/H11/H12/H13/H15/H17/H18/H20/H21.
-Do not fill deferred biomes with semantically unrelated props merely to claim coverage.
-
-## Immediate Next Work
-1. Produce Batch A draft PNG art into Drive only.
-2. Run the validator locally/on downloaded candidates; persist only text evidence in GitHub.
-3. Perform Windows/RMVX visual QA before Runtime integration.
-4. Keep SHO-41 water probe independent from Landmark art work.
+Accepted Landmark Hunts: H01/H02/H03/H04/H06/H07/H09/H14/H16/H19.
+Dedicated-art deferred: H05/H08/H10/H11/H12/H13/H15/H17/H18/H20/H21.
 
 ## Immutable Rules
 - No automatic B/C/D/E scatter/stamping.
@@ -135,5 +105,10 @@ Do not fill deferred biomes with semantically unrelated props merely to claim co
 - Gate 1 structure / Battle Presentation SEALED / issue-driven only.
 - No Battle AI, damage, attack speed, Focus/C2, rewards, progression, or spatial-endpoint changes for this work.
 
-## Editor / Documentation Rule
-If a future functional candidate changes `Data/Scripts.rvdata`, `Data/Map091.rvdata`, or another Data file, completely close RPG Maker VX before overwrite and reopen afterward. Every functional delivery must include synchronized Traditional Chinese tutorial/usage documentation.
+## Immediate Next
+1. Windows run v1.06.60 SHIFT+F5 and seal SHO-21 if PASS.
+2. H07 plain-F5 matrix identifies gravel-bottom base; only then create production water semantic candidate.
+3. Continue Gate 2 script/runtime work before returning to art.
+
+## Installation / Documentation Rule
+v1.06.60 changes `Data/Scripts.rvdata`. **Completely close RPG Maker VX before overwrite, then reopen RMVX.** `Data/Map091.rvdata` is unchanged. Every functional delivery requires synchronized Traditional Chinese tutorial/usage documentation.
