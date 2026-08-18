@@ -1,7 +1,10 @@
 # CHANGELOG
 
-## v1.06.35 — Formal Gate 1 PASS Baseline
-- VXRD Acceptance Non-Combat Fixture.
-- Subsequent v1.06.36 release notes record user Windows Final Acceptance: all PASS.
-- Random Hunt structural runtime SEALED / issue-driven only.
-- Battle Presentation already Windows-accepted and SEALED in v1.06.33 chain.
+## v1.06.53 — Current Development Candidate (UNPASSED)
+- Landmark PNG Authority Foundation I.
+- Separate `Graphics/VXRD_Landmarks/` asset path.
+- Automatic B/C/D/E map tile stamping remains disabled.
+- Real-machine visual acceptance pending.
+
+## Baseline
+- v1.06.35 remains formal Gate 1 PASS until a later candidate receives real-machine PASS.

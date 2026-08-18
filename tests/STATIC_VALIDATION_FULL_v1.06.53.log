@@ -1,0 +1,44 @@
+RESULT=PASS
+PASS script_count_640_to_641 | 640->641
+PASS main_index_shift_exact | 638->639
+PASS old_non_main_prefix_byte_exact | entries=638
+PASS new_entry_id | id=1065300
+PASS new_entry_name | PMD AutoChess VXRD Landmark PNG Authority Foundation I v1.06.53
+PASS new_entry_source_exact | bytes=14390
+PASS main_byte_exact | Main
+PASS trailing_blank_byte_exact | ""
+PASS map091_byte_exact | bytes=36314
+PASS no_map_table_upper_stamp | new patch contains no map.data assignment
+PASS png_renderer_declared | png sprite authority
+PASS collision_deferred | visual acceptance first
+PASS five_hunt_profiles | H01,H04,H09,H14,H19
+PASS six_template_definitions | 6 curated templates
+PASS rmvx_restart_flag | restart reminder encoded
+SCRIPTS_COUNT=641
+SCRIPTS_BYTES=3469331
+SCRIPTS_CRC32=9B369F95
+SCRIPTS_SHA256=fd9ac2eb2eb9797a2d5448892800e18f9026a44121c8eaff0b6ef704d232504f
+MAP091_BYTES=36314
+MAP091_SHA256=206349b314be757aca7aabc338434f2ba6da93d59ee49f0394a47f62a3e46ec8
+RESULT=PASS
+PNG_COUNT=6/6
+PASS PNG cave_crystal_a.png size=64x64 mode=RGBA alpha=1
+PASS PNG dry_rock_a.png size=64x64 mode=RGBA alpha=1
+PASS PNG forest_flower_a.png size=64x64 mode=RGBA alpha=1
+PASS PNG forest_green_a.png size=64x64 mode=RGBA alpha=1
+PASS PNG mine_ore_a.png size=64x64 mode=RGBA alpha=1
+PASS PNG volcanic_ore_a.png size=64x64 mode=RGBA alpha=1
+RESULT=PASS
+PASS SOURCE_CROP forest_green_a.png sheet=TileB atlas=[[160, 161], [162, 163]]
+PASS SOURCE_CROP forest_flower_a.png sheet=TileB atlas=[[176, 177], [178, 179]]
+PASS SOURCE_CROP dry_rock_a.png sheet=TileD atlas=[[48, 49], [144, 148]]
+PASS SOURCE_CROP cave_crystal_a.png sheet=TileD atlas=[[49, 53], [65, 69]]
+PASS SOURCE_CROP mine_ore_a.png sheet=TileD atlas=[[32, 33], [34, 37]]
+PASS SOURCE_CROP volcanic_ore_a.png sheet=TileD atlas=[[50, 54], [66, 70]]
+RMVX Upper Tile Atlas -> Runtime -> Base Renderer Exhaustive Proof v1.06.53
+RESULT=PASS
+ROUNDTRIP=1024/1024
+FORMULA_ATLAS_TO_RUNTIME=base + y*8 + (x%8) + (x>=8 ? 128 : 0)
+BASES=B:0,C:256,D:512,E:768
+BASE_RENDERER_SX=(tile_id/128%2*8 + tile_id%8)
+BASE_RENDERER_SY=(tile_id%256/8%16)

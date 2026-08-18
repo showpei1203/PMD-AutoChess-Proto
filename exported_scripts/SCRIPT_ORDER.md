@@ -625,5 +625,23 @@ Source: `Data/Scripts.rvdata`
 - 0618 | ID `900618` | `PMD AutoChess Battle Presentation Acceptance Seal v1.06.33` | `0618__id_900618.rb`
 - 0619 | ID `900619` | `PMD AutoChess VXRD Windows Final Acceptance Conductor v1.06.34` | `0619__id_900619.rb`
 - 0620 | ID `900620` | `PMD AutoChess VXRD Acceptance Non-Combat Fixture v1.06.35` | `0620__id_900620.rb`
-- 0621 | ID `250` | `Main` | `0621__id_250.rb`
-- 0622 | ID `251` | `` | `0622__id_251.rb`
+- 0621 | ID `900621` | `PMD AutoChess VXRD Gate 2 Hunt Contentization Foundation I v1.06.36` | `0621__id_900621.rb`
+- 0622 | ID `900622` | `PMD AutoChess VXRD RTP Material Authority I v1.06.37` | `0622__id_900622.rb`
+- 0623 | ID `900623` | `PMD AutoChess VXRD RTP Material Authority II v1.06.38` | `0623__id_900623.rb`
+- 0624 | ID `1063900` | `PMD AutoChess Hunt Style Preview QA v1.06.39` | `0624__id_1063900.rb`
+- 0625 | ID `1064000` | `PMD AutoChess Hunt Style Correction I v1.06.40` | `0625__id_1064000.rb`
+- 0626 | ID `1064100` | `PMD AutoChess VXRD Tileset Semantic Reset I v1.06.41` | `0626__id_1064100.rb`
+- 0627 | ID `1064200` | `PMD AutoChess VXRD Native Autotile Rule Correction I v1.06.42` | `0627__id_1064200.rb`
+- 0628 | ID `1064300` | `PMD AutoChess VXRD Minimap Foundation I v1.06.43` | `0628__id_1064300.rb`
+- 0629 | ID `1064400` | `PMD AutoChess VXRD Landmark Template Authority I v1.06.44` | `0629__id_1064400.rb`
+- 0630 | ID `1064500` | `PMD AutoChess VXRD Upper Tile ID Coordinate Authority Reset v1.06.45` | `0630__id_1064500.rb`
+- 0631 | ID `1064600` | `PMD AutoChess VXRD Event Semantic Placement I v1.06.46` | `0631__id_1064600.rb`
+- 0632 | ID `1064700` | `PMD AutoChess VXRD Event Visual Identity I v1.06.47` | `0632__id_1064700.rb`
+- 0633 | ID `1064800` | `PMD AutoChess VXRD Event-Owned Marker Authority v1.06.48` | `0633__id_1064800.rb`
+- 0634 | ID `1064900` | `PMD AutoChess VXRD FS-Style Event Template Map Authority v1.06.49` | `0634__id_1064900.rb`
+- 0635 | ID `1065000` | `PMD AutoChess Map091 Editor Registration Bridge v1.06.50` | `0635__id_1065000.rb`
+- 0636 | ID `1065100` | `PMD AutoChess VXRD Map091 Authoring Guard & FS Parity I v1.06.51` | `0636__id_1065100.rb`
+- 0637 | ID `1065200` | `PMD AutoChess VXRD Map091 Event Contentization I v1.06.52` | `0637__id_1065200.rb`
+- 0638 | ID `1065300` | `PMD AutoChess VXRD Landmark PNG Authority Foundation I v1.06.53` | `0638__id_1065300.rb`
+- 0639 | ID `250` | `Main` | `0639__id_250.rb`
+- 0640 | ID `251` | `` | `0640__id_251.rb`
