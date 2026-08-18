@@ -1,6 +1,6 @@
 # MASTER_PROJECT_STATE — PMD AutoChess Proto
 
-Last Updated: 2026-08-18 14:50 +08:00
+Last Updated: 2026-08-18 15:20 +08:00
 
 ## Persistent Authority
 - Google Drive = Binary Authority.
@@ -9,40 +9,48 @@ Last Updated: 2026-08-18 14:50 +08:00
 - ChatGPT = development workspace only.
 
 ## Version State
-- Current Formal Baseline: **v1.06.54 — VXRD Landmark Single-Prop Semantic / Presence / Collision Fix I — PASS**.
-- Current Candidate: **v1.06.55 — VXRD Landmark Route Safety Audit I — UNPASSED**.
-- v1.06.55 static validation: **PASS 31/31**.
-- v1.06.55 offline deterministic route regression: **40/40 PASS** (H01/H04/H09/H14/H19 × 8 seeds).
-- Windows/RPG Maker VX real-machine acceptance for v1.06.55 is pending.
+- Current Formal Baseline: **v1.06.55 — VXRD Landmark Route Safety Audit I — PASS for five-Hunt Phase-I scope**.
+- Windows/RPG Maker VX acceptance: H01/H04/H09/H14/H19 route HISTORY PASS on 2026-08-18.
+- Static validation: PASS 31/31.
+- Offline deterministic regression: PASS 40/40 (five Hunts × 8 seeds).
+- SHO-22 remains In Progress for broader remaining-Hunt / multi-seed route stress before Landmark coverage expands.
+- Next isolated UX candidate: **SHO-35 — Random Hunt Map Loading Overlay — Real Progress Bar**, reusing battle Loading UI authority.
 
 ## GitHub Branch Authority
 ### main
-- v1.06.54 formal PASS source.
-- 642 scripts, indices `0..641`.
+- v1.06.55 formal PASS source after promotion.
+- 643 scripts, indices `0..642`.
+- v1.06.54 Script index `639`, ID `1065400`.
+- v1.06.55 Script index `640`, ID `1065500`.
+- Main index `641`; terminator index `642`.
 
 ### develop
-- v1.06.55 unpassed Candidate source.
-- 643 scripts, indices `0..642`.
-- v1.06.54 remains Script index `639`, ID `1065400`.
-- v1.06.55 = Script index `640`, ID `1065500`.
-- Main index `641`; terminator index `642`.
-- Index / ID / Name / exact decompressed Content / execution order are preserved.
+- Continuation branch from the v1.06.55 PASS point.
+- Preserve Script Index / ID / Name / exact decompressed Content / execution order.
+- Future v1.06.56 work may implement SHO-35 without altering route topology/battle logic.
 
-## Drive Binary Authority
-- Formal Baseline: `01_Current_Baseline/PMD_AutoChess_v1_06_54_FORMAL_PASS_BASELINE_LANDMARK_SINGLE_PROP_SEMANTIC_PRESENCE_COLLISION_I_20260818.zip`, Drive ID `1ilVIw9RnY5e9DmhJl8QdTyMDhrR3t0xK`.
-- Current Candidate: `02_Current_Development/PMD_AutoChess_v1_06_55_CUMULATIVE_OVERWRITE_LANDMARK_ROUTE_SAFETY_AUDIT_I_20260818.zip`, Drive ID `1gP6fdpPOVpGdZdjXuc65rbV8RQLEvexO`.
-- Test Build: `03_Test_Builds/PMD_AutoChess_v1_06_55_TEST_BUILD_UNPASSED_20260818.zip`, Drive ID `1IcFb735xTSXpOaw8BleEKAeeop-Lu_hL`.
-- v1.06.55 updates `Data/Scripts.rvdata`; `Data/Map091.rvdata` is unchanged.
+## v1.06.55 Windows Route Acceptance
+User-supplied `PMD_VXRD_LandmarkRoute_Audit_HISTORY.log`:
+- H01: PASS, WALKABLE 719, REACHABLE 719, BLOCKED 0, EXIT_REACHABLE=1, BAD empty.
+- H04: PASS, 749 / 747, BLOCKED 2, EXIT_REACHABLE=1, BAD empty.
+- H09: PASS, 855 / 854, BLOCKED 1, EXIT_REACHABLE=1, BAD empty.
+- H14: PASS, 631 / 630, BLOCKED 1, EXIT_REACHABLE=1, BAD empty. Same run recorded twice; duplicate only.
+- H19: PASS, 820 / 818, BLOCKED 2, EXIT_REACHABLE=1, BAD empty.
+- All sampled runs REMOVED=0; no unsafe Landmark needed rejection in these real-machine seeds.
 
-## v1.06.55 Route Safety Authority
-SHO-22 is In Progress.
-- Pre-event gate audits generated entrance → exit reachability using the v1.06.54 hard-Landmark block mask.
-- Post-event gate audits required semantic targets after Map091 materialization / relocation: EXIT, RETREAT, INFO, TREASURE, RECOVERY, RARE, ELITE, ENCOUNTER when present.
-- Target cell or adjacent walkable interaction cell may satisfy reachability.
-- If a hard Landmark breaks a required route, later hard placements are rejected first and Landmark masks are rebuilt.
-- Sealed Gate 1 room/corridor topology is never rewritten as a decoration repair.
-- H01 soft decoration does not enter the blocking mask.
-- Runtime evidence: `PMD_VXRD_LandmarkRoute_Audit_LATEST.log` and `PMD_VXRD_LandmarkRoute_Audit_HISTORY.log`.
+## SHO-22 Remaining Work
+- Expand deterministic route stress beyond the five accepted Hunts / seeds.
+- Exercise unsafe hard-Landmark rejection (`REMOVED>0`) where reproducible.
+- Preserve Map091 semantic reachability and sealed Gate 1 topology.
+- Only after broader route confidence may Landmark visual coverage expand through remaining H01–H21 Hunts.
+
+## SHO-35 Loading UI Authority
+Random Hunt black-screen loading should reuse the battle Loading visual language:
+- Script 0415 `Window_PMDBattleResourceLoadingV1029`: centered title/percent, blue progress bar, stage + detail.
+- Script 0395 `Sprite_PMDLoadingPokemonV1007`: running Pokémon mascot.
+- Script 0439 refresh-throttle policy: stage changes immediate; same stage around 3% steps or max ~180 ms silence; retain 0% and 100%.
+- Map percentage must be driven by real checkpoints, not elapsed-time animation: Hunt init → Map090 layout/terrain → Landmark/collision → Map091 materialize/relocate → route audit → sprites/map refresh → 100% reveal.
+- Do not lengthen load merely to animate the UI.
 
 ## No-Regression Rules
 - Automatic B/C/D/E tile scatter/stamping remains prohibited.
@@ -50,13 +58,8 @@ SHO-22 is In Progress.
 - Map090 remains Random Hunt Runtime Map.
 - Map091 remains H01–H21 shared Event Template Library.
 - Gate 1 Random Hunt structural runtime / accepted Battle Presentation remain SEALED / issue-driven only.
-- Do not alter Battle AI, damage, attack speed, Focus/C2, rewards or spatial endpoints for SHO-22.
+- Do not alter Battle AI, damage, attack speed, Focus/C2, rewards or spatial endpoints for Loading UI work.
 - Do not reorder Scripts.rvdata entries for repository aesthetics.
-
-## Immediate Acceptance
-Install v1.06.55 and generate at least one floor each in H01 / H04 / H09 / H14 / H19 in the same session. Then collect `PMD_VXRD_LandmarkRoute_Audit_HISTORY.log`.
-Every completed RUN should report `RESULT=PASS` and `EXIT_REACHABLE=1`. `REMOVED=0` and `REMOVED>0` are both valid PASS outcomes.
-Battle LOG is unnecessary unless Runtime/battle itself fails.
 
 ## Editor / Documentation Rule
 Any functional delivery that updates `Data/Scripts.rvdata`, `Data/Map091.rvdata`, or other Data files requires: completely close RPG Maker VX before overwrite, then reopen RMVX. Every functional update must include synchronized Traditional Chinese tutorial/usage documentation.
