@@ -1,4 +1,5 @@
 name: v1.06.57 Exact Source Finalizer
+# trigger after workflow registration
 
 on:
   push:
