@@ -1,0 +1,29 @@
+PMD AutoChess v1.06.56 Static Validation
+01 PASS entry_count_644 644
+02 PASS baseline_entries_0_640_byte_exact
+03 PASS new_index_641 1065600 PMD AutoChess VXRD Random Hunt Real Loading Overlay I v1.06.56
+04 PASS main_shift_642
+05 PASS terminator_shift_643
+06 PASS new_body_exact bytes=19295
+07 PASS battle_window_reference
+08 PASS running_pokemon_reference
+09 PASS real_checkpoint_landmark
+10 PASS real_checkpoint_template
+11 PASS real_checkpoint_relocate
+12 PASS real_checkpoint_route
+13 PASS scene_map_transfer_hook
+14 PASS map090_only_transfer
+15 PASS no_input_update_during_loader_module
+16 PASS no_fake_timer
+17 PASS percent_monotonic_guard
+18 PASS 100_only_pass_close
+19 PASS generation_fail_guard
+20 PASS error_cleanup
+21 PASS original_transfer_delay_retained
+22 PASS refresh_throttle_3pct
+23 PASS refresh_throttle_180ms
+24 PASS bcde_stamp_disabled
+25 PASS project_version_10656
+26 PASS traditional_chinese_maintenance_header
+SUMMARY=26/26
+RESULT=PASS
