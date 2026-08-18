@@ -1,16 +1,15 @@
-PMD AutoChess Proto v1.06.56 測試與使用說明（繁體中文）
+PMD AutoChess Proto v1.06.56 使用說明（繁體中文）
 
 【版本狀態】
-正式 Baseline：v1.06.55 — Landmark Route Safety Audit I，五 Hunt Phase-I Windows/RMVX PASS。
-目前 Candidate：v1.06.56 — Random Hunt Real Loading Overlay I，尚未實機 PASS。
+正式 Baseline：v1.06.56 — Random Hunt Real Loading Overlay I，Windows / RPG Maker VX 已正式 PASS。
 
 【安裝前一定要做】
 本版更新 Data/Scripts.rvdata。
-請先「完全關閉 RPG Maker VX」，再把 ZIP 覆蓋到遊戲專案根目錄；覆蓋完成後重新開啟 RMVX。
+若需要重新覆蓋本版，請先「完全關閉 RPG Maker VX」，再把 ZIP 覆蓋到遊戲專案根目錄；覆蓋完成後重新開啟 RMVX。
 Data/Map091.rvdata 本版沒有修改。
 
-【本版新增】
-Random Hunt 讀取地圖時，原本只有黑幕的等待區間會顯示和戰鬥 Loading 同風格的視窗：
+【本版功能】
+Random Hunt 讀取地圖時，原本只有黑幕的等待區間現在會顯示和戰鬥 Loading 同風格的視窗：
 - 探索地圖準備中 XX%
 - 藍色 Loading 進度條
 - 目前真實處理階段
@@ -22,32 +21,35 @@ Random Hunt 讀取地圖時，原本只有黑幕的等待區間會顯示和戰�
 畫面會依序反映：
 1. 建立 Map090 房間與地形
 2. 配置 Landmark／碰撞
-3. 建立 Map091 探索事件
-4. 配置事件位置
-5. 檢查入口、出口與必要事件路線
-6. 準備 Map / Spriteset 畫面
-7. 真正完成後才顯示 100%
+3. 檢查入口到出口路線
+4. 建立 Map091 探索事件
+5. 配置事件位置
+6. 檢查必要事件路線
+7. 準備 Map / Spriteset 畫面
+8. 真正完成後才顯示 100%
 
-【這輪怎麼測】
-不用再測 Battle LOG。
-請看三種情境：
-A. 從 Hunt Selector 第一次進入 H01 或其他 Hunt。
-B. 完成一層戰鬥條件後，從出口前往下一層。
+【已正式實機驗收】
+使用者於 Windows / RPG Maker VX 實機確認 Loading 畫面正常。
+Runtime LOG 結果：
+- RESULT=PASS
+- FINAL_PERCENT=100
+- REAL_CHECKPOINTS=1
+- FAKE_TIMER=0
+- INPUT_PASSTHROUGH=0
+- H01 Floor 1：ELAPSED_MS=4353
+- Loading UI：UI_MS=151 / UI_MAX_MS=23
+
+【正常使用】
+以下情境會自動顯示 Loading：
+A. 從 Hunt Selector 第一次進入 Hunt。
+B. 從出口前往下一層。
 C. 離開 Hunt 後再進另一個 Hunt。
 
-每種情境確認：
-- 黑幕期間能看到 Loading 視窗，而不是像當機一樣只剩黑畫面。
-- 外觀和既有戰鬥 Loading 明顯同一套風格。
-- 百分比只往前，不倒退。
-- 階段文字會隨 Map090／Landmark／Event／Route／畫面準備變化。
-- 跑動寶可夢正常。
-- 100% 後立即顯示完成的地圖，不長時間卡在 100%。
-- 沒有白閃、舊地圖殘影、半張新地圖提早露出。
-- Loading 期間按鍵不應穿透。
+正常情況不需要任何事件呼叫或按鍵操作。
+Loading 期間不會讓玩家輸入穿透到尚未完成的探索地圖。
 
-【若要給證據】
-主要給一張 Loading 中途截圖即可。
-另外遊戲根目錄會產生：
+【開發／除錯證據】
+遊戲根目錄會產生：
 PMD_VXRD_MapLoading_LATEST.log
 正常應看到 RESULT=PASS、REAL_CHECKPOINTS=1、FAKE_TIMER=0、INPUT_PASSTHROUGH=0。
 
@@ -56,3 +58,7 @@ PMD_VXRD_MapLoading_LATEST.log
 - v1.06.44 Landmark runtime IDs 不恢復。
 - Map090 = Random Hunt Runtime Map。
 - Map091 = H01～H21 Event Template Library。
+- Loading UI 不得修改 Battle AI、Damage、Attack Speed、Focus/C2、Reward、Progression。
+
+【後續開發】
+v1.06.56 已封版。下一階段回到 SHO-22 Landmark collision / route broader stress，再往剩餘 Hunt 的 Landmark 視覺內容擴張。
