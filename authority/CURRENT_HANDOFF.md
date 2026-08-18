@@ -1,76 +1,78 @@
 # CURRENT_HANDOFF — PMD AutoChess Proto
 
-Last Updated: 2026-08-18 17:46 +08:00
+Last Updated: 2026-08-18 18:30 +08:00
 
 ## Persistent Authority
-Migration is complete. Do not rebuild or roll it back unless a persistent Authority source is genuinely inaccessible.
+Migration is complete. Do not rebuild or roll it back unless a persistent source is genuinely inaccessible.
 - Drive = Binary Authority
 - GitHub = Source Authority
 - Linear = Development Authority
 - ChatGPT = workspace only
 
-## Formal Baseline
+## Current Formal Baseline
 **v1.06.56 — VXRD Random Hunt Real Loading Overlay I — FORMAL PASS.**
-SHO-35 is Done / SEALED.
+Drive baseline ID `1JuKQu89h6GEOs6YoxiMFafVBYLTHM_fT`.
+SHO-35 Done. SHO-22 Route Safety Done / SEALED.
 
-## Route Safety
-**SHO-22 is Done / SEALED.**
-Evidence:
-- 840 production-like cases = 21 Hunts × 40 seeds.
-- 11 adversarial cases.
-- 10 unsafe hard Landmarks actually removed.
-- failures 0.
-- topology rewrite 0.
-- automatic B/C/D/E stamping 0.
+## v1.06.57 Status
+**Windows Visual PASS / Source seal pending.**
+User reported H02/H03/H06/H07/H16 vegetation/wetland expansion `看起來ok`.
+- Current Development Drive ID `1OSHRyT1WCaYzWwT011Lqjm3y76kR5Ik0`.
+- Test Build Drive ID `1LyFebyMWoMiojgHGAnYwVJIB-zTMOlYM`.
+- v1.06.57 = Binary index 642 / ID 1065700.
+- Exact Source SHA256 `be91725e395e87bb79553d11d0bb125f913d7e8f2aabf164609e688e4e820ede`.
+- SHO-36 stays In Progress only for GitHub canonical manifest convergence.
 
 ## Active Candidate
-**v1.06.57 — VXRD Landmark Vegetation / Wetland Coverage Expansion I — UNPASSED.**
-Linear: SHO-36 In Progress.
+**v1.06.58 — VXRD Water-Bottom Autotile Pair Authority I — UNPASSED.**
 
-Expansion only:
-- H02 — soft/passable green vegetation, min 1 max 2.
-- H03 — soft/passable vegetation + flowers, min 2 max 3.
-- H06 — soft/passable dense vegetation + flowers, min 2 max 3.
-- H07 — soft/passable low vegetation, min 1 max 2.
-- H16 — soft/passable primordial forest vegetation, min 2 max 3.
+User requested the two visible-bottom native VX A1 water autotiles beside the ice/iceberg decoration group:
+- left/natural-bottom family -> base `2048`;
+- right/stone-bottom family -> base `2240`.
 
-Existing H01/H04/H09/H14/H19 stay accepted.
-Deferred for dedicated art: H05/H08/H10/H11/H12/H13/H15/H17/H18/H20/H21.
+Current mapping:
+- H02 -> `2048` natural/grass-earth bottom.
+- H07 -> `2240` stone/hard bottom.
+- H12 -> `2240` hard/ice bottom.
+- H17 -> `2240` hard/ice bottom.
+- old deep/opaque base `2096` revoked from current Random Hunt water use.
 
-## v1.06.57 Binary Authority
-Current Development Drive ID: `1OSHRyT1WCaYzWwT011Lqjm3y76kR5Ik0`.
-Test Build Drive ID: `1LyFebyMWoMiojgHGAnYwVJIB-zTMOlYM`.
-
-Validated Binary:
-- 645 Scripts, 0..644.
-- v1.06.57 = index 642 / ID 1065700.
-- Main 643; terminator 644.
-- source SHA256 `be91725e395e87bb79553d11d0bb125f913d7e8f2aabf164609e688e4e820ede`.
-- Scripts.rvdata SHA256 `0a76471dc85f8e8a95492468e5615c238b0694a02e4638a2e706e050cd89fe09`.
-- baseline 0..641 preserved PASS.
-- static 23/23 PASS; Ruby syntax PASS.
-- Map091 unchanged.
+Validation:
+- 646 Scripts, indices 0..645.
+- v1.06.58 = index 643 / ID 1065800.
+- Main 644; terminator 645.
+- Static 28/28 PASS; Ruby syntax PASS.
+- v1.06.58 exact Source SHA256 `aae49d6c64fbacbba1b077a42992a5f4e954a75876ce6ba155f58b1a1c2ff7b1`.
+- `Data/Scripts.rvdata` SHA256 `001f94df75298b079f2dcccc097dbb174b1f200acd2ed9eb934cb2af39059ac0`.
 - Traditional Chinese tutorial updated.
 
-## GitHub Source-only Blocker
-`develop` contains v1.06.57 runtime source, but `SCRIPT_INDEX.tsv / SCRIPT_ORDER.md` tail remains at the older 644-entry v1.06.56 layout.
-Expected validated tail:
-- 642 / 1065700 / v1.06.57
-- 643 / 250 / Main
-- 644 / 251 / terminator
+Binary Authority:
+- Current Development Drive ID `14VmbnX9nCx-CPusUhceWkcvlkwuO0EST`.
+- Test Build Drive ID `1rYcztk1tMcL7Se5XeMz1RtJ6tXeC2FtF`.
 
-PR #1 corrected the stale exact-source SHA gate, but the one-shot finalizer did not produce a follow-up commit. Do not promote v1.06.57 to Formal Baseline until this Source Authority tail converges and Windows acceptance passes. Binary visual testing may proceed because the delivered Scripts.rvdata was independently rebuilt and validated.
+GitHub Source:
+- exact source staged at `.v10658_import/0643__id_1065800.rb` on `develop`;
+- canonical `SCRIPT_INDEX.tsv / SCRIPT_ORDER.md` still have the earlier v1.06.57 tail blocker;
+- do not promote v1.06.57/v1.06.58 until manifests converge.
+
+Linear:
+- SHO-36 = Windows Visual PASS / Source seal pending.
+- SHO-40 = v1.06.58 Water-Bottom Autotile Pair Acceptance, In Progress.
 
 ## Immediate Windows Test
-Completely close RPG Maker VX before overwrite because `Data/Scripts.rvdata` changes; overwrite, then reopen RMVX.
-Test only H02/H03/H06/H07/H16.
-Confirm minimum presence, single 32×32 rendering, ecological plausibility, soft passability, normal scrolling / floor-Hunt refresh, Loading overlay still normal, and no automatic B/C/D/E scatter or giant fragments.
-Expected log: `PMD_VXRD_LandmarkCoverage_Audit_LATEST.log`.
+Completely close RPG Maker VX, overwrite v1.06.58, reopen RMVX, then:
+1. H02: natural/grass-earth visible-bottom water.
+2. H07: stone/hard visible-bottom water.
+3. H12/H17: hard-bottom version, no obvious grassy bottom.
+4. confirm water animation, autotile edges/shoreline, non-walkability.
+5. confirm Loading Overlay / Landmark / Route Safety still normal.
+
+Audit log: `PMD_VXRD_WaterBottom_Audit_LATEST.log`.
+Screenshots only needed if water type, shoreline or tile joining looks wrong.
 
 ## Immutable Rules
 - No automatic B/C/D/E scatter/stamping.
-- v1.06.44 Landmark runtime IDs remain revoked.
-- Map090 = Random Hunt runtime map.
-- Map091 = H01–H21 shared Event Template Library.
-- Gate 1 structure / accepted Battle Presentation remain SEALED / issue-driven only.
-- Do not alter Battle AI, damage, attack speed, Focus/C2, rewards or progression.
+- v1.06.44 upper-tile Landmark IDs remain revoked.
+- Map090 = Random Hunt runtime map; Map091 = H01–H21 shared Event Template Library.
+- No unrelated Battle AI / Damage / Attack Speed / Focus-C2 / Reward / Progression change.
+- Every functional update includes Traditional Chinese tutorial/usage documentation.
