@@ -1,0 +1,47 @@
+name: VXRD Landmark Asset Validator
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - 'asset_staging/VXRD_Landmarks/**'
+      - 'tools/asset_validator/validate_vxrd_landmark_atlas.py'
+      - '.github/workflows/vxrd_landmark_asset_validator.yml'
+  pull_request:
+    paths:
+      - 'asset_staging/VXRD_Landmarks/**'
+      - 'tools/asset_validator/validate_vxrd_landmark_atlas.py'
+      - '.github/workflows/vxrd_landmark_asset_validator.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Pillow
+        run: python -m pip install --disable-pip-version-check pillow
+      - name: Locate candidate PNGs
+        id: scan
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t files < <(find asset_staging/VXRD_Landmarks -maxdepth 1 -type f -iname '*.png' | sort)
+          echo "count=${#files[@]}" >> "$GITHUB_OUTPUT"
+          printf '%s\n' "${files[@]}" > /tmp/vxrd_landmark_pngs.txt
+          echo "candidate_count=${#files[@]}"
+      - name: Validate candidate atlases
+        if: steps.scan.outputs.count != '0'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t files < /tmp/vxrd_landmark_pngs.txt
+          python tools/asset_validator/validate_vxrd_landmark_atlas.py --json "${files[@]}" | tee /tmp/vxrd_landmark_validation.json
+      - name: No candidates present
+        if: steps.scan.outputs.count == '0'
+        run: echo 'No staged Landmark PNG candidates; gate is idle.'
