@@ -1,6 +1,5 @@
 name: v1.06.57 Exact Source Finalizer
-# trigger after workflow registration
-# retrigger 2026-08-18 16:43 +08:00 after v1.06.56 Windows PASS
+# trigger through PR merge; exact staging SHA corrected from live GitHub blob
 
 on:
   push:
@@ -24,7 +23,7 @@ jobs:
         shell: bash
         run: |
           set -e
-          expected='2434b08840eca58c037dafbbbce8c2076507a4fb2a5b7399c96857563ab64e3d'
+          expected='be91725e395e87bb79553d11d0bb125f913d7e8f2aabf164609e688e4e820ede'
           got=$(sha256sum .v10657_import/0642__id_1065700.rb | awk '{print $1}')
           test "$got" = "$expected"
           ruby -c .v10657_import/0642__id_1065700.rb
