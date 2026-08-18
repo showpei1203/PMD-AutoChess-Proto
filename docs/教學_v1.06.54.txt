@@ -1,18 +1,23 @@
-PMD AutoChess Proto v1.06.54 測試與使用說明（繁體中文）
+PMD AutoChess Proto v1.06.54 使用說明（繁體中文）
 
-【重要】
+【版本狀態】
+本版已於 2026-08-18 完成 Windows / RPG Maker VX 實機驗收並正式 PASS。
+目前正式 Baseline：v1.06.54。
+
+【安裝注意】
 本版更新 Data/Scripts.rvdata。覆蓋前請完全關閉 RPG Maker VX，覆蓋後重新開啟 RMVX。
 
-【本輪只測】
-H01 / H04 / H09 / H14 / H19
-
-【確認】
-1. 每張 Hunt 至少看得到 1 個 Landmark。
-2. 一個 Landmark 只是一個 32x32 單一物件，不可再出現四個物件擠成 2x2。
-3. 物件靠房間邊緣，彼此不要緊貼成堆。
+【已驗收內容】
+1. H01 / H04 / H09 / H14 / H19 每張 Hunt 至少會出現 1 個 Landmark。
+2. 一個 Landmark 只顯示一個 32x32 單一物件，不再把 64x64 的 2x2 素材表整張顯示。
+3. 物件位置與間距已通過實機視覺驗收。
 4. H01 花草／低植被可走過。
 5. H04 岩石、H09 晶岩、H14 礦石、H19 火山岩／礦晶不可走過。
-6. 相機捲動時 Landmark 跟著地圖；換 Hunt／換層後舊物件消失。
+6. 相機捲動與 Hunt／樓層刷新正常，舊 Landmark 不殘留。
+7. 不使用 automatic B/C/D/E tile scatter/stamping；v1.06.44 Landmark runtime IDs 持續停用。
 
-主要提供截圖即可；除非 Runtime／戰鬥錯誤，不需要 Battle LOG。
-五張全部 PASS 後才進完整 collision + route audit。
+【下一階段】
+進入 Landmark II — Collision / Route Audit。
+完整路徑稽核會確認硬質 Landmark 不會堵住唯一通道、入口→出口、以及必要事件的可達路徑。若某個 Landmark 會造成路徑失效，應拒絕或重新配置該 Landmark，不改動已封版的 Gate 1 房間拓撲。
+
+Battle LOG 只有在 Runtime 或戰鬥本身出錯時才需要。
