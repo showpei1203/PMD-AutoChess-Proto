@@ -1,0 +1,75 @@
+name: Import develop Source Authority v1.06.53
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/import-develop-source-authority.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  import-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download temporary public transport copy
+        shell: bash
+        run: |
+          set -euo pipefail
+          FILE_ID='13be1QgE5DNAX8NN-2FFoN8olooSVeQ6s'
+          curl -fL --retry 3 --retry-delay 2 \
+            "https://drive.usercontent.google.com/download?id=${FILE_ID}&export=download&confirm=t" \
+            -o /tmp/develop-seed.zip
+          echo 'c06d31c3be2b23df34d2ebbd8c6e87f413526f37106fb7603df8270438900837  /tmp/develop-seed.zip' | sha256sum -c -
+
+      - name: Extract and verify text-only source seed
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/develop-seed
+          mkdir -p /tmp/develop-seed
+          unzip -q /tmp/develop-seed.zip -d /tmp/develop-seed
+          rm -rf /tmp/develop-seed/exported_scripts.tmp
+          if find /tmp/develop-seed -type f \( -iname '*.rvdata' -o -iname '*.zip' -o -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.ogg' -o -iname '*.mp3' -o -iname '*.wav' \) | grep -q .; then
+            echo 'Forbidden binary/build content found in GitHub source seed.' >&2
+            exit 1
+          fi
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path('/tmp/develop-seed')
+          scripts = sorted((root/'exported_scripts').glob('*.rb'))
+          assert len(scripts) == 641, len(scripts)
+          manifest = (root/'exported_scripts'/'SCRIPT_INDEX.tsv').read_text(encoding='utf-8').splitlines()
+          assert len(manifest) == 642, len(manifest)
+          assert (root/'exported_scripts'/'SCRIPT_ORDER.md').is_file()
+          print('verified scripts=641 manifest_rows=641')
+          PY
+
+      - name: Install exact v1.06.53 candidate source tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf exported_scripts docs authority tests tools
+          cp -a /tmp/develop-seed/exported_scripts ./
+          for d in docs authority tests tools; do
+            if [ -d "/tmp/develop-seed/$d" ]; then cp -a "/tmp/develop-seed/$d" ./; fi
+          done
+          for f in README.md CHANGELOG.md; do
+            if [ -f "/tmp/develop-seed/$f" ]; then cp -f "/tmp/develop-seed/$f" "./$f"; fi
+          done
+          rm -f .github/workflows/import-develop-source-authority.yml
+
+      - name: Commit unpassed Candidate Source Authority
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'showpei1203'
+          git config user.email 'showpei1203@gmail.com'
+          git add -A
+          git commit -m 'Import v1.06.53 unpassed Candidate Source Authority'
+          git push origin HEAD:develop
