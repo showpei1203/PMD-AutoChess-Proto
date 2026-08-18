@@ -1,0 +1,13 @@
+--- diagnostics/VXRD_A1_INTERACTIVE_MATRIX_PROBE_v1.06.59a.rb standalone
++++ v1.06.60 combined TEST SUITE binary source
+@@
+-    if Input.trigger?(Input::F5)
++    if Input.trigger?(Input::F5) && !Input.press?(Input::SHIFT) && !Input.press?(Input::CTRL) && !Input.press?(Input::ALT)
+
+Reason:
+- plain F5 belongs to the A1 Interactive Matrix Probe;
+- SHIFT+F5 belongs exclusively to the Map091 Full Acceptance Harness;
+- CTRL/ALT modifiers are excluded to avoid future diagnostic shortcut collisions.
+
+The v1.06.60 packaged `Scripts.rvdata` contains the patched form above.
+Formal v1.06.58 source is unaffected.
