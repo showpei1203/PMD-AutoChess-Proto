@@ -1,0 +1,15 @@
+PMD AutoChess VXRD Live A1 Source Audit
+DATE=2026-08-18
+LIVE_SNAPSHOT=PMD_AutoChess_WINDOWS_LIVE_FULL_PROJECT_SNAPSHOT_NEEDS_REVIEW_20260818.zip
+DRIVE_ID=1Aqn2pCP9zdl6BXWyCQTE3nLIK4gbA8Oz
+GRAPHICS_SYSTEM_FILE_COUNT=7
+EMBEDDED_TILEA1_COUNT=0
+RESULT=PASS_STANDARD_RTP_SCOPE
+SYSTEM_FILE=cursor.png
+SYSTEM_FILE=IconSet.png
+SYSTEM_FILE=Number+.png
+SYSTEM_FILE=Number-.png
+SYSTEM_FILE=PMD_FocusOverlay_v1055.png
+SYSTEM_FILE=Thumbs.db
+SYSTEM_FILE=Window.png
+CONCLUSION=No project-embedded Graphics/System/TileA1.* was present in the captured Windows live project snapshot. Water palette identification therefore stays within standard VX/RTP A1 unless another runtime override is independently proven.
