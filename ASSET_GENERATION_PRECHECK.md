@@ -27,6 +27,7 @@
 - A SAM2 miss does not authorize deleting a formal object; a SAM2 hit does not override sealed PMD presentation or runtime data.
 - SAM2-assisted outputs remain **DRAFT** until normal PMD visual/map validation passes.
 - SAM2 workers must comply with Background Execution Authority and should release VRAM after each job on constrained local GPUs.
+- **Dense-map refinement:** add post-SAM mask-canvas coverage sanity checks in addition to bbox filtering. When local landmarks/buildings/gates/towers/props are too small in a full scene, use overlapping tiled detection, remap boxes to master coordinates, and de-duplicate with concept-level NMS before SAM2. Prefer full-scene detection for macro structures; per-class bbox/mask caps are benchmark profiles.
 
 ## Required read order
 `Shared Authority -> PMD Precheck -> latest PMD visual/asset benchmark -> confirm scale/canvas/layer mode -> generate/edit -> optional SAM2 semantic audit -> Layer-Split Quality Gate when mapping`
