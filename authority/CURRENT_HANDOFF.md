@@ -24,7 +24,6 @@ GitHub `main` = 647 Scripts, 0..646:
 - 646 terminator
 v1.06.61 source SHA256 `a07d64dafa83d30958edd6045281f820c9e08831ea56757d0e977e8b58461d7d`.
 main merge commit `49f966b548b8e2e4d485cf55839bd03c1c7598cb`.
-develop contains this main commit as an ancestor; behind_by=0 while retaining diagnostics/assets.
 
 ## Accepted v1.06.61 Water Semantics
 - kind4/base2240 natural grass-ground clear water.
@@ -42,9 +41,8 @@ Windows v1.06.61a evidence: 49/49 source/pages/graphics/triggers/lists, 49/49 se
 
 ## Gate 2 Script Seal
 SHO-46 = Done.
-v1.06.61b aggregate FAIL was TEST-only: only `map091_harness_missing` because it called wrong method name. All Production-facing gates passed. Corrected v1.06.61c uses existing `vxrd_map091_full_acceptance_v10660` entry point and changes no Production byte. v1.06.61c Test Build Drive ID `1duoqxwWAvHnIP4w_mb0Sxwvfc_WyrANU`; no rerun required.
-
-Gate 2 script/runtime work is now sealed. Gate 2 overall stays In Progress only for dedicated-art/content coverage (SHO-42 etc.).
+v1.06.61b aggregate FAIL was TEST-only: only `map091_harness_missing` because it called the wrong method name. All Production-facing gates passed. Corrected v1.06.61c changes no Production byte and requires no rerun.
+Gate 2 script/runtime work is sealed. Gate 2 overall remains In Progress only for dedicated visual/content asset coverage.
 
 ## Active Next Script Work — SHO-50 Gate 3 Baseline Audit I
 Roadmap Gate 3 = Hunt Risk / Reward Curve.
@@ -57,8 +55,8 @@ Audit before tuning:
 6. Mid-run Marshal/save-load preservation of accounting state.
 7. Deterministic seed remains unchanged.
 
-Known current source areas for Gate 3:
-- v1.06.01 Room Type Authority: Rare/Elite rates.
+Known current source areas:
+- v1.06.01 Room Type Authority.
 - v1.05.78 Hunt Region Economy + v0.94 Loot Context Bonus Rolls.
 - v1.06.04 Run Entry / stats initialization.
 - v1.06.05 Floor Progression / Settlement.
@@ -68,6 +66,14 @@ Known current source areas for Gate 3:
 - v1.06.29 sequential clear + retreat UX.
 
 Phase I must be TEST-only instrumentation, no balance changes. Only after the baseline log is proven may Phase II tune risk/reward.
+
+### Current Gate 3 Test Build
+`PMD_AutoChess_v1_06_61d_TEST_BUILD_GATE3_RISK_REWARD_BASELINE_AUDIT_I_20260819.zip`
+Drive ID `11R0Cp0sef16RL3GCEfo0aHleJGnu4VX7`.
+ZIP SHA256 `33f29e2c836ae5ae3ba524a0d618c59bd05126b657779d186719fce0c27926e4`.
+Scripts.rvdata SHA256 `26671a86deb76ab3831fd08d08499ef9be26cf55705742a469c95fbc026550aa`.
+648 Scripts: Formal 0..644 preserved; Gate3 audit index645 / ID1066140; Main646; terminator647.
+User action: active Random Hunt / Map090 + plain F5, then return `PMD_GATE3_RiskRewardBaseline_LATEST.log`. No battle or treasure interaction is required.
 
 ## Known Metadata Debt
 SHO-47 Low: `Game.ini` title still says v1.05.40. UI metadata only; not Runtime rollback.
