@@ -13,21 +13,28 @@
 - **32x32 is the player/tile WORLD-SCALE reference, not a total map-canvas limit and not a monster size cap.** `544x416` is only a viewport reference; large Hunt/parallax/map authoring canvases may exceed it while preserving 32px scale consistency.
 - **Monsters/evolutions/bosses are not limited to 32x32 pixels.** Size follows species silhouette, battle role and framing.
 - Generic asset rules must not overwrite sealed PMD battle presentation/orientation decisions.
-- For large map/parallax authoring, preserve `Master + Ground-Only + exhaustive All Non-Ground Objects` at identical canvas registration.
-- All Non-Ground Objects must include landmarks, statues/fountains, buildings, walls, gates, trees, props and small environmental objects even when they are not expected to cover the actor.
-- Occlusion/Par is derived later by human/tool authority and must not replace the complete Non-Ground layer.
-- Map split delivery must pass the shared Layer-Split Quality Gate: exact registration, coherent Ground, exhaustive Non-Ground coverage, clean alpha/edges, no residue/broken holes, and recomposition against Master.
+- For map/parallax authoring, preserve `Master + Ground + complete PAR` at identical canvas registration.
+- **Ground** contains only true ground/terrain surfaces, floor/terrain tiles, flowers and grass.
+- **PAR = everything else.** Buildings, landmarks, statues/fountains, walls, gates, towers, roofs, trees/trunks/canopies, bushes, rocks, fences, signs, stalls, bridges, structural stairs/steps and every environmental prop belong in PAR.
+- Occlusion is not the criterion for PAR membership; an actor-covering subset may be derived later by human/tool authority.
+- Map split delivery must pass the shared Layer-Split Quality Gate, with `MASTER ≈ GROUND + COMPLETE PAR` as the completeness test.
 
 ## Grounded SAM2 semantic audit authority
-- Grounded SAM2 is a **semantic QA / missing-object / candidate-mask assistant**, not final PMD map/layer authority. Never use a raw union mask as Ground / Non-Ground / Collision / Landmark truth.
+- Grounded SAM2 is a **semantic QA / missing-object / candidate-mask assistant**, not final PMD map/layer authority. Never use a raw union mask as Ground / PAR / Collision / Landmark truth.
 - Prefer category batches and alias fallback rather than one large mixed prompt, especially for Random Hunt and landmark maps.
 - Apply oversized-bbox sanity filtering before unioning masks. Normally localized classes with implausibly large canvas coverage must be flagged/excluded unless human or benchmark review accepts them.
 - Use class-specific threshold profiles rather than one global value; small props normally require stricter box thresholds than large architecture, while small landmarks may need lower recall thresholds.
-- Compare SAM2 detections and per-class masks against PMD Master/landmark authoring and the final exhaustive object set to find probable omissions or false positives.
+- Compare SAM2 detections and per-class masks against PMD Master/landmark authoring and the complete PAR set to find probable omissions or false positives.
 - A SAM2 miss does not authorize deleting a formal object; a SAM2 hit does not override sealed PMD presentation or runtime data.
 - SAM2-assisted outputs remain **DRAFT** until normal PMD visual/map validation passes.
 - SAM2 workers must comply with Background Execution Authority and should release VRAM after each job on constrained local GPUs.
-- **Dense-map refinement:** add post-SAM mask-canvas coverage sanity checks in addition to bbox filtering. When local landmarks/buildings/gates/towers/props are too small in a full scene, use overlapping tiled detection, remap boxes to master coordinates, and de-duplicate with concept-level NMS before SAM2. Prefer full-scene detection for macro structures; per-class bbox/mask caps are benchmark profiles.
+- **Dense-map refinement:** add post-SAM mask-canvas coverage sanity checks in addition to bbox filtering. When local landmarks/buildings/gates/towers/props are too small in a full scene, use overlapping tiled detection, remap boxes to master coordinates, and de-duplicate with concept-level NMS before SAM2.
+
+## Binary split override
+This supersedes older wording that treated PAR as only actor-occluding material:
+`GROUND = true ground/terrain surfaces + floor/terrain tiles + flowers + grass`
+`PAR = EVERYTHING ELSE`
+No non-Ground object may be omitted from PAR because of height, collision, occlusion, importance, or SAM2 classification.
 
 ## Required read order
 `Shared Authority -> PMD Precheck -> latest PMD visual/asset benchmark -> confirm scale/canvas/layer mode -> generate/edit -> optional SAM2 semantic audit -> Layer-Split Quality Gate when mapping`
