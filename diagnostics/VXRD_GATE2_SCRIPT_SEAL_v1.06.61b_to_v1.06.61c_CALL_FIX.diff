@@ -1,0 +1,20 @@
+--- VXRD_GATE2_SCRIPT_SEAL_HARNESS_v1.06.61b.rb
++++ VXRD_GATE2_SCRIPT_SEAL_HARNESS_v1.06.61c.rb
+@@
+-#   v1.06.61b TEST-ONLY
++#   v1.06.61c TEST-ONLY
+@@
+-$imported['PMD_AutoChess_VXRDGate2ScriptSealHarness_v10661b']=true
++$imported['PMD_AutoChess_VXRDGate2ScriptSealHarness_v10661c']=true
+@@
+-      map091=respond_to?(:vxrd_map091_full_acceptance_v10661a) ? (vxrd_map091_full_acceptance_v10661a rescue {:pass=>false,:bad=>[:map091_exception]}) : {:pass=>false,:bad=>[:map091_harness_missing]}
++      map091=respond_to?(:vxrd_map091_full_acceptance_v10660) ? (vxrd_map091_full_acceptance_v10660 rescue {:pass=>false,:bad=>[:map091_exception]}) : {:pass=>false,:bad=>[:map091_harness_missing]}
+@@
+-      lines << 'PMD AutoChess VXRD Gate 2 Script Seal v1.06.61b TEST-ONLY'
++      lines << 'PMD AutoChess VXRD Gate 2 Script Seal v1.06.61c TEST-ONLY'
+
+Reason:
+- v1.06.61a corrects Map091 by overriding the existing `vxrd_map091_full_acceptance_v10660` method.
+- It intentionally does not create a new `vxrd_map091_full_acceptance_v10661a` entry point.
+- v1.06.61b therefore false-failed with `map091_harness_missing` even though Map091 had already Windows-PASSed.
+- Production v1.06.61 is unchanged.
