@@ -1,6 +1,6 @@
 # CURRENT_HANDOFF — PMD AutoChess Proto
 
-Last Updated: 2026-08-19 22:20 +08:00
+Last Updated: 2026-08-19 22:40 +08:00
 
 ## Persistent Authority
 - Drive = Binary / Asset Authority.
@@ -8,78 +8,57 @@ Last Updated: 2026-08-19 22:20 +08:00
 - Linear = Development Authority.
 - ChatGPT = workspace only.
 
-## User Direction
-**Prioritize script/runtime progression.** Do not drift into image generation unless explicitly requested.
-
 ## Formal Baseline
-**v1.06.62 — Gate 3 Floor-Depth Risk Curve + Settlement Visibility I — FORMAL PASS.**
-Drive Baseline ID `1BIccvXgLp2Deu_RPYfT_dmEm43S5NXCW`.
-Formal Scripts.rvdata SHA256 `61030225160f7ba2e1c12390183c841bcf038644c7b49fc2eb5069217129f190`.
+**v1.06.63 — Gate 3 Completion Incentive + Retreat Clarity I — FORMAL WINDOWS PASS.**
 
-GitHub `main` canonical = 648 Scripts, 0..647:
-- 642 v1.06.57
-- 643 v1.06.58
-- 644 / ID1066100 v1.06.61
-- 645 / ID1066200 v1.06.62
-- 646 Main
-- 647 terminator
-v1.06.62 source SHA256 `bed1c3410378944656ff5f4a6b62615942bc02e27e74ef39bae8e4c42a1ee980`.
-Main also preserves latest v2.4 map placement authority. `develop` is behind main by 0 and retains diagnostics/assets.
+Drive Formal Baseline ID `1ge_N7CxmLjLoMqfVz66yVNnF40w9kJFD`.
+Formal Scripts.rvdata SHA256 `c78066713e8a96822c7f89ec200a8d1f341d3c1edb452dc4932a86ac5d481205`.
+Accepted v1.06.63: completion rolls2/2/3/4/5, normal loot unchanged, retreat/defeat/partial bonus0, ProjectState schema44/version1.06.63 PASS, RNG/reward/map/session mutation0. SHO-52 Done.
 
-## v1.06.62 Windows Seal
-SHO-51 Done.
-Windows v1.06.62b:
-- RESULT=PASS / STATIC_CURVE=PASS / CURRENT_FLOOR=PASS.
-- H02 Style Preview correctly resolves canonical Floor1/3 while preview session max remains1.
-- ProjectState schema43 / version1.06.62 PASS.
-- Extra RNG=0 / map regen=0 / reward grant=0 / session mutation=0.
-- Accepted floor-depth curves are sealed.
+GitHub actual Formal tail = 649 Scripts: 645 v1.06.62, 646/ID1066300 v1.06.63, 647 Main, 648 terminator. Formal promotion commit `435b758f4b7cb4024e7c87b9bcc0ba5d22446fbe`.
 
-## Active Candidate — v1.06.63 / SHO-52
-**Gate 3 Completion Incentive + Retreat Clarity I — UNPASSED.**
+Known metadata debt: `SCRIPT_INDEX.tsv` / `SCRIPT_ORDER.md` still have old v1.06.62 tail because GitHub Actions did not execute the refresh. Actual script files and Binary Formal are correct; refresh manifests at next Formal source promotion. Inactive workflow/trigger removed. Preserve concurrent map-authority v2.5 work on `main`.
 
-Production Candidate Drive ID `1rcFIdAHDQnnl8CcgsPX_8AcgHfpFkJVt`.
-ZIP SHA256 `d68dc37c9f2977ef9c4892e13afff1fcbc2a6460659da8dd7f1324b58ddcdb3c`.
-Scripts.rvdata SHA256 `c78066713e8a96822c7f89ec200a8d1f341d3c1edb452dc4932a86ac5d481205`.
-Source SHA256 `bf3ed879de7ab6f6a435040311c32a418c155a28ea03e307643e63dee5a78aa8`.
+## Current Work — SHO-53 / v1.06.64
+**Gate 3 Run Accounting Semantic / Persistence I — WINDOWS CANDIDATE.**
 
-Production = 649 Scripts:
-- Formal v1.06.62 indices 0..645 byte-exact preserved.
-- index646 / ID1066300 = v1.06.63.
-- Main647 / terminator648.
+Root cause: v1.06.08 legacy `loot_results` counts every matching Hunt pool result; Completion Bonus uses the same Hunt pool and resolves before final stats snapshot. Reward is not duplicated, but total loot semantics include Completion while UI describes Bonus separately.
 
-Candidate rules:
-- Full-clear Completion rolls = **2 / 2 / 3 / 4 / 5**.
-- Only Tier5 changes 4→5.
-- Completion remains full-clear only.
-- Retreat / defeat Completion Bonus remains0; immediate rewards remain retained.
-- No partial-clear bonus; no new items/materials/currency.
-- Normal Battle/Treasure/Rare/Elite loot policy unchanged. Tier5 5-roll override is completion-context-only.
-- Settlement text explicitly states Completion roll count or no-completion-bonus on retreat/defeat.
+Candidate:
+- `loot_results` remains total compatibility field.
+- add `immediate_loot_results` and `completion_bonus_results`.
+- classify using completion Context marker.
+- active legacy v1.06.63 run migration safe.
+- old completed result fallback derives split from `completion_bonus[:results]`.
+- migration order fixed before first post-upgrade legacy total increment to prevent double count.
+- Marshal persistence static PASS.
+- complete settlement: `途中掉落 X｜通關 Bonus Y抽→Z項`.
+- retreat/defeat: `途中掉落 X｜成果保留｜通關 Bonus 0`.
+- no reward/RNG/Battle/Map/Item change.
 
-## Current Test Build — v1.06.63a
-Drive ID `1vHRvjamHZhp9pqY43j1OZqmuBW5HzhD5`.
-ZIP SHA256 `06f72f1018c5bfd0b0f13f98d9734101ae6d0770d484787c344d60c799a62f28`.
-650 Scripts: Production index646, TEST index647 / ID1066310, Main648, terminator649.
+Production Candidate Drive ID `1ew90l2THkDqtURm3gDv6gkyelUhbwCUF`.
+ZIP SHA256 `274e0d348942c089a399c6fcc4f1496160557f03ed69f1fc3085c88ed1d02a8b`.
+Scripts SHA256 `d1abb3249c54b55703fc05991a11da10090db625f9ca3176e60cb4dfda82fda8`.
+650 Scripts; Formal0..646 preserved; v1.06.64 index647/ID1066400; Main648; terminator649.
 
-User action:
-1. Completely close RPG Maker VX.
-2. Overwrite v1.06.63a and reopen RMVX.
-3. Enter any active Random Hunt / Map090.
-4. Press **plain F5**.
-5. Return `PMD_GATE3_CompletionIncentive_LATEST.log`.
+Windows Test Build Drive ID `1dSaI1hH2ZTGzAl1tWPL-OXoSzaD05EMl`.
+ZIP SHA256 `2f4eda23db0b38b5557738208b472c0538e46adb24bf2795a9f591468fac183b`.
+Test Scripts SHA256 `a41e0ac0a89c0a5cbe2a2f5d061d16712e65d9cd28e34b0317bdb8d6ae8f2340`.
+651 Scripts; TEST index648/ID1066410.
 
-Expected PASS proves target curve2/2/3/4/5, normal loot policy unchanged, completion-only override5, retreat/defeat/partial bonus0, ProjectState schema44/version1.06.63, RNG0/reward grant0/map regen0/session mutation0.
+## User Acceptance Action
+1. Fully close RPG Maker VX.
+2. Overwrite with v1.06.64a TEST build.
+3. Reopen RMVX.
+4. Enter any active Random Hunt / Map090.
+5. Press plain F5.
+6. Expected overlay `Gate 3 Run Accounting PASS`.
+7. Return `PMD_GATE3_RunAccounting_LATEST.log`.
 
-## Sealed Context
-- Gate1 structure and Battle Presentation sealed.
-- Gate2 script/runtime sealed; Map091 sealed.
-- v1.06.62 floor-depth Rare/Elite curve sealed.
-- Gate2 art SHO-42 remains parallel/secondary.
-- v2.4 map placement authority is preserved and must not be overwritten by Runtime branch work.
+TEST is read-only: RNG_CALLS=0 / REWARD_GRANT=0 / MAP_REGEN=0 / SESSION_MUTATION=0.
 
-## Metadata Debt
-SHO-47 Low: Game.ini title remains v1.05.40; metadata only.
+## Immutable / Sealed
+Gate1 structural Random Hunt and Battle Presentation sealed. Map091 sealed. v1.06.62 floor-depth curve sealed. v1.06.63 completion curve sealed. No automatic B/C/D/E stamping. v1.06.44 Landmark IDs revoked. No Battle AI/damage/attack-speed/Focus-C2/spatial endpoint/species acquisition changes in SHO-53.
 
-## Install / Documentation Rule
-Whenever a delivered build changes `Data/Scripts.rvdata` or another Data file: **fully close RPG Maker VX before overwrite, then reopen it.** Functional deliveries include synchronized Traditional Chinese documentation.
+## Install / Documentation
+Any build changing `Data/Scripts.rvdata` or other Data files requires fully closing RPG Maker VX before overwrite and reopening afterward. Functional deliveries include synchronized Traditional Chinese documentation.
