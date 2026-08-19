@@ -1,0 +1,115 @@
+name: v1.06.63 Formal Source Finalizer
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/v10663_formal_finalizer.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Finalize canonical v1.06.63 source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main develop
+          git show origin/develop:candidate_source/VXRD_GATE3_COMPLETION_INCENTIVE_RETREAT_CLARITY_v1.06.63.rb > /tmp/v10663.rb
+          test "$(sha256sum /tmp/v10663.rb | awk '{print $1}')" = "bf3ed879de7ab6f6a435040311c32a418c155a28ea03e307643e63dee5a78aa8"
+          test "$(sha256sum exported_scripts/0645__id_1066200.rb | awk '{print $1}')" = "bed1c3410378944656ff5f4a6b62615942bc02e27e74ef39bae8e4c42a1ee980"
+          test -f exported_scripts/0646__id_250.rb
+          test -f exported_scripts/0647__id_251.rb
+
+          cp /tmp/v10663.rb exported_scripts/0646__id_1066300.rb
+          mv exported_scripts/0647__id_251.rb exported_scripts/0648__id_251.rb
+          mv exported_scripts/0646__id_250.rb exported_scripts/0647__id_250.rb
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+
+          root=Path('exported_scripts')
+          cand=root/'0646__id_1066300.rb'
+          main=root/'0647__id_250.rb'
+          term=root/'0648__id_251.rb'
+          def meta(p):
+              b=p.read_bytes()
+              return len(b), hashlib.sha256(b).hexdigest()
+
+          csz,csha=meta(cand)
+          msz,msha=meta(main)
+          tsz,tsha=meta(term)
+          assert csha=='bf3ed879de7ab6f6a435040311c32a418c155a28ea03e307643e63dee5a78aa8'
+          assert tsha=='e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+
+          idx=root/'SCRIPT_INDEX.tsv'
+          lines=idx.read_text(encoding='utf-8').splitlines()
+          assert lines[-3].startswith('645\t1066200\tPMD AutoChess Gate 3 Floor-Depth Risk Curve + Settlement Visibility I v1.06.62\t0645__id_1066200.rb\t')
+          assert lines[-2].startswith('646\t250\tMain\t0646__id_250.rb\t')
+          assert lines[-1].startswith('647\t251\t\t0647__id_251.rb\t')
+          lines=lines[:-2]
+          lines.append(f'646\t1066300\tPMD AutoChess Gate 3 Completion Incentive + Retreat Clarity I v1.06.63\t0646__id_1066300.rb\t{csz}\t{csha}')
+          lines.append(f'647\t250\tMain\t0647__id_250.rb\t{msz}\t{msha}')
+          lines.append(f'648\t251\t\t0648__id_251.rb\t{tsz}\t{tsha}')
+          idx.write_text('\n'.join(lines)+'\n',encoding='utf-8',newline='')
+
+          order=root/'SCRIPT_ORDER.md'
+          ol=order.read_text(encoding='utf-8').splitlines()
+          assert ol[-3].startswith('- 0645 | ID `1066200` | `PMD AutoChess Gate 3 Floor-Depth Risk Curve + Settlement Visibility I v1.06.62`')
+          assert ol[-2]=='- 0646 | ID `250` | `Main` | `0646__id_250.rb`'
+          assert ol[-1]=='- 0647 | ID `251` | `` | `0647__id_251.rb`'
+          ol=ol[:-2]
+          ol.append('- 0646 | ID `1066300` | `PMD AutoChess Gate 3 Completion Incentive + Retreat Clarity I v1.06.63` | `0646__id_1066300.rb`')
+          ol.append('- 0647 | ID `250` | `Main` | `0647__id_250.rb`')
+          ol.append('- 0648 | ID `251` | `` | `0648__id_251.rb`')
+          order.write_text('\n'.join(ol)+'\n',encoding='utf-8',newline='')
+
+          scripts=sorted(root.glob('[0-9][0-9][0-9][0-9]__id_*.rb'))
+          assert len(scripts)==649, len(scripts)
+          for i,p in enumerate(scripts):
+              assert p.name.startswith(f'{i:04d}__id_'), (i,p.name)
+          assert scripts[-3].name=='0646__id_1066300.rb'
+          assert scripts[-2].name=='0647__id_250.rb'
+          assert scripts[-1].name=='0648__id_251.rb'
+          assert len(lines)==649
+          assert sum(1 for x in ol if x.startswith('- '))==649
+
+          log=Path('tests/FORMAL_PROMOTION_v1.06.63.log')
+          log.write_text(
+              'PMD AutoChess v1.06.63 Formal Source Promotion\n'
+              'RESULT=PASS\n'
+              'WINDOWS_ACCEPTANCE=PASS_V10663A\n'
+              'FORMAL_PREVIOUS=v1.06.62\n'
+              'SCRIPTS=649\n'
+              'INDEX_RANGE=0..648\n'
+              'V10663_INDEX=646\n'
+              'V10663_ID=1066300\n'
+              f'V10663_SHA256={csha}\n'
+              'COMPLETION_ROLLS=1:2,2:2,3:3,4:4,5:5\n'
+              'NORMAL_ROLL_POLICY=UNCHANGED\n'
+              'RETREAT_COMPLETION_BONUS=0\n'
+              'DEFEAT_COMPLETION_BONUS=0\n'
+              'PARTIAL_CLEAR_BONUS=0\n'
+              'RNG_CALLS=0\nREWARD_GRANT=0\nMAP_REGEN=0\nSESSION_MUTATION=0\n'
+              'MAIN_INDEX=647\nTERMINATOR_INDEX=648\n',
+              encoding='utf-8')
+          PY
+
+          ruby -c exported_scripts/0646__id_1066300.rb
+          rm .github/workflows/v10663_formal_finalizer.yml
+          git config user.name 'showpei1203'
+          git config user.email 'showpei1203@gmail.com'
+          git add -A
+          git commit -m 'Promote v1.06.63 Gate 3 completion incentive Formal source'
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
