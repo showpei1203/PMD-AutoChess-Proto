@@ -24,7 +24,7 @@ GitHub `main` canonical Formal tail = 647 Scripts, indices 0..646:
 - 646 / ID 251 / terminator
 v1.06.61 source SHA256 `a07d64dafa83d30958edd6045281f820c9e08831ea56757d0e977e8b58461d7d`.
 Formal main promotion merge commit `49f966b548b8e2e4d485cf55839bd03c1c7598cb`.
-`develop` includes Formal main as an ancestor and is behind main by 0; develop-only diagnostics/assets are preserved.
+`develop` includes Formal main as an ancestor and preserves develop-only diagnostics/assets.
 
 ## v1.06.61 Accepted A1 Liquid Semantic Authority
 User-confirmed native VX semantics:
@@ -80,6 +80,8 @@ Roadmap authority from archived v1.06.30 handoff:
 4. avoid junk materials without a real economic sink.
 
 Phase I is **audit only**. Do not rebalance values until current formulas and session accounting are measured and proven. TEST-only instrumentation may be added; no Production balance change yet.
+
+Current TEST-only Gate 3 Baseline Audit: v1.06.61d, Drive ID `11R0Cp0sef16RL3GCEfo0aHleJGnu4VX7`; 648 Scripts, Formal 0..644 byte-exact preserved, audit index645 / ID1066140. Source baseline audit already proves current Rare/Elite rates are Tier-only (no floor-depth scaling), completion roll curve is 2/2/3/4/4 by Tier, and settlement hides several already-recorded accounting fields. Windows F5 evidence remains pending.
 
 ## Known Metadata Debt
 SHO-47: Windows title bar still says `PMD AutoChess Proto v1.05.40` because captured `Game.ini` hardcodes that title. Metadata/UI only; does not indicate Runtime rollback. Low priority.
