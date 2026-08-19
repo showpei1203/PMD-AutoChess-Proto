@@ -1,71 +1,81 @@
 # CURRENT_HANDOFF — PMD AutoChess Proto
 
-Last Updated: 2026-08-18 19:02 +08:00
+Last Updated: 2026-08-19 19:05 +08:00
 
 ## Persistent Authority
-Migration is complete. Do not rebuild or roll it back unless a persistent Authority source is genuinely inaccessible.
-- Drive = Binary Authority
-- GitHub = Source Authority
-- Linear = Development Authority
-- ChatGPT = workspace only
+- Drive = Binary / Asset Authority.
+- GitHub = Source / Spec / Validator / diagnostic-text Authority.
+- Linear = Development Authority.
+- ChatGPT = workspace only.
 
-## Current Formal Baseline
-**v1.06.58 — VXRD Water-Bottom Autotile Pair Authority I — FORMAL PASS.**
+## User Direction
+**Prioritize script/runtime progression.** SHO-42 art pipeline stays prepared but secondary unless art work is explicitly requested.
 
-Formal Baseline ZIP:
-`01_Current_Baseline/PMD_AutoChess_v1_06_58_FORMAL_PASS_BASELINE_WATER_BOTTOM_AUTOTILE_PAIR_AUTHORITY_I_20260818.zip`
-Drive ID `1bpvrm1OQBDPMwU8ac06Q-zmZSvTOTHIQ`.
+## Formal Baseline
+**v1.06.61 — VXRD A1 Liquid Surface Semantic Authority II + ProjectState Convergence — FORMAL PASS.**
+Drive Baseline ID `1VBidko6cYYcOAwTONmDe1p1lK_hTN3VU`.
+Formal Scripts.rvdata SHA256 `eb5be92748d998bdf90540cba80bd6c3a280493fa874d5bba15fca127ab8ad00`.
 
-## Accepted v1.06.57 / v1.06.58 Results
-- v1.06.57 H02/H03/H06/H07/H16 vegetation Landmark expansion: Windows visual PASS.
-- v1.06.58 H07/H12/H17 water: user explicitly reported OK.
-- H02 current water is also accepted; no forced rework.
-- v1.06.56 real Loading overlay remains accepted.
-- SHO-22 Route Safety remains Done / SEALED.
+GitHub `main` = 647 Scripts, 0..646:
+- 642 v1.06.57
+- 643 v1.06.58
+- 644 / ID1066100 v1.06.61
+- 645 Main
+- 646 terminator
+v1.06.61 source SHA256 `a07d64dafa83d30958edd6045281f820c9e08831ea56757d0e977e8b58461d7d`.
+main merge commit `49f966b548b8e2e4d485cf55839bd03c1c7598cb`.
 
-## GitHub Source Authority
-Former Source-tail blocker is resolved.
-PR #2 exact finalizer succeeded, canonical manifests were regenerated, staging was removed, and the stale duplicate terminator was removed after compare audit.
+## Accepted v1.06.61 Water Semantics
+- kind4/base2240 natural grass-ground clear water.
+- kind6/base2336 castle/stone artificial clear water.
+- kind8/base2432 rough dirt/cave clear water.
+- kind10/base2528 other artificial clear water.
+- kind14/base2720 lava.
 
-Canonical tail:
-- 642 / 1065700 / v1.06.57
-- 643 / 1065800 / v1.06.58
-- 644 / 250 / Main
-- 645 / 251 / terminator
-Total 646 Scripts, indices 0..645.
+Formal assignments: H02=2240, H07=2432, H12=2240, H17=2240.
+User explicitly accepted H07 kind8/base2432 on Windows (`h07水正常`). SHO-41 Done.
 
-`main` was fast-forwarded to the sealed v1.06.58 Source tree. `develop` continues from the same accepted Source baseline for future work.
+## Map091 Seal
+SHO-21 = Done / FORMAL PASS / SEALED.
+Windows v1.06.61a evidence: 49/49 source/pages/graphics/triggers/lists, 49/49 semantic deep clones, parser12/12, FIXED/CONTROL/SHARED PASS, 126/126 Hunt/Floor matrix, runtime 9/9, Game_Map + Hunt-session Marshal PASS, no Map090/Map091 mutation.
 
-## Accepted Water Mapping
-- H02 -> A1 base 2048.
-- H07 -> A1 base 2240.
-- H12 -> A1 base 2240.
-- H17 -> A1 base 2240.
-- active Random Hunt base 2096 revoked.
-- Water remains native A1 animated/autotile, rectangle-only, non-walkable, with A2 shoreline; no rivers/bridges.
+## Gate 2 Script Seal
+SHO-46 = Done.
+v1.06.61b aggregate FAIL was TEST-only: only `map091_harness_missing` because it called the wrong method name. All Production-facing gates passed. Corrected v1.06.61c changes no Production byte and requires no rerun.
+Gate 2 script/runtime work is sealed. Gate 2 overall remains In Progress only for dedicated visual/content asset coverage.
 
-## Important Water Clarification
-The user clarified that the desired **gravel/stone-bottom clear water** is a different palette item: **two editor palette cells to the right of the currently accepted H07/H12/H17 clear-bottom water**. It is visible-bottom water with gravel/pebbles.
+## Active Next Script Work — SHO-50 Gate 3 Baseline Audit I
+Roadmap Gate 3 = Hunt Risk / Reward Curve.
+Audit before tuning:
+1. Rare / Elite room rates by tier and floor depth.
+2. Completion bonus rolls/value and eligibility.
+3. Retreat/defeat retained rewards versus completion-only bonus.
+4. Run accounting fields: battles/wins/losses/escapes/recruits/treasures/recoveries/Rare/Elite/loot/floor wins/floors cleared.
+5. What settlement UI currently shows versus what is only stored internally.
+6. Mid-run Marshal/save-load preservation of accounting state.
+7. Deterministic seed remains unchanged.
 
-Do NOT guess its runtime base ID. First establish editor/runtime mapping evidence, then decide which Hunt profiles should use it. This clarification does not invalidate v1.06.58.
+Known current source areas:
+- v1.06.01 Room Type Authority.
+- v1.05.78 Hunt Region Economy + v0.94 Loot Context Bonus Rolls.
+- v1.06.04 Run Entry / stats initialization.
+- v1.06.05 Floor Progression / Settlement.
+- v1.06.06 Node lifecycle Treasure/Recovery accounting.
+- v1.06.08 Battle/Recruit/Loot Accounting.
+- v1.06.09 Save/Load Resume Safety.
+- v1.06.29 sequential clear + retreat UX.
 
-## Landmark Coverage
-Accepted: H01/H02/H03/H04/H06/H07/H09/H14/H16/H19.
-Deferred dedicated-art Hunts: H05/H08/H10/H11/H12/H13/H15/H17/H18/H20/H21.
-Do not fill deferred biomes with semantically unrelated props just to claim coverage.
+Phase I is TEST-only instrumentation, no balance changes. Only after the baseline log is proven may Phase II tune risk/reward.
 
-## Immediate Next Work
-1. Identify and prove the exact runtime A1 base for the gravel-bottom clear-water palette item.
-2. Continue Gate 2 dedicated-art planning/production for remaining Hunts.
-3. Keep Route Safety, Loading, Map091 semantics, and sealed Gate 1 behavior unchanged.
+## Known Metadata Debt
+SHO-47 Low: `Game.ini` title still says v1.05.40. UI metadata only; not Runtime rollback.
 
 ## Immutable Rules
-- No automatic B/C/D/E scatter/stamping.
-- v1.06.44 Landmark runtime IDs remain revoked.
-- Map090 = Random Hunt runtime map.
-- Map091 = H01–H21 shared Event Template Library.
-- Gate 1 structure / Battle Presentation SEALED / issue-driven only.
-- No Battle AI, damage, attack speed, Focus/C2, rewards, progression, or spatial-endpoint changes for this work.
+- No automatic B/C/D/E stamping.
+- v1.06.44 Landmark IDs revoked.
+- Map090 Runtime / Map091 Template Library roles unchanged.
+- Gate1 + Battle Presentation sealed.
+- Gate3 Audit I does not change Battle AI/damage/attack speed/Focus-C2/spatial endpoints/species acquisition.
 
-## Editor / Documentation Rule
-If a future functional candidate changes `Data/Scripts.rvdata`, `Data/Map091.rvdata`, or another Data file, completely close RPG Maker VX before overwrite and reopen afterward. Every functional delivery must include synchronized Traditional Chinese tutorial/usage documentation.
+## Install / Documentation
+Whenever a delivered build changes `Data/Scripts.rvdata` or another Data file: **fully close RPG Maker VX before overwrite, then reopen it.** Functional deliveries include synchronized Traditional Chinese documentation.
