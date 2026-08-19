@@ -1,6 +1,6 @@
 # CURRENT_HANDOFF — PMD AutoChess Proto
 
-Last Updated: 2026-08-19 22:40 +08:00
+Last Updated: 2026-08-20 06:00 +08:00
 
 ## Persistent Authority
 - Drive = Binary / Asset Authority.
@@ -9,79 +9,51 @@ Last Updated: 2026-08-19 22:40 +08:00
 - ChatGPT = workspace only.
 
 ## Formal Baseline
-**v1.06.63 — Gate 3 Completion Incentive + Retreat Clarity I — FORMAL WINDOWS PASS.**
+**v1.06.64 — Gate 3 Run Accounting Semantic / Persistence I — FORMAL WINDOWS PASS / SEALED.**
 
-Drive Formal Baseline ID `1ge_N7CxmLjLoMqfVz66yVNnF40w9kJFD`.
-Formal Scripts.rvdata SHA256 `c78066713e8a96822c7f89ec200a8d1f341d3c1edb452dc4932a86ac5d481205`.
+Formal Drive package:
+`PMD_AutoChess_v1_06_64_FORMAL_PASS_BASELINE_GATE3_RUN_ACCOUNTING_SEMANTIC_PERSISTENCE_I_20260820.zip`
+Drive ID `1xmWQZwWBrpRBNWYY_s1WuuJ_cernsp0X`.
+Scripts SHA256 `d1abb3249c54b55703fc05991a11da10090db625f9ca3176e60cb4dfda82fda8`.
 
-Accepted v1.06.63 evidence:
-- RESULT=PASS.
-- completion rolls 2/2/3/4/5.
-- normal loot policy unchanged.
-- retreat/defeat/partial bonus0.
-- ProjectState schema44/version1.06.63 PASS.
-- RNG / reward grant / map regen / session mutation = 0.
-- SHO-52 Done.
+Windows PASS: `STATIC_ACCOUNTING=PASS`, legacy/new 9=7+2, Marshal PASS, live H02 migration PASS, ProjectState schema45/version1.06.64 PASS, RNG/Reward/Map/Session mutation all0.
+Linear SHO-53 = Done.
 
-GitHub actual Formal tail = 649 Scripts:
-- 645 v1.06.62.
-- 646 / ID1066300 v1.06.63.
-- 647 Main.
-- 648 terminator.
-Formal promotion commit `435b758f4b7cb4024e7c87b9bcc0ba5d22446fbe`.
+GitHub `main` actual Formal tail = 650 Scripts:
+- 646 v1.06.63
+- 647 v1.06.64
+- 648 Main
+- 649 terminator
+Formal promotion commit `579ba711e6c8f2326291f0a69fcecc10c0de5ee0`.
 
-Known metadata debt: `SCRIPT_INDEX.tsv` / `SCRIPT_ORDER.md` still have the old v1.06.62 tail because GitHub Actions did not execute the refresh workflow. Actual script files and Binary Formal are correct; refresh manifests at next Formal source promotion. Inactive workflow/trigger have been removed. Preserve concurrent map-authority v2.5 work on `main`.
+Known metadata debt: `SCRIPT_INDEX.tsv` / `SCRIPT_ORDER.md` tail remains stale because GitHub Actions did not execute the refresh workflow. Actual Formal source files and Binary are correct. Dead workflow removed. Map Authority v2.5 must be preserved.
 
-## Current Work — SHO-53 / v1.06.64
-**Gate 3 Run Accounting Semantic / Persistence I — WINDOWS CANDIDATE.**
+## Current Candidate
+**v1.06.65 — Gate 3 Integrated Run Summary / Risk-Reward Seal I**
+Linear SHO-54 = In Progress.
 
-Root cause:
-- v1.06.08 legacy `loot_results` counts every matching Hunt loot result.
-- Completion Bonus uses the same Hunt loot pool and resolves before final stats snapshot.
-- Therefore completed-run `loot_results` contains Completion Bonus while settlement also describes Bonus separately.
-- Reward is not duplicated; accounting semantics are mixed.
+Production Drive ID `1ibVoQ5OM-BzJ1ut7iALmcXrXX4pmUgpG`.
+Production ZIP SHA256 `65fb786aaf3d67bae5498ac3fd964cadefa99292018ea840943be71fb7b18374`.
+Production Scripts SHA256 `b71c05300d6003cc0e03cca3be1dd2a3b27d282643fc17c3d3fbf966fa61cab5`.
+651 Scripts; v1.06.65 index648/ID1066500.
 
-Candidate behavior:
-- keep `loot_results` as total compatibility field.
-- add `immediate_loot_results` and `completion_bonus_results`.
-- classify using existing completion Context marker.
-- active v1.06.63 legacy run migration is safe.
-- old completed result fallback derives split from `completion_bonus[:results]`.
-- first post-upgrade result migration order fixed to prevent double count.
-- Marshal persistence verified in static fixture.
-- settlement complete: `途中掉落 X｜通關 Bonus Y抽→Z項`.
-- retreat/defeat: `途中掉落 X｜成果保留｜通關 Bonus 0`.
-- no reward/RNG/Battle/Map/Item change.
+Windows TEST v1.06.65a Drive ID `1Elimfw7jGarxFlWTyytstjmKkoixIo-W`.
+TEST ZIP SHA256 `7f4528c22322397f41005fb9a52478047bb51562557f0dfca639f9f9b0f5ba7f`.
+TEST Scripts SHA256 `a614bb0547a4f60b5930cfbb0d3144d4631b2044d7abe2d8939c8eeec6139b4c`.
+652 Scripts; TEST index649/ID1066510.
 
-Production Candidate Drive ID `1ew90l2THkDqtURm3gDv6gkyelUhbwCUF`.
-Production ZIP SHA256 `274e0d348942c089a399c6fcc4f1496160557f03ed69f1fc3085c88ed1d02a8b`.
-Production Scripts SHA256 `d1abb3249c54b55703fc05991a11da10090db625f9ca3176e60cb4dfda82fda8`.
-650 Scripts; Formal0..646 preserved; v1.06.64 index647/ID1066400; Main648; terminator649.
+Static PASS: integrated v1.06.62/.63/.64, exact risk endpoints, monotonic curve, Completion 2/2/3/4/5, complete/retreat/defeat/legacy fallback, Marshal, summary mutation0, Reward/RNG/Map changes0.
 
-Windows Test Build Drive ID `1dSaI1hH2ZTGzAl1tWPL-OXoSzaD05EMl`.
-Test ZIP SHA256 `2f4eda23db0b38b5557738208b472c0538e46adb24bf2795a9f591468fac183b`.
-Test Scripts SHA256 `a41e0ac0a89c0a5cbe2a2f5d061d16712e65d9cd28e34b0317bdb8d6ae8f2340`.
-651 Scripts; TEST index648/ID1066410.
-
-## User Acceptance Action
-1. Fully close RPG Maker VX.
-2. Overwrite with v1.06.64a TEST build.
+## Immediate Windows Test
+1. Completely close RPG Maker VX.
+2. Overwrite `Data/Scripts.rvdata` with v1.06.65a TEST build.
 3. Reopen RMVX.
-4. Enter any active Random Hunt / Map090.
+4. Enter an active Random Hunt / Map090.
 5. Press plain F5.
-6. Expected overlay `Gate 3 Run Accounting PASS`.
-7. Return `PMD_GATE3_RunAccounting_LATEST.log`.
+6. Expect overlay `Gate 3 Integrated Seal PASS`.
+7. Return `PMD_GATE3_IntegratedSeal_LATEST.log`.
 
-TEST is read-only: RNG_CALLS=0 / REWARD_GRANT=0 / MAP_REGEN=0 / SESSION_MUTATION=0.
+If Windows PASS with RNG_CALLS0 / REWARD_GRANT0 / MAP_REGEN0 / SESSION_MUTATION0, promote v1.06.65 Formal and mark Gate 3 Risk / Reward core SEALED / issue-driven only.
 
-## Immutable / Sealed
-- Gate1 structural Random Hunt and Battle Presentation sealed.
-- Map091 sealed.
-- v1.06.62 floor-depth curve sealed.
-- v1.06.63 completion curve sealed.
-- no automatic B/C/D/E stamping.
-- v1.06.44 Landmark IDs revoked.
-- no Battle AI/damage/attack-speed/Focus-C2/spatial endpoint/species acquisition changes in SHO-53.
-
-## Install / Documentation
-Any build changing `Data/Scripts.rvdata` or other Data files requires fully closing RPG Maker VX before overwrite and reopening afterward. Functional deliveries include synchronized Traditional Chinese documentation.
+## No Regression
+Do not alter Battle AI/damage/attack speed/Focus-C2/spatial endpoints/species acquisition, sealed Gate 3 curves, Map090/Map091 structure, A1/Loading, or automatic B/C/D/E policy. Every functional Data update requires Traditional Chinese tutorial and RMVX editor restart before/after overwrite.
