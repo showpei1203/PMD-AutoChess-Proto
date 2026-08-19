@@ -1,0 +1,95 @@
+name: Finalize v1.06.62 exact source
+
+on:
+  pull_request:
+    branches: [develop]
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    if: github.head_ref == 'finalize-v10662'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+      - name: Rebuild canonical source tail
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64,zlib,hashlib,re
+
+          payload=Path('.github/v10662_source_payload.txt').read_text().strip()
+          src=zlib.decompress(base64.urlsafe_b64decode(payload.encode()))
+          expected='bed1c3410378944656ff5f4a6b62615942bc02e27e74ef39bae8e4c42a1ee980'
+          got=hashlib.sha256(src).hexdigest()
+          assert got==expected, (got,expected)
+
+          ex=Path('exported_scripts')
+          old_main=ex/'0645__id_250.rb'
+          old_term=ex/'0646__id_251.rb'
+          assert old_main.exists() and old_term.exists()
+          main_bytes=old_main.read_bytes(); term_bytes=old_term.read_bytes()
+          assert hashlib.sha256(main_bytes).hexdigest()=='8fdfe50524b8d32a91901e636c6100dba33a42baa6ff09a8153f31786a585558'
+          assert hashlib.sha256(term_bytes).hexdigest()=='e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+
+          (ex/'0645__id_1066200.rb').write_bytes(src)
+          (ex/'0646__id_250.rb').write_bytes(main_bytes)
+          (ex/'0647__id_251.rb').write_bytes(term_bytes)
+          old_main.unlink(); old_term.unlink()
+
+          tsv=ex/'SCRIPT_INDEX.tsv'
+          rows=[]
+          for line in tsv.read_text(encoding='utf-8').splitlines():
+            try: idx=int(line.split('\t',1)[0])
+            except: continue
+            if idx<645: rows.append(line)
+          def row(idx,id,name,fn,data):
+            return '\t'.join([str(idx),str(id),name,fn,str(len(data)),hashlib.sha256(data).hexdigest()])
+          rows += [
+            row(645,1066200,'PMD AutoChess Gate 3 Floor-Depth Risk Curve + Settlement Visibility I v1.06.62','0645__id_1066200.rb',src),
+            row(646,250,'Main','0646__id_250.rb',main_bytes),
+            row(647,251,'','0647__id_251.rb',term_bytes),
+          ]
+          tsv.write_text('\n'.join(rows)+'\n',encoding='utf-8')
+
+          order=ex/'SCRIPT_ORDER.md'
+          lines=order.read_text(encoding='utf-8').splitlines()
+          kept=[]
+          for line in lines:
+            m=re.match(r'- (\d{4}) \|',line)
+            if m and int(m.group(1))>=645: continue
+            kept.append(line)
+          kept += [
+            '- 0645 | ID `1066200` | `PMD AutoChess Gate 3 Floor-Depth Risk Curve + Settlement Visibility I v1.06.62` | `0645__id_1066200.rb`',
+            '- 0646 | ID `250` | `Main` | `0646__id_250.rb`',
+            '- 0647 | ID `251` | `` | `0647__id_251.rb`',
+          ]
+          order.write_text('\n'.join(kept)+'\n',encoding='utf-8')
+
+          # Verify canonical tail and count.
+          rb=sorted(ex.glob('[0-9][0-9][0-9][0-9]__id_*.rb'))
+          assert len(rb)==648, len(rb)
+          assert (ex/'0645__id_1066200.rb').read_bytes()==src
+          Path('tests/FORMAL_PROMOTION_v1.06.62.log').write_text(
+            'PMD AutoChess v1.06.62 Formal Source Promotion\n'
+            'RESULT=PASS\nSCRIPTS=648\nINDEX_RANGE=0..647\n'
+            'V10662_INDEX=645\nV10662_ID=1066200\n'
+            'V10662_SHA256='+expected+'\nMAIN_INDEX=646\nTERMINATOR_INDEX=647\n'
+            'WINDOWS_ACCEPTANCE=PASS_V10662B\n',encoding='utf-8')
+          PY
+
+          rm -f candidate_source/VXRD_GATE3_FLOOR_DEPTH_RISK_SETTLEMENT_v1.06.62.rb
+          rm -f .github/v10662_source_payload.txt
+          rm -f .github/workflows/finalize_v10662.yml
+          git config user.name showpei1203
+          git config user.email showpei1203@gmail.com
+          git add -A
+          git commit -m 'Finalize v1.06.62 canonical source after Windows PASS'
+          git push origin HEAD:${{ github.head_ref }}
