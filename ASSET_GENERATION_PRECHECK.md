@@ -10,11 +10,15 @@
 ## Inherited rules
 - Runtime isolated assets: prefer chroma-key `#FF00FF` or `#00FF00`.
 - Runtime pixel assets: `flat colors`, `no anti-aliasing`, `crisp edges`, approved limited palette.
-- Environment readability uses a 32x32 player/tile reference.
+- **32x32 is the player/tile WORLD-SCALE reference, not a total map-canvas limit and not a monster size cap.** `544x416` is only a viewport reference; large Hunt/parallax/map authoring canvases may exceed it while preserving 32px scale consistency.
 - **Monsters/evolutions/bosses are not limited to 32x32 pixels.** Size follows species silhouette, battle role and framing.
 - Generic asset rules must not overwrite sealed PMD battle presentation/orientation decisions.
+- For large map/parallax authoring, preserve `Master + Ground-Only + exhaustive All Non-Ground Objects` at identical canvas registration.
+- All Non-Ground Objects must include landmarks, statues/fountains, buildings, walls, gates, trees, props and small environmental objects even when they are not expected to cover the actor.
+- Occlusion/Par is derived later by human/tool authority and must not replace the complete Non-Ground layer.
+- Map split delivery must pass the shared Layer-Split Quality Gate: exact registration, coherent Ground, exhaustive Non-Ground coverage, clean alpha/edges, no residue/broken holes, and recomposition against Master.
 
 ## Required read order
-`Shared Authority -> PMD Precheck -> latest PMD visual/asset benchmark -> generate/edit image`
+`Shared Authority -> PMD Precheck -> latest PMD visual/asset benchmark -> confirm scale/canvas/layer mode -> generate/edit -> Layer-Split Quality Gate when mapping`
 
 Version: 2026-08-19
