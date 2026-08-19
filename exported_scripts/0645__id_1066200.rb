@@ -37,6 +37,7 @@ module PMD_AC
       if s.is_a?(Hash)
         current=s[:vxrd_floor_count_v10584].to_i
         floor=current+1
+        # If called after floor commit rather than during generation, do not exceed max.
         floor=current if current>=max
       elsif state.is_a?(Hash) && state[:floor_v10662].to_i>0
         floor=state[:floor_v10662].to_i
@@ -51,6 +52,7 @@ module PMD_AC
       f=floor.to_i;m=max_floor.to_i;b=final_bonus.to_i
       return 0 if b<=0 || m<=1 || f<=1
       f=m if f>m
+      # round-to-nearest integer percentage point
       num=(f-1)*b
       den=(m-1)
       (num*2+den)/(den*2)
@@ -190,6 +192,7 @@ module PMD_AC
       }
       bad << :curve unless tab==expected
       bad << :completion_policy unless VXRD_GATE3_COMPLETION_POLICY_V10662==:UNCHANGED_V10605
+      # Hash repeatability without touching global or VXRD RNG.
       a=vxrd_gate3_hash_v10662(12345,4,0x621A)
       b=vxrd_gate3_hash_v10662(12345,4,0x621A)
       bad << :determinism unless a==b

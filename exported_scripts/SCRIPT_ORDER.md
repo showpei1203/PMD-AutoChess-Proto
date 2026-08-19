@@ -649,5 +649,6 @@ Source: `Data/Scripts.rvdata`
 - 0642 | ID `1065700` | `PMD AutoChess VXRD Landmark Vegetation Wetland Coverage Expansion I v1.06.57` | `0642__id_1065700.rb`
 - 0643 | ID `1065800` | `PMD AutoChess VXRD Water-Bottom Autotile Pair Authority I v1.06.58` | `0643__id_1065800.rb`
 - 0644 | ID `1066100` | `PMD AutoChess VXRD A1 Liquid Surface Semantic Authority II v1.06.61` | `0644__id_1066100.rb`
-- 0645 | ID `250` | `Main` | `0645__id_250.rb`
-- 0646 | ID `251` | `` | `0646__id_251.rb`
+- 0645 | ID `1066200` | `PMD AutoChess Gate 3 Floor-Depth Risk Curve + Settlement Visibility I v1.06.62` | `0645__id_1066200.rb`
+- 0646 | ID `250` | `Main` | `0646__id_250.rb`
+- 0647 | ID `251` | `` | `0647__id_251.rb`
