@@ -1,143 +1,83 @@
 # CURRENT_HANDOFF — PMD AutoChess Proto
 
-Last Updated: 2026-08-19 17:18 +08:00
+Last Updated: 2026-08-19 19:05 +08:00
 
 ## Persistent Authority
-- Google Drive = Binary / Asset Authority.
+- Drive = Binary / Asset Authority.
 - GitHub = Source / Spec / Validator / diagnostic-text Authority.
 - Linear = Development Authority.
 - ChatGPT = workspace only.
 
 ## User Direction
-**Prioritize script/runtime progression.** SHO-42 art pipeline is prepared but remains secondary unless explicitly requested.
+**Prioritize script/runtime progression.** SHO-42 art pipeline stays prepared but secondary unless art work is explicitly requested.
 
-## Current Formal Baseline
-**v1.06.58 — VXRD Water-Bottom Autotile Pair Authority I — FORMAL PASS.**
-Formal Baseline Drive ID `1bpvrm1OQBDPMwU8ac06Q-zmZSvTOTHIQ`.
-GitHub `main` remains Formal v1.06.58 until v1.06.61 completes Windows visual/runtime acceptance.
+## Formal Baseline
+**v1.06.61 — VXRD A1 Liquid Surface Semantic Authority II + ProjectState Convergence — FORMAL PASS.**
+Drive Baseline ID `1VBidko6cYYcOAwTONmDe1p1lK_hTN3VU`.
+Formal Scripts.rvdata SHA256 `eb5be92748d998bdf90540cba80bd6c3a280493fa874d5bba15fca127ab8ad00`.
 
-## Current Production Candidate
-**v1.06.61 — VXRD A1 Liquid Surface Semantic Authority II + ProjectState Convergence — UNPASSED.**
-Drive Current Development ID `17wBUxbCF9A6Fqi0v1YX3CjEenqHhFCkp`.
-ZIP SHA256 `f48603074cb21b6fd31e01b48807f9d6eb69ad2c5e397274e95b612c4b912ad7`.
-Scripts.rvdata SHA256 `eb5be92748d998bdf90540cba80bd6c3a280493fa874d5bba15fca127ab8ad00`.
-
-GitHub `develop` canonical Production tail:
-- 642 / ID 1065700 / v1.06.57
-- 643 / ID 1065800 / v1.06.58
-- 644 / ID 1066100 / v1.06.61
-- 645 / ID 250 / Main
-- 646 / ID 251 / terminator
-Total 647 Scripts, indices 0..646.
+GitHub `main` = 647 Scripts, 0..646:
+- 642 v1.06.57
+- 643 v1.06.58
+- 644 / ID1066100 v1.06.61
+- 645 Main
+- 646 terminator
 v1.06.61 source SHA256 `a07d64dafa83d30958edd6045281f820c9e08831ea56757d0e977e8b58461d7d`.
-PR #5 exact finalizer PASS. `develop` includes current main Agent/background rules and is behind main by 0 at the v1.06.61 finalization point.
+main merge commit `49f966b548b8e2e4d485cf55839bd03c1c7598cb`.
+develop contains this main commit as an ancestor; behind_by=0 while retaining diagnostics/assets.
 
-## User-Confirmed A1 Liquid Semantic Authority
-- kind4 / base2240 = natural grass-ground visible-bottom water.
-- kind6 / base2336 = castle / stone artificial-floor visible-bottom water.
-- kind8 / base2432 = rough dirt / cave-ground visible-bottom water.
-- kind10 / base2528 = other non-natural/artificial-floor visible-bottom water.
-- kind14 / base2720 = lava.
-Kinds 4/6/8/10 are valid clear-water choices selected by environment.
+## Accepted v1.06.61 Water Semantics
+- kind4/base2240 natural grass-ground clear water.
+- kind6/base2336 castle/stone artificial clear water.
+- kind8/base2432 rough dirt/cave clear water.
+- kind10/base2528 other artificial clear water.
+- kind14/base2720 lava.
 
-v1.06.61 current Hunt allocation:
-- H02 -> kind4 / 2240 natural wetland.
-- H07 -> kind8 / 2432 rough mud/marsh.
-- H12 -> kind4 / 2240 retained natural presentation.
-- H17 -> kind4 / 2240 retained natural presentation.
-- kind6/kind10 registered for later artificial-floor use.
-- kind14 registered as lava only; no H19 lava/water-scope expansion.
-Water scope remains H02/H07/H12/H17, native A1, rectangle-only, non-walkable, A2 shoreline, no rivers/bridges.
+Formal assignments: H02=2240, H07=2432, H12=2240, H17=2240.
+User explicitly accepted H07 kind8/base2432 on Windows (`h07水正常`). SHO-41 Done.
 
-## SHO-21 — Map091 Acceptance — FORMAL PASS / SEALED
-Windows/RMVX corrected v1.06.61a acceptance completed 2026-08-19.
-Evidence:
-- RESULT=PASS
-- CURRENT_TEMPLATE_AUTHORITY=PASS
-- SOURCE_AUTHORING_V10651=PASS
-- CONTENTIZATION_V10652=PASS
-- source/pages/graphics/triggers/lists = 49/49
-- semantic deep clone = 49/49
-- parser = 12/12 PASS
-- FIXED/CONTROL/SHARED contract PASS
-- Hunt/Floor content matrix = 126/126
-- H07 Floor1 runtime template events = 9; runtime plan = 9
-- Game_Map Marshal roundtrip PASS with 9 template events
-- Hunt session Marshal roundtrip PASS
-- RUNTIME_MUTATION=0; MAP091_MUTATION=0
-- Battle/Reward/Progression changed = 0
+## Map091 Seal
+SHO-21 = Done / FORMAL PASS / SEALED.
+Windows v1.06.61a evidence: 49/49 source/pages/graphics/triggers/lists, 49/49 semantic deep clones, parser12/12, FIXED/CONTROL/SHARED PASS, 126/126 Hunt/Floor matrix, runtime 9/9, Game_Map + Hunt-session Marshal PASS, no Map090/Map091 mutation.
 
-Legacy v1.06.49 audit still reports missing Encounter/Rare/Elite/Info when called with Hunt code=nil, but is explicitly accepted as historical non-blocking behavior after v1.06.52 Hunt-filtered contentization (`LEGACY_V10649_EXPECTED_NONBLOCKING=1`).
-The previous v1.06.60 FAIL was a TEST Harness defect; Map091 itself was not modified to obtain PASS.
-SHO-21 is Done / future changes issue-driven only.
+## Gate 2 Script Seal
+SHO-46 = Done.
+v1.06.61b aggregate FAIL was TEST-only: only `map091_harness_missing` because it called wrong method name. All Production-facing gates passed. Corrected v1.06.61c uses existing `vxrd_map091_full_acceptance_v10660` entry point and changes no Production byte. v1.06.61c Test Build Drive ID `1duoqxwWAvHnIP4w_mb0Sxwvfc_WyrANU`; no rerun required.
 
-GitHub Windows evidence:
-`tests/MAP091_WINDOWS_ACCEPTANCE_PASS_20260819.log`.
+Gate 2 script/runtime work is now sealed. Gate 2 overall stays In Progress only for dedicated-art/content coverage (SHO-42 etc.).
 
-## ProjectState Convergence Fix
-The v1.06.60 user log showed `CURRENT_VERSION=1.06.56` despite 648 loaded scripts. Root cause was the v1.06.56 aliased writer hardcoding CURRENT_VERSION after later `project_version` overrides.
-v1.06.61 converges after the legacy writer chain:
-- PROJECT_STATE_SCHEMA=42
-- CURRENT_VERSION=1.06.61
-- LATEST_FEATURE=A1_LIQUID_SURFACE_SEMANTIC_AUTHORITY_II+PROJECT_STATE_CONVERGENCE
-Windows confirmation is part of the current Gate 2 Script Seal.
+## Active Next Script Work — SHO-50 Gate 3 Baseline Audit I
+Roadmap Gate 3 = Hunt Risk / Reward Curve.
+Audit before tuning:
+1. Rare / Elite room rates by tier and floor depth.
+2. Completion bonus rolls/value and eligibility.
+3. Retreat/defeat retained rewards versus completion-only bonus.
+4. Run accounting fields: battles/wins/losses/escapes/recruits/treasures/recoveries/Rare/Elite/loot/floor wins/floors cleared.
+5. What settlement UI currently shows versus what is only stored internally.
+6. Mid-run Marshal/save-load preservation of accounting state.
+7. Deterministic seed remains unchanged.
 
-## Current Windows Test Build — v1.06.61b TEST ONLY
-**v1.06.61b — Gate 2 Script Seal Harness.**
-Drive Test Build ID `1Ed-ofSepkC7xG4g6D4jcTXguadgM6O5P`.
-ZIP SHA256 `bddcbb3d2aa5ecfd84b5dc108470fb99c46b5a7f02bd0ae1c088b666bf3940db`.
-Scripts.rvdata SHA256 `1930c302508c0a61b0249934781893683d89c357d8bf92a08f7c39d84eab9d1f`.
+Known current source areas for Gate 3:
+- v1.06.01 Room Type Authority: Rare/Elite rates.
+- v1.05.78 Hunt Region Economy + v0.94 Loot Context Bonus Rolls.
+- v1.06.04 Run Entry / stats initialization.
+- v1.06.05 Floor Progression / Settlement.
+- v1.06.06 Node lifecycle Treasure/Recovery accounting.
+- v1.06.08 Battle/Recruit/Loot Accounting.
+- v1.06.09 Save/Load Resume Safety.
+- v1.06.29 sequential clear + retreat UX.
 
-649 Scripts:
-- 0..643 = Formal v1.06.58 byte-exact preserved
-- 644 / ID1066100 = v1.06.61 Production
-- 645 / ID1066110 = corrected Map091 Harness v1.06.61a TEST
-- 646 / ID1066120 = Gate 2 Script Seal Harness v1.06.61b TEST
-- 647 = Main
-- 648 = terminator
-Static/build validation PASS; 0..645 preserved from v1.06.61a; Harness Ruby syntax PASS.
+Phase I must be TEST-only instrumentation, no balance changes. Only after the baseline log is proven may Phase II tune risk/reward.
 
-Linear: SHO-46 `v1.06.61b — Gate 2 Script Seal Acceptance` In Progress.
-
-### v1.06.61b User Action
-1. Completely close RPG Maker VX before overwrite.
-2. Install v1.06.61b, reopen RMVX and Test Play.
-3. Enter any active Random Hunt floor on Map090.
-4. Press **plain F5** only.
-5. Return `PMD_VXRD_Gate2ScriptSeal_LATEST.log` if FAIL; PASS screenshot/log is sufficient to seal script gate.
-
-Harness validates:
-- v1.06.61 A1 semantic authority and four current water bases
-- corrected/sealed Map091 contract
-- Route Safety static 4/4 + current Hunt route/exit reachability
-- Loading static contract
-- ProjectState schema42 / CURRENT_VERSION=1.06.61 / test script count 649
-- build-gated Formal 0..643 preservation
-- B/C/D/E automatic stamping=0
-- Map091 mutation=0; topology rewrite=0; no battle/reward/progression change
-
-## Remaining Human Visual Gate — SHO-41
-Machine checks cannot decide whether H07 kind8/base2432 looks aesthetically right for `霧澤泥地`.
-Still need human visual judgment:
-- H07 kind8/base2432 should suit rough mud/marsh.
-- H02/H12/H17 kind4/base2240 should show no visual regression.
-Do not mark SHO-41 Done until this visual acceptance is explicit.
-
-## Accepted / Sealed Gate 2 Components
-- v1.06.54 single-prop Landmark semantics/presence/collision PASS.
-- v1.06.55 Route Safety SEALED.
-- v1.06.56 real Loading overlay SEALED.
-- v1.06.57 vegetation expansion visual PASS.
-- v1.06.58 visible-bottom water baseline PASS.
-- Map091 shared H01–H21 Event Template Library PASS / SEALED (SHO-21).
+## Known Metadata Debt
+SHO-47 Low: `Game.ini` title still says v1.05.40. UI metadata only; not Runtime rollback.
 
 ## Immutable Rules
-- No automatic B/C/D/E scatter/stamping.
-- v1.06.44 Landmark runtime IDs remain revoked.
-- Map090 = Random Hunt runtime map.
-- Map091 = H01–H21 shared Event Template Library.
-- Gate 1 structure / Battle Presentation SEALED / issue-driven only.
-- No Battle AI, damage, attack speed, Focus-C2, rewards, progression, or spatial-endpoint changes for this work.
+- No automatic B/C/D/E stamping.
+- v1.06.44 Landmark IDs revoked.
+- Map090 Runtime / Map091 Template Library roles unchanged.
+- Gate1 + Battle Presentation sealed.
+- Gate3 Audit I does not change Battle AI/damage/attack speed/Focus-C2/spatial endpoints/species acquisition.
 
-## Installation / Documentation Rule
-Any delivery changing `Data/Scripts.rvdata`, `Data/Map091.rvdata`, or another Data file requires fully closing RPG Maker VX before overwrite, then reopening RMVX. Every functional delivery must include synchronized Traditional Chinese tutorial/usage documentation.
+## Install / Documentation
+Whenever a delivered build changes `Data/Scripts.rvdata` or another Data file: **fully close RPG Maker VX before overwrite, then reopen it.** Functional deliveries include synchronized Traditional Chinese documentation.
