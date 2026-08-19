@@ -1,0 +1,63 @@
+name: v1.06.63 Manifest Refresh
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/v10663_manifest_refresh.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Refresh canonical manifests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          root=Path('exported_scripts')
+          cand=root/'0646__id_1066300.rb'; main=root/'0647__id_250.rb'; term=root/'0648__id_251.rb'
+          assert cand.exists() and main.exists() and term.exists()
+          def meta(p):
+              b=p.read_bytes(); return len(b), hashlib.sha256(b).hexdigest()
+          csz,csha=meta(cand); msz,msha=meta(main); tsz,tsha=meta(term)
+          assert csha=='bf3ed879de7ab6f6a435040311c32a418c155a28ea03e307643e63dee5a78aa8'
+          idx=root/'SCRIPT_INDEX.tsv'; lines=idx.read_text(encoding='utf-8').splitlines()
+          assert lines[-3].startswith('645\t1066200\t')
+          if lines[-2].startswith('646\t250\tMain'):
+              lines=lines[:-2]
+              lines += [
+                f'646\t1066300\tPMD AutoChess Gate 3 Completion Incentive + Retreat Clarity I v1.06.63\t0646__id_1066300.rb\t{csz}\t{csha}',
+                f'647\t250\tMain\t0647__id_250.rb\t{msz}\t{msha}',
+                f'648\t251\t\t0648__id_251.rb\t{tsz}\t{tsha}'
+              ]
+          assert len(lines)==649
+          idx.write_text('\n'.join(lines)+'\n',encoding='utf-8',newline='')
+          order=root/'SCRIPT_ORDER.md'; ol=order.read_text(encoding='utf-8').splitlines()
+          if ol[-2]=='- 0646 | ID `250` | `Main` | `0646__id_250.rb`':
+              ol=ol[:-2]
+              ol += [
+                '- 0646 | ID `1066300` | `PMD AutoChess Gate 3 Completion Incentive + Retreat Clarity I v1.06.63` | `0646__id_1066300.rb`',
+                '- 0647 | ID `250` | `Main` | `0647__id_250.rb`',
+                '- 0648 | ID `251` | `` | `0648__id_251.rb`'
+              ]
+          assert sum(1 for x in ol if x.startswith('- '))==649
+          order.write_text('\n'.join(ol)+'\n',encoding='utf-8',newline='')
+          PY
+          rm -f tools/v10663_manifest_refresh.trigger .github/workflows/v10663_manifest_refresh.yml
+          git config user.name 'showpei1203'
+          git config user.email 'showpei1203@gmail.com'
+          git add -A
+          git commit -m 'Refresh v1.06.63 canonical script manifests'
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
