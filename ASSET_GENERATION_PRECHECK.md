@@ -18,7 +18,17 @@
 - Occlusion/Par is derived later by human/tool authority and must not replace the complete Non-Ground layer.
 - Map split delivery must pass the shared Layer-Split Quality Gate: exact registration, coherent Ground, exhaustive Non-Ground coverage, clean alpha/edges, no residue/broken holes, and recomposition against Master.
 
+## Grounded SAM2 semantic audit authority
+- Grounded SAM2 is a **semantic QA / missing-object / candidate-mask assistant**, not final PMD map/layer authority. Never use a raw union mask as Ground / Non-Ground / Collision / Landmark truth.
+- Prefer category batches and alias fallback rather than one large mixed prompt, especially for Random Hunt and landmark maps.
+- Apply oversized-bbox sanity filtering before unioning masks. Normally localized classes with implausibly large canvas coverage must be flagged/excluded unless human or benchmark review accepts them.
+- Use class-specific threshold profiles rather than one global value; small props normally require stricter box thresholds than large architecture, while small landmarks may need lower recall thresholds.
+- Compare SAM2 detections and per-class masks against PMD Master/landmark authoring and the final exhaustive object set to find probable omissions or false positives.
+- A SAM2 miss does not authorize deleting a formal object; a SAM2 hit does not override sealed PMD presentation or runtime data.
+- SAM2-assisted outputs remain **DRAFT** until normal PMD visual/map validation passes.
+- SAM2 workers must comply with Background Execution Authority and should release VRAM after each job on constrained local GPUs.
+
 ## Required read order
-`Shared Authority -> PMD Precheck -> latest PMD visual/asset benchmark -> confirm scale/canvas/layer mode -> generate/edit -> Layer-Split Quality Gate when mapping`
+`Shared Authority -> PMD Precheck -> latest PMD visual/asset benchmark -> confirm scale/canvas/layer mode -> generate/edit -> optional SAM2 semantic audit -> Layer-Split Quality Gate when mapping`
 
 Version: 2026-08-19
