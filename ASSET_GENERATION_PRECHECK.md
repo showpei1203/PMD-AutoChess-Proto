@@ -2,53 +2,36 @@
 
 **Mandatory before every image generation or image edit.**
 
-1. Read the shared Google Drive authority: `SHARED_GAME_ASSET_GENERATION_AUTHORITY` (Drive file ID `1TF4wGLqwiALO-IJ_1R-5m9J7fGS-47tKmNi5yH_LMdc`).
-2. Read the PMD Drive authority file `ASSET_GENERATION_PRECHECK_PMD` in `PMD_AutoChess/00_Project_Authority`.
-3. Identify asset mode: battle/map/landmark/sprite/icon/reusable prop.
-4. Apply latest PMD visual, battle and landmark authority before generating.
-5. **If the request is any layered map/parallax/environment generation or edit, read `MAP_DUAL_OUTPUT_AUTHORITY_V2_3.md` before generating and explicitly use `GROUND-FIRST + OBJECT OWNERSHIP + PIXEL-CRISP` mode.**
+1. Read Google Drive shared `SHARED_GAME_ASSET_GENERATION_AUTHORITY`.
+2. Read Drive `PMD_AutoChess/00_Project_Authority/ASSET_GENERATION_PRECHECK_PMD`.
+3. Apply latest PMD visual/battle/landmark authority.
+4. For layered map/parallax/environment work, read `MAP_DUAL_OUTPUT_AUTHORITY_V2_5.md`.
 
-## Inherited rules
-- Runtime isolated assets: prefer chroma-key `#FF00FF` or `#00FF00`.
-- Runtime pixel assets: `flat colors`, `no anti-aliasing`, `crisp edges`, approved limited palette.
-- **32x32 is the player/tile WORLD-SCALE reference, not a total map-canvas limit and not a monster size cap.** `544x416` is only a viewport reference; large Hunt/parallax/map authoring canvases may exceed it while preserving 32px scale consistency.
-- **Monsters/evolutions/bosses are not limited to 32x32 pixels.** Size follows species silhouette, battle role and framing.
-- Generic asset rules must not overwrite sealed PMD battle presentation/orientation decisions.
-- For map/parallax authoring, preserve `Master + Ground + complete PAR` at identical canvas registration.
-- **Ground** contains only true ground/terrain surfaces, floor/terrain tiles, flowers and grass.
-- **PAR = everything else.** Buildings, landmarks, statues/fountains, walls, gates, towers, roofs, trees/trunks/canopies, bushes, rocks, fences, signs, stalls, bridges, structural stairs/steps and every environmental prop belong in PAR.
-- Occlusion is not the criterion for PAR membership; an actor-covering subset may be derived later by human/tool authority.
-- Map split delivery must pass the shared Layer-Split Quality Gate, with `MASTER ≈ GROUND + COMPLETE PAR` as the completeness test.
+## Current layered-map mode — v2.5
+`GROUND-FIRST + PLACEMENT ANCHORS + SOURCE-ASSET/EXTRACTION + DETERMINISTIC ASSEMBLY + PAR PURITY + PIXEL-CRISP`
 
-## Ground-first + coupled map generation — v2.3
-- Generate `GROUND` first and validate geometry/layout anchors before PAR generation.
-- Generate `COMPLETE PAR` only after Ground is accepted, using Master + accepted Ground as references.
-- Object ownership is exclusive by visible structure, not raw alpha coordinates.
-- Bridge structure = PAR-only; under-bridge water/terrain/bank = Ground-only.
-- Fountain stone structure = PAR; fountain water = Ground.
-- Ambiguous/discrete placed objects default to PAR.
-- Runtime map layers must be pixel-crisp: hard pixel edges, no AA, no blur, no feather halos, no sub-pixel shifts, and avoid broad partial-alpha edges.
-- Inspect at 100% and integer zoom; Nearest Neighbor only for pixel-art resizing/downsampling.
-- A spatially aligned but blurry layer remains DRAFT.
+- Ground = base terrain/floor/road/plaza tiles + grass + flowers + water surfaces.
+- PAR = everything else.
+- Occlusion is not PAR membership authority.
+- Ground is accepted first; major structures then receive unique anchor/footprint contracts.
+- Image generation is source-art authority only, not final canvas / exact workcell / coordinate authority.
+- Prefer extraction from existing approved/reference art when exact source pixels already exist.
+- Final placement uses deterministic integer coordinates on the unchanged Ground canvas.
+- Default source-to-target viability profile is `0.75–1.25`; outside is Source Scale FAIL unless explicitly approved.
+- Pixel-art resizing uses Nearest Neighbor only.
+- Structural alpha normally prefers `0/255`; broad feather/partial-alpha/AA haze is DRAFT/FAIL evidence.
+- Validate each object/group before advancing.
+- Primary map completeness authority remains `MASTER ≈ GROUND + COMPLETE PAR`.
 
-## Grounded SAM2 semantic audit authority
-- Grounded SAM2 is a **semantic QA / missing-object / candidate-mask assistant**, not final PMD map/layer authority. Never use a raw union mask as Ground / PAR / Collision / Landmark truth.
-- Prefer category batches and alias fallback rather than one large mixed prompt, especially for Random Hunt and landmark maps.
-- Apply oversized-bbox sanity filtering before unioning masks. Normally localized classes with implausibly large canvas coverage must be flagged/excluded unless human or benchmark review accepts them.
-- Use class-specific threshold profiles rather than one global value; small props normally require stricter box thresholds than large architecture, while small landmarks may need lower recall thresholds.
-- Compare SAM2 detections and per-class masks against PMD Master/landmark authoring and the complete PAR set to find probable omissions or false positives.
-- A SAM2 miss does not authorize deleting a formal object; a SAM2 hit does not override sealed PMD presentation or runtime data.
-- SAM2-assisted outputs remain **DRAFT** until normal PMD visual/map validation passes.
-- SAM2 workers must comply with Background Execution Authority and should release VRAM after each job on constrained local GPUs.
-- **Dense-map refinement:** add post-SAM mask-canvas coverage sanity checks in addition to bbox filtering. When local landmarks/buildings/gates/towers/props are too small in a full scene, use overlapping tiled detection, remap boxes to master coordinates, and de-duplicate with concept-level NMS before SAM2.
+## PMD inheritance
+- 32×32 is world-scale reference, not total map-canvas limit and not a monster size cap.
+- Monsters/evolutions/bosses may exceed 32×32 according to species and battle framing.
+- Generic generation rules must not overwrite sealed PMD battle orientation/presentation.
 
-## Binary split override
-This supersedes older wording that treated PAR as only actor-occluding material:
-`GROUND = true ground/terrain surfaces + floor/terrain tiles + flowers + grass`
-`PAR = EVERYTHING ELSE`
-No non-Ground object may be omitted from PAR because of height, collision, occlusion, importance, or SAM2 classification.
+## SAM2
+SAM2 / Guided SAM2 is QA/omission evidence only; never raw Ground/PAR/Collision/Landmark authority. Do not use a universal whole-mask overlap percentage as a formal Gate.
 
 ## Required read order
-`Shared Authority -> PMD Precheck -> MAP_DUAL_OUTPUT_AUTHORITY_V2_3 when mapping -> latest PMD visual/asset benchmark -> ownership/anchor lock -> generate Ground only -> Ground geometry QA -> generate PAR from Master + accepted Ground -> pixel-crisp QA -> optional SAM2 semantic audit -> Layer-Split Quality Gate when mapping`
+`Shared Authority -> PMD Drive Precheck -> MAP_DUAL_OUTPUT_AUTHORITY_V2_5 -> latest PMD visual/asset benchmark -> Ground -> Ground QA -> anchors -> source/extraction -> deterministic assembly -> per-object QA -> recomposition/witness QA`
 
-Version: 2026-08-19 v2.3
+Version: 2026-08-20 v2.5
