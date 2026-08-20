@@ -650,5 +650,9 @@ Source: `Data/Scripts.rvdata`
 - 0643 | ID `1065800` | `PMD AutoChess VXRD Water-Bottom Autotile Pair Authority I v1.06.58` | `0643__id_1065800.rb`
 - 0644 | ID `1066100` | `PMD AutoChess VXRD A1 Liquid Surface Semantic Authority II v1.06.61` | `0644__id_1066100.rb`
 - 0645 | ID `1066200` | `PMD AutoChess Gate 3 Floor-Depth Risk Curve + Settlement Visibility I v1.06.62` | `0645__id_1066200.rb`
-- 0646 | ID `250` | `Main` | `0646__id_250.rb`
-- 0647 | ID `251` | `` | `0647__id_251.rb`
+
+- 0646 | ID `1066300` | `PMD AutoChess Gate 3 Completion Incentive + Retreat Clarity I v1.06.63` | `0646__id_1066300.rb`
+- 0647 | ID `1066400` | `PMD AutoChess Gate 3 Run Accounting Semantic Persistence I v1.06.64` | `0647__id_1066400.rb`
+- 0648 | ID `1066600` | `PMD AutoChess Gate 3 Integrated Seal Convergence I v1.06.66` | `0648__id_1066600.rb`
+- 0649 | ID `250` | `Main` | `0649__id_250.rb`
+- 0650 | ID `251` | `` | `0650__id_251.rb`
