@@ -441,16 +441,8 @@ class Scene_PMD_AutoChess
       end
       return
     end
-    if Input.trigger?(Input::F9)
-      @sand_focus_request_v10536=true
-      if sandshrew_focus_ready_v10536?
-        begin;Sound.play_decision;rescue;end
-        sandshrew_focus_start_v10536
-      else
-        log_event(:battle,'BATTLE_SANDSHREW_FOCUSED_VISUAL_V10536 REQUEST input=F9 pending_safe_boundary=1')
-      end
-      return
-    end
+    # P8 v1.06.67: historical F9 Sandshrew focused-review launcher retired.
+    # sandshrew_focus_start_v10536 remains callable for issue-driven diagnosis.
     if @sand_focus_request_v10536 && sandshrew_focus_ready_v10536?
       begin;Sound.play_decision;rescue;end
       sandshrew_focus_start_v10536

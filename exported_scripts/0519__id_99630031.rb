@@ -648,18 +648,8 @@ class Scene_PMD_AutoChess
       return
     end
     pmd_ac_v10534_visual_update_battle_input
-    return unless @phase==:battle && respond_to?(:verification_mode) && verification_mode==:normal
-    if Input.trigger?(Input::F7)
-      if representative_visual_fixture_ready_v10534?
-        begin;Sound.play_decision;rescue;end
-        representative_visual_start_v10534
-      else
-        @rep_visual_autostart_requested_v10534=true
-        begin;Sound.play_cursor;rescue;end
-        log_event(:battle,'BATTLE_REPRESENTATIVE_VISUAL_FIXTURE_V10534 REQUEST input=F7 pending_safe_boundary=1'+
-          ' route_qa_complete='+(PMD_AC.representative_route_qa_state_v10528!=nil && PMD_AC.representative_route_qa_state_v10528[:complete] ? '1':'0'))
-      end
-    end
+    # P8 v1.06.67: historical F7 Representative Visual launcher retired.
+    # representative_visual_start_v10534 remains callable for issue-driven diagnosis.
   end
 
   def update_battle_step

@@ -828,21 +828,8 @@ class Scene_PMD_AutoChess
       important_input_v10538
       return
     end
-    if @phase==:battle && respond_to?(:verification_mode) && verification_mode==:normal &&
-       Input.press?(Input::SHIFT) && Input.trigger?(Input::F9)
-      @important_request_v10538=true
-      if important_species_ready_v10538?
-        begin;Sound.play_decision;rescue;end
-        important_start_v10538
-      else
-        begin;Sound.play_cursor;rescue;end
-        tq=@rep_transition_audit_v10537 || {}
-        iq=@important_audit_result_v10538 || {}
-        log_event(:battle,'BATTLE_IMPORTANT_SPECIES_MANUAL_QA_V10538 REQUEST input=SHIFT+F9 pending_safe_boundary=1'+
-          ' transition_audit='+(tq[:pass] ? '1':'0')+' important_audit='+(iq[:pass] ? '1':'0'))
-      end
-      return
-    end
+    # P8 v1.06.67: historical SHIFT+F9 Important Species launcher retired.
+    # important_start_v10538 remains callable for issue-driven diagnosis.
     pmd_ac_v10538_update_battle_input
   rescue
     pmd_ac_v10538_update_battle_input

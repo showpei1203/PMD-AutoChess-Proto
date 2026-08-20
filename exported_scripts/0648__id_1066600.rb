@@ -76,6 +76,8 @@ module PMD_AC
       rl=(hunt_runtime_result_lines_v10605(retreat)||[]).join('|')
       dl=(hunt_runtime_result_lines_v10605(defeat)||[]).join('|')
       bad << :complete_copy unless cl.index('通關 Bonus 5抽')
+      # v1.06.64 is the current settlement-copy authority:
+      # retreat/defeat use "成果保留｜通關 Bonus 0".
       bad << :retreat_copy unless rl.index('成果保留') && rl.index('通關 Bonus 0')
       bad << :defeat_copy unless dl.index('成果保留') && dl.index('通關 Bonus 0')
 

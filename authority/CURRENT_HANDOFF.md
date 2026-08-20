@@ -1,6 +1,6 @@
 # CURRENT_HANDOFF — PMD AutoChess Proto
 
-Last Updated: 2026-08-20 17:12 +08:00
+Last Updated: 2026-08-20 17:37 +08:00
 
 ## Start here
 Do not rebuild history. Persistent Authority is already established:
@@ -9,79 +9,83 @@ Do not rebuild history. Persistent Authority is already established:
 - Linear = Development Authority.
 
 ## Formal Baseline
-**v1.06.66 — Gate 3 Integrated Seal Convergence I — FORMAL WINDOWS PASS / Gate 3 SEALED.**
+**v1.06.67 — P8 Formal Cross-Gate Regression + QA Shortcut Consolidation I — FORMAL WINDOWS PASS / SEALED.**
 
 Drive Formal package:
-`PMD_AutoChess_v1_06_66_FORMAL_PASS_BASELINE_GATE3_INTEGRATED_SEAL_CONVERGENCE_I_20260820.zip`
-Drive ID `1lZr0qjt6oCsH-G3UXBmsK_HHaeXbngwC`.
-ZIP SHA256 `2b97bdf14712627172bb9039603ef2a7d4359e21fc59894277b6bfb665ecfe61`.
-Scripts SHA256 `28986114dbb53abb9c3941e94ffc7b5607d1db7cc87b406cb922c1377adb7a16`.
+`PMD_AutoChess_v1_06_67_FORMAL_PASS_P8_CROSS_GATE_REGRESSION_QA_SHORTCUT_CONSOLIDATION_I_20260820.zip`
+Drive ID `19pEv3PldwLNuD2G8RnSJunDfekZfOaam`.
+ZIP SHA256 `183112304b9a6e546b183a273576bba89df1fc4060350f3f8f34f6d4e7024c9a`.
+Scripts SHA256 `91495233cd3d38572a9bcd5091e8d1076ea1260c5126a0a99cca9edfdb9c3c4b`.
 
 Windows PASS proves:
-- v1.06.62 risk curve PASS.
-- v1.06.63-current completion semantic PASS; target 2/2/3/4/5.
-- v1.06.64 accounting PASS.
-- live H02/T1 context PASS, R18→30 / E0→0.
-- accounting balanced.
-- ProjectState schema47 / v1.06.66 PASS.
-- Reward/RNG/Map/Session mutation all 0.
+- Gate1=PASS / Gate2=PASS / Gate3=PASS.
+- BLOCKERS=0.
+- extra RNG=0 / Reward=0 / Map mutation=0 / Battle launch=0.
+- Map090/Map091 files unchanged.
+- live Map090 table unchanged.
+- VXRD state / Hunt session / Party unchanged.
+- production F8 preserved.
 
-SHO-54 = Done. Gate 3 Risk/Reward = SEALED / issue-driven only.
+SHO-55 = Done / SEALED.
 
 ## GitHub Formal Source
-`main` = 651 Scripts / indices0..650.
+`main` = 652 Scripts / indices 0..651.
 Tail:
 - 646 v1.06.63
 - 647 v1.06.64
 - 648 v1.06.66
-- 649 Main
-- 650 terminator
+- 649 v1.06.67 P8
+- 650 Main
+- 651 terminator
 v1.06.65 = rejected / never Formal.
 
-PR #10 manifest refresh is merged: commit `5c8d419bac03552b79ac4ea21982a6ed49f1331a`.
-`SCRIPT_INDEX.tsv` and `SCRIPT_ORDER.md` are current at 651 scripts. Old manifest metadata debt is CLOSED.
-Map Authority v2.5 remains preserved.
+Formal evidence in GitHub:
+- `tests/STATIC_VALIDATION_v1.06.67.log`
+- `tests/P8_CROSS_GATE_WINDOWS_ACCEPTANCE_v1.06.67.log`
+- `tests/FORMAL_PROMOTION_v1.06.67.log`
 
-## Immediate next script work
-**Linear SHO-55 — P8 Formal Cross-Gate Regression + QA Shortcut Consolidation I — In Progress.**
+## P8 accepted contract
+One current TEST-only launcher:
+- F5 on Scene_Map runs P8 Fast Cross-Gate Regression.
 
-No v1.06.67 candidate exists yet. Build it only after auditing reusable accepted APIs from Formal v1.06.66.
+Retired permanent QA launchers:
+- F7 v1.01.4 Boss retest.
+- F6 v1.05.19 Focus fixture.
+- F7 v1.05.34 Representative Visual.
+- F9 v1.05.36 Sandshrew focused review.
+- SHIFT+F7 v1.05.37 Transition fixture.
+- SHIFT+F9 v1.05.38 Important Species fixture.
 
-### User-authoritative shortcut rule
-Do not keep finding new hotkeys.
-- Old unused QA/test shortcuts may be washed out/reused.
-- Prefer one current TEST-only launcher, initially plain F5 where scene-appropriate.
-- Preserve genuine player/production controls.
-- Never delete a key globally just because old QA code also uses it.
+Production/player F8 remains intact. Fixture-internal F8 finding controls remain available inside the historical fixture methods.
 
-Formal v1.06.66 shortcut audit found historical QA launchers worth retiring/consolidating:
-- F6 Focus deterministic fixture v1.05.19.
-- F7 first-Boss retest v1.01.4.
-- F7 Representative Visual v1.05.34.
-- F8 Representative finding capture v1.05.35.
-- SHIFT+F7 Transition Visual v1.05.37.
-- SHIFT+F9 Important Species manual QA v1.05.38.
-- related old focused/visual F8/F9 QA controls.
+P8 intentionally does not use the stale v1.06.10 aggregate structural audit as a blocker. It composes current accepted APIs instead.
 
-Production controls to preserve include F8 Vertical Slice return-to-camp and F8 PMD menu return routing.
+### Current Gate coverage
+Gate1:
+- wall geometry, water shape, visual style, current tileset semantic, room runtime, node lifecycle, save/resume, room visual, live Map090 context.
 
-### P8 design target
-Create a consolidated, mostly read-only cross-gate regression that reuses current authority instead of calling stale historical audits blindly.
-- Gate1 structural invariants.
-- Gate2 Map091/Route/A1 liquid/Loading/no BCD stamping/no map mutation.
-- Gate3 v1.06.66 integrated seal contract.
-- exact per-gate/blocker LOG.
-- fast mode: Reward=0, RNG extra=0, Map mutation=0, Battle launch=0, Session mutation=0.
-- one current TEST shortcut rather than accumulating F-key combinations.
+Gate2:
+- Map091 source/content matrix, current materialization, Landmark semantic, Route Safety static/live-readonly, Loading contract, A1 current semantic, B/C/D/E stamping=0.
 
-## Parallel / do not block script progress
-- SHO-42 dedicated Landmark art remains parallel/secondary.
-- Generated Runtime Asset Expansion batches remain end-of-development bulk completion.
+Gate3:
+- v1.06.66 integrated risk/completion/accounting seal.
+
+Fast mode must stay read-only:
+- RNG extra=0.
+- Reward=0.
+- Map090/091 mutation=0.
+- Battle launch=0.
+- Session/VXRD/Party mutation=0.
+
+## What remains open
+- SHO-7 / SHO-42 Gate 2 dedicated visual asset work remains parallel/secondary.
+- Generated Runtime Asset Expansion remains end-of-development bulk completion.
 - Battle Tempo P4 still waits for Motion completion.
-- SHO-47 old Game.ini title v1.05.40 is low-priority metadata only.
+- SHO-47 stale Game.ini title is low-priority metadata debt.
+- No new script/gameplay authority is automatically opened by P8. The next script candidate must start from v1.06.67 Formal and be issue-driven.
 
 ## No regression
-Do not modify sealed Battle AI/damage/attack speed/Focus-C2/spatial endpoints, Gate3 reward curves, Map090/091 structure, A1/Loading or B/C/D/E policy merely to satisfy P8.
+Do not modify sealed Battle AI/damage/attack speed/Focus-C2/spatial endpoints, Gate3 reward curves, Map090/091 structure, A1/Loading, or B/C/D/E policy merely to satisfy future tests.
 
 ## RMVX delivery rule
 If a next candidate changes `Data/Scripts.rvdata`, completely close RPG Maker VX before overwrite and reopen afterward. Every functional candidate also updates Traditional Chinese tutorial/usage docs.
