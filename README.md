@@ -3,27 +3,36 @@
 RPG Maker VX / RGSS2 source-control repository.
 
 ## Authority
-- `main`: latest formal Windows/RMVX PASS source. Current formal source baseline: **v1.06.55** after the accepted five-Hunt Route Safety Audit I scope is promoted.
-- `develop`: continuation branch for broader SHO-22 route stress and the separate SHO-35 Random Hunt Loading UI work.
+- `main`: latest formal Windows/RMVX PASS source. Current Formal baseline: **v1.06.66 — Gate 3 Integrated Seal Convergence I**.
+- `develop`: current development / diagnostics / candidate branch; must remain based on latest Formal `main` and preserve Shared Map Layered Generation Authority v2.5.
 - Binary `.rvdata`, Graphics/Audio, complete game ZIPs, builds and runtime logs belong in Google Drive, not GitHub.
 
-## Script export
-`exported_scripts/` preserves exact RPG Maker VX `Scripts.rvdata` execution order.
-- `SCRIPT_INDEX.tsv`: numeric index, Script ID, Script Name, file, byte count, SHA-256.
-- `SCRIPT_ORDER.md`: human-readable order.
-- each `.rb`: exact decompressed script body. Do not reorder for repository aesthetics.
+## Formal Source
+Canonical `exported_scripts/` currently contains **651 Scripts, indices 0..650**:
+- 646: v1.06.63 Completion Incentive
+- 647: v1.06.64 Run Accounting
+- 648: v1.06.66 Integrated Seal Convergence
+- 649: Main
+- 650: terminator
 
-## Formal PASS
-**v1.06.55 — VXRD Landmark Route Safety Audit I** received Windows/RMVX Phase-I real-machine PASS on 2026-08-18 for H01/H04/H09/H14/H19.
-- Every recorded run reports `RESULT=PASS`, `EXIT_REACHABLE=1`, and empty `BAD=`.
-- H04/H09/H14/H19 had active hard Landmark blockers without breaking required routes.
-- Static validation PASS 31/31.
-- Offline deterministic regression PASS 40/40 across the five accepted Hunts × 8 seeds.
+v1.06.65 was rejected and never promoted to Formal Source.
 
-This PASS is scoped to the accepted five-Hunt Route Safety Audit I. SHO-22 remains open for broader Hunt / multi-seed stress before Landmark coverage expands.
+`SCRIPT_INDEX.tsv` and `SCRIPT_ORDER.md` are current. PR #10 refreshed the 651-script manifest and merged as `5c8d419bac03552b79ac4ea21982a6ed49f1331a` without Runtime changes.
 
-## Next development
-- SHO-22: broader route-safety stress / unsafe-placement rejection coverage.
-- SHO-35: Random Hunt black-screen LOADING overlay using the existing battle Loading UI authority and real map-generation checkpoints.
+## Formal PASS / Seals
+- Gate 1 Random Hunt structural runtime: SEALED.
+- Gate 2 script/runtime authorities including Map091, Route Safety, Loading and A1 liquid semantics: accepted/sealed; dedicated biome art remains parallel work.
+- Gate 3 Risk / Reward: **SEALED / issue-driven only** at v1.06.66.
+  - floor-depth Rare/Elite risk curve.
+  - full-clear Completion Bonus 2/2/3/4/5.
+  - total/immediate/completion run accounting and persistence.
+  - Windows integrated acceptance with Reward/RNG/Map/Session mutation = 0.
 
-Automatic B/C/D/E map stamping remains prohibited and v1.06.44 Landmark runtime IDs remain revoked.
+## Current development
+Linear **SHO-55 — P8 Formal Cross-Gate Regression + QA Shortcut Consolidation I**.
+
+User shortcut policy: stop allocating new permanent test hotkeys. Retire/reuse obsolete QA shortcuts and converge on one current TEST dispatcher, while preserving real player inputs. In particular, F8 has both old QA uses and real production navigation, so cleanup is hook-specific rather than a global key ban.
+
+Battle Tempo P4 remains blocked by Motion completion. Generated Runtime Asset Expansion remains end-of-development bulk work per prior Authority. Gate 2 dedicated Landmark art remains parallel/secondary while script/runtime work is prioritized.
+
+Automatic B/C/D/E map stamping remains prohibited; v1.06.44 Landmark runtime IDs remain revoked.
