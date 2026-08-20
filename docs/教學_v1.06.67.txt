@@ -1,0 +1,83 @@
+【PMD AutoChess v1.06.67｜P8 Fast Seal 使用說明】
+
+這一版只需要做一次 Fast Seal，不需要再記一堆 F6、F7、F9 組合鍵。
+人類終於可以停止把鍵盤當鋼琴彈。
+
+一、覆蓋前一定要做
+1. 完全關閉 RPG Maker VX。
+2. 確認 RPG Maker VX 已經不是開啟狀態。
+3. 將本 ZIP 的：
+   Data/Scripts.rvdata
+   覆蓋到你的 PMD AutoChess 專案 Data/Scripts.rvdata。
+4. 重新開啟 RPG Maker VX。
+
+重要：這版沒有要你覆蓋 Map090 / Map091，也沒有附 Map090 / Map091。
+
+二、怎麼測
+1. 用 RPG Maker VX「測試遊戲」啟動。
+2. 正常進入任一 Random Hunt。
+3. 等到角色已經實際站在生成完成的 Random Hunt 地圖 Map090。
+4. 不要開選單、不要卡在訊息框、不要正在跑事件。
+5. 按一次 F5。
+6. 聽到確認音或錯誤音後即可關閉測試。
+7. 把遊戲根目錄新產生的：
+   PMD_P8_CrossGateRegression_LATEST.log
+   上傳給 ChatGPT。
+
+三、正常 PASS 應看到
+RESULT=PASS
+GATE1=PASS
+GATE2=PASS
+GATE3=PASS
+HARNESS_EXTRA_RNG_CALLS=0
+REWARD_GRANT=0
+MAP_MUTATION=0
+MAP090_FILE_MUTATION=0
+MAP091_FILE_MUTATION=0
+MAP090_LIVE_TABLE_MUTATION=0
+VXRD_STATE_MUTATION=0
+SESSION_MUTATION=0
+PARTY_MUTATION=0
+BATTLE_LAUNCH=0
+BLOCKERS=0
+
+四、如果 FAIL
+不要因為 FAIL 就自己重跑舊 Boss、改獎勵、改 AI、改地圖或切換一堆舊 QA 快捷鍵。
+LOG 會用：
+BLOCKER gate=... key=... class=... bad=[...]
+指出精確阻塞原因。
+
+分類原則：
+- CONTEXT_BLOCKER：例如不是站在 live Map090 上測。
+- TEST_DEFECT：P8 harness / API 缺失等測試層問題。
+- RUNTIME_DEFECT：accepted audit 真正發現 current Runtime invariant 失敗。
+
+五、快捷鍵治理
+目前唯一 P8 TEST launcher：
+- F5：P8 Fast Cross-Gate Regression
+
+已退休的舊 permanent QA launcher：
+- F7 v1.01.4 Boss retest
+- F6 v1.05.19 Focus fixture
+- F7 v1.05.34 Representative Visual
+- F9 v1.05.36 Sandshrew focused review
+- SHIFT+F7 v1.05.37 Transition fixture
+- SHIFT+F9 v1.05.38 Important Species QA
+
+F8 沒有被全域刪除。
+正式 Vertical Slice / PMD menu return 的 F8 功能完整保留。
+舊 visual fixture 內部的 F8 finding control 也仍保留，只是不再占永久 F-key launcher。
+
+六、這版沒有動什麼
+- Battle AI
+- Damage Formula
+- Attack Speed
+- Focus/C2
+- Spatial endpoint
+- Reward curves
+- Gate 1/2/3 sealed gameplay
+- Map090 / Map091 檔案
+
+七、目前版本狀態
+v1.06.67 已取得 Windows Fast Seal PASS，正式升格為 Formal。
+F5 Fast Seal 保留為後續跨 Gate regression 的單一 TEST-only 入口；正常玩家流程不需要操作它。

@@ -1,0 +1,46 @@
+PMD AutoChess P8 Formal Cross-Gate Regression + QA Shortcut Consolidation I
+VERSION=1.06.67
+FORMAL_BASE=1.06.66
+FORMAL_BASE_SCRIPT_COUNT=651
+FORMAL_BASE_SCRIPTS_SHA256=28986114dbb53abb9c3941e94ffc7b5607d1db7cc87b406cb922c1377adb7a16
+CURRENT_SCRIPT_COUNT=652
+EXPECTED_CANDIDATE_SCRIPT_COUNT=652
+SHORTCUT_CURRENT=F5_SCENE_MAP_TEST_ONLY
+SHORTCUT_RETIRED=F6_V10519,F7_V1014,F7_V10534,F9_V10536,SHIFT_F7_V10537,SHIFT_F9_V10538
+PRODUCTION_F8_PRESERVED=1
+STALE_V10610_AGGREGATE_USED=0
+GATE1=PASS
+GATE2=PASS
+GATE3=PASS
+AUDIT gate=GATE1 key=map090_live_context result=PASS bad=[]
+AUDIT gate=GATE1 key=node_lifecycle_api result=PASS bad=[]
+AUDIT gate=GATE1 key=regular_water_shape result=PASS bad=[]
+AUDIT gate=GATE1 key=room_runtime_api result=PASS bad=[]
+AUDIT gate=GATE1 key=room_visual_current result=PASS bad=[]
+AUDIT gate=GATE1 key=save_resume_api result=PASS bad=[]
+AUDIT gate=GATE1 key=tileset_semantic result=PASS bad=[]
+AUDIT gate=GATE1 key=visual_style_scope result=PASS bad=[]
+AUDIT gate=GATE1 key=wall_geometry result=PASS bad=[]
+AUDIT gate=GATE2 key=a1_liquid_semantic result=PASS bad=[]
+AUDIT gate=GATE2 key=bcde_stamping result=PASS bad=[]
+AUDIT gate=GATE2 key=current_materialization result=PASS bad=[]
+AUDIT gate=GATE2 key=landmark_semantic result=PASS bad=[]
+AUDIT gate=GATE2 key=loading_contract result=PASS bad=[]
+AUDIT gate=GATE2 key=map091_content_matrix result=PASS bad=[]
+AUDIT gate=GATE2 key=map091_source result=PASS bad=[]
+AUDIT gate=GATE2 key=route_live result=PASS bad=[]
+AUDIT gate=GATE2 key=route_static result=PASS bad=[]
+AUDIT gate=GATE2 key=tileset_semantic result=PASS bad=[]
+AUDIT gate=GATE3 key=integrated_v10666 result=PASS bad=[]
+HARNESS_EXTRA_RNG_CALLS=0
+REWARD_GRANT=0
+MAP_MUTATION=0
+MAP090_FILE_MUTATION=0
+MAP091_FILE_MUTATION=0
+MAP090_LIVE_TABLE_MUTATION=0
+VXRD_STATE_MUTATION=0
+SESSION_MUTATION=0
+PARTY_MUTATION=0
+BATTLE_LAUNCH=0
+BLOCKERS=0
+RESULT=PASS

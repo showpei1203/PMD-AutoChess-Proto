@@ -89,6 +89,8 @@ module PMD_AC
       (1..5).each{|t|curve[t]=vxrd_gate3_completion_target_v10663(t)}
       expected={1=>2,2=>2,3=>3,4=>4,5=>5}
       bad << :curve unless curve==expected
+
+      # Verify all non-completion contexts remain delegated byte/behavior-equivalent.
       pool={:base_rolls=>2,:max_rolls=>4}
       contexts=[{},
         {:rarity=>:rare},
@@ -101,10 +103,13 @@ module PMD_AC
         normal_same=false unless a==b
       end
       bad << :normal_roll_policy unless normal_same
+
+      # Completion-only marker may exceed pool max=4, but never beyond local safety cap.
       completion_ctx={:rarity=>:very_rare,:elite=>true,:completion_roll_target_v10663=>5}
       completion_rolls=loot_roll_count_v094(pool,completion_ctx)
       bad << :completion_override unless completion_rolls==5
       bad << :override_cap unless loot_roll_count_v094(pool,{:completion_roll_target_v10663=>99})==VXRD_GATE3_COMPLETION_OVERRIDE_CAP_V10663
+
       stats={:battles=>6,:wins=>5,:losses=>0,:escapes=>1,:recruits=>2,:treasures=>2,
         :recoveries=>1,:rare_nest_wins=>1,:elite_room_wins=>2,:loot_results=>7}
       common={:code=>'H21',:floors_cleared=>6,:max_floors=>6,:stats=>stats}
@@ -117,6 +122,7 @@ module PMD_AC
       bad << :complete_copy unless cl.index('通關 Bonus 5抽')
       bad << :retreat_copy unless rl.index('未取得通關 Bonus') && rl.index('成果保留')
       bad << :defeat_copy unless dl.index('未取得通關 Bonus') && dl.index('成果保留')
+
       {:pass=>bad.empty?,:curve=>curve,:normal_roll_policy_unchanged=>normal_same,
         :completion_override_rolls=>completion_rolls,:retreat_bonus=>0,:defeat_bonus=>0,
         :partial_clear_bonus=>0,:new_items=>0,:bad=>bad}

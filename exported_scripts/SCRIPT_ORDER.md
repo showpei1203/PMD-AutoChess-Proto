@@ -4,7 +4,7 @@ Source: `Data/Scripts.rvdata`
 
 **Do not reorder.** Runtime order is the numeric `index` below.
 
-- 0000 | ID `0` | `` | `0000__id_0.rb`
+- 0000 | ID `0` | `PMD AutoChess Direct Damage Hit Micro Profiler v1.02.18` | `0000__id_0.rb`
 - 0001 | ID `1` | `▼ Modules` | `0001__id_1.rb`
 - 0002 | ID `2` | `Vocab` | `0002__id_2.rb`
 - 0003 | ID `3` | `Sound` | `0003__id_3.rb`
@@ -312,18 +312,18 @@ Source: `Data/Scripts.rvdata`
 - 0305 | ID `99074129` | `PMD AutoChess Region Ecology Data v0.86` | `0305__id_99074129.rb`
 - 0306 | ID `99074130` | `PMD AutoChess Proto v0.86` | `0306__id_99074130.rb`
 - 0307 | ID `99074131` | `PMD AutoChess UI Readability v0.86` | `0307__id_99074131.rb`
-- 0308 | ID `0` | `PMD AutoChess Encounter Unlock Data v0.87` | `0308__id_0.rb`
-- 0309 | ID `0` | `PMD AutoChess Proto v0.87` | `0309__id_0.rb`
-- 0310 | ID `0` | `PMD AutoChess Miss Pace Tuning v0.87.1` | `0310__id_0.rb`
-- 0311 | ID `0` | `PMD AutoChess Battle Flow UI Data v0.88` | `0311__id_0.rb`
-- 0312 | ID `0` | `PMD AutoChess Proto v0.88` | `0312__id_0.rb`
-- 0313 | ID `0` | `PMD AutoChess Damage Scatter v0.88.1` | `0313__id_0.rb`
-- 0314 | ID `0` | `PMD AutoChess Visual Micro Tuning v0.88.2` | `0314__id_0.rb`
-- 0315 | ID `0` | `PMD AutoChess Combat Feel Audio Ranged Stagger v0.88.3` | `0315__id_0.rb`
-- 0316 | ID `0` | `PMD AutoChess True Foot Bars v0.88.4` | `0316__id_0.rb`
-- 0317 | ID `0` | `PMD AutoChess Stalemate Safety Net v0.89` | `0317__id_0.rb`
-- 0318 | ID `0` | `PMD AutoChess Stalemate Hotfix v0.89.1` | `0318__id_0.rb`
-- 0319 | ID `0` | `PMD AutoChess True Foot Bars Hotfix v0.89.2` | `0319__id_0.rb`
+- 0308 | ID `0` | `PMD AutoChess Direct Damage Hit Micro Profiler v1.02.18` | `0308__id_0.rb`
+- 0309 | ID `0` | `PMD AutoChess Direct Damage Hit Micro Profiler v1.02.18` | `0309__id_0.rb`
+- 0310 | ID `0` | `PMD AutoChess Direct Damage Hit Micro Profiler v1.02.18` | `0310__id_0.rb`
+- 0311 | ID `0` | `PMD AutoChess Direct Damage Hit Micro Profiler v1.02.18` | `0311__id_0.rb`
+- 0312 | ID `0` | `PMD AutoChess Direct Damage Hit Micro Profiler v1.02.18` | `0312__id_0.rb`
+- 0313 | ID `0` | `PMD AutoChess Direct Damage Hit Micro Profiler v1.02.18` | `0313__id_0.rb`
+- 0314 | ID `0` | `PMD AutoChess Direct Damage Hit Micro Profiler v1.02.18` | `0314__id_0.rb`
+- 0315 | ID `0` | `PMD AutoChess Direct Damage Hit Micro Profiler v1.02.18` | `0315__id_0.rb`
+- 0316 | ID `0` | `PMD AutoChess Direct Damage Hit Micro Profiler v1.02.18` | `0316__id_0.rb`
+- 0317 | ID `0` | `PMD AutoChess Direct Damage Hit Micro Profiler v1.02.18` | `0317__id_0.rb`
+- 0318 | ID `0` | `PMD AutoChess Direct Damage Hit Micro Profiler v1.02.18` | `0318__id_0.rb`
+- 0319 | ID `0` | `PMD AutoChess Direct Damage Hit Micro Profiler v1.02.18` | `0319__id_0.rb`
 - 0320 | ID `90009001` | `PMD AutoChess Stage Region Preview Data v0.90` | `0320__id_90009001.rb`
 - 0321 | ID `90009002` | `PMD AutoChess Stage Region Encounter Preview UI v0.90` | `0321__id_90009002.rb`
 - 0322 | ID `90009101` | `PMD AutoChess Boss Framework Data v0.91` | `0322__id_90009101.rb`
@@ -411,7 +411,7 @@ Source: `Data/Scripts.rvdata`
 - 0404 | ID `1010071` | `PMD AutoChess Story Progression Recruit Separation v1.01.7` | `0404__id_1010071.rb`
 - 0405 | ID `1010081` | `PMD AutoChess Vertical Slice Verification Finalization v1.01.8` | `0405__id_1010081.rb`
 - 0406 | ID `1020001` | `PMD AutoChess Motion Framework Phase A v1.02` | `0406__id_1020001.rb`
-- 0407 | ID `1020101` | `PMD AutoChess Motion Verifier Production Runtime Bridge v1.02.1` | `0407__id_1020101.rb`
+- 0407 | ID `1020101` | `PMD AutoChess Battle Render Prime v1.02.10` | `0407__id_1020101.rb`
 - 0408 | ID `1020022` | `PMD AutoChess Motion Runtime Cache Stutter Fix v1.02.2` | `0408__id_1020022.rb`
 - 0409 | ID `1020031` | `PMD AutoChess Motion Frame Spike Profiler v1.02.3` | `0409__id_1020031.rb`
 - 0410 | ID `1020041` | `PMD AutoChess Motion Live Battle Stutter Fix v1.02.4` | `0410__id_1020041.rb`
@@ -504,8 +504,8 @@ Source: `Data/Scripts.rvdata`
 - 0497 | ID `99630011` | `PMD AutoChess Result Impact Hold Stat FX v1.05.13` | `0497__id_99630011.rb`
 - 0498 | ID `99630012` | `PMD AutoChess Orbit Stat FX Focus Override Hooks v1.05.14` | `0498__id_99630012.rb`
 - 0499 | ID `99630013` | `PMD AutoChess Important Boss Focus Overrides I v1.05.15` | `0499__id_99630013.rb`
-- 0500 | ID `99630014` | `PMD AutoChess Status Semantic VFX Filter Focus QA v1.05.16` | `0500__id_99630014.rb`
-- 0501 | ID `99630015` | `PMD AutoChess Status VFX Ownership Seal v1.05.17` | `0501__id_99630015.rb`
+- 0500 | ID `99630014` | `PMD AutoChess Status Result Completion Authority v1.05.18` | `0500__id_99630014.rb`
+- 0501 | ID `99630015` | `PMD AutoChess Important Boss Focus Fixture I v1.05.19` | `0501__id_99630015.rb`
 - 0502 | ID `99630014` | `PMD AutoChess Status Result Completion Authority v1.05.18` | `0502__id_99630014.rb`
 - 0503 | ID `99630015` | `PMD AutoChess Important Boss Focus Fixture I v1.05.19` | `0503__id_99630015.rb`
 - 0504 | ID `99630016` | `PMD AutoChess Status Minimal Focus Important Boss Content II v1.05.20` | `0504__id_99630016.rb`
@@ -650,9 +650,9 @@ Source: `Data/Scripts.rvdata`
 - 0643 | ID `1065800` | `PMD AutoChess VXRD Water-Bottom Autotile Pair Authority I v1.06.58` | `0643__id_1065800.rb`
 - 0644 | ID `1066100` | `PMD AutoChess VXRD A1 Liquid Surface Semantic Authority II v1.06.61` | `0644__id_1066100.rb`
 - 0645 | ID `1066200` | `PMD AutoChess Gate 3 Floor-Depth Risk Curve + Settlement Visibility I v1.06.62` | `0645__id_1066200.rb`
-
 - 0646 | ID `1066300` | `PMD AutoChess Gate 3 Completion Incentive + Retreat Clarity I v1.06.63` | `0646__id_1066300.rb`
 - 0647 | ID `1066400` | `PMD AutoChess Gate 3 Run Accounting Semantic Persistence I v1.06.64` | `0647__id_1066400.rb`
 - 0648 | ID `1066600` | `PMD AutoChess Gate 3 Integrated Seal Convergence I v1.06.66` | `0648__id_1066600.rb`
-- 0649 | ID `250` | `Main` | `0649__id_250.rb`
-- 0650 | ID `251` | `` | `0650__id_251.rb`
+- 0649 | ID `1066700` | `PMD AutoChess P8 Formal Cross-Gate Regression + QA Shortcut Consolidation I v1.06.67` | `0649__id_1066700.rb`
+- 0650 | ID `250` | `Main` | `0650__id_250.rb`
+- 0651 | ID `251` | `` | `0651__id_251.rb`

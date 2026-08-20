@@ -1,0 +1,88 @@
+PMD AutoChess v1.06.67 — P8 Formal Cross-Gate Regression + QA Shortcut Consolidation I
+Status: FORMAL WINDOWS PASS / SEALED
+Baseline: v1.06.66 FORMAL PASS / Gate 3 SEALED
+Formal Scripts SHA256: 28986114dbb53abb9c3941e94ffc7b5607d1db7cc87b406cb922c1377adb7a16
+Formal v1.06.67 Scripts SHA256: 91495233cd3d38572a9bcd5091e8d1076ea1260c5126a0a99cca9edfdb9c3c4b
+Scripts: 652 (indices 0..651)
+New: 649 = v1.06.67; 650 = Main; 651 = terminator
+
+Purpose
+1. Implement Linear SHO-55 / P8 Fast Cross-Gate Regression.
+2. Reuse current accepted audit APIs instead of duplicating stale rules.
+3. Consolidate current TEST launcher to plain F5 on Scene_Map.
+4. Retire historical permanent QA launchers precisely, without globally deleting F-key behavior.
+
+Gate Composition
+Gate 1
+- vxrd_wall_geometry_audit_v10592
+- vxrd_regular_water_audit_v10593
+- vxrd_visual_style_audit_v10600
+- vxrd_tileset_semantic_audit_v10641
+- vxrd_room_runtime_audit_v10602
+- vxrd_node_lifecycle_audit_v10606
+- vxrd_save_resume_audit_v10609
+- vxrd_room_visual_audit_v10607 (current v1.06.41 override)
+
+Gate 2
+- vxrd_template_source_audit_v10651(91)
+- vxrd_event_content_audit_v10652 (21 Hunts x Floors 1..6 = 126 matrix)
+- current Map090 materialization state (Map091 source/content/semantic placement)
+- vxrd_landmark_audit_v10654
+- vxrd_landmark_route_static_audit_v10655
+- vxrd_landmark_route_audit_state_v10655 (read-only live state)
+- vxrd_map_loading_static_audit_v10656
+- vxrd_a1_liquid_semantic_audit_v10661
+- B/C/D automatic stamping must remain 0
+
+Gate 3
+- vxrd_gate3_integrated_seal_audit_v10666
+
+Important stale-audit rule
+- v1.06.10 aggregate structural audit is intentionally NOT used as a P8 blocker.
+- Its historical water-base expectation (2096) was superseded by v1.06.61 A1 semantic authority.
+
+Read-only / mutation guard
+Fast Seal snapshots before and after:
+- Data/Map090.rvdata CRC
+- Data/Map091.rvdata CRC
+- live Map090 tile checksum
+- VXRD state Marshal CRC
+- Hunt session Marshal CRC
+- Party Marshal CRC
+- Scene class
+Expected:
+HARNESS_EXTRA_RNG_CALLS=0
+REWARD_GRANT=0
+MAP_MUTATION=0
+SESSION_MUTATION=0
+PARTY_MUTATION=0
+BATTLE_LAUNCH=0
+
+Shortcut consolidation
+Retired permanent QA launchers:
+- F7 v1.01.4 Boss retest
+- F6 v1.05.19 Important/Boss Focus fixture
+- F7 v1.05.34 Representative Visual fixture
+- F9 v1.05.36 Sandshrew Focused Review
+- SHIFT+F7 v1.05.37 Transition fixture
+- SHIFT+F9 v1.05.38 Important Species fixture
+
+Preserved:
+- Production F8 Vertical Slice / PMD menu return behavior, byte-exact.
+- Fixture-scoped F8 finding controls remain in their historical fixture methods.
+- Default RPG Maker VX test/debug F9 behavior is not globally removed.
+
+Explicit non-changes
+- Gate 1 / Gate 2 / Gate 3 sealed gameplay not rewritten.
+- No Battle AI change.
+- No damage formula change.
+- No attack-speed / Focus-C2 / spatial endpoint change.
+- No reward curve change.
+- No Map090 or Map091 payload is included or overwritten by this candidate.
+- Generated Runtime Asset Expansion remains deferred.
+- Battle Tempo P4 remains deferred pending Motion completion.
+
+Static validation: PASS
+Windows/RMVX Fast Seal: PASS
+Gate1=PASS / Gate2=PASS / Gate3=PASS / BLOCKERS=0
+All mutation counters and battle launch = 0

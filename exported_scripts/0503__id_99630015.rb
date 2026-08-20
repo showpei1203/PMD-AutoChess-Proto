@@ -262,9 +262,8 @@ class Scene_PMD_AutoChess
   def update_battle_input
     pmd_ac_v10519_update_battle_input
     return if $scene!=self || @phase!=:battle
-    if Input.trigger?(Input::F6) && focus_tier_fixture_normal_v10519?
-      focus_tier_fixture_start_v10519
-    end
+    # P8 v1.06.67: historical F6 Focus fixture launcher retired.
+    # Existing fixture lifecycle remains callable by API for issue-driven diagnosis.
     focus_tier_fixture_update_v10519
   rescue
     pmd_ac_v10519_update_battle_input

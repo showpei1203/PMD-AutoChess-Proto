@@ -684,21 +684,8 @@ class Scene_PMD_AutoChess
       representative_transition_input_v10537
       return
     end
-    if @phase==:battle && respond_to?(:verification_mode) && verification_mode==:normal &&
-       Input.press?(Input::SHIFT) && Input.trigger?(Input::F7)
-      @rep_transition_request_v10537=true
-      if representative_transition_ready_v10537?
-        begin;Sound.play_decision;rescue;end
-        representative_transition_start_v10537
-      else
-        begin;Sound.play_cursor;rescue;end
-        rs=PMD_AC.representative_route_qa_state_v10528
-        log_event(:battle,'BATTLE_REPRESENTATIVE_TRANSITION_V10537 REQUEST input=SHIFT+F7 pending_safe_boundary=1'+
-          ' route_qa_complete='+(rs!=nil && rs[:complete] ? '1':'0')+
-          ' sandshrew_guard='+(PMD_AC.sandshrew_head_guard_last_qa_v10536!=nil && PMD_AC.sandshrew_head_guard_last_qa_v10536[:pass] ? '1':'0'))
-      end
-      return
-    end
+    # P8 v1.06.67: historical SHIFT+F7 Transition fixture launcher retired.
+    # representative_transition_start_v10537 remains callable for issue-driven diagnosis.
     pmd_ac_v10537_transition_update_battle_input
   rescue
     pmd_ac_v10537_transition_update_battle_input

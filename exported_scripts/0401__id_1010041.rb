@@ -189,12 +189,8 @@ class Scene_Map
   alias pmd_ac_v1014_update update unless method_defined?(:pmd_ac_v1014_update)
   def update
     pmd_ac_v1014_update
-    return unless $game_map!=nil && PMD_AC.vertical_map_v101?($game_map.map_id)
-    if Input.trigger?(Input::F7) && !$game_map.interpreter.running? && ($game_message==nil || !$game_message.busy)
-      if PMD_AC.boss_retest_shortcut_v1014
-        Sound.play_decision
-      end
-    end
+    # P8 v1.06.67: historical F7 Boss retest launcher retired.
+    # boss_retest_shortcut_v1014 remains callable for issue-driven diagnosis.
   end
 end
 
