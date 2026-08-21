@@ -1,0 +1,19 @@
+PMD AutoChess v1.06.68a — P8-II Deterministic Battle Regression Harness Repair
+
+基底：v1.06.67 FORMAL PASS / SEALED
+前一候選：v1.06.68 Windows FAIL（3 blockers）
+本版分類：TEST HARNESS REPAIR，未修改 sealed gameplay Runtime。
+
+修正：
+1. early_battle_content 不再把 Challenge 永久硬鎖為 2；正式內容已擴充到 C12。
+2. representative_assets 不再要求現在完成 56/56 PNG；Generated Runtime Asset Expansion 依 Authority 延後到開發末期批量完成。
+3. species_routes 改驗 semantic family + species profile；資產 admission 僅記錄，不再把 deferred PNG 誤判成 Runtime route defect。
+
+Windows/RMVX 正式驗收：PASS。
+- 10/10 audits PASS
+- BLOCKERS=0
+- RNG / Reward / Party / battle request / live unit / scene mutation / battle launch = 0
+- module cache restored = 1
+
+Formal Scripts SHA256:
+1bff5940ec5f5fde8943aa0acf54b25691c4db49bd32220a6edf135c5054145a

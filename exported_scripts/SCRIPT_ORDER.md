@@ -654,5 +654,6 @@ Source: `Data/Scripts.rvdata`
 - 0647 | ID `1066400` | `PMD AutoChess Gate 3 Run Accounting Semantic Persistence I v1.06.64` | `0647__id_1066400.rb`
 - 0648 | ID `1066600` | `PMD AutoChess Gate 3 Integrated Seal Convergence I v1.06.66` | `0648__id_1066600.rb`
 - 0649 | ID `1066700` | `PMD AutoChess P8 Formal Cross-Gate Regression + QA Shortcut Consolidation I v1.06.67` | `0649__id_1066700.rb`
-- 0650 | ID `250` | `Main` | `0650__id_250.rb`
-- 0651 | ID `251` | `` | `0651__id_251.rb`
+- 0650 | ID `1066800` | `PMD AutoChess P8-II Deterministic Battle Regression Consolidation I v1.06.68a` | `0650__id_1066800.rb`
+- 0651 | ID `250` | `Main` | `0651__id_250.rb`
+- 0652 | ID `251` | `` | `0652__id_251.rb`

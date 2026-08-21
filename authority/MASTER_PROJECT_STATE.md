@@ -1,6 +1,6 @@
 # MASTER_PROJECT_STATE — PMD AutoChess Proto
 
-Last Updated: 2026-08-20 17:37 +08:00
+Last Updated: 2026-08-21 11:45 +08:00
 
 ## Persistent Authority
 - Google Drive = Binary / Asset Authority.
@@ -11,137 +11,94 @@ Last Updated: 2026-08-20 17:37 +08:00
 ## User Direction
 Prioritize script/runtime progression. Gate 2 dedicated-art work remains parallel/secondary unless explicitly requested.
 
-### QA Shortcut Governance — accepted in v1.06.67
-- Do not keep allocating new permanent test hotkeys.
-- Historical unused QA/test launchers may be retired or reused.
-- Current consolidated TEST-only entry point = plain **F5 on Scene_Map**.
-- Cleanup is hook-specific, never a global key-symbol ban.
-- Production/player F8 behavior is preserved, including Vertical Slice return-to-camp and PMD menu return routing.
-- Fixture-internal F8 finding controls remain callable inside their historical fixture methods, but those fixtures no longer own permanent launcher hotkeys.
-
 ## Current Formal Baseline
-**v1.06.67 — P8 Formal Cross-Gate Regression + QA Shortcut Consolidation I — FORMAL WINDOWS PASS / SEALED.**
+**v1.06.68a — P8-II Deterministic Battle Regression Consolidation I — FORMAL WINDOWS PASS / SEALED.**
 
 Formal Binary Baseline:
-`01_Current_Baseline/PMD_AutoChess_v1_06_67_FORMAL_PASS_P8_CROSS_GATE_REGRESSION_QA_SHORTCUT_CONSOLIDATION_I_20260820.zip`
-Drive ID `19pEv3PldwLNuD2G8RnSJunDfekZfOaam`.
-Formal ZIP SHA256 `183112304b9a6e546b183a273576bba89df1fc4060350f3f8f34f6d4e7024c9a`.
-Formal `Data/Scripts.rvdata` SHA256 `91495233cd3d38572a9bcd5091e8d1076ea1260c5126a0a99cca9edfdb9c3c4b`.
+`01_Current_Baseline/PMD_AutoChess_v1_06_68a_FORMAL_PASS_P8II_DETERMINISTIC_BATTLE_REGRESSION_CONSOLIDATION_I_20260821.zip`
+Drive ID `16Sf4vxF1ycqbjk7asSCq5Q-0b7s_1ILV`.
+Formal ZIP SHA256 `9afb6035cbea52ae25d5a1de0ba92c778b4b4dd0b34d6c0b781dc6d4f5a04da2`.
+Formal `Data/Scripts.rvdata` SHA256 `1bff5940ec5f5fde8943aa0acf54b25691c4db49bd32220a6edf135c5054145a`.
 
-Windows P8 Fast Seal acceptance:
-- RESULT=PASS.
-- GATE1=PASS / GATE2=PASS / GATE3=PASS.
-- BLOCKERS=0.
+Windows P8-II acceptance:
+- RESULT=PASS / BLOCKERS=0.
+- all 10 audits PASS: API, progression, evolution, weather, representative matrix, curated loadouts, early battle content, Boss contract, species semantic routes, detached displacement.
+- DETACHED_NORMAL_KNOCKBACK_FRAMES=9.
+- DETACHED_SUCTION_KNOCKBACK_FRAMES=0; DETACHED_SUCTION_PULL_FRAMES=0.
+- SPECIES_ROUTE_SAMPLE=6/6; PROFILE_READY=6/6.
 - HARNESS_EXTRA_RNG_CALLS=0.
 - REWARD_GRANT=0.
-- MAP_MUTATION=0, including Map090/091 file mutation=0 and live Map090 table mutation=0.
-- VXRD_STATE_MUTATION=0 / SESSION_MUTATION=0 / PARTY_MUTATION=0.
+- PARTY_MUTATION=0 / BATTLE_REQUEST_MUTATION=0 / LIVE_UNIT_MUTATION=0 / SCENE_MUTATION=0.
 - BATTLE_LAUNCH=0.
-- Production F8 preserved.
-- stale v1.06.10 aggregate audit intentionally not used as a P8 blocker.
+- MODULE_CACHE_RESTORED=1.
 
-Linear SHO-55 = Done / SEALED after Windows acceptance and Authority promotion.
+Deferred Asset Authority:
+- REPRESENTATIVE_ASSET_READY=0/56; DEFERRED=56; COMPLETION_REQUIRED=0.
+- SPECIES_ROUTE_ASSET_ADMITTED=0/6; DEFERRED=6; COMPLETION_REQUIRED=0.
+- Generated Runtime Asset Expansion remains end-of-development bulk work and does not block P8-II.
+
+v1.06.68 first TEST candidate failed only because of obsolete harness assumptions (Challenge count hardcode and asset-admission coupling). It was not promoted. v1.06.68a changed only TEST harness index650 relative to that candidate and preserves v1.06.67 formal rows 0..649 byte-exact.
 
 ## GitHub Formal Source
-`main` canonical source = **652 Scripts, indices 0..651**:
+Canonical source = **653 Scripts, indices 0..652**:
 - 645 / ID1066200 / v1.06.62.
 - 646 / ID1066300 / v1.06.63.
 - 647 / ID1066400 / v1.06.64.
 - 648 / ID1066600 / v1.06.66.
 - 649 / ID1066700 / v1.06.67 P8 Cross-Gate Regression + QA Shortcut Consolidation.
-- 650 / ID250 / Main.
-- 651 / ID251 / terminator.
+- 650 / ID1066800 / v1.06.68a P8-II Deterministic Battle Regression Consolidation.
+- 651 / ID250 / Main.
+- 652 / ID251 / terminator.
 
-v1.06.65 remains REJECTED and never entered canonical Formal Source.
-Formal promotion evidence:
-- `tests/STATIC_VALIDATION_v1.06.67.log` = PASS.
-- `tests/P8_CROSS_GATE_WINDOWS_ACCEPTANCE_v1.06.67.log` = PASS.
-- `tests/FORMAL_PROMOTION_v1.06.67.log` = PASS.
+index650 source size=23966 bytes; SHA256 `3b32632d163107877042406c4bfca1e07073bbb17078a940f4b6f88e594a343d`.
+Formal rows 0..649 remain byte-exact from v1.06.67. Production F8 source rows remain byte-exact.
 
-P8 source delta is intentionally narrow:
-- historical launcher hooks retired at indices 401, 503, 519, 521, 522, 523;
-- Gate 3 sealed tail 645..648 remains byte-exact from v1.06.66;
-- production F8 source rows remain byte-exact;
-- new consolidated harness is index 649 only.
+Formal evidence:
+- `tests/P8II_WINDOWS_ACCEPTANCE_v1.06.68a.log`.
+- `tests/FORMAL_PROMOTION_v1.06.68a.md`.
+- `docs/UPDATE_INFO_v1.06.68a.txt`.
+- `docs/教學_v1.06.68a.txt`.
+
+## P8 Validation Authority
+### v1.06.67 P8 Cross-Gate — SEALED
+Gate 1: wall/water/visual/tileset/room/node/save-resume/live Map090.
+Gate 2: Map091 source/content/materialization, Landmark semantic, Route Safety, Loading, A1, B/C/D/E stamping=0.
+Gate 3: v1.06.66 integrated risk/completion/accounting seal.
+Fast mode remains read-only with mutation/RNG/reward/battle launch = 0.
+
+### v1.06.68a P8-II Battle Regression — SEALED
+- progression: 494 species / 248 evolution lines.
+- evolution motion identity.
+- weather maintenance contract.
+- representative 56-entry runtime asset matrix contract without requiring deferred asset completion.
+- curated loadouts: 6 species / 24 slots.
+- current early Hunt / Challenge content (2 Hunts, 12 Challenges, 12 fixed rewards).
+- Story Boss contract.
+- species semantic route sample 6/6; profile 6/6; asset admission observational only.
+- detached real displacement runtime: normal Knockback and Suction Cups Knockback/Pull immunity.
+- live Party / battle request / units / scene checksum guard and module-cache restore.
+
+## QA Shortcut Governance
+- Do not allocate new permanent test hotkeys.
+- `Scene_Map` F5 = v1.06.67 Cross-Gate.
+- normal `Scene_PMD_AutoChess` battle F5 = v1.06.68a P8-II.
+- same key, scene-specific dispatcher.
+- historical permanent QA F6/F7/F9 and shifted launchers remain retired.
+- Production/player F8 is preserved, including Vertical Slice return-to-camp and PMD menu return routing.
+- fixture-scoped historical F8 controls may remain callable inside fixture methods.
 
 ## Accepted Gate 3 Runtime
-### v1.06.62 — Floor-Depth Risk Curve
-- deepest-floor Rare bonus +12pp; Elite +15pp; cap85.
-- Tier endpoints: T1 R18→30/E0→0; T2 R28→40/E30→45; T3 R40→52/E42→57; T4 R52→64/E55→70; T5 R65→77/E70→85.
-- deterministic seed-derived promotion; no extra RNG.
-
-### v1.06.63 — Completion Incentive
-- full-clear completion rolls by Tier = 2 / 2 / 3 / 4 / 5.
-- retreat / defeat / partial-clear Completion Bonus = 0.
-- normal loot policy unchanged.
-
-### v1.06.64 — Run Accounting
-- `loot_results` = legacy-compatible total.
-- `immediate_loot_results` = in-run results excluding Completion Bonus.
-- `completion_bonus_results` = Completion-only actual results.
-- active legacy migration / completed-result fallback / Marshal persistence SEALED.
-
-### v1.06.66 — Integrated Gate 3 Seal
-- current semantic contract integrates v1.06.62/.63/.64.
-- historical v1.06.63 text-only audit is nonblocking after accepted v1.06.64 settlement copy change.
-- active/QA/vxrd-state context acceptance was validated on Windows.
-
-## P8 Cross-Gate Regression — accepted v1.06.67
-Gate 1 current structural coverage:
-- wall geometry.
-- regular water shape.
-- visual style scope.
-- current tileset semantic.
-- room runtime API.
-- node lifecycle API.
-- save/resume API.
-- current room visual state.
-- live Map090 context.
-
-Gate 2 current coverage:
-- Map091 authoring/source audit.
-- 49-source-event / 126 Hunt×Floor content matrix.
-- current materialization state.
-- Landmark semantic audit.
-- Route Safety static + read-only live audit.
-- Loading contract.
-- current A1 liquid semantics.
-- automatic B/C/D/E stamping = 0.
-
-Gate 3 current coverage:
-- direct reuse of v1.06.66 integrated seal contract.
-- floor-depth risk curve.
-- completion 2/2/3/4/5.
-- total/immediate/completion accounting.
-- read-only summary/persistence semantics.
-
-Fast Seal mutation contract:
-- extra RNG=0.
-- Reward=0.
-- Map090/091 mutation=0.
-- Battle launch=0.
-- Session/VXRD/Party mutation=0.
-
-## Shortcut Consolidation — SEALED
-Retired permanent QA launchers:
-- F7 v1.01.4 Boss retest.
-- F6 v1.05.19 Important/Boss Focus fixture.
-- F7 v1.05.34 Representative Visual fixture.
-- F9 v1.05.36 Sandshrew Focused Review.
-- SHIFT+F7 v1.05.37 Transition fixture.
-- SHIFT+F9 v1.05.38 Important Species fixture.
-
-Preserved:
-- Production F8 Vertical Slice / PMD menu return paths.
-- Fixture-scoped F8 finding controls.
-- Historical QA methods remain available for issue-driven/API diagnosis even though permanent launcher hooks are retired.
+- v1.06.62 floor-depth Risk Curve SEALED.
+- v1.06.63 Completion Incentive SEALED; full-clear rolls 2/2/3/4/5.
+- v1.06.64 Run Accounting SEALED; total/immediate/completion semantics and persistence.
+- v1.06.66 Integrated Gate 3 Seal SEALED.
 
 ## Parallel / Deferred Work
-- Gate 2 dedicated visual work remains active in SHO-7 / SHO-42 and is parallel/secondary to script work.
-- Generated Runtime Asset Expansion batches remain end-of-development bulk completion; do not restore them as sequential blockers.
+- Gate 2 dedicated visual work remains active in SHO-7 / SHO-42 and is parallel/secondary.
+- Generated Runtime Asset Expansion batches remain end-of-development bulk completion.
 - Battle Tempo P4 remains blocked until Motion completion.
 - SHO-47 stale `Game.ini` title is low-priority UI/metadata debt.
-- P8 opens no new gameplay authority. Any next script/runtime change must be issue-driven and start from v1.06.67 Formal.
+- No gameplay authority is automatically opened by P8-II. The next script/runtime change must start from v1.06.68a Formal, inspect remaining roadmap P8 scope, and be issue-driven.
 
 ## Sealed Runtime / No Regression
 - Gate 1 structural Random Hunt SEALED.
@@ -154,10 +111,15 @@ Preserved:
 - v1.06.58 visible-bottom water PASS.
 - v1.06.61 A1 liquid semantic PASS.
 - Gate 3 v1.06.62/.63/.64/.66 SEALED.
-- v1.06.67 P8 validation/shortcut consolidation SEALED.
+- v1.06.67 P8 Cross-Gate / shortcut consolidation SEALED.
+- v1.06.68a P8-II deterministic battle regression SEALED.
 - No automatic B/C/D/E scatter/stamping.
 - v1.06.44 Landmark runtime IDs remain revoked.
 - Map090 = Random Hunt Runtime; Map091 = shared Event Template Library.
+
+## Linear
+- SHO-55 = Done / SEALED.
+- SHO-56 = Windows PASS; close as Done / SEALED after GitHub main and Drive Authority convergence.
 
 ## Editor / Documentation Rule
 Any functional delivery changing `Data/Scripts.rvdata`, `Data/Map091.rvdata`, or another Data file requires completely closing RPG Maker VX before overwrite, then reopening RMVX. Every functional delivery requires synchronized Traditional Chinese tutorial/usage documentation.

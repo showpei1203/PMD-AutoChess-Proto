@@ -1,0 +1,41 @@
+PMD AutoChess v1.06.68a P8-II
+
+【定位】
+本版已取得 Windows/RMVX FORMAL PASS。P8-II 為 deterministic battle regression 驗證基礎建設，不修改 sealed Battle AI、Damage Formula、Attack Speed、Focus/C2、Spatial、Gate3 Reward 或 Random Hunt Runtime。
+
+【F5 規則】
+- Scene_Map：v1.06.67 P8 Cross-Gate。
+- 正常 Scene_PMD_AutoChess battle：v1.06.68a P8-II。
+- 沒有新增 F6/F7/F8/F9 測試快捷鍵。
+- Production F8 完全保留。
+
+【P8-II 驗證內容】
+- progression 494 species / 248 evolution lines
+- evolution motion identity
+- weather maintenance contract
+- representative asset matrix contract
+- curated loadouts
+- early Hunt / Challenge battle content
+- Story Boss contract
+- species semantic motion routes
+- detached Knockback + Suction Cups displacement immunity
+- Party / battle request / live unit / scene mutation guard
+
+【已接受的 deferred 狀態】
+Generated Runtime Asset Expansion 仍依 Authority 延後到開發末期批量完成，因此：
+- REPRESENTATIVE_ASSET_READY 可小於 56；completion_required=0。
+- SPECIES_ROUTE_ASSET_ADMITTED 可小於 6；completion_required=0。
+這些不是目前 Runtime blocker。
+
+【正式 Windows 驗收】
+RESULT=PASS
+BLOCKERS=0
+所有 10 項 audit PASS。
+HARNESS_EXTRA_RNG_CALLS=0
+REWARD_GRANT=0
+PARTY_MUTATION=0
+BATTLE_REQUEST_MUTATION=0
+LIVE_UNIT_MUTATION=0
+SCENE_MUTATION=0
+BATTLE_LAUNCH=0
+MODULE_CACHE_RESTORED=1
