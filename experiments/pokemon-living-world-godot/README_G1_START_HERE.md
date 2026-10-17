@@ -17,8 +17,18 @@ Complete test: `RUN_G1_TESTS_WINDOWS.bat` (45 current tests); output/log `report
 ## G1 4.7.2 parser hotfix (2026-10-17)
 The first Surface screenshot reported `pmd_sprite_source.gd:72 Not all code paths return a value`. The CopyOf resolver now has an explicit typed `return {}` fallback. Pull the new branch before pressing F5. The original 151 downloaded sprite files are **not modified** and do not need another download. Godot runtime re-test remains pending. See `docs/G1_PARSER_HOTFIX_20261017.md`.
 
-## v0.3.2 Godot XMLParser API compatibility fix (2026-10-17)
-Surface error `Nonexistent function 'open_file' in base 'XMLParser'` is fixed with documented `XMLParser.open(xml_path)`. Two integer-division warnings fixed using explicit float calculations. Three static regression tests added; **41/41 offline PASS**. Your locally downloaded 151 species do not need redownloading. Godot run still requires Surface F5 confirmation; see `docs/G1_XMLPARSER_API_HOTFIX_20261017.md`.
+## v0.3.2 Godot XMLParser API fix (2026-10-17)
+After Surface error `Nonexistent function open_file in base XMLParser`, use Godot 4 API `XMLParser.open(String)`; remove 2 integer-division warnings. Test suite now contains 3 extra API contracts. Re-pull the planning branch and restart Godot; existing downloaded 151 species art remains local and unchanged. G1 real sprite playback still requires Surface F5 confirmation.
 
-## v0.3.3: Gengar #094 XML + PNG warning fixes (2026-10-17)
-Surface Output identified `#094 XML tag mismatch: AnimData` despite 102 PNG / 36 animations being downloaded and verified. The XML reader now parses each `<Anim>` record independently. PNG images now load via imported Godot `Texture2D` resources instead of direct `Image.load()`. The on-screen failure text now points at the real Output message. **45/45 offline Python tests PASS**, but **Surface Godot F5 is PENDING**. Original downloaded 151 species remain unchanged. See `docs/G1_GENGAR_XML_AND_TEXTURE_HOTFIX_20261017.md`.
+## v0.3.3: Gengar #094 recovery (2026-10-17)
+Surface Output identified `#094 XML tag mismatch: AnimData` despite the sprite archive previously verifying 102 PNG / 36 animations. The XML reader now accumulates each `<Anim>` record rather than requiring an additional strict tag stack. Six PNG warnings are addressed by using Godot-imported `Texture2D` resources instead of `Image.load()`. Lab now shows `LOAD ERROR (see Output)` rather than incorrectly saying the user lacks PNGs. **45/45 offline Python tests PASS**, but G1 **Surface 4.7.2 runtime still pending**. See `docs/G1_GENGAR_XML_AND_TEXTURE_HOTFIX_20261017.md`.
+
+Do not re-download 151 species. Close Godot, Fetch/Pull isolated GitHub branch, reopen project, F5; expect `已成功解析並載入：3 / 3 種`. Keep local assets ignored and uncommitted.
+
+## v0.3.4 ｜151 物種巡覽場（原 G1 不更動）
+已建立 `scenes/roster_lab.tscn`；**請在 Godot 雙擊該場景再按 F6**。原 `project.godot` 主入口保持舊版 `scenes/animation_lab.tscn`，所以 F5 仍可驗收三隻已通過的動畫。
+
+- 首次顯示 025 皮卡丘、094 耿鬼、143 卡比獸，`E/PageDown` 從 #001–003 開始每頁三隻，`Q/PageUp` 反向翻頁，`T` 返回三隻基準。
+- `I/W/A` 動作、`←/→` 原始方向列、`Space` 自動輪播、`1/2/3` 選取。
+- 在 Surface 先執行 `RUN_G11_ROSTER_PREFLIGHT_WINDOWS.bat`，產出 `reports/pmd_roster_report.csv` 與 `reports/pmd_roster_report.json`，顯示各種動作、CopyOf 來源及 Credits。
+- 本版 Build workspace Python 測試 54/54 PASS，Godot Surface 新場景仍 **PENDING**。詳見 `docs/G11_KANTO_GALLERY_20261017.md`。
