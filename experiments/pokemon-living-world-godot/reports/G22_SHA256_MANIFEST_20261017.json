@@ -109,8 +109,8 @@
     },
     {
       "path": "docs/CURRENT_HANDOFF_PLW.md",
-      "bytes": 5514,
-      "sha256": "a243d1571dbc7c852a46ea7722acee6e54c77a28a16a8042e870bf5af2217d81"
+      "bytes": 8499,
+      "sha256": "4b44476bcbac16d021deac75af06a41e8fe2c67faf12f2903f5f55d59a20dfa0"
     },
     {
       "path": "docs/G0_0148_COPYOF_HOTFIX_20261017.md",
@@ -199,8 +199,8 @@
     },
     {
       "path": "docs/HANDOFF_HISTORY_PLW.md",
-      "bytes": 2422,
-      "sha256": "cbb4b0daaf7fce1c35c5216b47bfa621be21eb6ead60657d60e21fe591ba883b"
+      "bytes": 2727,
+      "sha256": "6344bc10c4891c1cd8a7354474ddfd4b127074045dd3b07da2eca399b5f9e3b6"
     },
     {
       "path": "project.godot",

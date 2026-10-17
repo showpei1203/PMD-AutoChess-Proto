@@ -3,8 +3,22 @@
 **Updated:** 2026-10-17 (Asia/Taipei)  
 **Checkpoint:** `PLW_G22_SPECIES_VISUAL_DIRECTOR_CANDIDATE_v041_20261017`  
 **Branch:** `planning/pokemon-living-world-godot`  
-**G2 status:** G2.0.2 real Surface diagnostics PASS, autonomous mobility PARTIAL (2/3); G2.1 candidate 108/108 offline PASS, Godot Surface F6 PENDING.
+**G2 status:** G2.1 actual Surface behaviour PASS with Snorlax natural ROAM; G2.2 visual-direction candidate 122/122 offline PASS, F6 PENDING.
 
+
+## CURRENT G2.2 v0.4.1 source of truth (supersedes historical sections below)
+- Verified user G2.1 33-second runtime ZIP: 95 text lines, 33 heartbeats, SHA256 `a450cf80889287a00cdc8f275507dfc0efa83479f9fc9dc38870ca1951c51fe1`. #143 Snorlax walked autonomously after 19 sec (~41.6px), then user keys 3+M forced further motion to 80px. #025 ~785px and #094 ~441px. G2.1 movement confirmed, animation visual direction not accepted.
+- User reports continuous native `Idle` hopping and all characters displaying front-row sprite while moving. Prior Gen1recomp `290_CG_PMD_Species_Personality_Rich_Ambient_Authority_v2.8.5b.rb` demonstrates one-shot ambient with cooldown / movement preemption, borrowed as a design principle, not copied exact action speeds.
+- **New independent scene** `scenes/ecology_animation_lab.tscn` + `scripts/lab/ecology_animation_lab.gd` + `scripts/lab/pmd_visual_policy.gd`, using paused first frame of `Walk` as stationary body pose and occasional *one-shot* native `Idle` at different species intervals, interrupted by motion. Distinct visual speed scales #025 MOVE1.32x, #094 MOVE1.0x, #143 MOVE0.58x; native XML frame durations preserved. G2.1 source frozen unchanged.
+- **Direction** PMD sheet rows S0/SE1/E2/NE3/N4/NW5/W6/SW7; movement vector selects row, previous row retained at standstill. Native Shadow/alpha ground-point alignment uses same render row, including cached-row switches. Source: PMDSpriteManager PMD sheet convention, visual verification on Surface still necessary.
+- Tests: **122/122 Python offline PASS**, build workspace has no Godot Engine executable, **G2.2 Surface F6 NOT VERIFIED**. Old G1/G2.1 scene files retained; no copyrighted art in GitHub/ZIP.
+- GitHub main candidate commit `2d1c6d26b4c8c649a27c4326f158bc79cf09c72b`; detailed spec `docs/G22_ANIMATION_DIRECTION_AUTHORITY_20261017.md`, tracking Issue #15.
+- New full candidate ZIP: `PLW_G22_PMD_Animation_Director_v0.4.1_HandoffFixed_20261017.zip` uploaded into PLW Drive folder (latest release); includes complete source, shortcuts, Handoff, tests, LOG and SHA manifest.
+- **Surface test:** GitHub Desktop Fetch/Pull isolated branch. **DOUBLE-CLICK** `scenes/ecology_animation_lab.tscn`, confirm `EcologyAnimationLab > Diagnostics`, then F6 (F5 remains G1). Watch #143 stationary normally stable Walk frame0, rare one-shot Idle; #025 hops occasionally; when sprites travel left/right/up/down actual PMD facing must change. Monitor feet/shadow when turning.
+- **LOG:** `reports/PLW_G22_RUNTIME_LAST.log`; stop F6 and run `RUN_G22_COLLECT_LOG_WINDOWS.bat` to generate `reports/PLW_G22_DIAGNOSTICS_TO_SHARE.zip`. User upload this ZIP + screen image. G22 visual gate PENDING, 151 species audit future.
+- **Mandatory every iteration:** update GitHub/Drive Current Handoff, append Handoff History, update Roadmap/Issue, maintain full ZIP+quick tests+LOG+SHA, and preserve user raw art only in `data/raw/pmdcollab`.
+
+## Historical context (do not treat older pending statuses as current)
 ## Last user report
 After G2.0.1, the Surface G2 scene appeared idle, `tick` did not increase, and D/M/N keys had no observable effect. Root cause **not proven**. Possibilities include wrong scene (F5 launches G1, G2 requires F6), stopped debugger, paused physics, input focus, or AI clock. Existing G1 (three-species animation), G1.1 (roster) and G1.2 (anchor) remain accepted at their previously stated scope.
 
