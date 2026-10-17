@@ -1,3 +1,16 @@
+# CURRENT: G3.0 autonomous 1v1 lab v0.5.0 (2026-10-17)
+
+**Next milestone: autonomous combat vertical slice, not formal G3 completion.**
+This is a standalone scene. G2.3 species cadence stays accepted and unchanged.
+
+- **Run**: `RUN_G30_DIRECT_SCENE_WINDOWS.bat`. It executes 12 real Godot headless replay simulations *before* launching the standalone 1v1 scene. Godot 4.7.2 is requested once if needed.
+- **Controls**: 1 Free, 2 Aggressive, 3 Keep Distance, 4 Defensive; 5 Protect Ally is explicitly unsupported in 1v1; Space pause, R replay same seed, N new seed, D debug.
+- **Upload evidence**: `reports/PLW_G30_DIRECT_DIAGNOSTICS_TO_SHARE.zip` after closing game window. It contains Godot engine gate, boot, console and battle decision trace; even failure yields a ZIP.
+- **Run Python contracts**: `RUN_G30_TESTS_WINDOWS.bat`. Offline tests do not imply Godot real-time acceptance.
+- **Architecture**: `docs/G30_UTILITY_COMBAT_VERTICAL_SLICE_20261017.md`; no original Pokémon art included; keep local `data/raw/pmdcollab` private.
+
+---
+
 # Pokémon Living World — G0 Asset Audit Candidate v0.1
 
 **Built:** 2026-10-17. **Python 3.10+**, standard library only.

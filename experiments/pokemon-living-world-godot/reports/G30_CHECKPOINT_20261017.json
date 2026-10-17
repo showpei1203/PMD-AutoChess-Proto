@@ -1,0 +1,16 @@
+{
+  "checkpoint": "PLW_G30_UTILITY_1V1_CANDIDATE_v050_20261017",
+  "version": "v0.5.0",
+  "description": "Independent 1v1 deterministic Utility AI and damage authority, native Godot replay gate, windows launcher and logs",
+  "offline_test_count": 163,
+  "offline_status": "PASS",
+  "godot_headless_runtime": "PENDING_USER_SURFACE",
+  "godot_visual_runtime": "PENDING_USER_SURFACE",
+  "g23_behavior": "FROZEN_AFTER_REAL_SURFACE_PASS_BY_USER_INSTRUCTION",
+  "max_battle_ticks": 600,
+  "tick_delta_seconds": 0.1,
+  "native_engine_gate": "3 seeds x 4 trainer modes x 2 replay executions",
+  "unsupported": ["type_advantages", "official_stats", "move_catalogue", "physical_obstacles", "protect_ally_without_teammate", "151_full_battle_support"],
+  "source_art_in_public_zip": false,
+  "next_user_log_zip": "reports/PLW_G30_DIRECT_DIAGNOSTICS_TO_SHARE.zip"
+}

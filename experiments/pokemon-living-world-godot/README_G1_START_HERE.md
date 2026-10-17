@@ -1,3 +1,9 @@
+# Latest G3.0 v0.5.0: START WITH README.md and RUN_G30_DIRECT_SCENE_WINDOWS.bat
+
+G1 and G2.3 accepted baselines are retained. This file describes older G1 setup; use README.md for latest G3.0 instructions.
+
+---
+
 # PLW v0.3.3 — G1 Animation Lab (Gengar XML + texture loader hotfix)
 
 This ZIP is a complete candidate for the **separate** Godot project root and includes all G0 tooling, G1 scripts/scenes, test code, preflight BAT scripts, docs and reports. No copyrighted PMD art is bundled.

@@ -1,6 +1,28 @@
 # CURRENT HANDOFF | Pokémon Living World (Godot 4.7.2)
 
 **Updated:** 2026-10-17 (Asia/Taipei)  
+**Checkpoint:** `PLW_G30_UTILITY_1V1_CANDIDATE_v050_20261017`  
+**Branch:** `planning/pokemon-living-world-godot`  
+**Status:** G2.3 real Surface runtime PASS (60sec, tick583, 3 species moving); user chose to freeze cadence. **G3.0 standalone autonomous 1v1 candidate: 163/163 Python offline PASS, Godot headless/Surface PENDING.**
+
+## CURRENT DELIVERY — G3.0 v0.5.0 autonomous 1v1 (2026-10-17)
+- **Roadmap**: PLW-006 G3 is next milestone. User said do not retune G2.3 cadence, continue development. G2.3 Surface direct launcher finished exit0, tick583. Animation naturalness not rated by user, but the user elected to freeze it, not retune.
+- **New independent lab**: `scenes/g30_combat_lab.tscn`, `scripts/battle/g30_combat_core.gd`, `g30_combat_lab.gd`, `g30_combat_diagnostics.gd`, `tests/g30_godot_engine_gate.gd`, Python reference/test/launcher and one-click Windows launch/test scripts.
+- **Authority**: fixed 0.1s tick owns scheduling strikes/damage and result, not PMD frames; all decision transitions and per-second WHY/HIT/MISS/RESULT logged, replay digest recorded. Two species Pikachu/Gengar 1v1. Four trainer stance orders implemented for prototype; fifth PROTECT_ALLY is explicitly disabled until genuine 2v2. No official Pokémon stats/types, terrain collision, full G3 gate.
+- **QA**: Python reference/offline **163/163 PASS**. Godot engine unavailable in assistant container: new native **12 matches × 2 seeded replays** headless SceneTree gate is included and automatically runs before opening the GUI. Surface runtime/visual PENDING. If headless fails, launcher packages Godot parser/error evidence without claiming any pass.
+- **Deliverable**: complete ZIP `PLW_G30_UtilityCombat_v0.5.0_20261017.zip` includes full G0–G2.3 source + new G3.0, standalone tests/logs/SHA/BAT and this Handoff, excluding private PMDCollab art. ZIP SHA/Drive link are written to the external Drive Handoff & GitHub Issue #15 **after upload**, avoiding self-referential archive hash.
+- **Surface exact steps**: GitHub Desktop Fetch/Pull on planning branch; DOUBLE CLICK `RUN_G30_DIRECT_SCENE_WINDOWS.bat` from project root (NOT F5/F6); first watch `G30_GATE RESULT samples=12 failures=0`. If passed, game opens with fully autonomous 1v1, result within maximum 60 simulated seconds. Close game, upload `reports/PLW_G30_DIRECT_DIAGNOSTICS_TO_SHARE.zip` and screenshot. Any failure ZIP should still include engine gate/boot/console logs. Do NOT overwrite local `data/raw/pmdcollab/`.
+- **Read next**: `docs/G30_UTILITY_COMBAT_VERTICAL_SLICE_20261017.md` and GitHub Issue #15. **Next G3 gates** are named moves, collision/terrain, deeper spatial perception, multi-unit protect-ally and 151 profiles. Previously accepted G1–G2.3 scripts/scene remain unmodified.
+
+## LAST ACCEPTANCE — G2.3 frozen by user (2026-10-17)
+- Real Surface evidence: G2.3 Godot direct run around 60 sec, `LOGGER_READY build=G2.3-v0.4.2`, engine exit0, tick583 and no console/boot errors; #025 1134.65px + Idle1, #094 423.68px + Idle1 Float1, #143 160px with no micro action in that sample. User directed no more tuning. 151 all-animation visual/collision remains unverified. This G3.0 change does not touch any G2 source.
+- G2.3 full archived Drive: https://drive.google.com/file/d/1VYom0ipsFG0i3KCuA3jxCrv0andzO5pd/view . G2.3 Surface report `docs/G23_SURFACE_RUNTIME_ACCEPTANCE_20261017.md` is on GitHub; ZIP may not include post-release evidence-only doc.
+
+## HISTORICAL HANDOFF (older checkpoints below, do not mistake for current)
+
+# CURRENT HANDOFF | Pokémon Living World (Godot 4.7.2)
+
+**Updated:** 2026-10-17 (Asia/Taipei)  
 **Checkpoint:** `PLW_G23_SURFACE_RUNTIME_PASS_VISUAL_FEEL_PENDING_20261017`
 **Branch:** `planning/pokemon-living-world-godot`  
 **G2 status:** G2.3 v0.4.2 Surface RUN PASS (60 sec, tick 583, no boot/console errors), Pikachu/Gengar ambient event PASS, Snorlax micro action not observed; visual naturalness/151 generalization PENDING.
