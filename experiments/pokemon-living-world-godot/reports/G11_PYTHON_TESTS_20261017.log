@@ -1,0 +1,66 @@
+test_g11_uses_G1_approved_source_not_new_parser (test_g11_roster.TestGodotGallerySource.test_g11_uses_G1_approved_source_not_new_parser) ... ok
+test_lazily_loads_three_slots (test_g11_roster.TestGodotGallerySource.test_lazily_loads_three_slots) ... ok
+test_separate_scene_no_main_scene_regression (test_g11_roster.TestGodotGallerySource.test_separate_scene_no_main_scene_regression) ... ok
+test_failure_reasons_kept (test_g11_roster.TestRosterPaging.test_failure_reasons_kept) ... ok
+test_first_page (test_g11_roster.TestRosterPaging.test_first_page) ... ok
+test_last_page_has_one_slot (test_g11_roster.TestRosterPaging.test_last_page_has_one_slot) ... ok
+test_middle_page (test_g11_roster.TestRosterPaging.test_middle_page) ... ok
+test_out_of_range_rejected (test_g11_roster.TestRosterPaging.test_out_of_range_rejected) ... ok
+test_row_mapping_includes_alias (test_g11_roster.TestRosterPaging.test_row_mapping_includes_alias) ... ok
+test_resolve_action_exits_with_typed_fallback (test_g1_gdscript_contract.TestGodotSourceContracts.test_resolve_action_exits_with_typed_fallback) ... ok
+test_anim_xml_is_record_scoped (test_g1_streaming_loader_contract.TestG1StreamingLoader.test_anim_xml_is_record_scoped) ... ok
+test_gengar_crlf_input_valid_example (test_g1_streaming_loader_contract.TestG1StreamingLoader.test_gengar_crlf_input_valid_example) ... ok
+test_lab_reports_real_loader_error (test_g1_streaming_loader_contract.TestG1StreamingLoader.test_lab_reports_real_loader_error) ... ok
+test_texture_uses_imported_resource (test_g1_streaming_loader_contract.TestG1StreamingLoader.test_texture_uses_imported_resource) ... ok
+test_frame_division_is_not_int_division (test_g1_xmlparser_compat.GodotXmlCompatibility.test_frame_division_is_not_int_division) ... ok
+test_godot_xmlparser_open_path (test_g1_xmlparser_compat.GodotXmlCompatibility.test_godot_xmlparser_open_path) ... ok
+test_xml_parser_contract_has_error_exit (test_g1_xmlparser_compat.GodotXmlCompatibility.test_xml_parser_contract_has_error_exit) ... ok
+test_corrupt_png_flagged (test_pmd_asset_audit.AuditTests.test_corrupt_png_flagged) ... ok
+test_duplicate_entry_rejected (test_pmd_asset_audit.AuditTests.test_duplicate_entry_rejected) ... /usr/lib/python3.13/zipfile/__init__.py:1642: UserWarning: Duplicate name: 'sprites/025_player.png'
+  return self._open_to_write(zinfo, force_zip64=force_zip64)
+ok
+test_zip_audit_counts_and_private_staging (test_pmd_asset_audit.AuditTests.test_zip_audit_counts_and_private_staging) ... ok
+test_android_path (test_pmd_asset_audit.PathTests.test_android_path) ... ok
+test_reference_duplicate (test_pmd_asset_audit.PathTests.test_reference_duplicate) ... ok
+test_relative_path (test_pmd_asset_audit.PathTests.test_relative_path) ... ok
+test_traversal_refusal (test_pmd_asset_audit.PathTests.test_traversal_refusal) ... ok
+test_bad_checksum (test_pmd_asset_audit.PngTests.test_bad_checksum) ... ok
+test_good_png (test_pmd_asset_audit.PngTests.test_good_png) ... ok
+test_missing_iend (test_pmd_asset_audit.PngTests.test_missing_iend) ... ok
+test_alias_cycle (test_pmd_g1_preflight.G1PreflightTests.test_alias_cycle) ... ok
+test_alias_missing_target (test_pmd_g1_preflight.G1PreflightTests.test_alias_missing_target) ... ok
+test_attack_missing_allowed (test_pmd_g1_preflight.G1PreflightTests.test_attack_missing_allowed) ... ok
+test_dragonair_idle_alias (test_pmd_g1_preflight.G1PreflightTests.test_dragonair_idle_alias) ... ok
+test_missing_art_fails (test_pmd_g1_preflight.G1PreflightTests.test_missing_art_fails) ... ok
+test_missing_credits_warn (test_pmd_g1_preflight.G1PreflightTests.test_missing_credits_warn) ... ok
+test_missing_walk_fails (test_pmd_g1_preflight.G1PreflightTests.test_missing_walk_fails) ... ok
+test_png_header (test_pmd_g1_preflight.G1PreflightTests.test_png_header) ... ok
+test_png_invalid (test_pmd_g1_preflight.G1PreflightTests.test_png_invalid) ... ok
+test_wrong_sheet_ratio_fails (test_pmd_g1_preflight.G1PreflightTests.test_wrong_sheet_ratio_fails) ... ok
+test_idle_copyof_chain (test_pmdcollab_fetch.TestFetch.test_idle_copyof_chain) ... ok
+test_idle_copyof_cycle (test_pmdcollab_fetch.TestFetch.test_idle_copyof_cycle) ... ok
+test_idle_copyof_missing_target (test_pmdcollab_fetch.TestFetch.test_idle_copyof_missing_target) ... ok
+test_idle_copyof_missing_target_sheet (test_pmdcollab_fetch.TestFetch.test_idle_copyof_missing_target_sheet) ... ok
+test_idle_copyof_walk_dragonair_0148 (test_pmdcollab_fetch.TestFetch.test_idle_copyof_walk_dragonair_0148) ... ok
+test_ids_rejected (test_pmdcollab_fetch.TestFetch.test_ids_rejected) ... usage: python -m unittest [-h] [--ids IDS] [--all151] [--out OUT] [--replace]
+                          [--plan] [--quiet]
+python -m unittest: error: IDs must be in range 1..151
+ok
+test_missing_walk (test_pmdcollab_fetch.TestFetch.test_missing_walk) ... ok
+test_no_xml (test_pmdcollab_fetch.TestFetch.test_no_xml) ... ok
+test_path_abs (test_pmdcollab_fetch.TestFetch.test_path_abs) ... ok
+test_path_backslash (test_pmdcollab_fetch.TestFetch.test_path_backslash) ... ok
+test_path_good (test_pmdcollab_fetch.TestFetch.test_path_good) ... ok
+test_path_parent (test_pmdcollab_fetch.TestFetch.test_path_parent) ... ok
+test_plan (test_pmdcollab_fetch.TestFetch.test_plan) ... ok
+test_png_bad (test_pmdcollab_fetch.TestFetch.test_png_bad) ... ok
+test_stage_mock_network_and_cache (test_pmdcollab_fetch.TestFetch.test_stage_mock_network_and_cache) ... ok
+test_valid_zip (test_pmdcollab_fetch.TestFetch.test_valid_zip) ... ok
+test_xml (test_pmdcollab_fetch.TestFetch.test_xml) ... ok
+
+----------------------------------------------------------------------
+Ran 54 tests in 0.015s
+
+OK
+025 https://spriteserver.pmdcollab.org/assets/0025/sprites.zip
+094 https://spriteserver.pmdcollab.org/assets/0094/sprites.zip
