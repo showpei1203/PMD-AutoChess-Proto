@@ -2,7 +2,7 @@ extends CanvasLayer
 ## Standalone G2 diagnostic observer. Works even if the AI physics tick stalls.
 ## Does not change the accepted G1 scenes or the G2 simulation state machine.
 const LOG_NAME: String = "PLW_G22_RUNTIME_LAST.log"
-const BUILD: String = "G2.2-v0.4.1"
+const BUILD: String = "G2.2-v0.4.1.1"
 const SEED_JUMP: int = 104729
 var log_file: FileAccess
 var log_path: String = ""
@@ -83,7 +83,7 @@ func _process(_delta: float) -> void:
     var paused_flag: String = str(root.get("paused"))
     var info: String = "HEARTBEAT tick=" + tick_value + " seed=" + seed_value + " ui=" + str(visual_frames) + " physics=" + str(physics_callbacks) + " paused=" + paused_flag + " tree_paused=" + str(get_tree().paused) + " root_process=" + str(root.is_processing()) + " root_physics=" + str(root.is_physics_processing()) + " engine_frames=" + str(Engine.get_frames_drawn())
     _log(info)
-    indicator.text = "G2.1 | tick=" + tick_value + " ui=" + str(visual_frames) + " physics=" + str(physics_callbacks) + " | reports/" + LOG_NAME
+    indicator.text = "G2.2.1 | tick=" + tick_value + " ui=" + str(visual_frames) + " physics=" + str(physics_callbacks) + " | reports/" + LOG_NAME
     var entities = root.get("agents")
     if not (entities is Array):
         _log("ERROR no agents Array on G2 root")
@@ -96,10 +96,12 @@ func _process(_delta: float) -> void:
         var target: String = str(agent.get("target", "?"))
         var position: String = str(agent.get("position", "?"))
         var moved: String = str(agent.get("distance_moved", "?"))
+        var roams: String = str(agent.get("roam_count", "?"))
+        var since_roam: String = str(agent.get("time_since_roam", "?"))
         var facing: String = str(agent.get("raw_facing_row", "?"))
         var pose: String = str(agent.get("visual_mode", "?"))
         var events: String = str(agent.get("pose_count", "?"))
-        var key: String = state + ":" + target + ":" + facing + ":" + pose + ":" + events
+        var key: String = state + ":" + target + ":" + facing + ":" + pose + ":" + events + ":" + roams
         if last_states.get(id, "") != key:
             _log("AGENT #%03d state=%s pos=%s target=%s moved=%s roams=%s since_roam=%s facing=%s pose=%s events=%s" % [id, state, position, target, moved, roams, since_roam, facing, pose, events])
             last_states[id] = key
