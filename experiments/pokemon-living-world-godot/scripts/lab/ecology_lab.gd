@@ -1,5 +1,6 @@
 extends Node2D
-## G2.0 independent ecology prototype: movement / intent without battle.
+## G2.0.1 Surface diagnostic: distinguish AI state, motion and drawing.
+## No autonomous battle. Previous G1 showcase/roster/calibration remain untouched.
 ## Three specimen profiles share ONE reproducible utility/state policy.
 ## Accepted G1/G1.1/G1.2 scenes and the F5 main scene stay unchanged.
 const Source = preload("res://scripts/lab/pmd_sprite_source.gd")
@@ -10,6 +11,7 @@ const ARENA = Rect2(62.0, 122.0, 836.0, 250.0)
 const FIXED_AI_DELTA: float = 0.10
 const MAX_STEPS_PER_TICK: int = 4
 const START_SEED: int = 20261017
+const SEED_JUMP: int = 104729 # distinct visible seeded destination on N
 const ANIMATIONS = ["Idle", "Walk"]
 const STATES = ["IDLE", "ROAM", "OBSERVE", "RETURN", "REST"]
 const SPECIES = {
@@ -24,18 +26,20 @@ var simulated_time: float = 0.0
 var step_number: int = 0
 var seed: int = START_SEED
 var paused: bool = false
-var show_debug: bool = true
+var show_debug: bool = false # D now deliberately turns the overlay ON first
 var focus: int = 0
 var header: Label
 var state_info: Label
 var instructions: Label
+var debug_panel: Label
 
 func _ready() -> void:
     RenderingServer.set_default_clear_color(Color("#141b27"))
-    header = _label("Pokémon Living World | G2.0 自主生態測試場", Vector2(24, 13), 22, Color("#e9f4ff"))
+    header = _label("Pokémon Living World | G2.0.1 自主生態診斷場", Vector2(24, 13), 22, Color("#e9f4ff"))
     _label("自主 Idle / Roam / Observe / Return / Rest，無攻擊 AI，物理與方向映射仍待驗收", Vector2(24, 46), 13, Color("#9eb5c9"))
-    instructions = _label("Space：暫停   R：相同種子重新開始   N：換種子   1/2/3：選取   D：觀察資訊", Vector2(24, 455), 14, Color("#d4e4f2"))
+    instructions = _label("Space 暫停 | R 同種子重播 | N 新種子 | 1/2/3 焦點 | D 顯示/隱藏 | M 強制移動", Vector2(24, 455), 13, Color("#d4e4f2"))
     state_info = _label("", Vector2(24, 489), 13, Color("#90e7bd"))
+    debug_panel = _label("", Vector2(24, 98), 13, Color("#d9f2ff"))
     _reset_simulation(START_SEED)
 
 func _reset_simulation(new_seed: int) -> void:
@@ -55,6 +59,7 @@ func _reset_simulation(new_seed: int) -> void:
         _spawn(i)
     _refresh_ui()
     queue_redraw()
+    print("[PLW-G2] reset seed=%d. D=show debug; M=force focused agent to roam" % seed)
 
 func _spawn(index: int) -> void:
     var id: int = IDS[index]
@@ -79,9 +84,18 @@ func _spawn(index: int) -> void:
         "source": source, "ready": ready, "rng": rng, "position": HOMES[index],
         "home": HOMES[index], "target": HOMES[index], "state": "IDLE", "age": 0.0,
         "duration": rng.randf_range(1.0, 2.2), "decision": "spawn", "observation": "",
-        "motion": "", "anchor_key": "", "alignment": {}, "raw_facing_row": 0}
+        "motion": "", "anchor_key": "", "alignment": {}, "raw_facing_row": 0,
+        "distance_moved": 0.0, "transitions": 0}
     agents.append(entry)
     _set_animation(index, "Idle")
+    # Show distinctly different species on the FIRST second, without waiting
+    # for three initial IDLE timers. The seed determines Pikachu's target.
+    if id == 25:
+        _begin_roam(index, "spawn: curious scout")
+    elif id == 94:
+        _set_state(index, "OBSERVE", "spawn: survey territory")
+    else:
+        _set_state(index, "REST", "spawn: conserve energy")
     if not ready:
         print("[PLW-G2] #%03d failed loading: %s" % [id, str(source.errors)])
     else:
@@ -108,6 +122,7 @@ func _set_state(index: int, state: String, reason: String) -> void:
     var rng: RandomNumberGenerator = entry["rng"]
     entry["state"] = state
     entry["age"] = 0.0
+    entry["transitions"] = int(entry["transitions"]) + 1
     entry["decision"] = reason
     match state:
         "IDLE": entry["duration"] = rng.randf_range(0.8, 1.8)
@@ -117,6 +132,20 @@ func _set_state(index: int, state: String, reason: String) -> void:
         _: entry["duration"] = 1.0
     agents[index] = entry
     _set_animation(index, "Walk" if state in ["ROAM", "RETURN"] else "Idle")
+    print("[PLW-G2] #%03d -> %s | %s | target=%s" % [int(entry["id"]), state, reason, str(entry["target"])])
+
+func _begin_roam(index: int, reason: String) -> void:
+    var entry: Dictionary = agents[index]
+    var rng: RandomNumberGenerator = entry["rng"]
+    var profile: Dictionary = entry["profile"]
+    var angle: float = rng.randf_range(0.0, TAU)
+    var radius: float = float(profile["radius"])
+    var distance: float = rng.randf_range(minf(40.0, radius), radius)
+    var target: Vector2 = (entry["home"] as Vector2) + Vector2(cos(angle), sin(angle)) * distance
+    entry["target"] = Vector2(clampf(target.x, ARENA.position.x, ARENA.end.x),
+                              clampf(target.y, ARENA.position.y, ARENA.end.y))
+    agents[index] = entry
+    _set_state(index, "ROAM", reason)
 
 func _choose_post_idle(index: int) -> void:
     var entry: Dictionary = agents[index]
@@ -124,13 +153,7 @@ func _choose_post_idle(index: int) -> void:
     var rng: RandomNumberGenerator = entry["rng"]
     var roll: float = rng.randf()
     if roll < float(profile["roam"]):
-        var angle: float = rng.randf_range(0.0, TAU)
-        var distance: float = rng.randf_range(30.0, float(profile["radius"]))
-        var target: Vector2 = (entry["home"] as Vector2) + Vector2(cos(angle), sin(angle)) * distance
-        entry["target"] = Vector2(clampf(target.x, ARENA.position.x, ARENA.end.x),
-                                  clampf(target.y, ARENA.position.y, ARENA.end.y))
-        agents[index] = entry
-        _set_state(index, "ROAM", "curiosity/territory: new local target")
+        _begin_roam(index, "curiosity/territory: new local target")
     elif roll < float(profile["roam"]) + float(profile["observe"]):
         _set_state(index, "OBSERVE", "listen / watch neighbours")
     else:
@@ -181,14 +204,19 @@ func _step_ecology(dt: float) -> void:
             entry["observation"] = "#%03d" % IDS[nearest] if nearest >= 0 else "no nearby target"
             agents[i] = entry
             if float(entry["age"]) >= float(entry["duration"]):
-                _set_state(i, "IDLE", "finished observing")
+                if int(entry["id"]) == 94 and str(entry["decision"]) == "spawn: survey territory":
+                    _begin_roam(i, "prowl: scouting after survey")
+                else:
+                    _set_state(i, "IDLE", "finished observing")
         elif state == "REST":
             if float(entry["age"]) >= float(entry["duration"]):
                 _set_state(i, "IDLE", "rest complete")
         elif state in ["ROAM", "RETURN"]:
             var target: Vector2 = entry["target"] if state == "ROAM" else entry["home"]
             var step: float = float(entry["profile"]["speed"]) * dt
-            entry["position"] = pos.move_toward(target, step)
+            var next_position: Vector2 = pos.move_toward(target, step)
+            entry["position"] = next_position
+            entry["distance_moved"] = float(entry["distance_moved"]) + pos.distance_to(next_position)
             agents[i] = entry
             if (entry["position"] as Vector2).distance_to(target) < 1.5:
                 if state == "ROAM" and (entry["position"] as Vector2).distance_to(entry["home"] as Vector2) > 35.0:
@@ -235,11 +263,16 @@ func _unhandled_key_input(event: InputEvent) -> void:
     match event.keycode:
         KEY_SPACE: paused = not paused
         KEY_R: _reset_simulation(seed)
-        KEY_N: _reset_simulation(seed + 1)
+        KEY_N: _reset_simulation(seed + SEED_JUMP)
         KEY_1: focus = 0
         KEY_2: focus = 1
         KEY_3: focus = 2
-        KEY_D: show_debug = not show_debug
+        KEY_D:
+            show_debug = not show_debug
+            print("[PLW-G2] debug overlay %s" % ("ON" if show_debug else "OFF"))
+        KEY_M:
+            _begin_roam(focus, "MANUAL DIAGNOSTIC: force new target")
+            show_debug = true
         _: return
     _refresh_ui()
     queue_redraw()
@@ -249,12 +282,22 @@ func _refresh_ui() -> void:
     if state_info == null:
         return
     var active: Dictionary = agents[focus]
-    state_info.text = "Seed %d  ·  tick %d  ·  %s  ·  焦點 %s：%s / %s" % [
-        seed, step_number, "PAUSED" if paused else "RUNNING", LABELS[focus], active["state"], active["decision"]]
+    state_info.text = "Seed %d | tick %d | %s | Debug %s | 焦點 %s | %s | 路程 %.0fpx" % [
+        seed, step_number, "PAUSED" if paused else "RUNNING", "ON" if show_debug else "OFF",
+        LABELS[focus], active["state"], float(active["distance_moved"])]
+    var lines: Array[String] = []
     for i in range(agents.size()):
         var entry: Dictionary = agents[i]
         var label: Label = entry["label"]
-        label.text = "%s  %s\n%s" % [LABELS[i], entry["role"], entry["state"]]
+        var pos: Vector2 = entry["position"]
+        var target: Vector2 = entry["target"]
+        label.text = "%s  %s\n%s  %.0fpx" % [LABELS[i], entry["role"], entry["state"], float(entry["distance_moved"])]
+        lines.append("#%03d %s (%3.0f,%3.0f)→(%3.0f,%3.0f)  %.0fpx  %s" % [
+            int(entry["id"]), str(entry["state"]), pos.x, pos.y, target.x, target.y,
+            float(entry["distance_moved"]), str(entry["decision"])])
+    debug_panel.visible = show_debug
+    if show_debug:
+        debug_panel.text = "\n".join(lines)
 
 func _label(text: String, position: Vector2, size: int, color: Color) -> Label:
     var label := Label.new()
@@ -280,9 +323,9 @@ func _draw() -> void:
         if show_debug:
             var home: Vector2 = entry["home"]
             var target: Vector2 = entry["target"]
-            draw_arc(home, float(entry["profile"]["radius"]), 0.0, TAU, 48,
-                Color("#728ba4", 0.32), 1.0)
-            if str(entry["state"]) == "ROAM":
-                draw_line(center, target, Color("#eed78a", 0.64), 1.0)
-                draw_circle(target, 3.0, Color("#eed78a"))
-            draw_circle(center, 2.0, Color("#68e6d3") if i == focus else Color("#a9bfd1"))
+            draw_arc(home, float(entry["profile"]["radius"]), 0.0, TAU, 72,
+                Color(0.24, 0.84, 0.96, 0.85), 2.5)
+            draw_circle(home, 4.0, Color(0.32, 0.77, 1.0, 0.95))
+            draw_line(center, target, Color(1.0, 0.83, 0.25, 0.95), 3.0)
+            draw_circle(target, 6.0, Color(1.0, 0.83, 0.25, 0.95))
+            draw_circle(center, 5.0, Color(0.20, 0.98, 0.60, 1.0) if i == focus else Color(0.88, 1.0, 0.90, 0.95))
