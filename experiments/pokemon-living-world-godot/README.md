@@ -34,3 +34,12 @@ Import `project.godot` in Godot Project Manager and run `scenes/main.tscn`. This
 3. No claimed 151-complete import without per-species / per-animation audit.
 4. No advancement from prototype to 151 AI without behaviour tests; never copy 151 bespoke AI trees.
 5. Every candidate ships full ZIP, test script, logs, and a rollback/checkpoint record after development actually begins.
+
+## G0 upstream recovery: no manual asset transfer required (2026-10-17)
+The Gen1recomp source-snapshot ZIP lacked PNGs, but the public [PMD Sprite Repository](https://sprites.pmdcollab.org/) and [SpriteCollab GitHub](https://github.com/PMDCollab/SpriteCollab) supply per-species `sprites.zip` (with `AnimData.xml`, sprites, offsets and shadows). The new script `tools/pmdcollab_fetch.py` fetches them directly into **ignored private local** `data/raw/pmdcollab/`, validates ZIP and PNG structure, preserves SHA256 provenance and attempts upstream author credits.
+
+- **First** run `RUN_FETCH_3_WINDOWS.bat` on Windows (requires Python 3) to fetch species #025/#094/#143.
+- **Next** run `RUN_FETCH_151_WINDOWS.bat` to fetch 001–151 with resume-on-retry caching.
+- Reports in `reports/pmdcollab_download_report.json`; verify credits, per-action availability, frame directions and visuals before formal G0/G1 promotion.
+- Offline synthetic tests: **22/22 PASS** on 2026-10-17; public upstream GitHub indexes for 025/094/143 verified; **actual remote server ZIP downloads not yet run** in this environment because the asset server is inaccessible here.
+- Source and attribution: `docs/G0_UPSTREAM_PMD_COLLAB_RECOVERY_20261017.md`. Non-commercial / proper attribution; Nintendo Pokémon rights remain separate.
