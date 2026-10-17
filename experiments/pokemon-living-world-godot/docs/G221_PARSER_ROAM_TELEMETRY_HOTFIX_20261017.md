@@ -13,7 +13,7 @@
 ## Tests and acceptance
 - 125/125 Python offline tests PASS (122 previous plus 3 new). **This is not Godot 4.7.2 parser execution**; Godot is unavailable in build environment.
 - G2.2.1 Surface compile, character facing and micro Idle animation: **PENDING F6 retest**.
-- Full source/tests/log/Handoff SHA manifest ZIP (137 files) is stored on Drive: https://drive.google.com/file/d/TO_BE_SET/view (see handoff for actual finalized URL). ZIP SHA-256: `60553d0c99e80f0ab7138d7ea6daeba2063338637f3cec051d582fd098f5e49a`.
+- Full source/tests/log/Handoff SHA manifest ZIP (137 files) is stored on Drive: https://drive.google.com/file/d/1RnSscBaWJtnrUKEQjpdk05M0Byx0WUKv/view (see handoff for actual finalized URL). ZIP SHA-256: `60553d0c99e80f0ab7138d7ea6daeba2063338637f3cec051d582fd098f5e49a`.
 
 ## User re-test steps
 1. Close Godot. GitHub Desktop branch `planning/pokemon-living-world-godot`: Fetch origin → Pull origin; stash local edits if necessary (never restore outdated scripts over this fix).
