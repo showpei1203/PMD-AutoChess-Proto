@@ -6,6 +6,12 @@
 **G2 status:** G2.1 mobility Surface PASS; G2.2 visual direction/idle UNVERIFIED. Latest uploaded log is G2.1 only; G2.2 runtime not yet established.
 
 
+## G2.2.3 delivery receipt (2026-10-17)
+- **Full v0.4.1.3 ZIP:** https://drive.google.com/file/d/1UWnSteP27IEHngTwTzvBfL_aNgzt7bXn/view; 149 files; CRC PASS; SHA256 `bddc417e40b32515d2a6a39a3aed7896cfbcf689e0ddbdc23574123f4e593cb4`.
+- **Atomic isolated-branch code commit:** `98e90f57b38702a666007aaa2e1c01c1c087f891`, 12 changed files. Default main not changed.
+- **Offline tests:** 134/134 PASS; Surface Godot G22 scene never verified yet. User ZIP only showed missing G22 runtime log and stale G21/G202 logs, not a verified G22 application error.
+- **New user step:** Run `RUN_G22_DIRECT_SCENE_WINDOWS.bat` to launch exact G22 scene; after closing game window upload `reports/PLW_G22_DIRECT_DIAGNOSTICS_TO_SHARE.zip` including engine boot/console diagnostics.
+
 ## G2.2.3 latest Surface evidence and direct-launch candidate (2026-10-17)
 - User uploaded G22 diagnostics ZIP and reports **no improvement**. ZIP has `G22_MISSING_LOG_DIAGNOSIS.txt` but NO G22 runtime log; only prior G21 and G2.0.2 logs detected. **Latest scene startup not established**. Cannot equate missing runtime log with wrong-scene selection or animation logic failure.
 - New exact-scene Windows launcher `RUN_G22_DIRECT_SCENE_WINDOWS.bat` invokes `tools/g22_direct_launch.py`, bypasses the Godot editor's scene-tab confusion, and captures both Godot engine `--log-file` and console, even before G22 runtime logger starts. After game exits creates `reports/PLW_G22_DIRECT_DIAGNOSTICS_TO_SHARE.zip` with boot + console + runtime evidence or launch failure reason.
