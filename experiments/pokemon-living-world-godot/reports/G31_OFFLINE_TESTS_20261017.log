@@ -1,0 +1,195 @@
+test_g11_uses_G1_approved_source_not_new_parser (test_g11_roster.TestGodotGallerySource.test_g11_uses_G1_approved_source_not_new_parser) ... ok
+test_lazily_loads_three_slots (test_g11_roster.TestGodotGallerySource.test_lazily_loads_three_slots) ... ok
+test_separate_scene_no_main_scene_regression (test_g11_roster.TestGodotGallerySource.test_separate_scene_no_main_scene_regression) ... ok
+test_failure_reasons_kept (test_g11_roster.TestRosterPaging.test_failure_reasons_kept) ... ok
+test_first_page (test_g11_roster.TestRosterPaging.test_first_page) ... ok
+test_last_page_has_one_slot (test_g11_roster.TestRosterPaging.test_last_page_has_one_slot) ... ok
+test_middle_page (test_g11_roster.TestRosterPaging.test_middle_page) ... ok
+test_out_of_range_rejected (test_g11_roster.TestRosterPaging.test_out_of_range_rejected) ... ok
+test_row_mapping_includes_alias (test_g11_roster.TestRosterPaging.test_row_mapping_includes_alias) ... ok
+test_decoder_transparent_rgba (test_g12_anchor_audit.AnchorAuditTests.test_decoder_transparent_rgba) ... ok
+test_integrated_large_frame_native_shadow (test_g12_anchor_audit.AnchorAuditTests.test_integrated_large_frame_native_shadow) ... ok
+test_non_native_image_stays_review_not_pass (test_g12_anchor_audit.AnchorAuditTests.test_non_native_image_stays_review_not_pass) ... ok
+test_accepted_scenes_not_modified_by_new_lab (test_g12_anchor_reference.GroundAnchorReference.test_accepted_scenes_not_modified_by_new_lab) ... ok
+test_alpha_ignore_transparent_tail (test_g12_anchor_reference.GroundAnchorReference.test_alpha_ignore_transparent_tail) ... ok
+test_animation_can_jump_without_shifting_ground (test_g12_anchor_reference.GroundAnchorReference.test_animation_can_jump_without_shifting_ground) ... ok
+test_calibration_modes_preserve_manual_option (test_g12_anchor_reference.GroundAnchorReference.test_calibration_modes_preserve_manual_option) ... ok
+test_centered_texture_anchor_formula (test_g12_anchor_reference.GroundAnchorReference.test_centered_texture_anchor_formula) ... ok
+test_empty_visible_sprite (test_g12_anchor_reference.GroundAnchorReference.test_empty_visible_sprite) ... ok
+test_invalid_white_flood_falls_back (test_g12_anchor_reference.GroundAnchorReference.test_invalid_white_flood_falls_back) ... ok
+test_native_shadow_overrides_ink_bottom_for_hovering (test_g12_anchor_reference.GroundAnchorReference.test_native_shadow_overrides_ink_bottom_for_hovering) ... ok
+test_rbg_shadow_size_channels_are_not_white (test_g12_anchor_reference.GroundAnchorReference.test_rbg_shadow_size_channels_are_not_white) ... ok
+test_source_native_priority_and_cache (test_g12_anchor_reference.GroundAnchorReference.test_source_native_priority_and_cache) ... ok
+test_animations_source (test_g12_calibration_contract.CalibrationContracts.test_animations_source) ... ok
+test_existing_scenes_present (test_g12_calibration_contract.CalibrationContracts.test_existing_scenes_present) ... ok
+test_lazy_single_species (test_g12_calibration_contract.CalibrationContracts.test_lazy_single_species) ... ok
+test_manual_controls (test_g12_calibration_contract.CalibrationContracts.test_manual_controls) ... ok
+test_no_false_verified_direction (test_g12_calibration_contract.CalibrationContracts.test_no_false_verified_direction) ... ok
+test_non_art_local_output (test_g12_calibration_contract.CalibrationContracts.test_non_art_local_output) ... ok
+test_standalone_scene (test_g12_calibration_contract.CalibrationContracts.test_standalone_scene) ... ok
+test_resolve_action_exits_with_typed_fallback (test_g1_gdscript_contract.TestGodotSourceContracts.test_resolve_action_exits_with_typed_fallback) ... ok
+test_anim_xml_is_record_scoped (test_g1_streaming_loader_contract.TestG1StreamingLoader.test_anim_xml_is_record_scoped) ... ok
+test_gengar_crlf_input_valid_example (test_g1_streaming_loader_contract.TestG1StreamingLoader.test_gengar_crlf_input_valid_example) ... ok
+test_lab_reports_real_loader_error (test_g1_streaming_loader_contract.TestG1StreamingLoader.test_lab_reports_real_loader_error) ... ok
+test_texture_uses_imported_resource (test_g1_streaming_loader_contract.TestG1StreamingLoader.test_texture_uses_imported_resource) ... ok
+test_frame_division_is_not_int_division (test_g1_xmlparser_compat.GodotXmlCompatibility.test_frame_division_is_not_int_division) ... ok
+test_godot_xmlparser_open_path (test_g1_xmlparser_compat.GodotXmlCompatibility.test_godot_xmlparser_open_path) ... ok
+test_xml_parser_contract_has_error_exit (test_g1_xmlparser_compat.GodotXmlCompatibility.test_xml_parser_contract_has_error_exit) ... ok
+test_d_enables_overlay_on_first_press (test_g201_observable_ecology.EcologyObservabilityContracts.test_d_enables_overlay_on_first_press) ... ok
+test_legacy_scenes_unchanged (test_g201_observable_ecology.EcologyObservabilityContracts.test_legacy_scenes_unchanged) ... ok
+test_motion_target_visible_and_force_key (test_g201_observable_ecology.EcologyObservabilityContracts.test_motion_target_visible_and_force_key) ... ok
+test_n_initial_target_differs_by_seed (test_g201_observable_ecology.EcologyObservabilityContracts.test_n_initial_target_differs_by_seed) ... ok
+test_no_combat_ai_claim (test_g201_observable_ecology.EcologyObservabilityContracts.test_no_combat_ai_claim) ... ok
+test_roles_not_all_idling_at_spawn (test_g201_observable_ecology.EcologyObservabilityContracts.test_roles_not_all_idling_at_spawn) ... ok
+test_tick_and_distance_probes (test_g201_observable_ecology.EcologyObservabilityContracts.test_tick_and_distance_probes) ... ok
+test_trace_prefix_for_decisions (test_g201_observable_ecology.EcologyObservabilityContracts.test_trace_prefix_for_decisions) ... ok
+test_approved_existing_scenes_unmodified (test_g202_runtime_logs.EcologyRuntimeLogContracts.test_approved_existing_scenes_unmodified) ... ok
+test_debugger_is_independent_scene_child (test_g202_runtime_logs.EcologyRuntimeLogContracts.test_debugger_is_independent_scene_child) ... ok
+test_heartbeat_differentiates_render_physics_ai (test_g202_runtime_logs.EcologyRuntimeLogContracts.test_heartbeat_differentiates_render_physics_ai) ... ok
+test_keyboard_and_click_diagnostics (test_g202_runtime_logs.EcologyRuntimeLogContracts.test_keyboard_and_click_diagnostics) ... ok
+test_log_bundle_contains_only_text (test_g202_runtime_logs.EcologyRuntimeLogContracts.test_log_bundle_contains_only_text) ... ok
+test_log_path_known_and_persistent (test_g202_runtime_logs.EcologyRuntimeLogContracts.test_log_path_known_and_persistent) ... ok
+test_missing_log_returns_clear_error (test_g202_runtime_logs.EcologyRuntimeLogContracts.test_missing_log_returns_clear_error) ... ok
+test_bounded_natural_stroll_for_snorlax (test_g21_bounded_stroll.G21SourceContracts.test_bounded_natural_stroll_for_snorlax) ... ok
+test_existing_profiles_still_distinct (test_g21_bounded_stroll.G21SourceContracts.test_existing_profiles_still_distinct) ... ok
+test_g21_log_collector_only_zips_text (test_g21_bounded_stroll.G21SourceContracts.test_g21_log_collector_only_zips_text) ... ok
+test_g21_logger_separate_and_verifiable (test_g21_bounded_stroll.G21SourceContracts.test_g21_logger_separate_and_verifiable) ... ok
+test_keyboard_controls_preserved (test_g21_bounded_stroll.G21SourceContracts.test_keyboard_controls_preserved) ... ok
+test_movement_vector_is_observed_not_assumed_direction (test_g21_bounded_stroll.G21SourceContracts.test_movement_vector_is_observed_not_assumed_direction) ... ok
+test_new_scene_is_isolated (test_g21_bounded_stroll.G21SourceContracts.test_new_scene_is_isolated) ... ok
+test_prior_scene_files_still_present (test_g21_bounded_stroll.G21SourceContracts.test_prior_scene_files_still_present) ... ok
+test_pure_python_bounded_reference (test_g21_bounded_stroll.G21SourceContracts.test_pure_python_bounded_reference) ... ok
+test_roam_reset_on_actual_new_trip_only (test_g21_bounded_stroll.G21SourceContracts.test_roam_reset_on_actual_new_trip_only) ... ok
+test_roams_is_bound_before_first_use (test_g221_runtime_parser_regression.G221RuntimeParserRegression.test_roams_is_bound_before_first_use) ... ok
+test_since_roam_is_bound_before_first_use (test_g221_runtime_parser_regression.G221RuntimeParserRegression.test_since_roam_is_bound_before_first_use) ... ok
+test_telemetry_template_has_matching_arguments (test_g221_runtime_parser_regression.G221RuntimeParserRegression.test_telemetry_template_has_matching_arguments) ... ok
+test_never_zip_sprite_art_in_either_case (test_g222_missing_log_diagnostics.MissingLogTests.test_never_zip_sprite_art_in_either_case) ... ok
+test_no_log_still_produces_diagnostic_zip (test_g222_missing_log_diagnostics.MissingLogTests.test_no_log_still_produces_diagnostic_zip) ... ok
+test_old_g21_log_is_identified_as_stale_evidence (test_g222_missing_log_diagnostics.MissingLogTests.test_old_g21_log_is_identified_as_stale_evidence) ... ok
+test_real_g22_log_still_produces_exact_two_entries (test_g222_missing_log_diagnostics.MissingLogTests.test_real_g22_log_still_produces_exact_two_entries) ... ok
+test_injected_fake_godot_launch_writes_real_capture (test_g223_direct_launch.TestDirectG22Launcher.test_injected_fake_godot_launch_writes_real_capture) ... ok
+test_missing_executable_still_bundles_diagnostics (test_g223_direct_launch.TestDirectG22Launcher.test_missing_executable_still_bundles_diagnostics) ... ok
+test_no_art_in_bundle_even_if_present (test_g223_direct_launch.TestDirectG22Launcher.test_no_art_in_bundle_even_if_present) ... ok
+test_scene_identifier_and_windows_bat (test_g223_direct_launch.TestDirectG22Launcher.test_scene_identifier_and_windows_bat) ... ok
+test_scene_missing_still_bundles_diagnostics (test_g223_direct_launch.TestDirectG22Launcher.test_scene_missing_still_bundles_diagnostics) ... ok
+test_all_eight_direction_math (test_g22_visual_director.G22SourceContracts.test_all_eight_direction_math) ... ok
+test_collector_includes_only_g22_text (test_g22_visual_director.G22SourceContracts.test_collector_includes_only_g22_text) ... ok
+test_direction_updates_from_travel_and_uses_real_anchors (test_g22_visual_director.G22SourceContracts.test_direction_updates_from_travel_and_uses_real_anchors) ... ok
+test_g22_separate_log_and_scene_info (test_g22_visual_director.G22SourceContracts.test_g22_separate_log_and_scene_info) ... ok
+test_idle_is_optional_one_shot_and_cooldown (test_g22_visual_director.G22SourceContracts.test_idle_is_optional_one_shot_and_cooldown) ... ok
+test_legacy_g21_files_intact (test_g22_visual_director.G22SourceContracts.test_legacy_g21_files_intact) ... ok
+test_movement_preempts_ambient (test_g22_visual_director.G22SourceContracts.test_movement_preempts_ambient) ... ok
+test_native_directions_declared_and_facing_formula (test_g22_visual_director.G22SourceContracts.test_native_directions_declared_and_facing_formula) ... ok
+test_no_new_copyrighted_assets (test_g22_visual_director.G22SourceContracts.test_no_new_copyrighted_assets) ... ok
+test_row_cache_retains_real_render_row_on_cache_hit (test_g22_visual_director.G22SourceContracts.test_row_cache_retains_real_render_row_on_cache_hit) ... ok
+test_species_specific_cadence (test_g22_visual_director.G22SourceContracts.test_species_specific_cadence) ... ok
+test_standalone_scene_and_g21_is_unchanged (test_g22_visual_director.G22SourceContracts.test_standalone_scene_and_g21_is_unchanged) ... ok
+test_stationary_direction_preserves_previous_row (test_g22_visual_director.G22SourceContracts.test_stationary_direction_preserves_previous_row) ... ok
+test_walk_as_stationary_pose_not_infinite_walk (test_g22_visual_director.G22SourceContracts.test_walk_as_stationary_pose_not_infinite_walk) ... ok
+test_existing_acceptance_scenes_unchanged (test_g23_ambient_cadence.G23CadenceContracts.test_existing_acceptance_scenes_unchanged) ... ok
+test_independent_log_and_direct_launch (test_g23_ambient_cadence.G23CadenceContracts.test_independent_log_and_direct_launch) ... ok
+test_micro_actions_one_shot (test_g23_ambient_cadence.G23CadenceContracts.test_micro_actions_one_shot) ... ok
+test_movement_preempts_micro_without_changing_movement_ai (test_g23_ambient_cadence.G23CadenceContracts.test_movement_preempts_micro_without_changing_movement_ai) ... ok
+test_no_republishing_art_in_collector (test_g23_ambient_cadence.G23CadenceContracts.test_no_republishing_art_in_collector) ... ok
+test_optional_actions_obey_native_shadow_gate (test_g23_ambient_cadence.G23CadenceContracts.test_optional_actions_obey_native_shadow_gate) ... ok
+test_pure_python_expected_stance_period_bounds (test_g23_ambient_cadence.G23CadenceContracts.test_pure_python_expected_stance_period_bounds) ... ok
+test_raw_direction_and_anchors_still_inherited (test_g23_ambient_cadence.G23CadenceContracts.test_raw_direction_and_anchors_still_inherited) ... ok
+test_render_row_cached_and_native (test_g23_ambient_cadence.G23CadenceContracts.test_render_row_cached_and_native) ... ok
+test_scene_inherits_previously_accepted_g22 (test_g23_ambient_cadence.G23CadenceContracts.test_scene_inherits_previously_accepted_g22) ... ok
+test_species_personalities_different (test_g23_ambient_cadence.G23CadenceContracts.test_species_personalities_different) ... ok
+test_stance_walk_is_actually_played_slowly (test_g23_ambient_cadence.G23CadenceContracts.test_stance_walk_is_actually_played_slowly) ... ok
+test_bounded_decision_work (test_g2_ecology_contract.EcologyContracts.test_bounded_decision_work) ... ok
+test_controls_and_local_art (test_g2_ecology_contract.EcologyContracts.test_controls_and_local_art) ... ok
+test_ecology_states (test_g2_ecology_contract.EcologyContracts.test_ecology_states) ... ok
+test_isolated_scene_and_preserved_main (test_g2_ecology_contract.EcologyContracts.test_isolated_scene_and_preserved_main) ... ok
+test_native_shadow_anchor_not_frame_bottom (test_g2_ecology_contract.EcologyContracts.test_native_shadow_anchor_not_frame_bottom) ... ok
+test_no_battle_claim (test_g2_ecology_contract.EcologyContracts.test_no_battle_claim) ... ok
+test_perception_uses_snapshot (test_g2_ecology_contract.EcologyContracts.test_perception_uses_snapshot) ... ok
+test_rng_deterministic_and_reseedable (test_g2_ecology_contract.EcologyContracts.test_rng_deterministic_and_reseedable) ... ok
+test_three_species (test_g2_ecology_contract.EcologyContracts.test_three_species) ... ok
+test_all_orders_terminate_with_real_hits (test_g30_combat_vertical_slice.G30CombatReference.test_all_orders_terminate_with_real_hits) ... ok
+test_commands_affect_real_behaviour (test_g30_combat_vertical_slice.G30CombatReference.test_commands_affect_real_behaviour) ... ok
+test_damage_monotonic_and_no_negative_hp (test_g30_combat_vertical_slice.G30CombatReference.test_damage_monotonic_and_no_negative_hp) ... ok
+test_new_seed_changes_spawn_and_replay_digest (test_g30_combat_vertical_slice.G30CombatReference.test_new_seed_changes_spawn_and_replay_digest) ... ok
+test_reject_protect_ally_until_teammate_exists (test_g30_combat_vertical_slice.G30CombatReference.test_reject_protect_ally_until_teammate_exists) ... ok
+test_same_seed_same_result_and_digest (test_g30_combat_vertical_slice.G30CombatReference.test_same_seed_same_result_and_digest) ... ok
+test_engine_gate_is_real_godot_script (test_g30_combat_vertical_slice.G30GodotHeadlessGateContracts.test_engine_gate_is_real_godot_script) ... ok
+test_gate_failure_creates_diagnostics_no_game_start (test_g30_combat_vertical_slice.G30GodotHeadlessGateContracts.test_gate_failure_creates_diagnostics_no_game_start) ... ok
+test_launcher_checks_parser_before_game_launch (test_g30_combat_vertical_slice.G30GodotHeadlessGateContracts.test_launcher_checks_parser_before_game_launch) ... ok
+test_authoritative_fixed_time_and_timeout (test_g30_combat_vertical_slice.G30SourceContracts.test_authoritative_fixed_time_and_timeout) ... ok
+test_direct_launch_and_failure_logs (test_g30_combat_vertical_slice.G30SourceContracts.test_direct_launch_and_failure_logs) ... ok
+test_g30_launcher_missing_executable_still_generates_zip (test_g30_combat_vertical_slice.G30SourceContracts.test_g30_launcher_missing_executable_still_generates_zip) ... ok
+test_logger_decision_trace_and_terminal_digest (test_g30_combat_vertical_slice.G30SourceContracts.test_logger_decision_trace_and_terminal_digest) ... ok
+test_new_independent_scene_does_not_replace_g2 (test_g30_combat_vertical_slice.G30SourceContracts.test_new_independent_scene_does_not_replace_g2) ... ok
+test_no_unlicensed_sprite_bundling (test_g30_combat_vertical_slice.G30SourceContracts.test_no_unlicensed_sprite_bundling) ... ok
+test_simultaneous_hit_snapshot (test_g30_combat_vertical_slice.G30SourceContracts.test_simultaneous_hit_snapshot) ... ok
+test_visual_does_not_apply_damage (test_g30_combat_vertical_slice.G30SourceContracts.test_visual_does_not_apply_damage) ... ok
+test_animation_never_owns_damage (test_g31_tactical_spacing.TacticalSpacingContracts.test_animation_never_owns_damage) ... ok
+test_direct_launcher_runs_native_gate_first (test_g31_tactical_spacing.TacticalSpacingContracts.test_direct_launcher_runs_native_gate_first) ... ok
+test_distance_band_actual_retreat_and_strafe (test_g31_tactical_spacing.TacticalSpacingContracts.test_distance_band_actual_retreat_and_strafe) ... ok
+test_guard_recharge_and_recovery (test_g31_tactical_spacing.TacticalSpacingContracts.test_guard_recharge_and_recovery) ... ok
+test_headless_benchmark_identifies_balance_not_sealed (test_g31_tactical_spacing.TacticalSpacingContracts.test_headless_benchmark_identifies_balance_not_sealed) ... ok
+test_isolated_old_core_not_rewritten (test_g31_tactical_spacing.TacticalSpacingContracts.test_isolated_old_core_not_rewritten) ... ok
+test_kiter_uses_retreat_strafe_and_zoning_attacks (test_g31_tactical_spacing.TacticalSpacingContracts.test_kiter_uses_retreat_strafe_and_zoning_attacks) ... ok
+test_native_gate_32_trials_two_replays (test_g31_tactical_spacing.TacticalSpacingContracts.test_native_gate_32_trials_two_replays) ... ok
+test_non_melee_range_style_has_tradeoffs (test_g31_tactical_spacing.TacticalSpacingContracts.test_non_melee_range_style_has_tradeoffs) ... ok
+test_other_orders_are_not_zoning (test_g31_tactical_spacing.TacticalSpacingContracts.test_other_orders_are_not_zoning) ... ok
+test_scene_and_logger_are_version_isolated (test_g31_tactical_spacing.TacticalSpacingContracts.test_scene_and_logger_are_version_isolated) ... ok
+test_seed_replay_deterministic_offline (test_g31_tactical_spacing.TacticalSpacingContracts.test_seed_replay_deterministic_offline) ... ok
+test_strike_snapshot_when_switching_order_mid_windup (test_g31_tactical_spacing.TacticalSpacingContracts.test_strike_snapshot_when_switching_order_mid_windup) ... ok
+test_corrupt_png_flagged (test_pmd_asset_audit.AuditTests.test_corrupt_png_flagged) ... ok
+test_duplicate_entry_rejected (test_pmd_asset_audit.AuditTests.test_duplicate_entry_rejected) ... /usr/lib/python3.13/zipfile/__init__.py:1642: UserWarning: Duplicate name: 'sprites/025_player.png'
+  return self._open_to_write(zinfo, force_zip64=force_zip64)
+ok
+test_zip_audit_counts_and_private_staging (test_pmd_asset_audit.AuditTests.test_zip_audit_counts_and_private_staging) ... ok
+test_android_path (test_pmd_asset_audit.PathTests.test_android_path) ... ok
+test_reference_duplicate (test_pmd_asset_audit.PathTests.test_reference_duplicate) ... ok
+test_relative_path (test_pmd_asset_audit.PathTests.test_relative_path) ... ok
+test_traversal_refusal (test_pmd_asset_audit.PathTests.test_traversal_refusal) ... ok
+test_bad_checksum (test_pmd_asset_audit.PngTests.test_bad_checksum) ... ok
+test_good_png (test_pmd_asset_audit.PngTests.test_good_png) ... ok
+test_missing_iend (test_pmd_asset_audit.PngTests.test_missing_iend) ... ok
+test_alias_cycle (test_pmd_g1_preflight.G1PreflightTests.test_alias_cycle) ... ok
+test_alias_missing_target (test_pmd_g1_preflight.G1PreflightTests.test_alias_missing_target) ... ok
+test_attack_missing_allowed (test_pmd_g1_preflight.G1PreflightTests.test_attack_missing_allowed) ... ok
+test_dragonair_idle_alias (test_pmd_g1_preflight.G1PreflightTests.test_dragonair_idle_alias) ... ok
+test_missing_art_fails (test_pmd_g1_preflight.G1PreflightTests.test_missing_art_fails) ... ok
+test_missing_credits_warn (test_pmd_g1_preflight.G1PreflightTests.test_missing_credits_warn) ... ok
+test_missing_walk_fails (test_pmd_g1_preflight.G1PreflightTests.test_missing_walk_fails) ... ok
+test_png_header (test_pmd_g1_preflight.G1PreflightTests.test_png_header) ... ok
+test_png_invalid (test_pmd_g1_preflight.G1PreflightTests.test_png_invalid) ... ok
+test_wrong_sheet_ratio_fails (test_pmd_g1_preflight.G1PreflightTests.test_wrong_sheet_ratio_fails) ... ok
+test_idle_copyof_chain (test_pmdcollab_fetch.TestFetch.test_idle_copyof_chain) ... ok
+test_idle_copyof_cycle (test_pmdcollab_fetch.TestFetch.test_idle_copyof_cycle) ... ok
+test_idle_copyof_missing_target (test_pmdcollab_fetch.TestFetch.test_idle_copyof_missing_target) ... ok
+test_idle_copyof_missing_target_sheet (test_pmdcollab_fetch.TestFetch.test_idle_copyof_missing_target_sheet) ... ok
+test_idle_copyof_walk_dragonair_0148 (test_pmdcollab_fetch.TestFetch.test_idle_copyof_walk_dragonair_0148) ... ok
+test_ids_rejected (test_pmdcollab_fetch.TestFetch.test_ids_rejected) ... usage: python -m unittest [-h] [--ids IDS] [--all151] [--out OUT] [--replace]
+                          [--plan] [--quiet]
+python -m unittest: error: IDs must be in range 1..151
+ok
+test_missing_walk (test_pmdcollab_fetch.TestFetch.test_missing_walk) ... ok
+test_no_xml (test_pmdcollab_fetch.TestFetch.test_no_xml) ... ok
+test_path_abs (test_pmdcollab_fetch.TestFetch.test_path_abs) ... ok
+test_path_backslash (test_pmdcollab_fetch.TestFetch.test_path_backslash) ... ok
+test_path_good (test_pmdcollab_fetch.TestFetch.test_path_good) ... ok
+test_path_parent (test_pmdcollab_fetch.TestFetch.test_path_parent) ... ok
+test_plan (test_pmdcollab_fetch.TestFetch.test_plan) ... ok
+test_png_bad (test_pmdcollab_fetch.TestFetch.test_png_bad) ... ok
+test_stage_mock_network_and_cache (test_pmdcollab_fetch.TestFetch.test_stage_mock_network_and_cache) ... ok
+test_valid_zip (test_pmdcollab_fetch.TestFetch.test_valid_zip) ... ok
+test_xml (test_pmdcollab_fetch.TestFetch.test_xml) ... ok
+
+----------------------------------------------------------------------
+Ran 176 tests in 0.125s
+
+OK
+Launching Godot EXACT G2.2 scene: res://scenes/ecology_animation_lab.tscn
+Leave this CMD open, play for ~30 seconds, then close the GAME window.
+Engine log: /tmp/tmppt11e4m8/reports/PLW_G22_GODOT_BOOT_LAST.log
+DIAGNOSTIC ZIP READY: /tmp/tmppt11e4m8/reports/PLW_G22_DIRECT_DIAGNOSTICS_TO_SHARE.zip
+Godot not automatically found. Please select the same Godot exe as your editor.
+G3.0 GODOT HEADLESS CORE GATE: res://tests/g30_godot_engine_gate.gd
+Godot not automatically found. Please select the same Godot exe as your editor.
+025 https://spriteserver.pmdcollab.org/assets/0025/sprites.zip
+094 https://spriteserver.pmdcollab.org/assets/0094/sprites.zip

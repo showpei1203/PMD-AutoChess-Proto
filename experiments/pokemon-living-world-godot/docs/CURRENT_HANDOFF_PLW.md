@@ -1,3 +1,17 @@
+# CURRENT HANDOFF | Pokémon Living World | Godot 4.7.2
+**Checkpoint:** `PLW_G31_SPACING_AND_GUARD_COOLDOWN_CANDIDATE_v0.5.1_20261017`
+**Branch:** `planning/pokemon-living-world-godot`
+**Status:** G3.0 actual Godot command input, headless replay, attack/guard mitigation PASSED (user LOG). G3.1 true-space candidate Python176/176 PASS; **Godot G3.1 Surface and headless gate PENDING**. Full G3 battle features and balanced strategies NOT complete.
+
+- New scene `scenes/g31_combat_lab.tscn`, separate combat core, renderer, diagnostics, Godot 32-scenario native gate and direct launcher. Base G3.0, G2.3 and earlier source files preserved.
+- Goal: MAKE KEEP_DISTANCE FUNCTIONALLY KEEP DISTANCE (retreat/strafe, far pressure) vs G3.0 which simply approached. Guard recharge 25 ticks. Not canonical Pokémon battle rules or a general tactical balance fix.
+- Python reference tests 176/176 PASS; offline 32 seeds x 4 orders each repeated twice; keeper still can lose near arena edge. The G31 headless native engine GDScript gate **has not run** in assistant environment.
+- Standalone complete ZIP includes full source, Windows scripts, Python tests, offline matrix, logs, SHA256 manifest. Full ZIP link and ZIP SHA are registered in external Drive Handoff + GitHub Issue #15 after upload; avoid self-referential ZIP hash.
+- Surface procedure: GitHub Desktop Fetch/Pull this branch, run `RUN_G31_DIRECT_SCENE_WINDOWS.bat`; gate expects `G31_GATE RESULT samples=32 failures=0`; game opens, choose 3 then R; observe retreat/strafe at 118–160 band and zone shots; choose 4 then R for guard. Stop game and send `reports/PLW_G31_DIRECT_DIAGNOSTICS_TO_SHARE.zip`. If gate fails, send generated ZIP; no F6 required.
+- Preserve private `data/raw/pmdcollab/` source images, not bundled.
+
+## HISTORICAL PREVIOUS HANDOFF
+
 # CURRENT HANDOFF | Pokémon Living World (Godot 4.7.2)
 
 **Updated:** 2026-10-17 (Asia/Taipei)  

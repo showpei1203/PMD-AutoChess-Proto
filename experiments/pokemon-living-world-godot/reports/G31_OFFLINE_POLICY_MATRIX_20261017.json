@@ -1,0 +1,627 @@
+{
+  "note": "OFFLINE REFERENCE ONLY; engine Surface gate not run. Seeds only vary starting Y offsets, not full scenario diversity.",
+  "seeds": [
+    20261017,
+    20365746,
+    31415926,
+    42,
+    777,
+    2025,
+    99991,
+    8008135,
+    20000001,
+    20104730,
+    20209459,
+    20314188,
+    20418917,
+    20523646,
+    20628375,
+    20733104,
+    20837833,
+    20942562,
+    21047291,
+    21152020,
+    21256749,
+    21361478,
+    21466207,
+    21570936,
+    21675665,
+    21780394,
+    21885123,
+    21989852,
+    22094581,
+    22199310,
+    22304039,
+    22408768
+  ],
+  "trials": 128,
+  "reference_signatures_verified_twice": 128,
+  "orders": {
+    "FREE": {
+      "win_pikachu": 3,
+      "win_gengar": 29,
+      "tie": 0,
+      "avg_duration_ticks": 135.1,
+      "avg_retreat": 0,
+      "avg_strafe": 0,
+      "avg_ranged": 0,
+      "avg_guards": 0
+    },
+    "AGGRESSIVE": {
+      "win_pikachu": 32,
+      "win_gengar": 0,
+      "tie": 0,
+      "avg_duration_ticks": 126,
+      "avg_retreat": 0,
+      "avg_strafe": 0,
+      "avg_ranged": 0,
+      "avg_guards": 0
+    },
+    "KEEP_DISTANCE": {
+      "win_pikachu": 0,
+      "win_gengar": 32,
+      "tie": 0,
+      "avg_duration_ticks": 229.6,
+      "avg_retreat": 159.9,
+      "avg_strafe": 4.4,
+      "avg_ranged": 5.0,
+      "avg_guards": 0
+    },
+    "DEFENSIVE": {
+      "win_pikachu": 32,
+      "win_gengar": 0,
+      "tie": 0,
+      "avg_duration_ticks": 142.9,
+      "avg_retreat": 0,
+      "avg_strafe": 0,
+      "avg_ranged": 0,
+      "avg_guards": 4.1
+    }
+  },
+  "first_eight_fixed_seed_records": [
+    {
+      "seed": 20261017,
+      "order": "FREE",
+      "winner": 1,
+      "tick": 136,
+      "hp": [
+        0,
+        4
+      ],
+      "hits": 17,
+      "misses": 0,
+      "digest": 1739798893,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 0
+    },
+    {
+      "seed": 20261017,
+      "order": "AGGRESSIVE",
+      "winner": 0,
+      "tick": 126,
+      "hp": [
+        8,
+        0
+      ],
+      "hits": 17,
+      "misses": 0,
+      "digest": 1537039251,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 0
+    },
+    {
+      "seed": 20261017,
+      "order": "KEEP_DISTANCE",
+      "winner": 1,
+      "tick": 225,
+      "hp": [
+        0,
+        54
+      ],
+      "hits": 13,
+      "misses": 0,
+      "digest": 6735806,
+      "retreat": 156,
+      "strafe": 4,
+      "ranged": 5,
+      "guards": 0
+    },
+    {
+      "seed": 20261017,
+      "order": "DEFENSIVE",
+      "winner": 0,
+      "tick": 142,
+      "hp": [
+        21,
+        0
+      ],
+      "hits": 18,
+      "misses": 0,
+      "digest": 1283322170,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 4
+    },
+    {
+      "seed": 20365746,
+      "order": "FREE",
+      "winner": 1,
+      "tick": 135,
+      "hp": [
+        0,
+        4
+      ],
+      "hits": 17,
+      "misses": 0,
+      "digest": 1920962839,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 0
+    },
+    {
+      "seed": 20365746,
+      "order": "AGGRESSIVE",
+      "winner": 0,
+      "tick": 126,
+      "hp": [
+        8,
+        0
+      ],
+      "hits": 17,
+      "misses": 0,
+      "digest": 305546416,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 0
+    },
+    {
+      "seed": 20365746,
+      "order": "KEEP_DISTANCE",
+      "winner": 1,
+      "tick": 263,
+      "hp": [
+        0,
+        46
+      ],
+      "hits": 14,
+      "misses": 1,
+      "digest": 1414166689,
+      "retreat": 186,
+      "strafe": 5,
+      "ranged": 6,
+      "guards": 0
+    },
+    {
+      "seed": 20365746,
+      "order": "DEFENSIVE",
+      "winner": 0,
+      "tick": 142,
+      "hp": [
+        21,
+        0
+      ],
+      "hits": 18,
+      "misses": 0,
+      "digest": 115013829,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 4
+    },
+    {
+      "seed": 31415926,
+      "order": "FREE",
+      "winner": 1,
+      "tick": 135,
+      "hp": [
+        0,
+        4
+      ],
+      "hits": 17,
+      "misses": 0,
+      "digest": 450819955,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 0
+    },
+    {
+      "seed": 31415926,
+      "order": "AGGRESSIVE",
+      "winner": 0,
+      "tick": 126,
+      "hp": [
+        8,
+        0
+      ],
+      "hits": 17,
+      "misses": 0,
+      "digest": 82067686,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 0
+    },
+    {
+      "seed": 31415926,
+      "order": "KEEP_DISTANCE",
+      "winner": 1,
+      "tick": 225,
+      "hp": [
+        0,
+        54
+      ],
+      "hits": 13,
+      "misses": 0,
+      "digest": 1209828260,
+      "retreat": 155,
+      "strafe": 5,
+      "ranged": 5,
+      "guards": 0
+    },
+    {
+      "seed": 31415926,
+      "order": "DEFENSIVE",
+      "winner": 0,
+      "tick": 142,
+      "hp": [
+        21,
+        0
+      ],
+      "hits": 18,
+      "misses": 0,
+      "digest": 1733186501,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 4
+    },
+    {
+      "seed": 42,
+      "order": "FREE",
+      "winner": 1,
+      "tick": 135,
+      "hp": [
+        0,
+        4
+      ],
+      "hits": 17,
+      "misses": 0,
+      "digest": 759803265,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 0
+    },
+    {
+      "seed": 42,
+      "order": "AGGRESSIVE",
+      "winner": 0,
+      "tick": 126,
+      "hp": [
+        8,
+        0
+      ],
+      "hits": 17,
+      "misses": 0,
+      "digest": 1056382131,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 0
+    },
+    {
+      "seed": 42,
+      "order": "KEEP_DISTANCE",
+      "winner": 1,
+      "tick": 224,
+      "hp": [
+        0,
+        54
+      ],
+      "hits": 13,
+      "misses": 0,
+      "digest": 255021175,
+      "retreat": 154,
+      "strafe": 5,
+      "ranged": 5,
+      "guards": 0
+    },
+    {
+      "seed": 42,
+      "order": "DEFENSIVE",
+      "winner": 0,
+      "tick": 142,
+      "hp": [
+        21,
+        0
+      ],
+      "hits": 18,
+      "misses": 0,
+      "digest": 1569074038,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 4
+    },
+    {
+      "seed": 777,
+      "order": "FREE",
+      "winner": 1,
+      "tick": 135,
+      "hp": [
+        0,
+        4
+      ],
+      "hits": 17,
+      "misses": 0,
+      "digest": 160835837,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 0
+    },
+    {
+      "seed": 777,
+      "order": "AGGRESSIVE",
+      "winner": 0,
+      "tick": 126,
+      "hp": [
+        8,
+        0
+      ],
+      "hits": 17,
+      "misses": 0,
+      "digest": 718428021,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 0
+    },
+    {
+      "seed": 777,
+      "order": "KEEP_DISTANCE",
+      "winner": 1,
+      "tick": 224,
+      "hp": [
+        0,
+        54
+      ],
+      "hits": 13,
+      "misses": 0,
+      "digest": 1172059530,
+      "retreat": 155,
+      "strafe": 4,
+      "ranged": 5,
+      "guards": 0
+    },
+    {
+      "seed": 777,
+      "order": "DEFENSIVE",
+      "winner": 0,
+      "tick": 142,
+      "hp": [
+        21,
+        0
+      ],
+      "hits": 18,
+      "misses": 0,
+      "digest": 1226428406,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 4
+    },
+    {
+      "seed": 2025,
+      "order": "FREE",
+      "winner": 0,
+      "tick": 132,
+      "hp": [
+        8,
+        0
+      ],
+      "hits": 16,
+      "misses": 0,
+      "digest": 468070983,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 0
+    },
+    {
+      "seed": 2025,
+      "order": "AGGRESSIVE",
+      "winner": 0,
+      "tick": 126,
+      "hp": [
+        8,
+        0
+      ],
+      "hits": 17,
+      "misses": 0,
+      "digest": 1322291938,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 0
+    },
+    {
+      "seed": 2025,
+      "order": "KEEP_DISTANCE",
+      "winner": 1,
+      "tick": 235,
+      "hp": [
+        0,
+        54
+      ],
+      "hits": 13,
+      "misses": 0,
+      "digest": 772878327,
+      "retreat": 165,
+      "strafe": 5,
+      "ranged": 5,
+      "guards": 0
+    },
+    {
+      "seed": 2025,
+      "order": "DEFENSIVE",
+      "winner": 0,
+      "tick": 152,
+      "hp": [
+        16,
+        0
+      ],
+      "hits": 19,
+      "misses": 0,
+      "digest": 1158492261,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 5
+    },
+    {
+      "seed": 99991,
+      "order": "FREE",
+      "winner": 1,
+      "tick": 135,
+      "hp": [
+        0,
+        4
+      ],
+      "hits": 17,
+      "misses": 0,
+      "digest": 252432918,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 0
+    },
+    {
+      "seed": 99991,
+      "order": "AGGRESSIVE",
+      "winner": 0,
+      "tick": 126,
+      "hp": [
+        8,
+        0
+      ],
+      "hits": 17,
+      "misses": 0,
+      "digest": 1400044515,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 0
+    },
+    {
+      "seed": 99991,
+      "order": "KEEP_DISTANCE",
+      "winner": 1,
+      "tick": 244,
+      "hp": [
+        0,
+        54
+      ],
+      "hits": 13,
+      "misses": 1,
+      "digest": 1378208660,
+      "retreat": 174,
+      "strafe": 4,
+      "ranged": 5,
+      "guards": 0
+    },
+    {
+      "seed": 99991,
+      "order": "DEFENSIVE",
+      "winner": 0,
+      "tick": 142,
+      "hp": [
+        21,
+        0
+      ],
+      "hits": 18,
+      "misses": 0,
+      "digest": 1037178183,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 4
+    },
+    {
+      "seed": 8008135,
+      "order": "FREE",
+      "winner": 1,
+      "tick": 135,
+      "hp": [
+        0,
+        4
+      ],
+      "hits": 17,
+      "misses": 0,
+      "digest": 2074124081,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 0
+    },
+    {
+      "seed": 8008135,
+      "order": "AGGRESSIVE",
+      "winner": 0,
+      "tick": 126,
+      "hp": [
+        8,
+        0
+      ],
+      "hits": 17,
+      "misses": 0,
+      "digest": 291871678,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 0
+    },
+    {
+      "seed": 8008135,
+      "order": "KEEP_DISTANCE",
+      "winner": 1,
+      "tick": 224,
+      "hp": [
+        0,
+        54
+      ],
+      "hits": 13,
+      "misses": 0,
+      "digest": 533845727,
+      "retreat": 154,
+      "strafe": 5,
+      "ranged": 5,
+      "guards": 0
+    },
+    {
+      "seed": 8008135,
+      "order": "DEFENSIVE",
+      "winner": 0,
+      "tick": 142,
+      "hp": [
+        21,
+        0
+      ],
+      "hits": 18,
+      "misses": 0,
+      "digest": 1030013956,
+      "retreat": 0,
+      "strafe": 0,
+      "ranged": 0,
+      "guards": 4
+    }
+  ]
+}

@@ -1,3 +1,24 @@
+# Pokémon Living World — G3.1 v0.5.1 (2026-10-17)
+
+## Latest state
+- **G3.0 Surface native Godot trainer order PASS** based on user-uploaded actual LOG (1–4 input, distinct action scores, guarded damage, 12 native engine scenarios). Source code unchanged.
+- **G3.1 isolated tactical spacing candidate**: distinct `scenes/g31_combat_lab.tscn` + own core/UI/logger/Godot headless replay gate. `KEEP_DISTANCE` pursues a genuine 118–160px band with RETREAT/STRAFE and a prototype weak ranged attack; DEFENSIVE/Gengar GUARD incurs 25-tick recharge to prevent repeatedly free blocking. Actual strike range and power are SNAPSHOTTED at windup, so mid-fight switching trainer posture does not alter an already-committed strike. Correct facing/feet remains visual-only.
+- **Offline Python 176/176 tests PASS**; independent offline 32 seeds x 4 postures x 2 deterministic trials (128 paired scenarios), however the seeds only vary starting positions; **not Godot runtime, not strategic balance acceptance**. Current offline KEEP_DISTANCE can retreat/strafe/ranged attack but loses in this limited prototype. Maintain known issue: corner trapping and small arena mean practical kiting is still incomplete.
+- **Native Godot gate** `tests/g31_godot_engine_gate.gd` called by launcher before scene start: 8 seeds x 4 postures x 2 replays (32 scenario pairs), must print `G31_GATE RESULT samples=32 failures=0` with nonzero zoning metrics. If Godot parser/runtime fails, ZIP still collects gate error, game not launched.
+- **No G1–G3.0 file modified except external handoff context**. Raw PMDCollab sprite directories remain local private, never distributed or Git-committed.
+- New package is a **candidate**, G3.1 Surface / rendering / strategy acceptance PENDING. Do not claim full G3 or official Pokémon skill mechanics.
+
+## Run on Surface (NO F5/F6)
+1. GitHub Desktop on `planning/pokemon-living-world-godot` -> Fetch/Pull, preserve local PMDCollab data under `data/raw/pmdcollab/`.
+2. Double-click `RUN_G31_DIRECT_SCENE_WINDOWS.bat` in Godot project root, select Godot 4.7.2 executable if asked.
+3. Wait for native gate `G31_GATE RESULT samples=32 failures=0`. Then game opens. Press `3` (KEEP_DISTANCE), then `R` (same seed restart); see `RETREAT` at close distances, `STRAFE` and `ZONE` attacks in band; press `4` then `R` to compare guard recharges. `1` and `2` also work, `N` switches seed. Keep the game open until result, close normally.
+4. Upload `reports/PLW_G31_DIRECT_DIAGNOSTICS_TO_SHARE.zip` and optional result screenshot. Launcher still emits ZIP even if native gate fails. The diagnostic ZIP contains only text logs, no artwork.
+
+## Archived stable baselines
+The original G3.0 lab and the G2.3 ecological animations are preserved byte-for-byte; F5 still launches G1 animation lab. G3.1 changes apply ONLY in the new scene.
+
+---
+
 # CURRENT: G3.0 autonomous 1v1 lab v0.5.0 (2026-10-17)
 
 **Next milestone: autonomous combat vertical slice, not formal G3 completion.**

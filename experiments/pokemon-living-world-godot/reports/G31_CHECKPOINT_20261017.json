@@ -1,0 +1,17 @@
+{
+  "checkpoint": "PLW_G31_SPACING_AND_GUARD_COOLDOWN_CANDIDATE_v0.5.1_20261017",
+  "version": "v0.5.1",
+  "engine_target": "Godot 4.7.2 Stable",
+  "offline_tests": "176/176 PASS",
+  "offline_scenarios": "32 seeds x 4 orders = 128, each run twice",
+  "surface_status": "PENDING: real Godot headless replay and visual",
+  "known_limitations": [
+    "KEEP_DISTANCE demonstrably retreats/strafes but is not yet strategically competitive",
+    "DEFENSIVE strength still varies, widened seed tests are not scenario diversity",
+    "Prototype zoning attack is not canonical Pokémon move",
+    "No obstacles, collision, 2v2, type chart or PP"
+  ],
+  "command": "RUN_G31_DIRECT_SCENE_WINDOWS.bat",
+  "upload": "reports/PLW_G31_DIRECT_DIAGNOSTICS_TO_SHARE.zip",
+  "baseline": "G3.0 gameplay files and G2.3 sources unchanged"
+}
