@@ -1,4 +1,21 @@
 # CURRENT HANDOFF | Pokémon Living World | Godot 4.7.2
+**Updated:** 2026-10-17 (Asia/Taipei)
+**Checkpoint:** `PLW_G32_GEOMETRY_ESCAPE_CANDIDATE_v0.5.2_20261017`
+**Branch:** `planning/pokemon-living-world-godot`
+**Status:** G3.1 real Surface/engine 32/32 PASS and movement semantics PASS; G3.2 corner escaping 189/189 Python OFFLINE PASS, actual Godot 4.7.2 headless/visual PENDING. Full G3 design NOT sealed.
+
+## Latest work G3.2 v0.5.2: 2026-10-17
+- **User**: Continue beyond observed G3.1; keep G2.3/G3.0/G3.1 frozen.
+- **Previous truth**: G3.1 actual Surface native 8Seed×4Posture gate (32 scenarios, replay twice) PASS; KEEP_DISTANCE 0/8 wins. Real user 3→R has RETREAT=113, STRAFE=4, ZONE=5; 4→R guard cooldown PASS, Pikachu wins. User G31 ZIP hash `1bd0ddb3bc9b206f067b1f22a8d03b85a963ba93fa5021f62cce5f4cf297e7d7`.
+- **G3.2 new**: independent scene `scenes/g32_combat_lab.tscn`; deterministic 9-tick wall-prediction, 8-candidate escape path scorer, 18-tick heading lock, geometry-safe clamp. New ESCAPE audit counts, distinct runtime logger/Direct Launcher; 4 physical corner probes in actual native Godot gate.
+- **Testing**: 189/189 Python offline PASS. 4 independent synthetic corner reference probes move ~86.18px in 14 steps while inside bounds. **Real Godot G32 native/scene PENDING**. No code modified from prior accepted G1 to G3.1 source files.
+- **Next on Surface**: Fetch/Pull `planning/pokemon-living-world-godot`; run `RUN_G32_DIRECT_SCENE_WINDOWS.bat`; actual Godot native gate expects `G32_GATE RESULT samples=36 failures=0` (8Seeds×4 orders + 4 corner probes, all replayed twice), then game. Press 3→R then 4→R, close game, upload `reports/PLW_G32_DIRECT_DIAGNOSTICS_TO_SHARE.zip`. Even parser/boot failures package diagnostic ZIP. Preserve local private PMD artwork.
+- **Future**: report real wall-escape rate versus G3.1, wider position/speed scenarios and survival, terrain-aware obstacle navigation, real moves/types and 2v2 protect-ally. No offline result implies these are complete.
+- **Docs**: `docs/G32_ESCAPE_GEOMETRY_20261017.md` + `docs/HANDOFF_HISTORY_PLW.md`; Google Drive Current/History/Master Roadmap and GitHub Issue #15 must be synchronized each milestone.
+
+## HISTORICAL HANDOFF (earlier checkpoints below; refer to first section for active status)
+
+# CURRENT HANDOFF | Pokémon Living World | Godot 4.7.2
 **Checkpoint:** `PLW_G31_SURFACE_TACTICAL_SEMANTICS_PASS_BALANCE_PENDING_20261017`
 **Branch:** `planning/pokemon-living-world-godot`
 **Status:** G3.1 v0.5.1 actual Surface Godot 4.7.2 native gate 32/32 PASS; 3/R/4/R and real retreat/strafe/ZONE/guard cooldown proven. KEEP_DISTANCE strategy wins 0/8; geometry escape/balance and full G3 PENDING. Prior G2.3/G3.0 sealed.

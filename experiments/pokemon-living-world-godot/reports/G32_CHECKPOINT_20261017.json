@@ -1,0 +1,13 @@
+{
+  "checkpoint": "PLW_G32_GEOMETRY_ESCAPE_CANDIDATE_v0.5.2_20261017",
+  "version": "v0.5.2",
+  "baseline": "G3.1 Surface native 32/32 PASS",
+  "python_tests": "189/189 PASS",
+  "native_godot": "PENDING Surface 4.7.2",
+  "native_gate": "G32_GATE RESULT samples=36 failures=0",
+  "corner_reference": "4 corners 14 steps ~86.18px each, synthetic/offline",
+  "g31_zip_sha256": "4bada00cb47273e141dada74379e14f60224a19cdf3571d32892f29291c0a7e8",
+  "rollback_scene": "scenes/g31_combat_lab.tscn",
+  "log_zip": "reports/PLW_G32_DIRECT_DIAGNOSTICS_TO_SHARE.zip",
+  "copyrighted_art_included": false
+}

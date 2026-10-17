@@ -143,3 +143,12 @@ New `RUN_G22_DIRECT_SCENE_WINDOWS.bat` starts `scenes/ecology_animation_lab.tscn
 - Stationary PMD `Walk` animates *slowly* per species, with occasional one-shot Idle / safe Float/Nod/Pose, genuine roaming always preempts idle performance.
 - Runtime evidence `reports/PLW_G23_DIRECT_DIAGNOSTICS_TO_SHARE.zip` created by launcher, even on startup failure.
 - Python offline tests 146/146 PASS; Surface visual/runtime test **PENDING**. No PMD image data in source ZIP.
+
+
+## G3.2 v0.5.2 | Escape Geometry Candidate (Godot 4.7.2)
+- Previous G3.1 lab is intact and remains the observed real Surface baseline.
+- New independent test scene: `scenes/g32_combat_lab.tscn`, via `RUN_G32_DIRECT_SCENE_WINDOWS.bat`.
+- Runs REAL Godot headless native 36-sample/72-replay gate (including four corner probes), before opening scene.
+- F6 and scene-tab selection are not required; on stop upload `reports/PLW_G32_DIRECT_DIAGNOSTICS_TO_SHARE.zip`.
+- **189/189 Python offline tests PASS**, new G3.2 Godot native/visual gate **PENDING**.
+- Animation/PMDCollab artwork kept in private local data, absent from public release.

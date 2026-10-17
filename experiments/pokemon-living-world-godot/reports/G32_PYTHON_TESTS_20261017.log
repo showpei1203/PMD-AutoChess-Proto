@@ -1,0 +1,18 @@
+/usr/lib/python3.13/zipfile/__init__.py:1642: UserWarning: Duplicate name: 'sprites/025_player.png'
+  return self._open_to_write(zinfo, force_zip64=force_zip64)
+usage: python -m unittest [-h] [--ids IDS] [--all151] [--out OUT] [--replace]
+                          [--plan] [--quiet]
+python -m unittest: error: IDs must be in range 1..151
+----------------------------------------------------------------------
+Ran 189 tests in 0.106s
+
+OK
+Launching Godot EXACT G2.2 scene: res://scenes/ecology_animation_lab.tscn
+Leave this CMD open, play for ~30 seconds, then close the GAME window.
+Engine log: /tmp/tmplo1zktz2/reports/PLW_G22_GODOT_BOOT_LAST.log
+DIAGNOSTIC ZIP READY: /tmp/tmplo1zktz2/reports/PLW_G22_DIRECT_DIAGNOSTICS_TO_SHARE.zip
+Godot not automatically found. Please select the same Godot exe as your editor.
+G3.0 GODOT HEADLESS CORE GATE: res://tests/g30_godot_engine_gate.gd
+Godot not automatically found. Please select the same Godot exe as your editor.
+025 https://spriteserver.pmdcollab.org/assets/0025/sprites.zip
+094 https://spriteserver.pmdcollab.org/assets/0094/sprites.zip
