@@ -14,6 +14,10 @@ var action_index: int = 0
 var visual_scale: float = 2.0
 var foot_shift: Vector2 = Vector2.ZERO
 var show_shadow: bool = true
+# 0 = native PMD shadow center (preferred), 1 = sprite alpha bottom, 2 = old frame bottom.
+var anchor_mode: int = 0
+var anchor_info: Dictionary = {}
+var anchor_frame_key: String = ""
 var source = Source.new()
 var sprite: AnimatedSprite2D
 var name_label: Label
@@ -32,9 +36,9 @@ func _ready() -> void:
     sprite.position = GROUND
     add_child(sprite)
     name_label = _label("", Vector2(24, 17), 20, Color("#eaf3ff"))
-    _label("G1.2 腳點與體型校準 · 來源動畫八方向僅顯示原始列 · 模擬陰影非官方素材", Vector2(24, 48), 13, Color("#98afc1"))
-    help_label = _label("Q/E 換寶可夢  1/2/3 基準  I/W/A 動作  ←/→ 原始方向  Z/X 縮放", Vector2(24, 424), 14, Color("#d1deef"))
-    detail_label = _label("↑/↓ 調腳點高低  J/L 左右  B 陰影  R 重置  S 儲存本機校準數值", Vector2(24, 459), 14, Color("#d1deef"))
+    _label("G1.2.1 自動腳點：PMD 原生陰影中心優先 · 不透明底部備援 · 原始方向列待驗收", Vector2(24, 48), 13, Color("#98afc1"))
+    help_label = _label("Q/E 換圖鑑  G 直接看 #130 暴鯉龍  1/2/3 基準  I/W/A 動作  ←/→ 方向  Z/X 縮放", Vector2(24, 424), 14, Color("#d1deef"))
+    detail_label = _label("N 地面基準：原生/像素底部/舊Frame  ↑↓JL 微調  B 陰影  R 重置  S 儲存草稿", Vector2(24, 459), 14, Color("#d1deef"))
     status_label = _label("", Vector2(24, 491), 13, Color("#90e7bd"))
     _load(25)
 
@@ -57,13 +61,16 @@ func _load_saved() -> void:
     foot_shift.x = clampf(float(data.get("shift_x", 0.0)), -100.0, 100.0)
     foot_shift.y = clampf(float(data.get("shift_y", 0.0)), -100.0, 100.0)
     direction_row = clampi(int(data.get("raw_direction_row", 0)), 0, 7)
+    anchor_mode = clampi(int(data.get("anchor_mode", 0)), 0, 2)
 
 func _save() -> void:
     var payload: Dictionary = {
-        "schema": "plw-g12-calibration-1", "species_id": species_id,
+        "schema": "plw-g12-calibration-2", "species_id": species_id,
         "scale": snappedf(visual_scale, 0.01),
         "shift_x": foot_shift.x, "shift_y": foot_shift.y,
         "raw_direction_row": direction_row,
+        "anchor_mode": anchor_mode,
+        "anchor_reason": str(anchor_info.get("reason", "UNVERIFIED")),
         "direction_mapping_verified": false,
         "shadow_kind": "debug_ellipse_only",
         "accepted_as_physical_collisions": false
@@ -84,6 +91,8 @@ func _load(id: int) -> void:
     sprite.stop()
     sprite.sprite_frames = null
     frames_for_row.clear()
+    anchor_info.clear()
+    anchor_frame_key = ""
     direction_row = 0
     _load_saved()
     loaded = source.load_species(species_id)
@@ -105,6 +114,7 @@ func _set_row(row: int) -> void:
         if not source.errors.is_empty():
             print("[PLW-G12] #%03d raw_row=%d issues=%s" % [species_id, direction_row, str(source.errors)])
     sprite.sprite_frames = frames_for_row[direction_row]
+    anchor_frame_key = ""
     _play()
 
 func _play() -> void:
@@ -115,6 +125,7 @@ func _play() -> void:
         action = "Idle" if sprite.sprite_frames.has_animation("Idle") else "Walk"
     if sprite.sprite_frames.has_animation(action):
         sprite.play(action)
+        anchor_frame_key = ""
     else:
         sprite.stop()
     _update_inspector()
@@ -124,30 +135,38 @@ func _process(_delta: float) -> void:
     queue_redraw()
 
 func _align_sprite() -> void:
-    var frame_width: float = 0.0
-    var frame_height: float = 0.0
-    if sprite.sprite_frames != null and sprite.sprite_frames.has_animation(sprite.animation):
-        var count: int = sprite.sprite_frames.get_frame_count(sprite.animation)
-        if count > 0:
-            var safe_frame: int = clampi(sprite.frame, 0, count - 1)
-            var tex: Texture2D = sprite.sprite_frames.get_frame_texture(sprite.animation, safe_frame)
-            if tex != null:
-                frame_width = tex.get_size().x
-                frame_height = tex.get_size().y
-    sprite.scale = Vector2.ONE * visual_scale
-    # Bottom of the *frame rectangle* lies on the ground reference line.
-    # The actual nontransparent foot pixel may be elsewhere: tune shift.
-    sprite.position = GROUND + foot_shift - Vector2(0.0, frame_height * visual_scale * 0.5)
-    if last_reported_frame != int(frame_height):
-        last_reported_frame = int(frame_height)
+    if not loaded or sprite.sprite_frames == null or not sprite.sprite_frames.has_animation(sprite.animation):
+        return
+    var count: int = sprite.sprite_frames.get_frame_count(sprite.animation)
+    if count < 1:
+        return
+    var safe_frame: int = clampi(sprite.frame, 0, count - 1)
+    var key: String = "%s:%d:%d" % [sprite.animation, direction_row, safe_frame]
+    if key != anchor_frame_key:
+        anchor_info = source.get_frame_alignment(sprite.animation, direction_row, safe_frame)
+        anchor_frame_key = key
         _update_inspector()
+    var frame: Vector2 = anchor_info.get("frame_size", Vector2.ZERO)
+    if frame == Vector2.ZERO:
+        return
+    var point: Vector2 = anchor_info.get("ground_point", Vector2(frame.x * 0.5, frame.y))
+    if anchor_mode == 1:
+        point = anchor_info.get("ink_point", point)
+    elif anchor_mode == 2:
+        point = anchor_info.get("frame_point", point)
+    sprite.scale = Vector2.ONE * visual_scale
+    # Keep the native shadow center (or visual fallback) on GROUND. The sprite
+    # remains centered in its AtlasTexture, so subtract *measured* point.
+    sprite.position = GROUND + foot_shift + (frame * 0.5 - point) * visual_scale
 
 func _update_inspector() -> void:
     if status_label == null or not loaded:
         return
-    status_label.text = "#%03d  %s  row %d/7   scale %.2fx   腳點修正 (%d,%d)   陰影 %s" % [
+    var label: String = ["NATIVE", "ALPHA", "FRAME"][anchor_mode]
+    var detail: String = str(anchor_info.get("reason", "PENDING"))
+    status_label.text = "#%03d %s row %d/7 scale %.2fx  地面:%s(%s)  微調(%d,%d)" % [
         species_id, ACTIONS[action_index], direction_row, visual_scale,
-        int(foot_shift.x), int(foot_shift.y), "ON" if show_shadow else "OFF"]
+        label, detail, int(foot_shift.x), int(foot_shift.y)]
 
 func _unhandled_key_input(event: InputEvent) -> void:
     if not event is InputEventKey or not event.pressed or event.echo:
@@ -156,6 +175,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
         KEY_1: _load(PRESET_IDS[0])
         KEY_2: _load(PRESET_IDS[1])
         KEY_3: _load(PRESET_IDS[2])
+        KEY_G: _load(130) # large-body regression target: Gyarados
         KEY_Q: _load(151 if species_id == 1 else species_id - 1)
         KEY_E: _load(1 if species_id == 151 else species_id + 1)
         KEY_I:
@@ -176,9 +196,11 @@ func _unhandled_key_input(event: InputEvent) -> void:
         KEY_J: foot_shift.x -= 1.0
         KEY_L: foot_shift.x += 1.0
         KEY_B: show_shadow = not show_shadow
+        KEY_N: anchor_mode = (anchor_mode + 1) % 3
         KEY_R:
             visual_scale = 2.0
             foot_shift = Vector2.ZERO
+            anchor_mode = 0
         KEY_S: _save()
         _: return
     _update_inspector()
@@ -205,6 +227,14 @@ func _draw() -> void:
         draw_set_transform(GROUND, 0.0, Vector2(1.0, 0.27))
         draw_circle(Vector2.ZERO, 48.0 * visual_scale / 2.0, Color(0.01, 0.02, 0.03, 0.35))
         draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+    # Outline the *ink* bounding rectangle, so oversized transparent frames
+    # can be diagnosed without pretending the frame bottom is the foot point.
+    if not anchor_info.is_empty():
+        var rect: Rect2 = anchor_info.get("ink_bounds", Rect2())
+        var frame: Vector2 = anchor_info.get("frame_size", Vector2.ZERO)
+        if rect.has_area() and frame != Vector2.ZERO:
+            var top_left: Vector2 = sprite.position + (rect.position - frame * 0.5) * visual_scale
+            draw_rect(Rect2(top_left, rect.size * visual_scale), Color("#69e3ca"), false, 1.0)
     var foot: Vector2 = GROUND + foot_shift
     draw_line(Vector2(96.0, foot.y), Vector2(864.0, foot.y), Color("#5c8797"), 1.0)
     draw_circle(foot, 4.0, Color("#fbcc64"))
