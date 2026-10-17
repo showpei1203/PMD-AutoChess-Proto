@@ -120,9 +120,35 @@ def inspect_zip(blob: bytes) -> tuple[list[tuple[str, bytes]], list[dict]]:
     if len(xmls) != 1:
         raise ValueError(f'Expected exactly one AnimData.xml, found {len(xmls)}')
     animation_list = parse_animations(xmls[0][1])
-    name_set = {PurePosixPath(n).name.casefold() for n,_ in members}
-    if not ({'idle-anim.png', 'walk-anim.png'} <= name_set):
-        raise ValueError('Missing mandatory Idle/Walk animation images')
+    # SpriteCollab supports animation aliases, e.g. #0148 Dragonair:
+    # <Name>Idle</Name><CopyOf>Walk</CopyOf> with Walk-Anim.png only.
+    # Missing the alias PNG is expected, not a corrupted source ZIP.
+    names_by_case = {PurePosixPath(n).name.casefold() for n, _ in members}
+    by_animation_name = {anim['name'].casefold(): anim for anim in animation_list}
+
+    def resolve_image(action: str) -> str:
+        seen: set[str] = set()
+        current = action
+        while True:
+            key = current.casefold()
+            if key in seen:
+                raise ValueError(f'Animation CopyOf cycle: {action} -> {current}')
+            seen.add(key)
+            anim = by_animation_name.get(key)
+            if anim is None:
+                raise ValueError(f'Missing animation definition / CopyOf target: {current}')
+            alias = (anim.get('copy_of') or '').strip()
+            if alias:
+                current = alias
+                continue
+            filename = f"{anim['name']}-Anim.png"
+            if filename.casefold() not in names_by_case:
+                raise ValueError(f'Missing required animation image for {action}: {filename}')
+            return filename
+
+    # Both actions must be playable, either from a sheet or via CopyOf.
+    for required in ('Idle', 'Walk'):
+        resolve_image(required)
     return members, animation_list
 
 
@@ -208,6 +234,9 @@ def main(argv: list[str] | None = None) -> int:
     reports = output / 'reports'
     reports.mkdir(parents=True, exist_ok=True)
     (reports / 'pmdcollab_download_report.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    print(f"SUMMARY verified={len(result['successful'])}/{len(ids)} failed={len(result['failed'])}")
+    if result['failed']:
+        print("FAILED IDS: " + ", ".join(str(item['id']).zfill(3) for item in result['failed']), file=sys.stderr)
     return 0 if not result['failed'] else 2
 
 if __name__ == '__main__':
