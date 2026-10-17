@@ -66,3 +66,7 @@ Addresses #094 Gengar XML streaming `XML tag mismatch: AnimData` and six Image.l
 
 ## G1.1 | 151-species lazy-loaded gallery v0.3.4
 Independent Godot scene `scenes/roster_lab.tscn` (run by opening scene + F6) for browsing dex 001..151 in 3-species pages using `Q/E`. `T` restores accepted benchmark #025/#094/#143; `I/W/A` and facing-row controls remain. The accepted G1 default main scene is intentionally unchanged. `RUN_G11_ROSTER_PREFLIGHT_WINDOWS.bat` produces JSON + CSV with source animation and CopyOf readiness; **no original art included in GitHub**. Pending actual Surface runtime and human visual validation. See `docs/G11_KANTO_GALLERY_20261017.md`.
+
+## G1.2 (v0.3.5, 2026-10-17): manual species calibration candidate
+
+G1.1 Surface gallery operation: **user-reported PASS**, not a per-species directional/offset sign-off. Existing `scenes/animation_lab.tscn`, `scenes/roster_lab.tscn`, and `project.godot` stay unchanged. Open `res://scenes/calibration_lab.tscn` with F6 for a **separate** 1-species manual ground/scale/facing inspector. Controls and draft JSON semantics: `docs/G12_CALIBRATION_LAB_20261017.md`. All 61 local offline tests PASS; real Surface F6 pending. No downloaded copyrighted art included.
