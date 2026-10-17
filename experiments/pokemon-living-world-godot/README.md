@@ -101,3 +101,11 @@ Previous G2.2 v0.4.1 had undefined locals `roams` and `since_roam` in `ecology_a
 
 ### G2.2.3 direct-boot diagnostic (2026-10-17)
 New `RUN_G22_DIRECT_SCENE_WINDOWS.bat` starts `scenes/ecology_animation_lab.tscn` directly, without editor active-tab/F6 ambiguity, and bundles boot/console/runtime logs at `reports/PLW_G22_DIRECT_DIAGNOSTICS_TO_SHARE.zip` **after closing game window**. If asked, select Godot 4.7.2 executable once. This is a diagnostic candidate; G22 visual facing/idle remains unverified. Offline 134/134 PASS; real Surface Godot runtime pending.
+
+
+## G2.3 v0.4.2｜Species cadence lab (Surface candidate)
+- Scene: `scenes/ecology_ambient_lab.tscn` (independent, inherits accepted G2.2 AI/facing).
+- Run `RUN_G23_DIRECT_SCENE_WINDOWS.bat` (direct Godot launch, avoids F5/F6 confusion).
+- Stationary PMD `Walk` animates *slowly* per species, with occasional one-shot Idle / safe Float/Nod/Pose, genuine roaming always preempts idle performance.
+- Runtime evidence `reports/PLW_G23_DIRECT_DIAGNOSTICS_TO_SHARE.zip` created by launcher, even on startup failure.
+- Python offline tests 146/146 PASS; Surface visual/runtime test **PENDING**. No PMD image data in source ZIP.

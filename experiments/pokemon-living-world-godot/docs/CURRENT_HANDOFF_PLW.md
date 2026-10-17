@@ -1,16 +1,17 @@
 # CURRENT HANDOFF | Pokémon Living World (Godot 4.7.2)
 
 **Updated:** 2026-10-17 (Asia/Taipei)  
-**Checkpoint:** `PLW_G223_DIRECT_SCENE_AND_BOOT_CAPTURE_CANDIDATE_v0.4.1.3_20261017`
+**Checkpoint:** `PLW_G23_SPECIES_CADENCE_CANDIDATE_v0.4.2_20261017`
 **Branch:** `planning/pokemon-living-world-godot`  
-**G2 status:** G2.1 mobility Surface PASS; G2.2 visual direction/idle UNVERIFIED. Latest uploaded log is G2.1 only; G2.2 runtime not yet established.
+**G2 status:** G2.2 correct direction / idle baseline Surface PASS (direct launch confirmed); G2.3 slow species-specific stance/micro actions 146/146 offline PASS, Surface Godot runtime PENDING.
 
 
-## G2.2.3 delivery receipt (2026-10-17)
-- **Full v0.4.1.3 ZIP:** https://drive.google.com/file/d/1UWnSteP27IEHngTwTzvBfL_aNgzt7bXn/view; 149 files; CRC PASS; SHA256 `bddc417e40b32515d2a6a39a3aed7896cfbcf689e0ddbdc23574123f4e593cb4`.
-- **Atomic isolated-branch code commit:** `98e90f57b38702a666007aaa2e1c01c1c087f891`, 12 changed files. Default main not changed.
-- **Offline tests:** 134/134 PASS; Surface Godot G22 scene never verified yet. User ZIP only showed missing G22 runtime log and stale G21/G202 logs, not a verified G22 application error.
-- **New user step:** Run `RUN_G22_DIRECT_SCENE_WINDOWS.bat` to launch exact G22 scene; after closing game window upload `reports/PLW_G22_DIRECT_DIAGNOSTICS_TO_SHARE.zip` including engine boot/console diagnostics.
+## CURRENT DELIVERY — G2.3 v0.4.2 (2026-10-17)
+- **Full 161-file ZIP**: https://drive.google.com/file/d/1VYom0ipsFG0i3KCuA3jxCrv0andzO5pd/view ; SHA256 `9a21d6afa67f5cfc9030071d509f7fad23df480cc426d3074e231360fb74ecc0` (CRC PASS). Earlier G22 artifacts remain archived.
+- 146/146 offline Python tests PASS (run again 2026-10-17); Godot runtime of new scene PENDING.
+- G2.2 direct-launch Surface accepted (48-second G22 run and user's visual confirmation). G2.3 isolated `scenes/ecology_ambient_lab.tscn`; prior G1/G2.1/G2.2 scenes unmodified.
+- Surface: GitHub Desktop Fetch/Pull `planning/pokemon-living-world-godot`, run `RUN_G23_DIRECT_SCENE_WINDOWS.bat`, watch 60–90sec, close the game window and upload `reports/PLW_G23_DIRECT_DIAGNOSTICS_TO_SHARE.zip` with any visual feedback.
+- New standby Walk speed scales Pikachu 0.26, Gengar 0.17, Snorlax 0.09; native micro actions considered only if safe PMD anchor. Retain G2.2 facing and movement priority. Status is candidate, not accepted until the Surface run.
 
 ## G2.2.3 latest Surface evidence and direct-launch candidate (2026-10-17)
 - User uploaded G22 diagnostics ZIP and reports **no improvement**. ZIP has `G22_MISSING_LOG_DIAGNOSIS.txt` but NO G22 runtime log; only prior G21 and G2.0.2 logs detected. **Latest scene startup not established**. Cannot equate missing runtime log with wrong-scene selection or animation logic failure.
@@ -71,6 +72,14 @@ After G2.0.1, the Surface G2 scene appeared idle, `tick` did not increase, and D
 - keys absent but buttons logged: keyboard focus/event propagation issue.
 - positions change while sprites don't: presentation/anchor/animation bug.
 
+
+## G2.3 v0.4.2 NEW CURRENT CHECKPOINT (2026-10-17)
+- **User confirmed G2.2 works** and supplied direct-launch ZIP with real G2.2 LOG: `LOGGER_READY G2.2-v0.4.1.1` in correct `ecology_animation_lab.tscn`, Godot exit=0, ~48sec and tick up to 472. Final cumulative motion ~975 px Pikachu, ~790 px Gengar, ~46 px Snorlax. Existing G2.2 scene and G2.1 remain approved at their demonstrated scope.
+- **User request**: idle should not be frozen; play Walk slower and design each Pokémon's rhythm / safe action combinations. New independent scene `ecology_ambient_lab.tscn` inheriting G2.2 and new `pmd_ambient_cadence_policy.gd` meets this as a candidate; `EcologyAmbientLab > Diagnostics` new root.
+- STANCE loop Walk speed per species: Pikachu 0.26, Gengar 0.17, Snorlax 0.09; micro actions wait 5-8.5 / 8-13.5 / 18-28 sec stationary. Extra Float/Pose/Nod *only* if native shadow-point within 5px of Walk; fallback Idle if unavailable. AI, navigation, original G2.2 facing and anchors untouched.
+- **Offline Python tests 146/146 PASS**, no Godot binary in build environment; **G2.3 Surface F6/runtime PENDING**. Never claim completed G2.3 visual acceptance before user's next run. Direct launcher generates `reports/PLW_G23_DIRECT_DIAGNOSTICS_TO_SHARE.zip` with BOOT, CONSOLE, RUNTIME text; reuses G22 Godot path.
+- Read `docs/G23_SPECIES_CADENCE_20261017.md`. Next user action: Fetch/Pull; double click `RUN_G23_DIRECT_SCENE_WINDOWS.bat`; observe 60-90s; close game; upload G23 direct log ZIP and visual feedback.
+- New code in independent stage; previously accepted `scripts/lab/ecology_animation_lab.gd`, `ecology_behavior_lab.gd` and corresponding scenes remain untouched. Preserve complete ZIP, tests, hash, Handoff history and Issue #15.
 
 ## Latest accepted G2.0.2 evidence (2026-10-17)
 User uploaded actual Surface G2.0.2 LOG (171 lines, ~60sec): physics and UI callback HEARTBEAT ticks grow 4→333; keyboard M/D/N and reseeding verified. #025 ~673px and #094 ~367px; #143 0px with IDLE/OBSERVE/REST and no ROAM. Diagnose complete; current G2 ecology gate PARTIAL, not fully accepted. See `docs/G202_SURFACE_RUNTIME_ACCEPTANCE_20261017.md` (GitHub). Mouse button controls not verified.

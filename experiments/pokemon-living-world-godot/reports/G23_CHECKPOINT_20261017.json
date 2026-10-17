@@ -1,0 +1,14 @@
+{
+  "checkpoint": "PLW_G23_SPECIES_CADENCE_CANDIDATE_v0.4.2_20261017",
+  "date": "2026-10-17",
+  "new_scene": "scenes/ecology_ambient_lab.tscn",
+  "surface_g22_acceptance": "USER_CONFIRMED_SUCCESS + GODOT_DIRECT_LOG_EVIDENCE",
+  "g22_uploaded_log_sha256": "327bde3971df51c6ed0e6e7471c8019324fc5cca9d6c1ab033ec319b62ccd191",
+  "g23_python_offline_tests": "146/146 PASS",
+  "g23_godot_surface_run": "PENDING",
+  "g23_runtime_log": "reports/PLW_G23_RUNTIME_LAST.log",
+  "g23_user_upload": "reports/PLW_G23_DIRECT_DIAGNOSTICS_TO_SHARE.zip",
+  "existing_scenes_modified": false,
+  "raw_pokemon_art_included": false,
+  "note": "G2.3 static validation is not Godot runtime verification."
+}

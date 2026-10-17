@@ -77,3 +77,11 @@ User attached only a G2.1 log (`LOGGER_READY build=G2.1-v0.4.0 scene=res://scene
 
 ## G2.2.3 v0.4.1.3 | Direct Godot scene launch / boot error capture
 User's latest `PLW_G22_DIAGNOSTICS_TO_SHARE.zip` contains a **missing-log report**, not the G22 runtime log; only G21/G2.0.2 old LOGs were found. Instead of manually trying F5/F6, close Godot game windows and double-click **`RUN_G22_DIRECT_SCENE_WINDOWS.bat`**. On first use select the Godot 4.7.2 executable when prompted. The script starts exactly `res://scenes/ecology_animation_lab.tscn`, captures Godot engine/console startup errors, then **after you close the game window** writes `reports/PLW_G22_DIRECT_DIAGNOSTICS_TO_SHARE.zip` whether the G22 runtime logger started or failed. Upload that ZIP. G22 sprite facing/idle was **not confirmed fixed** and remains UNVERIFIED. Offline Python **134/134 PASS**; Surface real Godot test still PENDING. See `docs/G223_DIRECT_SCENE_LAUNCH_DIAGNOSIS_20261017.md`. Never upload PMD raw art.
+
+
+## G2.3 slow ambient / species cadence
+- First Fetch/Pull on branch `planning/pokemon-living-world-godot`.
+- Run `RUN_G23_DIRECT_SCENE_WINDOWS.bat`, wait 60-90 seconds, close the game window, then upload `reports/PLW_G23_DIRECT_DIAGNOSTICS_TO_SHARE.zip`.
+- Prior G2.2 baseline remains unchanged and is still available via `RUN_G22_DIRECT_SCENE_WINDOWS.bat`.
+- Standstill is slow Walk loop (25:0.26, 94:0.17, 143:0.09), with species-timed one-shot micro Idle and optional safe Float/Pose/Nod; movement preempts ambient actions.
+- Candidate only, Godot Surface verification pending; see `docs/G23_SPECIES_CADENCE_20261017.md`.
