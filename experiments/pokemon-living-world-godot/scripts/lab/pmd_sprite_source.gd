@@ -20,9 +20,14 @@ func load_species(species_id: int) -> bool:
     if err != OK:
         errors.append("Failed to open XML: " + str(err))
         return false
+    # PMDCollab AnimData.xml can contain CRLF, legacy formatting and CopyOf.
+    # XMLParser is a streaming token reader, not a strict DOM validator. Keep
+    # state for the actual Anim records instead of maintaining an extra stack
+    # that can reject otherwise usable upstream documents.
     var parsed: Dictionary = {}
-    var tags: Array[String] = []
     var current: Dictionary = {}
+    var active_field: String = ""
+    var saw_root: bool = false
     while true:
         var state: Error = parser.read()
         if state == ERR_FILE_EOF:
@@ -32,36 +37,48 @@ func load_species(species_id: int) -> bool:
             return false
         var kind: int = parser.get_node_type()
         if kind == XMLParser.NODE_ELEMENT:
-            var element: String = parser.get_node_name()
-            tags.append(element)
-            if element == "Anim":
+            var element: String = parser.get_node_name().strip_edges()
+            if element == "AnimData":
+                saw_root = true
+            elif element == "Anim":
                 current = {"name": "", "copy_of": "", "width": 0, "height": 0, "durations": []}
-            if parser.is_empty():
-                tags.pop_back()
+                active_field = ""
+            elif not current.is_empty():
+                match element:
+                    "Name", "CopyOf", "FrameWidth", "FrameHeight", "Duration":
+                        active_field = element
+                    _:
+                        active_field = ""
+            if parser.is_empty() and element == active_field:
+                active_field = ""
         elif kind == XMLParser.NODE_TEXT:
-            if tags.is_empty() or current.is_empty():
+            if current.is_empty() or active_field.is_empty():
                 continue
             var data: String = parser.get_node_data().strip_edges()
             if data.is_empty():
                 continue
-            var tag: String = tags.back()
-            match tag:
+            match active_field:
                 "Name": current["name"] = data
                 "CopyOf": current["copy_of"] = data
                 "FrameWidth": current["width"] = data.to_int()
                 "FrameHeight": current["height"] = data.to_int()
                 "Duration": (current["durations"] as Array).append(maxi(1, data.to_int()))
         elif kind == XMLParser.NODE_ELEMENT_END:
-            var close: String = parser.get_node_name()
+            var close: String = parser.get_node_name().strip_edges()
             if close == "Anim" and not current.is_empty():
-                var action: String = str(current.get("name", ""))
+                var action: String = str(current.get("name", "")).strip_edges()
                 if not action.is_empty():
+                    if parsed.has(action):
+                        errors.append("Duplicate animation: " + action)
+                        return false
                     parsed[action] = current.duplicate(true)
                 current = {}
-            if tags.is_empty() or tags.back() != close:
-                errors.append("XML tag mismatch: " + close)
-                return false
-            tags.pop_back()
+                active_field = ""
+            elif close == active_field:
+                active_field = ""
+    if not saw_root:
+        errors.append("Missing AnimData XML root: " + xml_path)
+        return false
     if parsed.is_empty():
         errors.append("No animations in " + xml_path)
         return false
@@ -103,11 +120,13 @@ func get_animation(action: String, direction_row: int) -> Dictionary:
         errors.append("Missing sheet " + sheet_path)
         return {}
     if not textures.has(source_action):
-        var image := Image.new()
-        if image.load(sheet_path) != OK:
-            errors.append("Failed to read image " + sheet_path)
+        # PNGs inside res:// must use the Godot-imported Texture2D resource.
+        # Image.load() works in the editor but warns and may fail on export.
+        var imported_texture: Resource = ResourceLoader.load(sheet_path, "Texture2D")
+        if not (imported_texture is Texture2D):
+            errors.append("Failed to import Texture2D: " + sheet_path)
             return {}
-        textures[source_action] = ImageTexture.create_from_image(image)
+        textures[source_action] = imported_texture as Texture2D
     var texture: Texture2D = textures[source_action]
     var frame_width: int = int(resolved.get("width", 0))
     var frame_height: int = int(resolved.get("height", 0))
