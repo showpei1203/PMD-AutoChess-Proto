@@ -1,0 +1,11 @@
+PROJECT=Pokémon Living World
+CHECKPOINT=PLW_G201_ECOLOGY_DIAGNOSTICS_v0.3.8_20261017
+SURFACE_FEEDBACK=G2.0 FAIL: all mostly IDLE, N indistinguishable, D overlay invisible
+ROOT_CAUSE_CONFIRMED=show_debug initially true; first D press turns overlay OFF
+MOTION_RUNTIME_ROOT_CAUSE=NOT_CONFIRMED; requires Surface tick/position evidence
+CHANGES=initial differentiated states; visible Debug ON/OFF; prominent range/target; tick/position/distance telemetry; force-roam M; seeded first target
+APPROVED_G1_SCENES=UNMODIFIED
+COPYRIGHTED_ART=BUNDLE_EXCLUDED
+PYTHON_TESTS=OFFLINE_UNIT_AND_SOURCE_CONTRACT (not Godot runtime)
+GODOT_HEADLESS_ENGINE=UNAVAILABLE_IN_BUILD_ENVIRONMENT
+SURFACE_F6_RETEST=PENDING
