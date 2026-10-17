@@ -48,3 +48,7 @@ New **standalone**, optional `scenes/calibration_lab.tscn`: open in Godot and F6
 
 ## G2.0.1 v0.3.8 — 自主移動／可視化診斷修正（2026-10-17）
 Surface 回報 G2.0 v0.3.7 幾乎全 Idle，N 無明顯差異，D 無顯示；舊版 `show_debug=true` 導致第一次按 D 反而關閉除錯。新版以 #025 立即 ROAM、#094 OBSERVE 後 ROAM、#143 REST 初始化，並顯示 tick、累積路程、Seed、Debug 狀態。新快捷鍵 `M` 對目前焦點強制探索以測試移動；按 D 第一次會**開啟**高對比範圍圈與目標線，N 換種子立即更新皮卡丘的目標，R 相同種子可重播。開啟 `scenes/ecology_lab.tscn` 按 F6，測試 1/2/3、D、M、N、R、Space，觀察 `tick` 和各自位置變化；請回傳截圖和 Godot 輸出。Python 離線測試通過不代表 Surface G2 真正驗收；G1/G1.1/G1.2 原場景未改。詳見 `docs/G201_ECOLOGY_DIAGNOSTICS_20261017.md`。
+
+## G2.0.2 v0.3.9 | Instrumented G2 with persistent LOG
+User reports frozen tick, D/M/N not functioning; G2 remains FAIL/PENDING. Open `scenes/ecology_lab.tscn` and **F6** (not F5, which starts G1). Confirm `G2.0.2 LOGGER ACTIVE`; let run 10s and click M/D/N diagnostic buttons. Log: **`reports/PLW_G2_RUNTIME_LAST.log`**. Double-click `RUN_G2_COLLECT_LOG_WINDOWS.bat` and upload `reports/PLW_G2_DIAGNOSTICS_TO_SHARE.zip`. See `docs/CURRENT_HANDOFF_PLW.md`. **Future changes must always update both GitHub and Drive Handoff documents.**
+
