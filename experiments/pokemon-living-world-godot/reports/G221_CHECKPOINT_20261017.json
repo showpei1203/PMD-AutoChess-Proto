@@ -1,0 +1,11 @@
+{
+  "checkpoint": "PLW_G221_PARSER_TELEMETRY_SURFACE_FAIL_REPAIR_CANDIDATE_20261017",
+  "version": "v0.4.1.1",
+  "user_surface_evidence": "ecology_animation_diagnostics.gd:104 undefined roams, since_roam and wrong active scene",
+  "previous_surface_g22": "FAIL",
+  "offline_tests": "125/125 PASS",
+  "surface_retest": "PENDING",
+  "log_path": "reports/PLW_G22_RUNTIME_LAST.log",
+  "user_upload": "reports/PLW_G22_DIAGNOSTICS_TO_SHARE.zip",
+  "source_pmd_art_included": false
+}
