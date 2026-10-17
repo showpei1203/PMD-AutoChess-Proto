@@ -80,3 +80,7 @@ An **isolated** scene at `scenes/ecology_lab.tscn` now prototypes Pikachu (CURIO
 
 ## G2.0.1 v0.3.8 ecology observability hotfix
 Previous Surface G2.0 behaviour acceptance failed (no perceptible locomotion, seed differentiation or debug overlay). The initial D key **hid** debug because overlay started ON; it now starts OFF, with a bright overlay on first D. Initial states and targets differ by species, `M` forces the focused species into a diagnostic ROAM, and tick/distance/seed/target tracing distinguishes broken AI updates from small sprites. **Surface Godot F6 re-test is required**: do not mark G2 PASS based on Python tests. See `docs/G201_ECOLOGY_DIAGNOSTICS_20261017.md`. The accepted G1 baseline remains untouched.
+
+## G2.0.2 v0.3.9 | Runtime diagnostics and Handoff
+Surface G2 tick/input failures are still unverified root cause. Open `scenes/ecology_lab.tscn` with F6 (F5 starts old G1). Observe `G2.0.2 LOGGER ACTIVE`, use on-screen M/D/N. Runtime LOG: `reports/PLW_G2_RUNTIME_LAST.log`. ZIP collector: `RUN_G2_COLLECT_LOG_WINDOWS.bat` -> `reports/PLW_G2_DIAGNOSTICS_TO_SHARE.zip`. All subsequent changes must update `docs/CURRENT_HANDOFF_PLW.md` and append `docs/HANDOFF_HISTORY_PLW.md`, then mirror to Google Drive.
+
