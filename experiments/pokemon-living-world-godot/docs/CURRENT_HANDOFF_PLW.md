@@ -1,9 +1,19 @@
 # CURRENT HANDOFF | Pokémon Living World (Godot 4.7.2)
 
 **Updated:** 2026-10-17 (Asia/Taipei)  
-**Checkpoint:** `PLW_G202_LOG_CAPTURE_CANDIDATE_v0.3.9_20261017`  
+**Checkpoint:** `PLW_G202_SURFACE_DIAGNOSTICS_PASS_G2_PARTIAL_20261017`  
 **Branch:** `planning/pokemon-living-world-godot`  
-**G2 status:** **USER-REPORTED FAIL / DIAGNOSIS PENDING**; offline tests pass, new G2.0.2 candidate requires real Surface F6 verification.
+**G2 status:** **DIAGNOSTIC RUNTIME PASS / AUTONOMOUS ECOLOGY PARTIAL PASS** (2/3 species visibly roam, Snorlax 0px in ~60sec). Full ecology acceptance pending; prior offline tests 98/98 PASS.
+
+## Latest Surface evidence: actual G2 session, LOG received (2026-10-17)
+- Actual Godot 4.7.2 G2 F6 scene confirmed: `LOGGER_READY build=G2.0.2-v0.3.9 scene=res://scenes/ecology_lab.tscn`; photo shows range circles, target points, `RUNNING`, `Debug ON`, tick ~305.
+- User attached `PLW_G2_DIAGNOSTICS_TO_SHARE.zip` with `PLW_G2_RUNTIME_LAST.log` (~60 sec, 171 lines). Evidence ZIP SHA256 `f63900f4a76bdef98724818044aa355e4508c6b6ed654b47ae00a6a6b7ae9ba6`. Raw user LOG deliberately not republished in public GitHub.
+- LOG: 58 heartbeat, 103 agent-change, 6 keyboard events; 1 session start / 1 session end; no explicit `ERROR` logger entries. tick 4 -> 333, render UI 13 -> 3434, physics 28 -> 3452; `tree_paused=false`, `root_physics=true`.
+- Keyboard M(77), D(68), N(78) received. `N` changed seed from 20261017 to 20365746. **No BUTTON events** in the supplied log, so clicking UI buttons is still unverified.
+- #025 Pikachu moved ~673px; #094 Gengar ~367px, both show IDLE/ROAM/OBSERVE state transitions. #143 Snorlax remains **0px** over this sample, shows REST/IDLE/OBSERVE but no ROAM. This may be caused by low roam probability rather than a code error; requires targeted acceptance.
+- **DIAGNOSTIC & 2/3 MOBILITY GATES PASS. G2 FULL AUTONOMOUS BEHAVIOUR GATE NOT YET PASS.** Do not keep the old G2 FAIL as the latest observation. Formal engine debugger warnings not proven 0 from logger alone.
+- Detailed GitHub evidence report: `docs/G202_SURFACE_RUNTIME_ACCEPTANCE_20261017.md`. No code changes for this evidence checkpoint; prior v0.3.9 full ZIP and 98/98 offline-test result remain current.
+- Next: observe/force Snorlax ROAM using focus 3 + M; evaluate 60–120 sec long-run mobility, personality differentiation and sprite facing aligned to velocity. Before each future code change update this handoff and append history; mirror to Drive and Issue #15.
 
 ## Last user report
 After G2.0.1, the Surface G2 scene appeared idle, `tick` did not increase, and D/M/N keys had no observable effect. Root cause **not proven**. Possibilities include wrong scene (F5 launches G1, G2 requires F6), stopped debugger, paused physics, input focus, or AI clock. Existing G1 (three-species animation), G1.1 (roster) and G1.2 (anchor) remain accepted at their previously stated scope.
