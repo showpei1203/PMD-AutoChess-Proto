@@ -35,7 +35,7 @@ var debug_panel: Label
 
 func _ready() -> void:
     RenderingServer.set_default_clear_color(Color("#141b27"))
-    header = _label("Pokémon Living World | G2.0.1 自主生態診斷場", Vector2(24, 13), 22, Color("#e9f4ff"))
+    header = _label("Pokémon Living World | G2.0.2 自主生態＋執行LOG", Vector2(24, 13), 22, Color("#e9f4ff"))
     _label("自主 Idle / Roam / Observe / Return / Rest，無攻擊 AI，物理與方向映射仍待驗收", Vector2(24, 46), 13, Color("#9eb5c9"))
     instructions = _label("Space 暫停 | R 同種子重播 | N 新種子 | 1/2/3 焦點 | D 顯示/隱藏 | M 強制移動", Vector2(24, 455), 13, Color("#d4e4f2"))
     state_info = _label("", Vector2(24, 489), 13, Color("#90e7bd"))
@@ -257,7 +257,7 @@ func _align_visual(index: int) -> void:
     sprite.scale = Vector2.ONE * scale
     sprite.position = (frame_size * 0.5 - anchor) * scale
 
-func _unhandled_key_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
     if not event is InputEventKey or not event.pressed or event.echo:
         return
     match event.keycode:
@@ -329,3 +329,4 @@ func _draw() -> void:
             draw_line(center, target, Color(1.0, 0.83, 0.25, 0.95), 3.0)
             draw_circle(target, 6.0, Color(1.0, 0.83, 0.25, 0.95))
             draw_circle(center, 5.0, Color(0.20, 0.98, 0.60, 1.0) if i == focus else Color(0.88, 1.0, 0.90, 0.95))
+
