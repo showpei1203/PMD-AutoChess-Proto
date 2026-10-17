@@ -43,3 +43,6 @@ The Gen1recomp source-snapshot ZIP lacked PNGs, but the public [PMD Sprite Repos
 - Reports in `reports/pmdcollab_download_report.json`; verify credits, per-action availability, frame directions and visuals before formal G0/G1 promotion.
 - Offline synthetic tests: **22/22 PASS** on 2026-10-17; public upstream GitHub indexes for 025/094/143 verified; **actual remote server ZIP downloads not yet run** in this environment because the asset server is inaccessible here.
 - Source and attribution: `docs/G0_UPSTREAM_PMD_COLLAB_RECOVERY_20261017.md`. Non-commercial / proper attribution; Nintendo Pokémon rights remain separate.
+
+## v0.3.3: Gengar XML + imported texture fix
+Addresses `XML tag mismatch: AnimData` for #094 and six direct `Image.load()` export warnings on Surface. Per-`Anim` XML parsing and `Texture2D` ResourceLoader implemented; 45/45 offline tests PASS, Godot Surface F5 re-test PENDING. 151 source sprite ZIPs are locally cached and do not need redownloading.
