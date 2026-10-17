@@ -7,6 +7,9 @@ const TICK_RATE: float = 60.0
 var textures: Dictionary = {}
 var definitions: Dictionary = {}
 var errors: Array[String] = []
+# Cached CPU-side PNG images and per-frame anchor analysis, only for currently viewed species.
+var anchor_images: Dictionary = {}
+var anchor_cache: Dictionary = {}
 
 func load_species(species_id: int) -> bool:
     errors.clear()
@@ -84,6 +87,8 @@ func load_species(species_id: int) -> bool:
         return false
     definitions = parsed
     textures.clear()
+    anchor_images.clear()
+    anchor_cache.clear()
     return true
 
 func resolve_action(action: String) -> Dictionary:
@@ -179,3 +184,105 @@ func make_frames(direction_row: int, actions: Array) -> SpriteFrames:
         for i in range(images.size()):
             frames.add_frame(action, images[i] as Texture2D, float(delays[i]))
     return frames
+
+# G1.2.1: Find the *actual* anchor per PMDCollab frame. The format specifies:
+# - <Action>-Shadow.png: white pixel marks original ground/shadow center.
+# - <Action>-Offsets.png: green body center / red-blue hands / black head.
+# Offsets.png is NOT a ground/foot reference. Prefer native shadow markers.
+# If shadow marker is absent, use the nontransparent sprite bottom as a *visual*
+# fallback only. This may flatten intentional jump or flight displacement.
+func _anchor_image(path: String) -> Image:
+    if anchor_images.has(path):
+        return anchor_images[path] as Image
+    # A few community animations omit a native Shadow sheet. Missing optional
+    # sheets should trigger alpha fallback, NOT an engine error in Output.
+    if not ResourceLoader.exists(path, "Texture2D"):
+        return null
+    var res: Resource = ResourceLoader.load(path, "Texture2D")
+    if not (res is Texture2D):
+        return null
+    var img: Image = (res as Texture2D).get_image()
+    if img == null or img.is_empty():
+        return null
+    anchor_images[path] = img
+    return img
+
+func _alpha_bounds(image: Image, area: Rect2i) -> Rect2i:
+    var left: int = area.position.x + area.size.x
+    var top: int = area.position.y + area.size.y
+    var right: int = area.position.x - 1
+    var bottom: int = area.position.y - 1
+    for y in range(area.position.y, area.end.y):
+        for x in range(area.position.x, area.end.x):
+            if image.get_pixel(x, y).a > 0.10:
+                left = mini(left, x)
+                top = mini(top, y)
+                right = maxi(right, x)
+                bottom = maxi(bottom, y)
+    if right < left:
+        return Rect2i()
+    return Rect2i(left - area.position.x, top - area.position.y, right - left + 1, bottom - top + 1)
+
+func _native_shadow_center(image: Image, area: Rect2i) -> Dictionary:
+    # PMD Shadow.png white pixel is the official shadow center. Other colored
+    # shadow markers encode shadow SIZE and must not be mistaken for feet.
+    var total: Vector2 = Vector2.ZERO
+    var count: int = 0
+    for y in range(area.position.y, area.end.y):
+        for x in range(area.position.x, area.end.x):
+            var p: Color = image.get_pixel(x, y)
+            if p.a > 0.5 and p.r > 0.94 and p.g > 0.94 and p.b > 0.94:
+                total += Vector2(float(x - area.position.x) + 0.5, float(y - area.position.y) + 0.5)
+                count += 1
+    if count < 1 or count > 16:
+        return {}
+    return {"point": total / float(count), "white_pixel_count": count}
+
+func get_frame_alignment(action: String, direction_row: int, frame_index: int) -> Dictionary:
+    # The frame/grid is taken from AnimData.xml, *not* an arbitrary SpriteFrames
+    # max dimensions. CopyOf correctly resolves to a single real source sheet.
+    var resolved: Dictionary = resolve_action(action)
+    if resolved.is_empty():
+        return {}
+    var sheet: String = str(resolved.get("name", ""))
+    var width: int = int(resolved.get("width", 0))
+    var height: int = int(resolved.get("height", 0))
+    var durations: Array = resolved.get("durations", [])
+    if width <= 0 or height <= 0 or frame_index < 0 or frame_index >= durations.size() or direction_row < 0:
+        return {}
+    var key: String = "%s:%d:%d" % [sheet, direction_row, frame_index]
+    if anchor_cache.has(key):
+        return anchor_cache[key]
+    var directory: String = ROOT + species_key() + "/"
+    var anim: Image = _anchor_image(directory + sheet + "-Anim.png")
+    if anim == null:
+        return {}
+    var cell: Rect2i = Rect2i(frame_index * width, direction_row * height, width, height)
+    if cell.end.x > anim.get_width() or cell.end.y > anim.get_height():
+        return {}
+    var alpha: Rect2i = _alpha_bounds(anim, cell)
+    var center_x: float = float(width) / 2.0
+    var alpha_point: Vector2 = Vector2(center_x, float(height))
+    if alpha.has_area():
+        # Exclusive lower edge, avoids frame-height bias when PNG has empty rows.
+        alpha_point.y = float(alpha.position.y + alpha.size.y)
+    var result: Dictionary = {
+        "frame_size": Vector2(float(width), float(height)),
+        "ink_bounds": Rect2(Vector2(alpha.position), Vector2(alpha.size)),
+        "frame_point": Vector2(center_x, float(height)),
+        "ink_point": alpha_point,
+        "ground_point": alpha_point,
+        "reason": "ALPHA_BOTTOM_FALLBACK" if alpha.has_area() else "EMPTY_FRAME_FALLBACK",
+        "native_found": false,
+        "native_white_pixels": 0
+    }
+    var shadow: Image = _anchor_image(directory + sheet + "-Shadow.png")
+    if shadow != null and shadow.get_width() >= cell.end.x and shadow.get_height() >= cell.end.y:
+        var native: Dictionary = _native_shadow_center(shadow, cell)
+        if not native.is_empty():
+            result["ground_point"] = native["point"]
+            result["reason"] = "PMD_SHADOW_CENTER"
+            result["native_found"] = true
+            result["native_white_pixels"] = native["white_pixel_count"]
+    anchor_cache[key] = result
+    return result
