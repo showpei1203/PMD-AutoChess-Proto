@@ -1,9 +1,9 @@
 # CURRENT HANDOFF | Pokémon Living World (Godot 4.7.2)
 
 **Updated:** 2026-10-17 (Asia/Taipei)  
-**Checkpoint:** `PLW_G202_SURFACE_DIAGNOSTICS_PASS_G2_PARTIAL_20261017`  
+**Checkpoint:** `PLW_G21_BOUNDED_BEHAVIOUR_CANDIDATE_v040_20261017`  
 **Branch:** `planning/pokemon-living-world-godot`  
-**G2 status:** **DIAGNOSTIC RUNTIME PASS / AUTONOMOUS ECOLOGY PARTIAL PASS** (2/3 species visibly roam, Snorlax 0px in ~60sec). Full ecology acceptance pending; prior offline tests 98/98 PASS.
+**G2 status:** G2.0.2 Surface 2/3 mobility verified; G2.1 candidate 108/108 offline tests PASS, Godot F6 PENDING.
 
 ## Latest Surface evidence: actual G2 session, LOG received (2026-10-17)
 - Actual Godot 4.7.2 G2 F6 scene confirmed: `LOGGER_READY build=G2.0.2-v0.3.9 scene=res://scenes/ecology_lab.tscn`; photo shows range circles, target points, `RUNNING`, `Debug ON`, tick ~305.
@@ -58,6 +58,15 @@ After G2.0.1, the Surface G2 scene appeared idle, `tick` did not increase, and D
 - Expected log `D:\PMD-AutoChess-Proto\experiments\pokemon-living-world-godot\reports\PLW_G2_RUNTIME_LAST.log`; uploaded evidence `reports/PLW_G2_DIAGNOSTICS_TO_SHARE.zip`. If still absent, capture Godot Output/errors and the active Scene tree.
 - Status: **G2 runtime still PENDING/UNVERIFIED**; cannot conclude locomotion tick or logger broken until actual G2 scene executes. No code changes or new offline test results in this triage-only iteration; v0.3.9 ZIP remains the deliverable.
 
+## G2.1 v0.4.0 candidate and Handoff (2026-10-17)
+- Latest real Surface G2.0.2 evidence: 171-line runtime LOG, tick advances, Pikachu about 673px and Gengar about 367px; Snorlax 0px in the sampled 60sec. G2.0.2 logging and 2/3 movement verified, full ecology NOT accepted. Earlier 3+M Snorlax forcing unverified.
+- New isolated Godot scene: scenes/ecology_behavior_lab.tscn. Source: scripts/lab/ecology_behavior_lab.gd and ecology_behavior_diagnostics.gd. Does not modify earlier G2 ecology_lab.gd/.tscn or G1 series or project.godot.
+- Snorlax bounded wait: if REST/IDLE/OBSERVE have continued for at most 18 simulated seconds since last ROAM, call begin_roam; preserve short 49px radius and slow 16px/sec, don't force movement at each state transition. Debug visualizes roam count, remaining seconds, and velocity-vector arrow, WITHOUT claiming verified eight-direction PMD sprites.
+- New runtime LOG: reports/PLW_G21_RUNTIME_LAST.log; zip via RUN_G21_COLLECT_LOG_WINDOWS.bat to reports/PLW_G21_DIAGNOSTICS_TO_SHARE.zip. Previous G2.0.2 runtime log remains a separate file.
+- Offline Python tests: 108/108 PASS (10 added). 118-file ZIP CRC PASS; no copyrighted sprite content. Godot 4.7.2 actual G2.1 scene still PENDING.
+- GitHub source commit: f9f08ce2ab423ed8e5a23dab5da100244b3c2d73. Full ZIP: https://drive.google.com/file/d/1boS_9l6F4z3Jf4j1JD7CkH3ISJAu-46w/view. SHA256 dca1c5a41aeff77bec2b84f6375e8c10e25f9567580079409e17bc87b860c1f3.
+- Surface: close Godot, Fetch/Pull isolated branch, DOUBLE-CLICK scenes/ecology_behavior_lab.tscn, confirm EcologyBehaviorLab > Diagnostics; F6; wait 30sec to observe Snorlax ROAM + distance > 0. Test 3 then M forced roam, N/R/D, stop, run G21 collector and share reports/PLW_G21_DIAGNOSTICS_TO_SHARE.zip.
+- Continue to update GitHub and Drive CURRENT_HANDOFF, HANDOFF_HISTORY, master roadmap, Issue #15 after EVERY subsequent iteration, preserving FAIL/PENDING honestly and full ZIP/test/log/hash deliverables.
 ## REQUIRED every subsequent change
 Before coding, read this CURRENT_HANDOFF. After EACH iteration update both this file and append dated entry to `docs/HANDOFF_HISTORY_PLW.md`, then mirror into the Drive living Handoff and master roadmap. Include observed evidence, version/commit SHA, specific changed files, offline vs runtime PASS/FAIL, full ZIP, test scripts + LOG + hashes, remaining blockers and next user steps. Never claim Godot acceptance from Python-only tests; preserve sealed G1 and source baselines. No raw Pokémon/PMD art in GitHub or candidate ZIP.
 
