@@ -16,8 +16,8 @@ class CalibrationContracts(unittest.TestCase):
         self.assertIn('var species_id: int = 25',SCRIPT)
     def test_animations_source(self):
         self.assertIn('source.make_frames(direction_row, ACTIONS)',SCRIPT)
-        self.assertIn('sprite.sprite_frames.get_frame_texture(sprite.animation, safe_frame)',SCRIPT)
-        self.assertIn('frame_height * visual_scale * 0.5',SCRIPT)
+        self.assertIn('source.get_frame_alignment(sprite.animation, direction_row, safe_frame)',SCRIPT)
+        self.assertIn('(frame * 0.5 - point) * visual_scale',SCRIPT)
     def test_manual_controls(self):
         for token in ('KEY_Q','KEY_E','KEY_Z','KEY_X','KEY_UP','KEY_DOWN','KEY_J','KEY_L','KEY_B','KEY_R','KEY_S'):
             with self.subTest(token=token): self.assertIn(token,SCRIPT)
