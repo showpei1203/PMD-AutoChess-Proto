@@ -1,0 +1,321 @@
+{
+  "project": "Pokémon Living World",
+  "candidate": "G1.1 v0.3.4",
+  "files": [
+    {
+      "path": ".gitignore",
+      "size": 450,
+      "sha256": "98e477d7d83c163c8b9fd8b14d1bcaa2531d08392b1f57c12f47d670c0337446"
+    },
+    {
+      "path": "README.md",
+      "size": 5539,
+      "sha256": "74e09e3916865549fb83fcc1b155cf3f157b4b34804d90f19302b1da2c74fbd3"
+    },
+    {
+      "path": "README_G1_START_HERE.md",
+      "size": 3692,
+      "sha256": "0e6fccdfb53b6f0117157257d91d8474219c0530a9892f23be76429ddf771a8a"
+    },
+    {
+      "path": "RUN_AUDIT_WINDOWS.bat",
+      "size": 598,
+      "sha256": "b3303833b3b6ecf8b0647b072908a012f9e2d68d32246d2b2a0ecae55c71540a"
+    },
+    {
+      "path": "RUN_FETCH_151_WINDOWS.bat",
+      "size": 434,
+      "sha256": "f9e72ca7af3b281554c25a207153276b2cc596a29bb932118b1a46752ab6433a"
+    },
+    {
+      "path": "RUN_FETCH_3_WINDOWS.bat",
+      "size": 457,
+      "sha256": "34fba2a4b1df74726e054b0ccab9ee7a431618c512c5c39b2868bf5203ee79f0"
+    },
+    {
+      "path": "RUN_G11_ROSTER_PREFLIGHT_WINDOWS.bat",
+      "size": 517,
+      "sha256": "f8f85a9756ea62226de6a9ecdda46e3f047b1dde91f85b0bc75d420e79313ac1"
+    },
+    {
+      "path": "RUN_G1_ALL151_PREFLIGHT_WINDOWS.bat",
+      "size": 380,
+      "sha256": "33d171bd33a1c47745bb79ba37cfda6a05b7ba7250cbfb7cac7d55e0c5a99abc"
+    },
+    {
+      "path": "RUN_G1_PREFLIGHT_WINDOWS.bat",
+      "size": 366,
+      "sha256": "2e1270b133a97e60181fb0f8148bccb43746d2bb83025a792dac385c904d537b"
+    },
+    {
+      "path": "RUN_G1_TESTS_WINDOWS.bat",
+      "size": 297,
+      "sha256": "b826811e013c97e22e02364768ce4cdbbaf6879a8f8cfb91da76bd349f66d6c8"
+    },
+    {
+      "path": "RUN_TESTS_WINDOWS.bat",
+      "size": 390,
+      "sha256": "7df6a11caac11f357227e12c3a36cfd19dc0a87c841ed52e1b804d40fae0bc43"
+    },
+    {
+      "path": "docs/G0_0148_COPYOF_HOTFIX_20261017.md",
+      "size": 2710,
+      "sha256": "bda0cdf4aab3d2baa33907417dc933520f8af1cb363d86044241f6cdbdd6242e"
+    },
+    {
+      "path": "docs/G0_AUTO_FETCH_README.md",
+      "size": 1446,
+      "sha256": "b5affe71c513067b51c6e27913abd47ca4f6032f8cc60838d34c04a40a81d819"
+    },
+    {
+      "path": "docs/G0_SOURCE_AUDIT_20261017.md",
+      "size": 2260,
+      "sha256": "907f2fb2f7c725cadc489e40fdb073b5e5a86bb31b2b289fb491356c637ba129"
+    },
+    {
+      "path": "docs/G0_UPSTREAM_PMD_COLLAB_RECOVERY_20261017.md",
+      "size": 3439,
+      "sha256": "b8f0677490db3520546995845b46eb4f83e0cbe65e5d34478377adb4ccf8a440"
+    },
+    {
+      "path": "docs/G11_KANTO_GALLERY_20261017.md",
+      "size": 3575,
+      "sha256": "adc9f3716f895beb24bcb6ed88f0f4c8e8362070bae6177a24f9b57939db1299"
+    },
+    {
+      "path": "docs/G1_ANIMATION_LAB_20261017.md",
+      "size": 4897,
+      "sha256": "9e4437c06446479e5a6077406d000dccbcd610a405bfe7366ad0ee934aa25196"
+    },
+    {
+      "path": "docs/G1_GENGAR_XML_AND_TEXTURE_HOTFIX_20261017.md",
+      "size": 3480,
+      "sha256": "aee98966b16e4a7dcb5989f3c4dc787eaf7bf78b5cf504c61e4b21ee37769492"
+    },
+    {
+      "path": "docs/G1_PARSER_HOTFIX_20261017.md",
+      "size": 2165,
+      "sha256": "9e0fc1b47d85262725ec0663e71e70afe9de00fd34516bcf524c3561095b2b4c"
+    },
+    {
+      "path": "docs/G1_XMLPARSER_API_HOTFIX_20261017.md",
+      "size": 1801,
+      "sha256": "e054666c4ac8e4fa7d9fe008dc53af58920855a6861b9ec1758940d244921328"
+    },
+    {
+      "path": "project.godot",
+      "size": 502,
+      "sha256": "0b8183f215c9db673d1eae5bc29676c2db096744cf447a6422b71c4503dea820"
+    },
+    {
+      "path": "reports/G0_0148_HOTFIX_CHECKPOINT.log",
+      "size": 509,
+      "sha256": "10860f19be32aa70a2135d855cca3eca6c6c05fcf2aab56f3bbc781e5d3cb493"
+    },
+    {
+      "path": "reports/G0_CHECKPOINT_20261017.log",
+      "size": 721,
+      "sha256": "643c274cad0be59aa9cc4c4ee8b6ce9d9a6d4960fa0cc8ccc11f4b7de2a3f8f4"
+    },
+    {
+      "path": "reports/G11_CHECKPOINT_20261017.log",
+      "size": 827,
+      "sha256": "c74cfba1bbfeb19e740590529fe4a5bc08f9ffd8d43e3e83844beaf841ccdefd"
+    },
+    {
+      "path": "reports/G11_PYTHON_TESTS_20261017.log",
+      "size": 5762,
+      "sha256": "49e52e186d428af9aa15123f903ab987b68450eef425cd8b05bde9dc8682c523"
+    },
+    {
+      "path": "reports/G1_CHECKPOINT_20261017.log",
+      "size": 758,
+      "sha256": "57ec3e57ba6321a80486a3ae0b12a040b052b78816aad700ec7d72a1c9debec3"
+    },
+    {
+      "path": "reports/G1_HASH_MANIFEST_20261017.json",
+      "size": 6372,
+      "sha256": "6c90b59d3fc8a632ea0a53128e68cef80763a2876f35a155522672c57c4baa61"
+    },
+    {
+      "path": "reports/G1_PARSER_HOTFIX_CHECKPOINT_20261017.log",
+      "size": 651,
+      "sha256": "b3e98b3fef7008a10ba266b7814a12e2a161c060e506d493330ef406ba0d0691"
+    },
+    {
+      "path": "reports/G1_PARSER_HOTFIX_HASH_MANIFEST_20261017.json",
+      "size": 7564,
+      "sha256": "9e936b9d9a896ad79388a609cb5a904c59eafe6069e97aa1fbe58128dd48f2b5"
+    },
+    {
+      "path": "reports/G1_PARSER_HOTFIX_PYTHON_TESTS_20261017.log",
+      "size": 3903,
+      "sha256": "863b9ba8e0db54b737537bf440eb04b63ffd3278e58d6fa02b1ffb762de96ab2"
+    },
+    {
+      "path": "reports/G1_PYTHON_UNIT_TESTS_20261017.log",
+      "size": 3748,
+      "sha256": "5b8abf3b74dc9c04885e353447bc7e4e408f545894c1c0685d08f211f6c6af95"
+    },
+    {
+      "path": "reports/G1_V033_CHECKPOINT_20261017.log",
+      "size": 636,
+      "sha256": "51e5b6d3d3238d9013e51c1fa4ba62e43e5ec65c5ff15337cac33bef7b18f9df"
+    },
+    {
+      "path": "reports/G1_V033_HASH_MANIFEST_20261017.json",
+      "size": 9089,
+      "sha256": "56c93d88acd7bc88b0ff419d5394a4262bbb2e3f01651e0c56349c3a066e43f0"
+    },
+    {
+      "path": "reports/G1_V033_UNIT_TESTS_20261017.log",
+      "size": 4828,
+      "sha256": "917dcd2af9304dc715c471a703c963e2bf45ce775086b75ad5219c0c4ec33125"
+    },
+    {
+      "path": "reports/G1_XMLPARSER_API_HOTFIX_20261017.log",
+      "size": 474,
+      "sha256": "5bbea388714d1af231babc06b016e8cf17d4fdda3a1f7b64d6fd37e4e924db52"
+    },
+    {
+      "path": "reports/G1_XMLPARSER_HASH_MANIFEST_20261017.json",
+      "size": 8219,
+      "sha256": "95393ec819af657391e07fbb65e7567ef0ba255a8c64fdfb74237eef05ad60ee"
+    },
+    {
+      "path": "reports/G1_XMLPARSER_HOTFIX_TESTS_20261017.log",
+      "size": 4290,
+      "sha256": "bfb0f5f63ce17872de1a573047a3b13140af2fab8acaa05da40d20e1ccd83aee"
+    },
+    {
+      "path": "reports/asset_matrix.csv",
+      "size": 713104,
+      "sha256": "4e97f54095dd5fbb3124b48719e28d2cee9b0b3b2b00b84c7a79454e2abf33c1"
+    },
+    {
+      "path": "reports/audit_strict.log",
+      "size": 729,
+      "sha256": "09b1c511fc81a7b9ea570e44ee51075a434c1eb9f8afc112ec56fe60f3fe6282"
+    },
+    {
+      "path": "reports/audit_summary.json",
+      "size": 2109,
+      "sha256": "faf31cbf7b4752b59e2990f30e38ff81aa2ff92e68b7c46a97fd65ac9c52895e"
+    },
+    {
+      "path": "reports/g0_audit_console.log",
+      "size": 729,
+      "sha256": "09b1c511fc81a7b9ea570e44ee51075a434c1eb9f8afc112ec56fe60f3fe6282"
+    },
+    {
+      "path": "reports/remote_plan_v0.2.log",
+      "size": 189,
+      "sha256": "c0f6389df0a0f598cd6eaf839f7480e09524c059a02000242bb6c94337cf379a"
+    },
+    {
+      "path": "reports/unittest.log",
+      "size": 1124,
+      "sha256": "78aedfdd957cad9430fe75b4da23849125a5560ac943841ec89509dcf10024bf"
+    },
+    {
+      "path": "reports/unittest_v0.2.1.log",
+      "size": 2804,
+      "sha256": "544825a7db9eaa74d8cd97b3a2a9e0d27221266fc3bce9b2a8df4887863f23b2"
+    },
+    {
+      "path": "reports/unittest_v0.2.log",
+      "size": 2298,
+      "sha256": "11c53348a395b42792e89fde8a5d5153754726e8d854690add87718cf64cf770"
+    },
+    {
+      "path": "scenes/animation_lab.tscn",
+      "size": 180,
+      "sha256": "3eb1886eb4b1a99a63cb5af3fb25728256a76f84cf4467bf59866e460f50f540"
+    },
+    {
+      "path": "scenes/main.tscn",
+      "size": 543,
+      "sha256": "70be3f2f840b7f888b1eab838b5d8908374875dfaa7d1af898e6edc1bcecbc94"
+    },
+    {
+      "path": "scenes/roster_lab.tscn",
+      "size": 174,
+      "sha256": "b30a331e63e9eab98397b017f2d9afbf5c11d42d9d12f14f53cfa59059799e3b"
+    },
+    {
+      "path": "scripts/lab/animation_lab.gd",
+      "size": 6580,
+      "sha256": "d022b88366c848887761fd14c5c8329b83f185a673eb1c95a67b44d1ba62482c"
+    },
+    {
+      "path": "scripts/lab/pmd_sprite_source.gd",
+      "size": 8058,
+      "sha256": "2fe345ca39a511989eb7eec0894e512242f997586c4869a56150c925d92e23ad"
+    },
+    {
+      "path": "scripts/lab/roster_lab.gd",
+      "size": 9385,
+      "sha256": "be59b8b31a03826aca79405daa3f8e2aefa53c161df55cc42ed00114ad3eb379"
+    },
+    {
+      "path": "scripts/main.gd",
+      "size": 297,
+      "sha256": "d7849910f4ca4804ceeceee6c4ebd32eae6fe4089bc6d9328a224c09c2f02f78"
+    },
+    {
+      "path": "tests/test_g11_roster.py",
+      "size": 3094,
+      "sha256": "6096ad308670376ca8bae261389a8c05498b6179f27c0b2959d597ad064a60fa"
+    },
+    {
+      "path": "tests/test_g1_gdscript_contract.py",
+      "size": 876,
+      "sha256": "f570b26931b58f1b756feda89bb610ef6cddb4a4e6fa0d03d7e01758907cc64f"
+    },
+    {
+      "path": "tests/test_g1_streaming_loader_contract.py",
+      "size": 2353,
+      "sha256": "5c6215fc1973f2900efe18886dfba14faaa5c4a00f7ca500eb556921ae87d077"
+    },
+    {
+      "path": "tests/test_g1_xmlparser_compat.py",
+      "size": 1197,
+      "sha256": "ff7bb2828eba46b622502527ff0470492ae35b45f278215478320f79cdfacbb1"
+    },
+    {
+      "path": "tests/test_pmd_asset_audit.py",
+      "size": 4357,
+      "sha256": "30e2fd85e79e9230200244d70a012f8999d3f94f637fb6622f2d851b4ab984ef"
+    },
+    {
+      "path": "tests/test_pmd_g1_preflight.py",
+      "size": 4419,
+      "sha256": "09a3eba97ca97351ed8f81248472c5c4483ce45073673ee54611346cee39ba8c"
+    },
+    {
+      "path": "tests/test_pmdcollab_fetch.py",
+      "size": 5721,
+      "sha256": "7405c6defa9ec6d9b7534a1b2ae90a5bc2ce17583ae29cea0c0b1e589044f9fd"
+    },
+    {
+      "path": "tools/pmd_asset_audit.py",
+      "size": 12419,
+      "sha256": "fbdc052e82b1cf0fe7089b03a70d084a11e37b4eea2a776f22e938140817aca8"
+    },
+    {
+      "path": "tools/pmd_g1_preflight.py",
+      "size": 6120,
+      "sha256": "5dc63d12f9689a1f425996896cb3983af046e9d97ac523d539860297b24b39a4"
+    },
+    {
+      "path": "tools/pmd_roster_report.py",
+      "size": 3508,
+      "sha256": "a1b30d13e0a8a08dea0ac2783b4dd4dc15d0804b2f63e613dcf5ea5d5041371a"
+    },
+    {
+      "path": "tools/pmdcollab_fetch.py",
+      "size": 11640,
+      "sha256": "3b867ef73b4b7faf75bd0140073c8e731db516c96e9d2a855aa67febe2e4e775"
+    }
+  ]
+}
