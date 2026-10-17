@@ -22,7 +22,7 @@ class EcologyContracts(unittest.TestCase):
     def test_rng_deterministic_and_reseedable(self):
         self.assertIn('rng.seed = seed + id * 1009',SCRIPT)
         self.assertIn('KEY_R: _reset_simulation(seed)',SCRIPT)
-        self.assertIn('KEY_N: _reset_simulation(seed + 1)',SCRIPT)
+        self.assertIn('KEY_N: _reset_simulation(seed + SEED_JUMP)',SCRIPT)
     def test_perception_uses_snapshot(self):
         self.assertIn('var snapshots: Array[Vector2] = []',SCRIPT)
         self.assertIn('snapshots[i].distance_to(snapshots[j])',SCRIPT)
