@@ -10,8 +10,14 @@ export_presets.cfg
 *.pck
 *.zip
 
-# Never check in extracted Pokémon sprite art
+# Unlicensed artwork is kept locally only
+# Downloaded PMDCollab ZIPs, per-species XML/credits/PNGs
+# must never be copied into publicly visible git history.
 data/raw/
 assets/copyrighted/
 assets/source/
 private/
+
+# Local machine generated (may contain source-art paths)
+reports/pmd_g1_preflight.json
+reports/pmdcollab_download_report.json
