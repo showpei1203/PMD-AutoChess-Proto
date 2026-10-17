@@ -70,3 +70,6 @@ Independent Godot scene `scenes/roster_lab.tscn` (run by opening scene + F6) for
 ## G1.2 (v0.3.5, 2026-10-17): manual species calibration candidate
 
 G1.1 Surface gallery operation: **user-reported PASS**, not a per-species directional/offset sign-off. Existing `scenes/animation_lab.tscn`, `scenes/roster_lab.tscn`, and `project.godot` stay unchanged. Open `res://scenes/calibration_lab.tscn` with F6 for a **separate** 1-species manual ground/scale/facing inspector. Controls and draft JSON semantics: `docs/G12_CALIBRATION_LAB_20261017.md`. All 61 local offline tests PASS; real Surface F6 pending. No downloaded copyrighted art included.
+
+## v0.3.6 | PMD native shadow/ink-aware sprite anchor
+Fixes a proven bug in G1.2 calibration: placing full frame bottom on ground caused visibly raised characters whenever the transparent frame bottom extended below sprite pixels. New calibration prefers PMD Shadow.png white center, falling back to alpha-ink bottom (with warnings around flying/jumping). The F6 lab supports N-key A/B/C comparison; an optional stdlib-only `RUN_G12_ANCHOR_AUDIT_WINDOWS.bat` emits numeric first-frame 151 species anchor reports. 74/74 offline tests PASS; Surface F6 and actual local 151 PNG audit remain PENDING. No previously accepted gameplay scene changed. See `docs/G12_AUTO_ANCHOR_20261017.md`.
