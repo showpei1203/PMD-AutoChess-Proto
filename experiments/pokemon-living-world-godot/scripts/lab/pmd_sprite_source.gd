@@ -73,7 +73,9 @@ func resolve_action(action: String) -> Dictionary:
     var seen: Dictionary = {}
     var original: String = action
     var requested: String = action
-    while true:
+    # A finite condition plus the final explicit return is required so Godot's
+    # typed-function analyzer sees a return value on EVERY possible path.
+    while not requested.is_empty():
         if seen.has(requested):
             errors.append("CopyOf loop: " + original)
             return {}
@@ -86,6 +88,9 @@ func resolve_action(action: String) -> Dictionary:
         if parent_action.is_empty():
             return data
         requested = parent_action
+    # Also protects empty initial action names. Keep all failure paths typed.
+    errors.append("Empty animation action: " + original)
+    return {}
 
 func get_animation(action: String, direction_row: int) -> Dictionary:
     var resolved: Dictionary = resolve_action(action)
