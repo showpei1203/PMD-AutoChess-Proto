@@ -1,19 +1,28 @@
 # CURRENT HANDOFF | Pokémon Living World (Godot 4.7.2)
 
 **Updated:** 2026-10-17 (Asia/Taipei)  
-**Checkpoint:** `PLW_G222_WRONG_SCENE_MISSING_LOG_COLLECTOR_v0.4.1.2_20261017`
+**Checkpoint:** `PLW_G223_DIRECT_SCENE_AND_BOOT_CAPTURE_CANDIDATE_v0.4.1.3_20261017`
 **Branch:** `planning/pokemon-living-world-godot`  
-**G2 status:** G2.1 Surface mobility PASS; G2.2 presentation unverified (user reports no visible effect and attached a G2.1-only log); G2.2.2 collector 129/129 offline PASS, Surface F6 pending.
+**G2 status:** G2.1 mobility Surface PASS; G2.2 visual direction/idle UNVERIFIED. Latest uploaded log is G2.1 only; G2.2 runtime not yet established.
 
 
-## G2.2.1 v0.4.1.1 Surface compiler repair checkpoint — latest (2026-10-17)
-- **Observed FAIL:** Godot 4.7.2 script `res://scripts/lab/ecology_animation_diagnostics.gd:104` referenced undeclared `roams` and `since_roam`, so v0.4.1 did not compile. Some `.uid` warnings were also visible, but are not the cause of these parser failures.
-- **Scene selection also wrong:** user screenshot active tab/tree `ecology_lab.tscn`/`EcologyLab`; `ecology_animation_lab.tscn` was merely highlighted in FileSystem. Double click scene, confirm `EcologyAnimationLab > Diagnostics`, then F6.
-- **Fix committed:** defensive declaration of both telemetry locals from `roam_count` and `time_since_roam`; G2.2.1 status indicator; transition diff key includes `roams`. Three new static regression tests (total **125/125 offline PASS**).
-- **Runtime status:** G2.2.1 Godot F6 **PENDING**, no claim of visual/compilation PASS. G2.1 Surface mobility PASS retained, G1/G2.1 scenes not touched.
-- **Full ZIP:** [v0.4.1.1 complete source/tests/logs/Handoff, 137 files](https://drive.google.com/file/d/1RnSscBaWJtnrUKEQjpdk05M0Byx0WUKv/view), ZIP CRC PASS, SHA-256 `60553d0c99e80f0ab7138d7ea6daeba2063338637f3cec051d582fd098f5e49a`, no copyrighted PMD PNGs.
-- **Next Surface:** Close Godot, Fetch/Pull `planning/pokemon-living-world-godot`, open `scenes/ecology_animation_lab.tscn` by double click, verify new active scene, F6. Confirm parser 0 red errors / visible `G2.2.1 LOGGER ACTIVE` and tick increases; watch 30s for stance, one-shot Idle and moving compass faces. Stop; run `RUN_G22_COLLECT_LOG_WINDOWS.bat`; upload `reports/PLW_G22_DIAGNOSTICS_TO_SHARE.zip` and one screenshot.
-- See `docs/G221_PARSER_ROAM_TELEMETRY_HOTFIX_20261017.md`. Handoff updates required on both GitHub and Drive every iteration.
+## G2.2.3 latest Surface evidence and direct-launch candidate (2026-10-17)
+- User uploaded G22 diagnostics ZIP and reports **no improvement**. ZIP has `G22_MISSING_LOG_DIAGNOSIS.txt` but NO G22 runtime log; only prior G21 and G2.0.2 logs detected. **Latest scene startup not established**. Cannot equate missing runtime log with wrong-scene selection or animation logic failure.
+- New exact-scene Windows launcher `RUN_G22_DIRECT_SCENE_WINDOWS.bat` invokes `tools/g22_direct_launch.py`, bypasses the Godot editor's scene-tab confusion, and captures both Godot engine `--log-file` and console, even before G22 runtime logger starts. After game exits creates `reports/PLW_G22_DIRECT_DIAGNOSTICS_TO_SHARE.zip` with boot + console + runtime evidence or launch failure reason.
+- This is diagnostic instrumentation only: **G22 visual Idle/facing still UNVERIFIED**. G2.1 mobility remains accepted; no GDScript animation or AI files changed.
+- Python offline tests **134/134 PASS** including 5 new launch failure simulations. Surface Godot 4.7.2 DIRECT LAUNCH PENDING. More context: `docs/G223_DIRECT_SCENE_LAUNCH_DIAGNOSIS_20261017.md`.
+- Next user action: Fetch/Pull, double-click `RUN_G22_DIRECT_SCENE_WINDOWS.bat`, select 4.7.2 Godot executable once if prompted, observe game ~30 seconds, CLOSE GAME WINDOW, wait for `DIAGNOSTIC ZIP READY`, upload `reports/PLW_G22_DIRECT_DIAGNOSTICS_TO_SHARE.zip`. Do not run G22 old collector for this specific test.
+- Complete v0.4.1.3 candidate ZIP is archived in Pokémon Living World Drive project folder; authoritative download URL is recorded in GitHub Issue #15 and Drive master roadmap. Preserve all source, tests, logs, and SHA manifest.
+
+## LATEST G2.2.1 diagnostic parser hotfix (2026-10-17)
+- User screenshot Godot 4.7.2 shows `ecology_animation_diagnostics.gd:104` parser errors **Identifier `roams` not declared**, **Identifier `since_roam` not declared**, script loading failure. These are coding errors in v0.4.1, not missing PMD art. A few `Missing .uid` warnings were also visible, not the main execution blocker.
+- Screenshot active scene top tab: `ecology_lab.tscn` and left tree `EcologyLab > Diagnostics`, while `ecology_animation_lab.tscn` was merely selected in FileSystem. New G2.2 scene must be **DOUBLE-CLICKED** to activate, then F6 (F5 launches G1). Fix both parser and scene selection.
+- Hotfix `scripts/lab/ecology_animation_diagnostics.gd` binds `var roams` from `roam_count` and `var since_roam` from `time_since_roam` before telemetry interpolation; active label now reads `G2.2.1`, and log diff key includes roam count. Add 3 new regression tests `tests/test_g221_runtime_parser_regression.py`.
+- `RUN_G22_TESTS_WINDOWS.bat` runs **125/125 Python offline PASS**, **not Godot compilation PASS**. G2.2 visual gate remains FAIL/PENDING Surface re-test. G1 and G2.1 source/scene files unchanged.
+- Surface actions: Close Godot, Pull isolated planning branch; double-click `scenes/ecology_animation_lab.tscn`; verify left tree `EcologyAnimationLab > Diagnostics`; F6; check **no parser errors**, `G2.2.1 LOGGER ACTIVE` and `tick` increasing; observe 30s, cardinal directions and card #143 stance; stop F6, execute `RUN_G22_COLLECT_LOG_WINDOWS.bat` and upload `reports/PLW_G22_DIAGNOSTICS_TO_SHARE.zip` with screenshot.
+- Log path: `<Godot project>/reports/PLW_G22_RUNTIME_LAST.log`. Missing log before successfully opening/running new scene does not prove logger malfunction.
+- Complete hotfix ZIP contains source, G1/G2 baseline, BAT shortcuts, offline test log, Handoff, release notes and SHA manifest, *no copyrighted images*. SHA-256 and Drive URL are supplied in external Issue/Drive Handoff after upload, avoiding self-referential hashes.
+- Mandatory every iteration: update GitHub & Drive Current/History Handoff, Issue #15, roadmap; distinguish offline PASS from Surface F6 PASS.
 
 ## CURRENT G2.2 v0.4.1 source of truth (supersedes historical sections below)
 - Verified user G2.1 33-second runtime ZIP: 95 text lines, 33 heartbeats, SHA256 `a450cf80889287a00cdc8f275507dfc0efa83479f9fc9dc38870ca1951c51fe1`. #143 Snorlax walked autonomously after 19 sec (~41.6px), then user keys 3+M forced further motion to 80px. #025 ~785px and #094 ~441px. G2.1 movement confirmed, animation visual direction not accepted.

@@ -21,3 +21,6 @@ private/
 # Local machine generated (may contain source-art paths)
 reports/pmd_g1_preflight.json
 reports/pmdcollab_download_report.json
+# Machine-local G2.2 direct launcher records (never commit user executable paths)
+reports/PLW_G22_GODOT_EXECUTABLE.txt
+reports/PLW_G22_DIRECT_LAUNCH_REPORT.txt
