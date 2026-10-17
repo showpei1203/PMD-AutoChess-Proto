@@ -32,3 +32,6 @@ Do not re-download 151 species. Close Godot, Fetch/Pull isolated GitHub branch, 
 - `I/W/A` 動作、`←/→` 原始方向列、`Space` 自動輪播、`1/2/3` 選取。
 - 在 Surface 先執行 `RUN_G11_ROSTER_PREFLIGHT_WINDOWS.bat`，產出 `reports/pmd_roster_report.csv` 與 `reports/pmd_roster_report.json`，顯示各種動作、CopyOf 來源及 Credits。
 - 本版 Build workspace Python 測試 54/54 PASS，Godot Surface 新場景仍 **PENDING**。詳見 `docs/G11_KANTO_GALLERY_20261017.md`。
+
+## G1.2 v0.3.5 (2026-10-17)
+New **standalone**, optional `scenes/calibration_lab.tscn`: open in Godot and F6. Q/E changes species (001..151), 1/2/3 selects benchmark, I/W/A changes action, left/right changes raw facing row, Z/X changes scale, up/down/J/L moves frame-bottom ground anchor, B toggles **debug-only** shadow, R resets display scale/anchor, S saves local `user://` JSON draft. Does not modify G1/G1.1 accepted scenes or `project.godot`. Before testing, GitHub Desktop Fetch/Pull isolated planning branch. Run `RUN_G12_CALIBRATION_TESTS_WINDOWS.bat` (expect 61/61 offline PASS). **Surface Godot F6 PENDING**; see docs/G12_CALIBRATION_LAB_20261017.md.
