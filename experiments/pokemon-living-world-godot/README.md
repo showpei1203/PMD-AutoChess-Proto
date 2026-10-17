@@ -95,3 +95,6 @@ Surface G2 tick/input failures are still unverified root cause. Open `scenes/eco
 
 ## G2.2 v0.4.1 optional animation-direction laboratory (not F5)
 `scenes/ecology_animation_lab.tscn` -> F6. Walking sprite now changes its native PMD direction row from movement velocity. Standing uses frozen Walk frame0 with occasional 1-shot native Idle action at species-dependent intervals; movement immediately preempts Idle. Local LOG is `reports/PLW_G22_RUNTIME_LAST.log`, collected via `RUN_G22_COLLECT_LOG_WINDOWS.bat`. 122 Python offline tests PASS; Surface Godot test PENDING. Full methods and evidence in `docs/G22_ANIMATION_DIRECTION_AUTHORITY_20261017.md`. G0/G1/G2.1 accepted scenes unchanged.
+
+## G2.2.1 v0.4.1.1 Surface parser hotfix
+Godot 4.7.2 screenshot revealed undefined diagnostics variables `roams` / `since_roam` at line 104. Fixed both definitions and telemetry label; offline Python tests **125/125 PASS**, Godot F6 remains **PENDING**. Double-click `scenes/ecology_animation_lab.tscn` (not simply highlight in FileSystem), verify `EcologyAnimationLab > Diagnostics`, then F6. Collect G22 LOG via `RUN_G22_COLLECT_LOG_WINDOWS.bat`. Full ZIP: https://drive.google.com/file/d/1RnSscBaWJtnrUKEQjpdk05M0Byx0WUKv/view. See `docs/G221_PARSER_ROAM_TELEMETRY_HOTFIX_20261017.md`.
