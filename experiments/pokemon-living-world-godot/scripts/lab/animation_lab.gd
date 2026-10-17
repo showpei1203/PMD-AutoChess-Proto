@@ -49,7 +49,7 @@ func _create_agent(index: int) -> void:
         _set_sprite_direction(index, 0)
     else:
         var err_msg: String = str(src.errors[0]) if not src.errors.is_empty() else "unknown error"
-        _add_label("Missing local art", Vector2(X_POS[index] - 76.0, 302.0), 15, Color("#ffaf94"))
+        _add_label("LOAD ERROR (see Output)", Vector2(X_POS[index] - 100.0, 302.0), 14, Color("#ffaf94"))
         print("[PLW-G1] %s failed: %s" % [NAMES[index], err_msg])
 
 func _set_sprite_direction(index: int, raw_row: int) -> void:
@@ -133,7 +133,7 @@ func _refresh_detail() -> void:
     for agent in agents:
         if bool(agent["ok"]):
             loaded += 1
-    status.text = "已找到本機來源：%d / 3 種   |   未找到請確認 data/raw/pmdcollab/0025、0094、0143" % loaded
+    status.text = "已成功解析並載入：%d / 3 種   |   載入失敗請查看 Godot 輸出的 [PLW-G1] 錯誤" % loaded
     details.text = "選擇：%s   動作：%s   方向原始列：%d / 7（方位定義未驗收）   自動輪播：%s" % [NAMES[selected], ACTIONS[action_index], facing_row, "ON" if auto_demo else "OFF"]
     print("[PLW-G1] ready=%d/3 action=%s raw_direction_row=%d" % [loaded, ACTIONS[action_index], facing_row])
 
