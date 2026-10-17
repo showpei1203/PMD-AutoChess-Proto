@@ -1,7 +1,7 @@
 # CURRENT HANDOFF | Pokémon Living World | Godot 4.7.2
-**Checkpoint:** `PLW_G31_SPACING_AND_GUARD_COOLDOWN_CANDIDATE_v0.5.1_20261017`
+**Checkpoint:** `PLW_G31_SURFACE_TACTICAL_SEMANTICS_PASS_BALANCE_PENDING_20261017`
 **Branch:** `planning/pokemon-living-world-godot`
-**Status:** G3.0 actual Godot command input, headless replay, attack/guard mitigation PASSED (user LOG). G3.1 true-space candidate Python176/176 PASS; **Godot G3.1 Surface and headless gate PENDING**. Full G3 battle features and balanced strategies NOT complete.
+**Status:** G3.1 v0.5.1 actual Surface Godot 4.7.2 native gate 32/32 PASS; 3/R/4/R and real retreat/strafe/ZONE/guard cooldown proven. KEEP_DISTANCE strategy wins 0/8; geometry escape/balance and full G3 PENDING. Prior G2.3/G3.0 sealed.
 
 - New scene `scenes/g31_combat_lab.tscn`, separate combat core, renderer, diagnostics, Godot 32-scenario native gate and direct launcher. Base G3.0, G2.3 and earlier source files preserved.
 - Goal: MAKE KEEP_DISTANCE FUNCTIONALLY KEEP DISTANCE (retreat/strafe, far pressure) vs G3.0 which simply approached. Guard recharge 25 ticks. Not canonical Pokémon battle rules or a general tactical balance fix.
@@ -9,6 +9,14 @@
 - Standalone complete ZIP includes full source, Windows scripts, Python tests, offline matrix, logs, SHA256 manifest. Full ZIP link and ZIP SHA are registered in external Drive Handoff + GitHub Issue #15 after upload; avoid self-referential ZIP hash.
 - Surface procedure: GitHub Desktop Fetch/Pull this branch, run `RUN_G31_DIRECT_SCENE_WINDOWS.bat`; gate expects `G31_GATE RESULT samples=32 failures=0`; game opens, choose 3 then R; observe retreat/strafe at 118–160 band and zone shots; choose 4 then R for guard. Stop game and send `reports/PLW_G31_DIRECT_DIAGNOSTICS_TO_SHARE.zip`. If gate fails, send generated ZIP; no F6 required.
 - Preserve private `data/raw/pmdcollab/` source images, not bundled.
+
+## LATEST SURFACE G3.1 acceptance — 2026-10-17
+- User uploaded `PLW_G31_DIRECT_DIAGNOSTICS_TO_SHARE.zip`, ZIP CRC PASS, SHA256 `1bd0ddb3bc9b206f067b1f22a8d03b85a963ba93fa5021f62cce5f4cf297e7d7`. Godot 4.7.2 official, scene `g31_combat_lab.tscn`, headless native gate exit 0; `G31_GATE RESULT samples=32 failures=0` (8 seeds × 4 orders, each replayed twice); native zoning aggregate retreat1299 strafe37 ranged41.
+- Direct game exit0, `LOGGER_READY build=G3.1-v0.5.1`, 40sec run, 485 runtime log lines, 40 heartbeat / 80 UNIT / 80 SPACE; no explicit boot/console ERROR/WARNING.
+- **Actual keyboard** 3→R starts SAME seed KEEP_DISTANCE; player #025 `RETREAT=113`, `STRAFE=4`, `ZONE ranged=5` by user switch at tick186; ranged style WINDUP+HIT power8 recorded. **4→R** starts DEFENSIVE same seed, GUARD ready_at tick69/94 after prior tick44/69, damage11→5 on guarded hits, winner=0 Pikachu HP21/Gengar0 at tick142. KEEP_DISTANCE attempt was interrupted rather than reaching its own RESULT.
+- Eight fixed-order Godot-gate winner distribution: FREE Pikachu1/Gengar7; AGGRESSIVE P8/G0; KEEP_DISTANCE P0/G8 (tick224–263); DEFENSIVE P8/G0. Illustrates functional control but **poor practical kiting and balance**, plus narrow seed diversity.
+- **PASS:** Godot startup/native replay, movement semantics (RETREAT/STRAFE/ZONE) and real guard cooldown/hits, input 3/R/4/R, autonomous battle result. **PENDING:** escape/corners, terrain/obstacles, natural visual assessment, broader scenario balance, canonical move systems and 2v2. **No code changes this evidence-only checkpoint.**
+- Detailed evidence report: `docs/G31_SURFACE_TACTICAL_ACCEPTANCE_20261017.md`; public GitHub excludes user's full raw logs. v0.5.1 full ZIP remains https://drive.google.com/file/d/1BtO8Us-r16meu4lnVqtGZVmvD8EpfLnh/view ; prior Python 176/176 was not rerun. Update GitHub+Drive handoffs, roadmap, Issue15. Next isolated milestone should focus geometry-aware escape while preserving combat hit authority.
 
 ## HISTORICAL PREVIOUS HANDOFF
 
