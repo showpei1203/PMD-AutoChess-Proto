@@ -42,3 +42,6 @@ New **standalone**, optional `scenes/calibration_lab.tscn`: open in Godot and F6
 - Godot 在 `scenes/calibration_lab.tscn` 按 **F6**；**G** 一鍵跳 #130 暴鯉龍，**N** 切換 NATIVE/ALPHA/FRAME，**S** 儲存本機草稿，底下可看到原生 Shadow/alpha 的來源。其他按鍵沿用 G1.2。
 - `RUN_G12_CALIBRATION_TESTS_WINDOWS.bat` 包含 **74/74 Python 離線測試**，不是 Surface Godot F6 的實際動畫驗收。
 - 舊的 G1 三隻、G1.1 圖鑑巡覽場與 `project.godot` 入口保持原樣。更詳見 `docs/G12_AUTO_ANCHOR_20261017.md`。
+
+## G2.0 生態自主實驗場（獨立候選）
+打開 `scenes/ecology_lab.tscn` 按 **F6**，三隻 PMD 寶可夢使用固定種子進行 IDLE/ROAM/OBSERVE/RETURN/REST。Space 暫停、R 相同種子重播、N 新種子、1/2/3 選取、D 觀察資訊。`RUN_G20_TESTS_WINDOWS.bat` 可以跑 Python 合成/靜態測試。Surface Godot 實機驗收未完成。既有 F5/G1.1/G1.2 場景保持不變。
