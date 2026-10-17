@@ -1,0 +1,13 @@
+CHECKPOINT=PLW_G1_GENGAR_XML_TEXTURE_HOTFIX_v0.3.3_20261017
+SURFACE_OBSERVED=ready_2_of_3;_Pikachu_and_Snorlax_visible
+GENGAR_ERROR=XML_tag_mismatch:_AnimData
+PNG_WARNINGS=6_export_incompatible_Image.load
+FIX1=streaming_record_scope_per_Anim_instead_of_full_tag_stack
+FIX2=ResourceLoader.load(sheet_path,_Texture2D)
+FIX3=UI_reports_actual_parse_error_not_Missing_local_art
+ADDED_OFFLINE_TESTS=4
+TOTAL_OFFLINE_TESTS=45/45_PASS
+GODOT_SURFACE_F5_RETEST=PENDING
+G1_VISUAL_ACCEPTANCE=PENDING
+G0_SOURCE_DOWNLOAD=151/151_PASS
+ORIGINAL_PROJECT_MAIN=UNCHANGED
