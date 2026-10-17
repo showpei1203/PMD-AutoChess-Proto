@@ -1,0 +1,13 @@
+{
+  "checkpoint": "PLW_G21_BOUNDED_BEHAVIOUR_CANDIDATE_v040_20261017",
+  "version": "0.4.0",
+  "offline_python_tests": "108/108 PASS",
+  "godot_surface_runtime": "PENDING",
+  "prior_g202_surface": "logger + 2/3 mobility PASS; #143 0px over ~60 seconds",
+  "standalone_scene": "scenes/ecology_behavior_lab.tscn",
+  "log": "reports/PLW_G21_RUNTIME_LAST.log",
+  "share_zip": "reports/PLW_G21_DIAGNOSTICS_TO_SHARE.zip",
+  "base_scene_unchanged": true,
+  "pmd_compass_mapping_verified": false,
+  "no_art_in_zip": true
+}

@@ -83,4 +83,3 @@ Previous Surface G2.0 behaviour acceptance failed (no perceptible locomotion, se
 
 ## G2.0.2 v0.3.9 | Runtime diagnostics and Handoff
 Surface G2 tick/input failures are still unverified root cause. Open `scenes/ecology_lab.tscn` with F6 (F5 starts old G1). Observe `G2.0.2 LOGGER ACTIVE`, use on-screen M/D/N. Runtime LOG: `reports/PLW_G2_RUNTIME_LAST.log`. ZIP collector: `RUN_G2_COLLECT_LOG_WINDOWS.bat` -> `reports/PLW_G2_DIAGNOSTICS_TO_SHARE.zip`. All subsequent changes must update `docs/CURRENT_HANDOFF_PLW.md` and append `docs/HANDOFF_HISTORY_PLW.md`, then mirror to Google Drive.
-

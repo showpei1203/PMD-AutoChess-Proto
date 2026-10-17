@@ -51,4 +51,3 @@ Surface 回報 G2.0 v0.3.7 幾乎全 Idle，N 無明顯差異，D 無顯示；�
 
 ## G2.0.2 v0.3.9 | Instrumented G2 with persistent LOG
 User reports frozen tick, D/M/N not functioning; G2 remains FAIL/PENDING. Open `scenes/ecology_lab.tscn` and **F6** (not F5, which starts G1). Confirm `G2.0.2 LOGGER ACTIVE`; let run 10s and click M/D/N diagnostic buttons. Log: **`reports/PLW_G2_RUNTIME_LAST.log`**. Double-click `RUN_G2_COLLECT_LOG_WINDOWS.bat` and upload `reports/PLW_G2_DIAGNOSTICS_TO_SHARE.zip`. See `docs/CURRENT_HANDOFF_PLW.md`. **Future changes must always update both GitHub and Drive Handoff documents.**
-
