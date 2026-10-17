@@ -16,7 +16,7 @@ func load_species(species_id: int) -> bool:
         errors.append("Missing AnimData.xml: " + xml_path)
         return false
     var parser := XMLParser.new()
-    var err: Error = parser.open_file(xml_path)
+    var err: Error = parser.open(xml_path)
     if err != OK:
         errors.append("Failed to open XML: " + str(err))
         return false
@@ -117,8 +117,8 @@ func get_animation(action: String, direction_row: int) -> Dictionary:
     if texture.get_width() % frame_width != 0 or texture.get_height() % frame_height != 0:
         errors.append("Sheet dimensions incompatible: " + sheet_path)
         return {}
-    var cols: int = int(texture.get_width() / frame_width)
-    var rows: int = int(texture.get_height() / frame_height)
+    var cols: int = int(float(texture.get_width()) / float(frame_width))
+    var rows: int = int(float(texture.get_height()) / float(frame_height))
     if direction_row < 0 or direction_row >= rows:
         errors.append("Direction row out of range: " + source_action)
         return {}
