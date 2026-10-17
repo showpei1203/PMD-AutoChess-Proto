@@ -1,0 +1,13 @@
+CHECKPOINT=PLW_G12_NATIVE_SHADOW_ALPHA_ANCHOR_v0.3.6_20261017
+ISSUE=Sprites rise above ground when their PNG frames have large transparent padding
+CAUSE=Old calibration anchors whole frame bottom instead of real native shadow/ink bounds
+NATIVE_PMD=Shadow.png white point official ground marker; Offsets.png green center not ground
+IMPLEMENTED=Godot get_frame_alignment per sprite/row/frame with CopyOf, cache and shadow+alpha fallback
+UI=F6 calibration_lab; key N cycles NATIVE/ALPHA/FRAME; shows alpha bbox, source diagnostics
+PYTHON_REPORT=RUN_G12_ANCHOR_AUDIT_WINDOWS.bat -> CSV/JSON of first row and frame for 151 species x three actions
+PYTHON_REQUIREMENTS=stdlib_only
+OFFLINE_TESTS=74/74 PASS
+REAL_SURFACE_GODOT_F6=PENDING
+ACTUAL_151_LOCAL_PNG_AUDIT=PENDING
+G1_ACCEPTED_SHOWCASE_SCENES=UNMODIFIED
+G2_AI=NOT_STARTED
