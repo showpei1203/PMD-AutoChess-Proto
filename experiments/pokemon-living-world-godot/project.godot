@@ -1,10 +1,10 @@
 ; Engine configuration file.
-; Pokémon Living World / Godot 4.7.2 prototype bootstrap.
+; Pokémon Living World - G1 PMDCollab animated specimen preview.
 config_version=5
 
 [application]
-config/name="Pokémon Living World — Bootstrap"
-run/main_scene="res://scenes/main.tscn"
+config/name="Pokémon Living World — G1 Animation Lab"
+run/main_scene="res://scenes/animation_lab.tscn"
 
 [display]
 window/size/viewport_width=960
@@ -14,4 +14,4 @@ window/stretch/mode="canvas_items"
 [rendering]
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-textures/default_filters/use_nearest_mipmap_filter=false
+textures/canvas_textures/default_texture_filter=0
