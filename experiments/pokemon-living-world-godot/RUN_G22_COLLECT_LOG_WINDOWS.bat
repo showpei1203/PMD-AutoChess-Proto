@@ -7,6 +7,7 @@ py -3 tools\g22_collect_logs.py --root .
 set RC=%errorlevel%
 echo.
 echo Share: %CD%\reports\PLW_G22_DIAGNOSTICS_TO_SHARE.zip
+echo Note: Exit code 2 means G22 log missing, but a DIAGNOSTIC ZIP WAS CREATED.
 echo Exit code: %RC%
 pause
 exit /b %RC%
