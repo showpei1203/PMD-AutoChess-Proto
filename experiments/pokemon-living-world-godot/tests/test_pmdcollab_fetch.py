@@ -46,6 +46,32 @@ class TestFetch(unittest.TestCase):
         self.assertEqual(len(anims),3)
     def test_missing_walk(self):
         with self.assertRaises(ValueError):inspect_zip(sprite_zip({'AnimData.xml':XML,'Idle-Anim.png':tiny_png()}))
+    def test_idle_copyof_walk_dragonair_0148(self):
+        xml = b'<AnimData><Anims><Anim><Name>Walk</Name><FrameWidth>48</FrameWidth><FrameHeight>56</FrameHeight><Durations><Duration>8</Duration></Durations></Anim><Anim><Name>Idle</Name><CopyOf>Walk</CopyOf></Anim></Anims></AnimData>'
+        members, animations = inspect_zip(sprite_zip({
+            'AnimData.xml': xml, 'Walk-Anim.png': tiny_png()}))
+        self.assertEqual(len(members), 2)
+        self.assertEqual(animations[1]['copy_of'], 'Walk')
+
+    def test_idle_copyof_chain(self):
+        xml = b'<AnimData><Anims><Anim><Name>Walk</Name><CopyOf>Roam</CopyOf></Anim><Anim><Name>Roam</Name><FrameWidth>24</FrameWidth><FrameHeight>24</FrameHeight><Durations><Duration>5</Duration></Durations></Anim><Anim><Name>Idle</Name><CopyOf>Walk</CopyOf></Anim></Anims></AnimData>'
+        inspect_zip(sprite_zip({'AnimData.xml': xml, 'Roam-Anim.png': tiny_png()}))
+
+    def test_idle_copyof_missing_target(self):
+        xml = b'<AnimData><Anims><Anim><Name>Idle</Name><CopyOf>NotDefined</CopyOf></Anim><Anim><Name>Walk</Name><FrameWidth>24</FrameWidth><FrameHeight>24</FrameHeight><Durations><Duration>3</Duration></Durations></Anim></Anims></AnimData>'
+        with self.assertRaisesRegex(ValueError, 'Missing animation definition'):
+            inspect_zip(sprite_zip({'AnimData.xml': xml, 'Walk-Anim.png': tiny_png()}))
+
+    def test_idle_copyof_cycle(self):
+        xml = b'<AnimData><Anims><Anim><Name>Idle</Name><CopyOf>Walk</CopyOf></Anim><Anim><Name>Walk</Name><CopyOf>Idle</CopyOf></Anim></Anims></AnimData>'
+        with self.assertRaisesRegex(ValueError, 'CopyOf cycle'):
+            inspect_zip(sprite_zip({'AnimData.xml': xml}))
+
+    def test_idle_copyof_missing_target_sheet(self):
+        xml = b'<AnimData><Anims><Anim><Name>Idle</Name><CopyOf>Walk</CopyOf></Anim><Anim><Name>Walk</Name><FrameWidth>24</FrameWidth><FrameHeight>24</FrameHeight><Durations><Duration>3</Duration></Durations></Anim></Anims></AnimData>'
+        with self.assertRaisesRegex(ValueError, 'Missing required animation image'):
+            inspect_zip(sprite_zip({'AnimData.xml': xml}))
+
     def test_png_bad(self):
         with self.assertRaises(ValueError):inspect_zip(sprite_zip({'AnimData.xml':XML,'Idle-Anim.png':b'bad','Walk-Anim.png':tiny_png()}))
     def test_stage_mock_network_and_cache(self):
