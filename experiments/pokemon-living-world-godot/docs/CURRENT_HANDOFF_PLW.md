@@ -1,7 +1,7 @@
 # CURRENT HANDOFF | Pokémon Living World (Godot 4.7.2)
 
 **Updated:** 2026-10-17 (Asia/Taipei)  
-**Checkpoint:** `PLW_G30_UTILITY_1V1_CANDIDATE_v050_20261017`  
+**Checkpoint:** `PLW_G30_SURFACE_ORDER_INPUT_POLICY_PASS_DESIGN_GAPS_20261017`
 **Branch:** `planning/pokemon-living-world-godot`  
 **Status:** G2.3 real Surface runtime PASS (60sec, tick583, 3 species moving); user chose to freeze cadence. **G3.0 standalone autonomous 1v1 candidate: 163/163 Python offline PASS, Godot headless/Surface PENDING.**
 
@@ -18,6 +18,15 @@
 - Real Surface evidence: G2.3 Godot direct run around 60 sec, `LOGGER_READY build=G2.3-v0.4.2`, engine exit0, tick583 and no console/boot errors; #025 1134.65px + Idle1, #094 423.68px + Idle1 Float1, #143 160px with no micro action in that sample. User directed no more tuning. 151 all-animation visual/collision remains unverified. This G3.0 change does not touch any G2 source.
 - G2.3 full archived Drive: https://drive.google.com/file/d/1VYom0ipsFG0i3KCuA3jxCrv0andzO5pd/view . G2.3 Surface report `docs/G23_SURFACE_RUNTIME_ACCEPTANCE_20261017.md` is on GitHub; ZIP may not include post-release evidence-only doc.
 
+## LATEST Surface evidence — G3.0 trainer commands actually affect AI (2026-10-17)
+- User uploaded `PLW_G30_DIRECT_DIAGNOSTICS_TO_SHARE.zip` SHA256 `2a63159ba9e0e5324984f37a8022063d7853e8978bbcf11a2ec157094afe0ab6`, ZIP CRC PASS; Godot4.7.2 direct scene `g30_combat_lab.tscn`, exit0, no boot/console ERROR/WARNING.
+- **Native headless gate `G30_GATE RESULT samples=12 failures=0`** across 3 seeds × FREE/AGGRESSIVE/KEEP_DISTANCE/DEFENSIVE, each replayed twice. Three tested seeds: only DEFENSIVE player Pikachu wins, other three fixed strategies wild Gengar wins. Small sample, not broad balance claim.
+- Actual user pressed keycodes 49/50/51/52, logged strategy switches; genuine `DECISION/WHY` differentiation: AGGRESSIVE ATTACK score125, KEEP_DISTANCE DODGE score119, DEFENSIVE GUARD score123; two actual guarded wild hits were reduced from base11 to5 HP damage. Policy affects Pikachu unit0 only; Gengar remains wild.
+- **PASS gate scope:** input plumbing, score change, real conditional action/mitigation, native replay, battle terminal results.
+- **DESIGN GAPS:** KEEP_DISTANCE increases APPROACH score to92 and still chases foes instead of kiting; DEFENSIVE wins all 3 samples (imbalanced), old G3 named moves/2v2/protect ally/obstacles still unimplemented. Do not confuse logged `ORDER` with full behavioral-semantic acceptance; pressing buttons during same fight cannot isolate strategy effectiveness.
+- **No game code changes**, v0.5.0 ZIP remains authoritative: https://drive.google.com/file/d/14Q4TmCg8CLi-ST977MG2sqLJpWra6Bbw/view . Prior Python 163/163 is historical; not rerun. Raw private logs / copyrighted art NOT committed.
+- Report: `docs/G30_SURFACE_TRAINER_ORDER_VERIFICATION_20261017.md`. Synchronized to GitHub/Drive current/history Handoff, roadmap and Issue #15. Next implementation should implement true distance maintenance, then wider strategy balance test without violating battle-core timer authority.
+
 ## HISTORICAL HANDOFF (older checkpoints below, do not mistake for current)
 
 # CURRENT HANDOFF | Pokémon Living World (Godot 4.7.2)
@@ -25,7 +34,7 @@
 **Updated:** 2026-10-17 (Asia/Taipei)  
 **Checkpoint:** `PLW_G23_SURFACE_RUNTIME_PASS_VISUAL_FEEL_PENDING_20261017`
 **Branch:** `planning/pokemon-living-world-godot`  
-**G2 status:** G2.3 v0.4.2 Surface RUN PASS (60 sec, tick 583, no boot/console errors), Pikachu/Gengar ambient event PASS, Snorlax micro action not observed; visual naturalness/151 generalization PENDING.
+**Project status:** G2.3 freeze preserved; G3.0 actual Godot 4.7.2 headless deterministic 12/12 + 1v1 runtime + 1–4 trainer order input/conditional Utility PASS. KEEP_DISTANCE semantics and trainer-order balance NOT accepted; full G3 still PENDING.
 
 
 ## LATEST: G2.3 actual Surface LOG received and analyzed (2026-10-17)
