@@ -40,6 +40,14 @@ After G2.0.1, the Surface G2 scene appeared idle, `tick` did not increase, and D
 - **Next evidence:** `reports/PLW_G2_DIAGNOSTICS_TO_SHARE.zip` collected **after** an actual G2 F6 run, as described below; do not upload Pokémon art.
 - **GitHub tracker:** https://github.com/showpei1203/PMD-AutoChess-Proto/issues/15.
 
+## Surface log-collection triage — 2026-10-17 (screenshot evidence)
+- User launched `RUN_G2_COLLECT_LOG_WINDOWS.bat` and got `G2 LOG NOT FOUND`, exit code 2, with no `PLW_G2_RUNTIME_LAST.log` in the project reports folder.
+- Crucial screenshot evidence: **Godot's active scene tab was `calibration_lab.tscn`; the scene tree root was `CalibrationLab`. `ecology_lab.tscn` was only highlighted in the FileSystem pane, not opened as active scene. The debugger process was stopped.**
+- Diagnosis: G2 diagnostic scene was **not verified to have run**. Selecting a .tscn in FileSystem does **not** activate it; F6 runs the active/open scene. Log collector's message means file absent, but **does not prove logger failure** in this case.
+- Correct Surface retest: Double-click `scenes/ecology_lab.tscn` in FileSystem; verify top active tab reads `ecology_lab` and left scene tree shows `EcologyLab > Diagnostics`; press **F6**. Confirm `G2.0.2 LOGGER ACTIVE`, wait 10 sec, click M/D/N buttons and type keys, stop game; run `RUN_G2_COLLECT_LOG_WINDOWS.bat`.
+- Expected log `D:\PMD-AutoChess-Proto\experiments\pokemon-living-world-godot\reports\PLW_G2_RUNTIME_LAST.log`; uploaded evidence `reports/PLW_G2_DIAGNOSTICS_TO_SHARE.zip`. If still absent, capture Godot Output/errors and the active Scene tree.
+- Status: **G2 runtime still PENDING/UNVERIFIED**; cannot conclude locomotion tick or logger broken until actual G2 scene executes. No code changes or new offline test results in this triage-only iteration; v0.3.9 ZIP remains the deliverable.
+
 ## REQUIRED every subsequent change
 Before coding, read this CURRENT_HANDOFF. After EACH iteration update both this file and append dated entry to `docs/HANDOFF_HISTORY_PLW.md`, then mirror into the Drive living Handoff and master roadmap. Include observed evidence, version/commit SHA, specific changed files, offline vs runtime PASS/FAIL, full ZIP, test scripts + LOG + hashes, remaining blockers and next user steps. Never claim Godot acceptance from Python-only tests; preserve sealed G1 and source baselines. No raw Pokémon/PMD art in GitHub or candidate ZIP.
 
