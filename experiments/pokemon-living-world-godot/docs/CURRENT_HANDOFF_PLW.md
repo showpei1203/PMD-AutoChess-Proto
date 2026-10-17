@@ -33,6 +33,13 @@ After G2.0.1, the Surface G2 scene appeared idle, `tick` did not increase, and D
 - keys absent but buttons logged: keyboard focus/event propagation issue.
 - positions change while sprites don't: presentation/anchor/animation bug.
 
+## G2.0.2 delivery completion after connection interruption
+- **GitHub:** source code, G2.0.2 diagnostics scene, one-click runtime LOG collector, tests and this handoff were committed to the isolated branch. Re-read verification completed.
+- **Drive complete v0.3.9 ZIP:** https://drive.google.com/file/d/1X5ZbpBvCPVTZqYrWzNFrtxBA1BADI6f7/view. 107 files, archive CRC tested. SHA-256: `42aa22571846afb0b733c31ddcde05523579fe3cbd56b2bee03f62fbf35ac522`.
+- **Offline tests:** 98/98 PASS (does not establish Godot run). **Surface F6:** PENDING. User's prior tick/D/M/N failure stays **FAIL** until evidence shows it is fixed.
+- **Next evidence:** `reports/PLW_G2_DIAGNOSTICS_TO_SHARE.zip` collected **after** an actual G2 F6 run, as described below; do not upload Pokémon art.
+- **GitHub tracker:** https://github.com/showpei1203/PMD-AutoChess-Proto/issues/15.
+
 ## REQUIRED every subsequent change
 Before coding, read this CURRENT_HANDOFF. After EACH iteration update both this file and append dated entry to `docs/HANDOFF_HISTORY_PLW.md`, then mirror into the Drive living Handoff and master roadmap. Include observed evidence, version/commit SHA, specific changed files, offline vs runtime PASS/FAIL, full ZIP, test scripts + LOG + hashes, remaining blockers and next user steps. Never claim Godot acceptance from Python-only tests; preserve sealed G1 and source baselines. No raw Pokémon/PMD art in GitHub or candidate ZIP.
 
