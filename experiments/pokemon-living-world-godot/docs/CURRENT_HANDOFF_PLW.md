@@ -1,9 +1,9 @@
 # CURRENT HANDOFF | Pokémon Living World (Godot 4.7.2)
 
 **Updated:** 2026-10-17 (Asia/Taipei)  
-**Checkpoint:** `PLW_G221_PARSER_TELEMETRY_SURFACE_FAIL_REPAIR_CANDIDATE_20261017`  
+**Checkpoint:** `PLW_G222_WRONG_SCENE_MISSING_LOG_COLLECTOR_v0.4.1.2_20261017`
 **Branch:** `planning/pokemon-living-world-godot`  
-**G2 status:** G2.1 actual Surface behaviour PASS; G2.2 v0.4.1 Surface **FAIL** due to undeclared diagnostics locals; G2.2.1 hotfix 125/125 offline PASS, Godot F6 RETEST PENDING.
+**G2 status:** G2.1 Surface mobility PASS; G2.2 presentation unverified (user reports no visible effect and attached a G2.1-only log); G2.2.2 collector 129/129 offline PASS, Surface F6 pending.
 
 
 ## G2.2.1 v0.4.1.1 Surface compiler repair checkpoint — latest (2026-10-17)
