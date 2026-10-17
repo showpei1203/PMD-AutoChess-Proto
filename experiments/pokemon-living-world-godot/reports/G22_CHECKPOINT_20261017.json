@@ -1,0 +1,23 @@
+{
+  "checkpoint": "PLW_G22_SPECIES_VISUAL_DIRECTOR_CANDIDATE_v041_20261017",
+  "version": "v0.4.1",
+  "tests": 122,
+  "tests_result": "PASS",
+  "surface_godot_status": "PENDING",
+  "g21_surface_log_sha256": "a450cf80889287a00cdc8f275507dfc0efa83479f9fc9dc38870ca1951c51fe1",
+  "g21_log_lines": 95,
+  "g21_log_seconds": 33,
+  "snorlax_natural_roam_ms": 19077,
+  "snorlax_distance_after_natural_stroll_px": 41.6,
+  "snorlax_distance_after_manual_move_px": 80,
+  "pikachu_distance_px": 785,
+  "gengar_distance_px": 441,
+  "baseline": "v0.4.0 G2.1 files untouched",
+  "art_in_bundle": false,
+  "references": [
+    "PMD Sprite Format",
+    "PMDSpriteManager mapping",
+    "Gen1Recomp Ambient Authority v2.8.5b"
+  ],
+  "gate": "G2.2 candidate pending Surface F6"
+}

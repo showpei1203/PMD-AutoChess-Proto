@@ -1,19 +1,9 @@
 # CURRENT HANDOFF | Pokémon Living World (Godot 4.7.2)
 
 **Updated:** 2026-10-17 (Asia/Taipei)  
-**Checkpoint:** `PLW_G21_BOUNDED_BEHAVIOUR_CANDIDATE_v040_20261017`  
+**Checkpoint:** `PLW_G22_SPECIES_VISUAL_DIRECTOR_CANDIDATE_v041_20261017`  
 **Branch:** `planning/pokemon-living-world-godot`  
-**G2 status:** G2.0.2 Surface 2/3 mobility verified; G2.1 candidate 108/108 offline tests PASS, Godot F6 PENDING.
-
-## Latest Surface evidence: actual G2 session, LOG received (2026-10-17)
-- Actual Godot 4.7.2 G2 F6 scene confirmed: `LOGGER_READY build=G2.0.2-v0.3.9 scene=res://scenes/ecology_lab.tscn`; photo shows range circles, target points, `RUNNING`, `Debug ON`, tick ~305.
-- User attached `PLW_G2_DIAGNOSTICS_TO_SHARE.zip` with `PLW_G2_RUNTIME_LAST.log` (~60 sec, 171 lines). Evidence ZIP SHA256 `f63900f4a76bdef98724818044aa355e4508c6b6ed654b47ae00a6a6b7ae9ba6`. Raw user LOG deliberately not republished in public GitHub.
-- LOG: 58 heartbeat, 103 agent-change, 6 keyboard events; 1 session start / 1 session end; no explicit `ERROR` logger entries. tick 4 -> 333, render UI 13 -> 3434, physics 28 -> 3452; `tree_paused=false`, `root_physics=true`.
-- Keyboard M(77), D(68), N(78) received. `N` changed seed from 20261017 to 20365746. **No BUTTON events** in the supplied log, so clicking UI buttons is still unverified.
-- #025 Pikachu moved ~673px; #094 Gengar ~367px, both show IDLE/ROAM/OBSERVE state transitions. #143 Snorlax remains **0px** over this sample, shows REST/IDLE/OBSERVE but no ROAM. This may be caused by low roam probability rather than a code error; requires targeted acceptance.
-- **DIAGNOSTIC & 2/3 MOBILITY GATES PASS. G2 FULL AUTONOMOUS BEHAVIOUR GATE NOT YET PASS.** Do not keep the old G2 FAIL as the latest observation. Formal engine debugger warnings not proven 0 from logger alone.
-- Detailed GitHub evidence report: `docs/G202_SURFACE_RUNTIME_ACCEPTANCE_20261017.md`. No code changes for this evidence checkpoint; prior v0.3.9 full ZIP and 98/98 offline-test result remain current.
-- Next: observe/force Snorlax ROAM using focus 3 + M; evaluate 60–120 sec long-run mobility, personality differentiation and sprite facing aligned to velocity. Before each future code change update this handoff and append history; mirror to Drive and Issue #15.
+**G2 status:** G2.0.2 real Surface diagnostics PASS, autonomous mobility PARTIAL (2/3); G2.1 candidate 108/108 offline PASS, Godot Surface F6 PENDING.
 
 ## Last user report
 After G2.0.1, the Surface G2 scene appeared idle, `tick` did not increase, and D/M/N keys had no observable effect. Root cause **not proven**. Possibilities include wrong scene (F5 launches G1, G2 requires F6), stopped debugger, paused physics, input focus, or AI clock. Existing G1 (three-species animation), G1.1 (roster) and G1.2 (anchor) remain accepted at their previously stated scope.
@@ -43,30 +33,14 @@ After G2.0.1, the Surface G2 scene appeared idle, `tick` did not increase, and D
 - keys absent but buttons logged: keyboard focus/event propagation issue.
 - positions change while sprites don't: presentation/anchor/animation bug.
 
-## G2.0.2 delivery completion after connection interruption
-- **GitHub:** source code, G2.0.2 diagnostics scene, one-click runtime LOG collector, tests and this handoff were committed to the isolated branch. Re-read verification completed.
-- **Drive complete v0.3.9 ZIP:** https://drive.google.com/file/d/1X5ZbpBvCPVTZqYrWzNFrtxBA1BADI6f7/view. 107 files, archive CRC tested. SHA-256: `42aa22571846afb0b733c31ddcde05523579fe3cbd56b2bee03f62fbf35ac522`.
-- **Offline tests:** 98/98 PASS (does not establish Godot run). **Surface F6:** PENDING. User's prior tick/D/M/N failure stays **FAIL** until evidence shows it is fixed.
-- **Next evidence:** `reports/PLW_G2_DIAGNOSTICS_TO_SHARE.zip` collected **after** an actual G2 F6 run, as described below; do not upload Pokémon art.
-- **GitHub tracker:** https://github.com/showpei1203/PMD-AutoChess-Proto/issues/15.
 
-## Surface log-collection triage — 2026-10-17 (screenshot evidence)
-- User launched `RUN_G2_COLLECT_LOG_WINDOWS.bat` and got `G2 LOG NOT FOUND`, exit code 2, with no `PLW_G2_RUNTIME_LAST.log` in the project reports folder.
-- Crucial screenshot evidence: **Godot's active scene tab was `calibration_lab.tscn`; the scene tree root was `CalibrationLab`. `ecology_lab.tscn` was only highlighted in the FileSystem pane, not opened as active scene. The debugger process was stopped.**
-- Diagnosis: G2 diagnostic scene was **not verified to have run**. Selecting a .tscn in FileSystem does **not** activate it; F6 runs the active/open scene. Log collector's message means file absent, but **does not prove logger failure** in this case.
-- Correct Surface retest: Double-click `scenes/ecology_lab.tscn` in FileSystem; verify top active tab reads `ecology_lab` and left scene tree shows `EcologyLab > Diagnostics`; press **F6**. Confirm `G2.0.2 LOGGER ACTIVE`, wait 10 sec, click M/D/N buttons and type keys, stop game; run `RUN_G2_COLLECT_LOG_WINDOWS.bat`.
-- Expected log `D:\PMD-AutoChess-Proto\experiments\pokemon-living-world-godot\reports\PLW_G2_RUNTIME_LAST.log`; uploaded evidence `reports/PLW_G2_DIAGNOSTICS_TO_SHARE.zip`. If still absent, capture Godot Output/errors and the active Scene tree.
-- Status: **G2 runtime still PENDING/UNVERIFIED**; cannot conclude locomotion tick or logger broken until actual G2 scene executes. No code changes or new offline test results in this triage-only iteration; v0.3.9 ZIP remains the deliverable.
+## Latest accepted G2.0.2 evidence (2026-10-17)
+User uploaded actual Surface G2.0.2 LOG (171 lines, ~60sec): physics and UI callback HEARTBEAT ticks grow 4→333; keyboard M/D/N and reseeding verified. #025 ~673px and #094 ~367px; #143 0px with IDLE/OBSERVE/REST and no ROAM. Diagnose complete; current G2 ecology gate PARTIAL, not fully accepted. See `docs/G202_SURFACE_RUNTIME_ACCEPTANCE_20261017.md` (GitHub). Mouse button controls not verified.
 
-## G2.1 v0.4.0 candidate and Handoff (2026-10-17)
-- Latest real Surface G2.0.2 evidence: 171-line runtime LOG, tick advances, Pikachu about 673px and Gengar about 367px; Snorlax 0px in the sampled 60sec. G2.0.2 logging and 2/3 movement verified, full ecology NOT accepted. Earlier 3+M Snorlax forcing unverified.
-- New isolated Godot scene: scenes/ecology_behavior_lab.tscn. Source: scripts/lab/ecology_behavior_lab.gd and ecology_behavior_diagnostics.gd. Does not modify earlier G2 ecology_lab.gd/.tscn or G1 series or project.godot.
-- Snorlax bounded wait: if REST/IDLE/OBSERVE have continued for at most 18 simulated seconds since last ROAM, call begin_roam; preserve short 49px radius and slow 16px/sec, don't force movement at each state transition. Debug visualizes roam count, remaining seconds, and velocity-vector arrow, WITHOUT claiming verified eight-direction PMD sprites.
-- New runtime LOG: reports/PLW_G21_RUNTIME_LAST.log; zip via RUN_G21_COLLECT_LOG_WINDOWS.bat to reports/PLW_G21_DIAGNOSTICS_TO_SHARE.zip. Previous G2.0.2 runtime log remains a separate file.
-- Offline Python tests: 108/108 PASS (10 added). 118-file ZIP CRC PASS; no copyrighted sprite content. Godot 4.7.2 actual G2.1 scene still PENDING.
-- GitHub source commit: f9f08ce2ab423ed8e5a23dab5da100244b3c2d73. Full ZIP: https://drive.google.com/file/d/1boS_9l6F4z3Jf4j1JD7CkH3ISJAu-46w/view. SHA256 dca1c5a41aeff77bec2b84f6375e8c10e25f9567580079409e17bc87b860c1f3.
-- Surface: close Godot, Fetch/Pull isolated branch, DOUBLE-CLICK scenes/ecology_behavior_lab.tscn, confirm EcologyBehaviorLab > Diagnostics; F6; wait 30sec to observe Snorlax ROAM + distance > 0. Test 3 then M forced roam, N/R/D, stop, run G21 collector and share reports/PLW_G21_DIAGNOSTICS_TO_SHARE.zip.
-- Continue to update GitHub and Drive CURRENT_HANDOFF, HANDOFF_HISTORY, master roadmap, Issue #15 after EVERY subsequent iteration, preserving FAIL/PENDING honestly and full ZIP/test/log/hash deliverables.
+## G2.1 v0.4.0 (new isolated scene)
+See `docs/G21_BOUNDED_BEHAVIOUR_20261017.md`. Added a deterministic max 18sec non-roaming interval to Snorlax (#143) while keeping small radius, speed 16px/s and rest-heavy role. Tracks per species roam count, direction-vector debugging but deliberately does not guess PMD direction rows. Logs to `reports/PLW_G21_RUNTIME_LAST.log`, collect by `RUN_G21_COLLECT_LOG_WINDOWS.bat` to `reports/PLW_G21_DIAGNOSTICS_TO_SHARE.zip`. **108/108 offline tests PASS**, **Godot Surface F6 remains PENDING**. Old G2 scene/G1/G1.1/G1.2/project.godot unchanged. Last G2.0.2 LOG is private, no raw user log uploaded to GitHub.
+
+**Next user test:** GitHub Fetch/Pull on isolated branch → double-click `scenes/ecology_behavior_lab.tscn` (confirm EcologyBehaviorLab > Diagnostics) → F6 → wait ≥30 sec for #143 to ROAM and accumulate distance → try `3` then `M`, `R`, `N`, `D` → stop and share `reports/PLW_G21_DIAGNOSTICS_TO_SHARE.zip` plus a game screenshot. Formal gate remains pending until LOG inspected.
+
 ## REQUIRED every subsequent change
 Before coding, read this CURRENT_HANDOFF. After EACH iteration update both this file and append dated entry to `docs/HANDOFF_HISTORY_PLW.md`, then mirror into the Drive living Handoff and master roadmap. Include observed evidence, version/commit SHA, specific changed files, offline vs runtime PASS/FAIL, full ZIP, test scripts + LOG + hashes, remaining blockers and next user steps. Never claim Godot acceptance from Python-only tests; preserve sealed G1 and source baselines. No raw Pokémon/PMD art in GitHub or candidate ZIP.
-

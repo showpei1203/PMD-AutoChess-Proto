@@ -83,3 +83,15 @@ Previous Surface G2.0 behaviour acceptance failed (no perceptible locomotion, se
 
 ## G2.0.2 v0.3.9 | Runtime diagnostics and Handoff
 Surface G2 tick/input failures are still unverified root cause. Open `scenes/ecology_lab.tscn` with F6 (F5 starts old G1). Observe `G2.0.2 LOGGER ACTIVE`, use on-screen M/D/N. Runtime LOG: `reports/PLW_G2_RUNTIME_LAST.log`. ZIP collector: `RUN_G2_COLLECT_LOG_WINDOWS.bat` -> `reports/PLW_G2_DIAGNOSTICS_TO_SHARE.zip`. All subsequent changes must update `docs/CURRENT_HANDOFF_PLW.md` and append `docs/HANDOFF_HISTORY_PLW.md`, then mirror to Google Drive.
+
+## G2.1 v0.4.0 — Species behaviour / Snorlax bounded walk (2026-10-17)
+- **NEW separate scene**: `scenes/ecology_behavior_lab.tscn` (open scene, **F6**). Original G2.0.2 `scenes/ecology_lab.tscn` and G1/G1.1/G1.2 scenes unchanged.
+- #025 Pikachu still begins ROAM; #094 Gengar begins OBSERVE then ROAM; #143 Snorlax starts REST, with a **max 18-second non-roaming window** that triggers a short seeded stroll while retaining low speed and radius. The deadline resets upon starting an actual trip, not each IDLE/REST/OBSERVE.
+- Debug shows per-species total walking distance, roam count and Snorlax wake-up countdown. Orange debug-only heading arrow indicates movement vector, not an unverified PMD facing-row mapping.
+- **NEW log** `reports/PLW_G21_RUNTIME_LAST.log` and shareable `reports/PLW_G21_DIAGNOSTICS_TO_SHARE.zip` via `RUN_G21_COLLECT_LOG_WINDOWS.bat`; original G2 log remains separate.
+- `RUN_G21_TESTS_WINDOWS.bat`: **108/108 offline tests PASS**, including 10 new bounded-behaviour, isolated-scene, and text-only ZIP contracts; **Surface Godot runtime verification PENDING**.
+- Windows workflow: Fetch/Pull `planning/pokemon-living-world-godot`, double-click `scenes/ecology_behavior_lab.tscn`, confirm `EcologyBehaviorLab > Diagnostics`, press **F6**, wait **at least 30 seconds**. Watch #143 move spontaneously (and after `3`, `M`), observe orange heading, then stop and upload new G21 diagnostics ZIP. `R` repeats same seed; `N` seeds a new route, `D` toggles visible debug circles, `Space` pauses simulation. No need to redownload artwork.
+- This candidate does **not** claim Godot runtime pass, PMD 8-way directions, obstacle navigation or battle AI. Official source art stays ignored (`data/raw`).
+
+## G2.2 v0.4.1 optional animation-direction laboratory (not F5)
+`scenes/ecology_animation_lab.tscn` -> F6. Walking sprite now changes its native PMD direction row from movement velocity. Standing uses frozen Walk frame0 with occasional 1-shot native Idle action at species-dependent intervals; movement immediately preempts Idle. Local LOG is `reports/PLW_G22_RUNTIME_LAST.log`, collected via `RUN_G22_COLLECT_LOG_WINDOWS.bat`. 122 Python offline tests PASS; Surface Godot test PENDING. Full methods and evidence in `docs/G22_ANIMATION_DIRECTION_AUTHORITY_20261017.md`. G0/G1/G2.1 accepted scenes unchanged.
