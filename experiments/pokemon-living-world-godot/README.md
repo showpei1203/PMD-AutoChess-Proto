@@ -73,3 +73,7 @@ G1.1 Surface gallery operation: **user-reported PASS**, not a per-species direct
 
 ## v0.3.6 | PMD native shadow/ink-aware sprite anchor
 Fixes a proven bug in G1.2 calibration: placing full frame bottom on ground caused visibly raised characters whenever the transparent frame bottom extended below sprite pixels. New calibration prefers PMD Shadow.png white center, falling back to alpha-ink bottom (with warnings around flying/jumping). The F6 lab supports N-key A/B/C comparison; an optional stdlib-only `RUN_G12_ANCHOR_AUDIT_WINDOWS.bat` emits numeric first-frame 151 species anchor reports. 74/74 offline tests PASS; Surface F6 and actual local 151 PNG audit remain PENDING. No previously accepted gameplay scene changed. See `docs/G12_AUTO_ANCHOR_20261017.md`.
+
+## G2.0 v0.3.7 Ecology prototype (2026-10-17)
+
+An **isolated** scene at `scenes/ecology_lab.tscn` now prototypes Pikachu (CURIOUS), Gengar (PROWL), Snorlax (ANCHOR), five autonomous ecology states and a 10 Hz deterministic decision clock. Open the scene and press **F6** in Godot on Surface; this project still launches the previously accepted G1 animation lab with F5. No Pokémon art binaries are included. Run `RUN_G20_TESTS_WINDOWS.bat` for the full offline Python regression suite (83/83 pass locally). This is **not combat AI** or 151 completed species AI. The G1.2.1 user-accepted anchor audit is recorded without inventing per-species CSV metrics. See `docs/G20_ECOLOGY_PILOT_20261017.md` and `reports/G20_CHECKPOINT_20261017.log`.
