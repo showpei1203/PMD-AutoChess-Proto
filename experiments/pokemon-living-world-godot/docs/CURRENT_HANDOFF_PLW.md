@@ -1,10 +1,19 @@
 # CURRENT HANDOFF | Pokémon Living World (Godot 4.7.2)
 
 **Updated:** 2026-10-17 (Asia/Taipei)  
-**Checkpoint:** `PLW_G23_SPECIES_CADENCE_CANDIDATE_v0.4.2_20261017`
+**Checkpoint:** `PLW_G23_SURFACE_RUNTIME_PASS_VISUAL_FEEL_PENDING_20261017`
 **Branch:** `planning/pokemon-living-world-godot`  
-**G2 status:** G2.2 correct direction / idle baseline Surface PASS (direct launch confirmed); G2.3 slow species-specific stance/micro actions 146/146 offline PASS, Surface Godot runtime PENDING.
+**G2 status:** G2.3 v0.4.2 Surface RUN PASS (60 sec, tick 583, no boot/console errors), Pikachu/Gengar ambient event PASS, Snorlax micro action not observed; visual naturalness/151 generalization PENDING.
 
+
+## LATEST: G2.3 actual Surface LOG received and analyzed (2026-10-17)
+- User attached actual `PLW_G23_DIRECT_DIAGNOSTICS_TO_SHARE.zip` SHA256 `8b22e798ba4c2a63551d124c9ca320b2be801aca5bebe7edb5e5cc634b4c835d`, CRC PASS; Godot 4.7.2 direct launcher for `res://scenes/ecology_ambient_lab.tscn`, exit 0.
+- `LOGGER_READY build=G2.3-v0.4.2`, ~60 sec runtime, 173 log lines: 59 HEARTBEAT / 110 AGENT / first physics / session end. Last heartbeat tick=583, ui=3484, physics=3502. Zero boot/console ERROR or WARNING signatures.
+- Species #025 **MOVE Walk 21 / STANCE Walk 12 at 0.26x / MICRO_IDLE Idle 1**. #094 **MOVE Walk 10 / STANCE Walk 8 at 0.17x / MICRO_IDLE 1 / MICRO_FLOAT 1**. #143 **MOVE Walk 6 / STANCE Walk 4 at 0.09x / MICRO EVENTS 0**. All three moved (1134.65px / 423.68px / 160px respectively), and multiple logged direction rows confirm facing changes.
+- **G2.3 startup, scheduling and actual movement: Surface functional PASS.** **G2.3 animation naturalness / #143 rare expressiveness: VISUAL GATE PENDING**, not inferable from telemetry alone. User only uploaded LOG this turn; no explicit visual rating. No code changes or new version ZIP in this evidence-only checkpoint. Previous 146/146 offline Python suite remains historical.
+- GitHub detailed report: `docs/G23_SURFACE_RUNTIME_ACCEPTANCE_20261017.md`. User LOG archived privately in conversation only, no raw LOG included in public GitHub.
+- Previous v0.4.2 full Drive ZIP remains valid: https://drive.google.com/file/d/1VYom0ipsFG0i3KCuA3jxCrv0andzO5pd/view . Next evaluate whether #143 pose_wait is reset by movement and consider more subtle infrequent stance motion without making Snorlax hyperactive. Do not alter accepted G2.2 directional/anchor behavior.
+- This checkpoint synced to GitHub/Drive CURRENT_HANDOFF, append-only HISTORY and Issue #15; don't schedule background work.
 
 ## CURRENT DELIVERY — G2.3 v0.4.2 (2026-10-17)
 - **Full 161-file ZIP**: https://drive.google.com/file/d/1VYom0ipsFG0i3KCuA3jxCrv0andzO5pd/view ; SHA256 `9a21d6afa67f5cfc9030071d509f7fad23df480cc426d3074e231360fb74ecc0` (CRC PASS). Earlier G22 artifacts remain archived.
