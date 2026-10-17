@@ -35,3 +35,10 @@ Do not re-download 151 species. Close Godot, Fetch/Pull isolated GitHub branch, 
 
 ## G1.2 v0.3.5 (2026-10-17)
 New **standalone**, optional `scenes/calibration_lab.tscn`: open in Godot and F6. Q/E changes species (001..151), 1/2/3 selects benchmark, I/W/A changes action, left/right changes raw facing row, Z/X changes scale, up/down/J/L moves frame-bottom ground anchor, B toggles **debug-only** shadow, R resets display scale/anchor, S saves local `user://` JSON draft. Does not modify G1/G1.1 accepted scenes or `project.godot`. Before testing, GitHub Desktop Fetch/Pull isolated planning branch. Run `RUN_G12_CALIBRATION_TESTS_WINDOWS.bat` (expect 61/61 offline PASS). **Surface Godot F6 PENDING**; see docs/G12_CALIBRATION_LAB_20261017.md.
+
+## G1.2.1 v0.3.6 ｜腳點自動修復與 151 隻座標報表
+- 以前 `_align_sprite` 把 frame 下緣貼地導致一些大型寶可夢浮在地面上；現在 G1.2 校準場優先用 PMD `-Shadow.png` 官方**白色陰影中心**對齊，缺少則取 PNG **不透明像素底部**，仍可切換回舊 Frame 對照。
+- 先跑 `RUN_G12_ANCHOR_AUDIT_WINDOWS.bat`，得到 `reports/pmd_anchor_audit.csv/.json`，對 #130 暴鯉龍等大 frame 的數值差距進行排序。工具僅使用 Python 標準函式庫，**不需安裝 Pillow**。
+- Godot 在 `scenes/calibration_lab.tscn` 按 **F6**；**G** 一鍵跳 #130 暴鯉龍，**N** 切換 NATIVE/ALPHA/FRAME，**S** 儲存本機草稿，底下可看到原生 Shadow/alpha 的來源。其他按鍵沿用 G1.2。
+- `RUN_G12_CALIBRATION_TESTS_WINDOWS.bat` 包含 **74/74 Python 離線測試**，不是 Surface Godot F6 的實際動畫驗收。
+- 舊的 G1 三隻、G1.1 圖鑑巡覽場與 `project.godot` 入口保持原樣。更詳見 `docs/G12_AUTO_ANCHOR_20261017.md`。
