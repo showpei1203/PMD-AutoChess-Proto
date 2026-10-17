@@ -1,10 +1,19 @@
 # CURRENT HANDOFF | Pokémon Living World (Godot 4.7.2)
 
 **Updated:** 2026-10-17 (Asia/Taipei)  
-**Checkpoint:** `PLW_G22_SPECIES_VISUAL_DIRECTOR_CANDIDATE_v041_20261017`  
+**Checkpoint:** `PLW_G221_PARSER_TELEMETRY_SURFACE_FAIL_REPAIR_CANDIDATE_20261017`  
 **Branch:** `planning/pokemon-living-world-godot`  
-**G2 status:** G2.1 actual Surface behaviour PASS with Snorlax natural ROAM; G2.2 visual-direction candidate 122/122 offline PASS, F6 PENDING.
+**G2 status:** G2.1 actual Surface behaviour PASS; G2.2 v0.4.1 Surface **FAIL** due to undeclared diagnostics locals; G2.2.1 hotfix 125/125 offline PASS, Godot F6 RETEST PENDING.
 
+
+## G2.2.1 v0.4.1.1 Surface compiler repair checkpoint — latest (2026-10-17)
+- **Observed FAIL:** Godot 4.7.2 script `res://scripts/lab/ecology_animation_diagnostics.gd:104` referenced undeclared `roams` and `since_roam`, so v0.4.1 did not compile. Some `.uid` warnings were also visible, but are not the cause of these parser failures.
+- **Scene selection also wrong:** user screenshot active tab/tree `ecology_lab.tscn`/`EcologyLab`; `ecology_animation_lab.tscn` was merely highlighted in FileSystem. Double click scene, confirm `EcologyAnimationLab > Diagnostics`, then F6.
+- **Fix committed:** defensive declaration of both telemetry locals from `roam_count` and `time_since_roam`; G2.2.1 status indicator; transition diff key includes `roams`. Three new static regression tests (total **125/125 offline PASS**).
+- **Runtime status:** G2.2.1 Godot F6 **PENDING**, no claim of visual/compilation PASS. G2.1 Surface mobility PASS retained, G1/G2.1 scenes not touched.
+- **Full ZIP:** [v0.4.1.1 complete source/tests/logs/Handoff, 137 files](https://drive.google.com/file/d/1RnSscBaWJtnrUKEQjpdk05M0Byx0WUKv/view), ZIP CRC PASS, SHA-256 `60553d0c99e80f0ab7138d7ea6daeba2063338637f3cec051d582fd098f5e49a`, no copyrighted PMD PNGs.
+- **Next Surface:** Close Godot, Fetch/Pull `planning/pokemon-living-world-godot`, open `scenes/ecology_animation_lab.tscn` by double click, verify new active scene, F6. Confirm parser 0 red errors / visible `G2.2.1 LOGGER ACTIVE` and tick increases; watch 30s for stance, one-shot Idle and moving compass faces. Stop; run `RUN_G22_COLLECT_LOG_WINDOWS.bat`; upload `reports/PLW_G22_DIAGNOSTICS_TO_SHARE.zip` and one screenshot.
+- See `docs/G221_PARSER_ROAM_TELEMETRY_HOTFIX_20261017.md`. Handoff updates required on both GitHub and Drive every iteration.
 
 ## CURRENT G2.2 v0.4.1 source of truth (supersedes historical sections below)
 - Verified user G2.1 33-second runtime ZIP: 95 text lines, 33 heartbeats, SHA256 `a450cf80889287a00cdc8f275507dfc0efa83479f9fc9dc38870ca1951c51fe1`. #143 Snorlax walked autonomously after 19 sec (~41.6px), then user keys 3+M forced further motion to 80px. #025 ~785px and #094 ~441px. G2.1 movement confirmed, animation visual direction not accepted.
