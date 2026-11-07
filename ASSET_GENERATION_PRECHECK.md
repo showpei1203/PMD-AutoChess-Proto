@@ -1,5 +1,7 @@
 # PMD AutoChess Proto — Asset Generation Precheck
 
+> **P0 GLOBAL HARD RULES 001 (2026-11-07)**：本文件任何生成、測試與背景執行都必須先遵守 [跨專案最高儲存規範](https://docs.google.com/document/d/1NftePmIsggrhnfPcZTZS2G6YBka2yBy_fdw-NBT5D8Y/edit)。工程、PNG、測試 LOG、模型中間檔與 ZIP 永久只寫入 Google Drive/GitHub；使用者 PC 只允許必要安裝。若確實必須本機產生臨時檔，事先說明並取得**使用者授權**，完成雲端回讀 SHA 驗證才清理。舊 local/evidence workspace 不再當新路徑。PMD v2.5 雙層生成/原生 RGSS2/SEALED QA 不改；背景視窗執行 != 授權本機儲存。
+
 **Mandatory before every image generation or image edit.**
 
 1. Read Google Drive shared `SHARED_GAME_ASSET_GENERATION_AUTHORITY`.
