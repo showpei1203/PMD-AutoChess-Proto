@@ -4,6 +4,8 @@
 **Branch:** `planning/pokemon-living-world-godot`
 **Status:** G3.1 real Surface/engine 32/32 PASS and movement semantics PASS; G3.2 corner escaping 189/189 Python OFFLINE PASS, actual Godot 4.7.2 headless/visual PENDING. Full G3 design NOT sealed.
 
+> **[GLOBAL HARD RULES 001](https://docs.google.com/document/d/1NftePmIsggrhnfPcZTZS2G6YBka2yBy_fdw-NBT5D8Y/edit)（2026-11-07）**：新開發的 Git worktree、PMDCollab 來源 ZIP／PNG、Godot 工程、reports、log、截圖、回歸證據與正式版本只能永久保存到 Drive/GitHub。**不得沿用下面 2026-10 的 Surface GitHub Desktop / local reports 工作路徑作新工作輸出。**確實需在使用者 PC 建立暫存、Native Godot 測試資料時，必須事先說明、取得使用者明確授權，驗證 Drive 回存後清除。App/Android 使用者裝置執行與安裝資料屬正常產品/runtime 需求，不受此條誤禁；不影響歷史 G3.1 / G3.2 Gate。第三方 PMD／Pokémon 素材不得放公開 GitHub。
+
 ## Latest work G3.2 v0.5.2: 2026-10-17
 - **User**: Continue beyond observed G3.1; keep G2.3/G3.0/G3.1 frozen.
 - **Previous truth**: G3.1 actual Surface native 8Seed×4Posture gate (32 scenarios, replay twice) PASS; KEEP_DISTANCE 0/8 wins. Real user 3→R has RETREAT=113, STRAFE=4, ZONE=5; 4→R guard cooldown PASS, Pikachu wins. User G31 ZIP hash `1bd0ddb3bc9b206f067b1f22a8d03b85a963ba93fa5021f62cce5f4cf297e7d7`.
