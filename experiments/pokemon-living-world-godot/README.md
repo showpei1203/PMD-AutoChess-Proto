@@ -1,5 +1,7 @@
 # Pokémon Living World — G3.1 v0.5.1 (2026-10-17)
 
+> **[GLOBAL HARD RULES 001](https://docs.google.com/document/d/1NftePmIsggrhnfPcZTZS2G6YBka2yBy_fdw-NBT5D8Y/edit)（2026-11-07）**：新開發的 Git worktree、PMDCollab 來源 ZIP／PNG、Godot 工程、reports、log、截圖、回歸證據與正式版本只能永久保存到 Drive/GitHub。**不得沿用下面 2026-10 的 Surface GitHub Desktop / local reports 工作路徑作新工作輸出。**確實需在使用者 PC 建立暫存、Native Godot 測試資料時，必須事先說明、取得使用者明確授權，驗證 Drive 回存後清除。App/Android 使用者裝置執行與安裝資料屬正常產品/runtime 需求，不受此條誤禁；不影響歷史 G3.1 / G3.2 Gate。第三方 PMD／Pokémon 素材不得放公開 GitHub。
+
 ## Latest state
 - **G3.0 Surface native Godot trainer order PASS** based on user-uploaded actual LOG (1–4 input, distinct action scores, guarded damage, 12 native engine scenarios). Source code unchanged.
 - **G3.1 isolated tactical spacing candidate**: distinct `scenes/g31_combat_lab.tscn` + own core/UI/logger/Godot headless replay gate. `KEEP_DISTANCE` pursues a genuine 118–160px band with RETREAT/STRAFE and a prototype weak ranged attack; DEFENSIVE/Gengar GUARD incurs 25-tick recharge to prevent repeatedly free blocking. Actual strike range and power are SNAPSHOTTED at windup, so mid-fight switching trainer posture does not alter an already-committed strike. Correct facing/feet remains visual-only.
